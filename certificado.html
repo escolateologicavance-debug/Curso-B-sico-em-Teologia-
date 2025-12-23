@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Certificado</title>
+<title>Certificado de Conclusão</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
@@ -14,7 +15,7 @@ body {
 
 .certificado {
     width: 1000px;
-    height: 700px;
+    min-height: 700px;
     margin: 40px auto;
     background: #ffffff;
     border: 12px solid #1e4f91;
@@ -22,6 +23,7 @@ body {
     box-sizing: border-box;
 }
 
+/* ===== TOPO ===== */
 .topo {
     text-align: center;
     color: #1e4f91;
@@ -30,11 +32,161 @@ body {
 .topo h1 {
     margin: 0;
     font-size: 2.4rem;
+    letter-spacing: 1px;
 }
 
 .topo h2 {
     margin: 10px 0 40px;
     font-size: 1.3rem;
+    font-weight: normal;
+}
+
+/* ===== CONTEÚDO ===== */
+.conteudo {
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 2;
+    color: #000;
+}
+
+.nome {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.assinatura {
+    font-size: 1rem;
+}
+
+.assinatura strong {
+    display: block;
+    margin-top: 10px;
+}
+
+.dados {
+    text-align: right;
+    font-size: 0.95rem;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+    .certificado {
+        width: 95%;
+        padding: 25px;
+        margin: 20px auto;
+    }
+
+    .topo h1 {
+        font-size: 1.6rem;
+    }
+
+    .topo h2 {
+        font-size: 1rem;
+    }
+
+    .conteudo {
+        font-size: 1rem;
+    }
+
+    .nome {
+        font-size: 1.4rem;
+    }
+
+    .rodape {
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    .dados {
+        text-align: left;
+    }
+}
+
+/* ===== IMPRESSÃO / PDF ===== */
+@media print {
+    body {
+        background: #ffffff;
+    }
+
+    .certificado {
+        margin: 0;
+        width: 100%;
+        border: 12px solid #1e4f91;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="certificado">
+
+    <div class="topo">
+        <h1>FACULDADE TEOLÓGICA AVANCE</h1>
+        <h2>Certificado de Conclusão</h2>
+    </div>
+
+    <div class="conteudo">
+        Certificamos que<br><br>
+
+        <div class="nome" id="nomeAluno">Nome do Aluno</div>
+
+        portador do CPF <strong id="cpfAluno">000.000.000-00</strong>,<br>
+        concluiu com êxito o<br><br>
+
+        <strong>CURSO BÁSICO EM TEOLOGIA</strong><br><br>
+
+        com carga horária total de <strong>600 horas</strong>,<br>
+        conforme os critérios da<br>
+        <strong>Faculdade Teológica AVANCE (FTA)</strong>.
+    </div>
+
+    <div class="rodape">
+        <div class="assinatura">
+            ___________________________________<br>
+            <strong>Gilberto Moreira</strong><br>
+            Diretor Geral<br>
+            CGADB – Matrícula 65.099
+        </div>
+
+        <div class="dados">
+            Emitido em: <span id="data"></span><br>
+            E-mail do aluno:<br>
+            <span id="emailAluno"></span>
+        </div>
+    </div>
+
+</div>
+
+<script>
+/* ===== RECUPERA DADOS DO FAQ ===== */
+document.getElementById("nomeAluno").innerText =
+    localStorage.getItem("nomeAluno") || "Aluno não identificado";
+
+document.getElementById("cpfAluno").innerText =
+    localStorage.getItem("cpfAluno") || "CPF não informado";
+
+document.getElementById("emailAluno").innerText =
+    localStorage.getItem("emailAluno") || "—";
+
+/* ===== DATA ATUAL ===== */
+const hoje = new Date();
+document.getElementById("data").innerText =
+    hoje.toLocaleDateString("pt-BR");
+</script>
+
+</body>
+</html>    font-size: 1.3rem;
     font-weight: normal;
 }
 
