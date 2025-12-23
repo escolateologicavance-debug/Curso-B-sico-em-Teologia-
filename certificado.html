@@ -5,25 +5,33 @@
 <title>Certificado de Conclusão</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- QRCode -->
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
 <style>
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
 body {
     margin: 0;
-    padding: 0;
     background: #e6f0fa;
     font-family: "Times New Roman", serif;
 }
 
 .certificado {
-    width: 1000px;
-    min-height: 700px;
-    margin: 40px auto;
+    width: 1123px;
+    height: 794px;
+    margin: 20px auto;
     background: #ffffff;
-    border: 12px solid #1e4f91;
-    padding: 40px 60px;
+    border: 14px solid #1e4f91;
+    padding: 50px 70px;
     box-sizing: border-box;
+    position: relative;
 }
 
-/* ===== TOPO ===== */
+/* TOPO */
 .topo {
     text-align: center;
     color: #1e4f91;
@@ -31,10 +39,127 @@ body {
 
 .topo h1 {
     margin: 0;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     letter-spacing: 1px;
 }
 
+.topo h2 {
+    margin: 12px 0 40px;
+    font-size: 1.4rem;
+    font-weight: normal;
+}
+
+/* CONTEÚDO */
+.conteudo {
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 2;
+}
+
+.nome {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 22px 0;
+}
+
+/* RODAPÉ */
+.rodape {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.assinatura img {
+    width: 160px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.assinatura {
+    font-size: 1.05rem;
+}
+
+.qr {
+    text-align: right;
+    font-size: 0.95rem;
+}
+
+/* IMPRESSÃO */
+@media print {
+    body { background: #fff; }
+    .certificado { margin: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="certificado">
+
+    <div class="topo">
+        <h1>FACULDADE TEOLÓGICA AVANCE</h1>
+        <h2>Certificado de Conclusão</h2>
+    </div>
+
+    <div class="conteudo">
+        Certificamos que<br>
+
+        <div class="nome" id="nomeAluno">Nome do Aluno</div>
+
+        portador do CPF <strong id="cpfAluno">000.000.000-00</strong>,<br>
+        concluiu com êxito o<br><br>
+
+        <strong>CURSO BÁSICO EM TEOLOGIA</strong><br><br>
+
+        com carga horária total de <strong>600 horas</strong>,<br>
+        conforme os critérios da<br>
+        <strong>Faculdade Teológica AVANCE (FTA)</strong>.
+    </div>
+
+    <div class="rodape">
+
+        <div class="assinatura">
+            <img src="assinatura.png" alt="Assinatura">
+            <strong>Gilberto Moreira</strong><br>
+            Diretor Geral<br>
+            CGADB – Matrícula 65.099
+        </div>
+
+        <div class="qr">
+            <div id="qrcode"></div>
+            <br>
+            Emitido em: <span id="data"></span><br>
+            <span id="emailAluno"></span>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const nome = localStorage.getItem("nomeAluno") || "Aluno não identificado";
+const cpf = localStorage.getItem("cpfAluno") || "CPF não informado";
+const email = localStorage.getItem("emailAluno") || "—";
+
+document.getElementById("nomeAluno").innerText = nome;
+document.getElementById("cpfAluno").innerText = cpf;
+document.getElementById("emailAluno").innerText = email;
+
+const hoje = new Date();
+document.getElementById("data").innerText =
+    hoje.toLocaleDateString("pt-BR");
+
+// QR CODE com dados do certificado
+new QRCode(document.getElementById("qrcode"), {
+    text: `Certificado FTA\nAluno: ${nome}\nCPF: ${cpf}\nCurso: Curso Básico em Teologia\nCarga Horária: 600h`,
+    width: 120,
+    height: 120
+});
+</script>
+
+</body>
+</html>
 .topo h2 {
     margin: 10px 0 40px;
     font-size: 1.3rem;
