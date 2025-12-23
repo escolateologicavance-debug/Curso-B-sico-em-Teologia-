@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 9 - Soteriologia | AVANCE</title>
+    <style>
+        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
+        body { font-family:'Segoe UI',sans-serif; line-height:1.6; margin:0; background:var(--azul-m); display:flex; flex-direction:column; min-height:100vh; }
+        .header{ background:var(--azul-m); color:#fff; padding:20px; text-align:center; border-bottom:2px solid var(--azul-c);}
+        .container{ max-width:800px; margin:20px auto; background:#fff; padding:30px; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,.4); flex-grow:1;}
+        .secao{ display:none;}
+        .ativa{ display:block;}
+        h2{ color:var(--azul-m); border-bottom:2px solid var(--azul-c); padding-bottom:8px;}
+        h3{ color:var(--azul-c); margin-top:25px;}
+        p{ text-align:justify;}
+        .pergunta{ background:#fdfdfd; padding:20px; border-radius:12px; margin-bottom:20px; border-left:5px solid var(--azul-c);}
+        .opcao{ display:block; margin:10px 0; padding:12px; background:#f4f4f4; border-radius:8px; cursor:pointer;}
+        .btn{ display:block; width:100%; max-width:320px; margin:30px auto; padding:18px; background:var(--azul-c); color:#fff; border:none; border-radius:40px; font-weight:bold; font-size:1.1rem; cursor:pointer;}
+        .footer-copy{ text-align:center; padding:20px; color:rgba(255,255,255,.7); font-size:.9rem;}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>AVANCE</h1>
+    <p>Módulo 9: Soteriologia</p>
+</div>
+
+<div class="container">
+    <div id="secao-leitura" class="secao ativa">
+        <h2>Matéria 9 – Soteriologia</h2>
+
+        <p>A Soteriologia é o ramo da teologia que estuda a doutrina da salvação, abordando a obra redentora de Deus em Cristo e a aplicação dessa obra ao pecador.</p>
+
+        <h3>1. A Necessidade da Salvação</h3>
+        <p>Todos os seres humanos estão espiritualmente mortos em seus pecados e carecem da graça salvadora de Deus (Romanos 3:23).</p>
+
+        <h3>2. A Origem da Salvação</h3>
+        <p>A salvação tem sua origem exclusivamente na graça de Deus. Ela não procede do mérito humano, mas da iniciativa soberana divina.</p>
+
+        <h3>3. A Obra Redentora de Cristo</h3>
+        <p>Jesus Cristo realizou uma redenção completa por meio de Sua vida perfeita, morte substitutiva e ressurreição gloriosa.</p>
+
+        <h3>4. Justificação</h3>
+        <p>A justificação é o ato pelo qual Deus declara justo o pecador mediante a fé em Cristo, imputando-lhe a justiça de Cristo.</p>
+
+        <h3>5. Regeneração e Santificação</h3>
+        <p>A regeneração é a obra do Espírito Santo que concede nova vida espiritual. A santificação é o processo contínuo de conformação à imagem de Cristo.</p>
+
+        <h3>6. Perseverança e Glorificação</h3>
+        <p>Os salvos perseveram pela graça de Deus até a glorificação final, quando serão plenamente transformados.</p>
+
+        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
+    </div>
+
+    <div id="secao-prova" class="secao">
+        <h2>Avaliação de Conhecimento</h2>
+        <form id="quizForm">
+
+            <div class="pergunta"><b>1. Soteriologia estuda:</b>
+                <label class="opcao"><input type="radio" name="p1" value="0"> A criação</label>
+                <label class="opcao"><input type="radio" name="p1" value="1"> A doutrina da salvação</label>
+                <label class="opcao"><input type="radio" name="p1" value="0"> A escatologia</label>
+            </div>
+
+            <div class="pergunta"><b>2. Verdadeiro ou Falso: O homem pode salvar-se por méritos próprios.</b>
+                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>3. A salvação tem origem:</b>
+                <label class="opcao"><input type="radio" name="p3" value="1"> Na graça de Deus</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Na vontade humana</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Na tradição religiosa</label>
+            </div>
+
+            <div class="pergunta"><b>4. A morte de Cristo foi:</b>
+                <label class="opcao"><input type="radio" name="p4" value="0"> Um exemplo moral</label>
+                <label class="opcao"><input type="radio" name="p4" value="1"> Substitutiva e redentora</label>
+                <label class="opcao"><input type="radio" name="p4" value="0"> Apenas simbólica</label>
+            </div>
+
+            <div class="pergunta"><b>5. Verdadeiro ou Falso: Justificação é um processo gradual.</b>
+                <label class="opcao"><input type="radio" name="p5" value="0"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p5" value="1"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>6. A regeneração é:</b>
+                <label class="opcao"><input type="radio" name="p6" value="1"> Obra do Espírito Santo</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> Resultado do esforço humano</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> A mesma coisa que justificação</label>
+            </div>
+
+            <div class="pergunta"><b>7. A santificação:</b>
+                <label class="opcao"><input type="radio" name="p7" value="0"> É instantânea</label>
+                <label class="opcao"><input type="radio" name="p7" value="1"> É um processo contínuo</label>
+                <label class="opcao"><input type="radio" name="p7" value="0"> Não é necessária</label>
+            </div>
+
+            <div class="pergunta"><b>8. Verdadeiro ou Falso: O salvo persevera pela graça de Deus.</b>
+                <label class="opcao"><input type="radio" name="p8" value="1"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p8" value="0"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>9. A glorificação ocorrerá:</b>
+                <label class="opcao"><input type="radio" name="p9" value="1"> No estado final</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> No momento da fé</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> Durante a conversão</label>
+            </div>
+
+            <div class="pergunta"><b>10. A soteriologia bíblica exalta:</b>
+                <label class="opcao"><input type="radio" name="p10" value="0"> O mérito humano</label>
+                <label class="opcao"><input type="radio" name="p10" value="1"> A graça de Deus</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> O esforço religioso</label>
+            </div>
+
+        </form>
+        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
+    </div>
+
+    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+</div>
+
+<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+
+<script>
+function irParaProva(){
+    document.getElementById('secao-leitura').style.display='none';
+    document.getElementById('secao-prova').style.display='block';
+    window.scrollTo(0,0);
+}
+function corrigir(){
+    const f=document.getElementById('quizForm');
+    let n=0;
+    for(let i=1;i<=10;i++) if(f['p'+i] && f['p'+i].value==="1") n++;
+    const r=document.getElementById('resultado');
+    r.style.display='block';
+    if(n>=7){
+        r.innerHTML=`<b style="color:green">APROVADO! Nota: ${n}/10.</b>`;
+        setTimeout(()=>{ window.location.href='materia10.html'; },3000);
+    } else {
+        r.innerHTML=`<b style="color:red">REPROVADO. Nota: ${n}/10.</b>`;
+        setTimeout(()=>{ location.reload(); },3000);
+    }
+}
+</script>
+
+</body>
+</html>
