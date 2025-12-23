@@ -1,150 +1,221 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 10 - Teologia | AVANCE</title>
-    <style>
-        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
-        body { font-family:'Segoe UI',sans-serif; line-height:1.6; margin:0; background:var(--azul-m); display:flex; flex-direction:column; min-height:100vh; }
-        .header{ background:var(--azul-m); color:#fff; padding:20px; text-align:center; border-bottom:2px solid var(--azul-c);}
-        .container{ max-width:800px; margin:20px auto; background:#fff; padding:30px; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,.4); flex-grow:1;}
-        .secao{ display:none;}
-        .ativa{ display:block;}
-        h2{ color:var(--azul-m); border-bottom:2px solid var(--azul-c); padding-bottom:8px;}
-        h3{ color:var(--azul-c); margin-top:25px;}
-        p{ text-align:justify;}
-        .pergunta{ background:#fdfdfd; padding:20px; border-radius:12px; margin-bottom:20px; border-left:5px solid var(--azul-c);}
-        .opcao{ display:block; margin:10px 0; padding:12px; background:#f4f4f4; border-radius:8px; cursor:pointer;}
-        .btn{ display:block; width:100%; max-width:320px; margin:30px auto; padding:18px; background:var(--azul-c); color:#fff; border:none; border-radius:40px; font-weight:bold; font-size:1.1rem; cursor:pointer;}
-        .footer-copy{ text-align:center; padding:20px; color:rgba(255,255,255,.7); font-size:.9rem;}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 10 – Teologia | AVANCE</title>
+
+<style>
+:root { --azul-m:#001f3f; --azul-c:#0074D9; }
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--azul-m);
+    margin: 0;
+    color: #333;
+}
+.header {
+    background: var(--azul-m);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 2px solid var(--azul-c);
+}
+.container {
+    max-width: 800px;
+    background: #fff;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.4);
+}
+.secao { display: none; }
+.ativa { display: block; }
+h2 {
+    color: var(--azul-m);
+    border-bottom: 2px solid var(--azul-c);
+    padding-bottom: 8px;
+}
+h3 { color: var(--azul-c); margin-top: 25px; }
+p { text-align: justify; }
+.pergunta {
+    background: #f9f9f9;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--azul-c);
+}
+.opcao {
+    display: block;
+    margin: 8px 0;
+    padding: 10px;
+    background: #eee;
+    border-radius: 6px;
+}
+.btn {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 30px auto;
+    padding: 16px;
+    border-radius: 40px;
+    background: var(--azul-c);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+.footer-copy {
+    text-align: center;
+    color: rgba(255,255,255,.7);
+    padding: 20px;
+    font-size: .9rem;
+}
+</style>
 </head>
+
 <body>
 
 <div class="header">
     <h1>AVANCE</h1>
-    <p>Módulo 10: Teologia</p>
+    <p>Módulo 10 – Teologia</p>
 </div>
 
 <div class="container">
-    <div id="secao-leitura" class="secao ativa">
-        <h2>Matéria 10 – Teologia</h2>
 
-        <p>A Teologia é o estudo sistemático de Deus e de Sua revelação. Ela busca compreender quem Deus é, como Ele se revela e qual a Sua vontade para a humanidade.</p>
+<!-- LEITURA -->
+<div id="secao-leitura" class="secao ativa">
+<h2>Teologia – O Estudo de Deus</h2>
 
-        <h3>1. O Significado da Teologia</h3>
-        <p>A palavra teologia deriva de <i>theós</i> (Deus) e <i>lógos</i> (estudo). Trata-se do esforço humano, iluminado pela revelação divina, para conhecer a Deus.</p>
+<p>A Teologia é a disciplina que estuda Deus, Sua revelação, Seus atributos, Suas obras e Sua relação com a criação. O termo deriva do grego <i>Theós</i> (Deus) e <i>Lógos</i> (estudo, palavra).</p>
 
-        <h3>2. Revelação Geral e Especial</h3>
-        <p>Deus se revela de forma geral na criação e de maneira especial nas Escrituras e, de forma suprema, em Jesus Cristo.</p>
+<h3>1. A Teologia como Revelação</h3>
+<p>O homem não descobre Deus por si mesmo; Deus se revela. A Bíblia é a revelação especial e suficiente para o conhecimento salvador.</p>
 
-        <h3>3. Teologia Bíblica e Sistemática</h3>
-        <p>A teologia bíblica acompanha o desenvolvimento progressivo da revelação, enquanto a teologia sistemática organiza as doutrinas de forma coerente.</p>
+<h3>2. Teologia Bíblica e Sistemática</h3>
+<p>A Teologia Bíblica observa a revelação progressiva nas Escrituras, enquanto a Sistemática organiza os ensinos por temas.</p>
 
-        <h3>4. A Centralidade de Cristo</h3>
-        <p>Toda verdadeira teologia é cristocêntrica. Cristo é o centro da revelação, da redenção e da história.</p>
+<h3>3. Atributos de Deus</h3>
+<p>Deus é eterno, imutável, onisciente, onipotente, santo, justo e amoroso. Seus atributos não se contradizem.</p>
 
-        <h3>5. Teologia e Vida Cristã</h3>
-        <p>A teologia não é apenas acadêmica; ela molda a fé, a ética e a prática cristã. Doutrina correta conduz a vida correta.</p>
+<h3>4. A Centralidade de Cristo</h3>
+<p>Toda a Teologia verdadeira converge em Cristo. Ele é a revelação plena de Deus.</p>
 
-        <h3>6. O Propósito Final da Teologia</h3>
-        <p>O objetivo supremo da teologia é a glória de Deus, levando o crente a adorá-Lo em espírito e em verdade.</p>
+<h3>5. Finalidade da Teologia</h3>
+<p>Conhecer a Deus para adorá-Lo corretamente e viver para Sua glória.</p>
 
-        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO FINAL</button>
-    </div>
+<button class="btn" onclick="irParaProva()">IR PARA A AVALIAÇÃO FINAL</button>
+</div>
 
-    <div id="secao-prova" class="secao">
-        <h2>Avaliação de Conhecimento</h2>
-        <form id="quizForm">
+<!-- PROVA -->
+<div id="secao-prova" class="secao">
+<h2>Avaliação Final – Teologia</h2>
 
-            <div class="pergunta"><b>1. Teologia é o estudo:</b>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Da religião comparada</label>
-                <label class="opcao"><input type="radio" name="p1" value="1"> De Deus e Sua revelação</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Da filosofia antiga</label>
-            </div>
+<form id="quizForm">
 
-            <div class="pergunta"><b>2. Verdadeiro ou Falso: Deus não se revela ao homem.</b>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
-            </div>
+<div class="pergunta">
+<b>1. Teologia significa:</b>
+<label class="opcao"><input type="radio" name="p1" value="1"> Estudo sobre Deus</label>
+<label class="opcao"><input type="radio" name="p1" value="0"> Estudo religioso geral</label>
+<label class="opcao"><input type="radio" name="p1" value="0"> Filosofia espiritual</label>
+</div>
 
-            <div class="pergunta"><b>3. A revelação especial ocorre principalmente:</b>
-                <label class="opcao"><input type="radio" name="p3" value="1"> Nas Escrituras</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Na tradição humana</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Na filosofia</label>
-            </div>
+<div class="pergunta">
+<b>2. Verdadeiro ou Falso: o homem descobre Deus sem revelação.</b>
+<label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
+<label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
+</div>
 
-            <div class="pergunta"><b>4. A teologia bíblica se caracteriza por:</b>
-                <label class="opcao"><input type="radio" name="p4" value="1"> Acompanhar a revelação progressiva</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Isolar textos</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Ignorar o contexto</label>
-            </div>
+<div class="pergunta">
+<b>3. A revelação especial de Deus está:</b>
+<label class="opcao"><input type="radio" name="p3" value="0"> Na natureza</label>
+<label class="opcao"><input type="radio" name="p3" value="1"> Nas Escrituras</label>
+<label class="opcao"><input type="radio" name="p3" value="0"> Na tradição</label>
+</div>
 
-            <div class="pergunta"><b>5. Verdadeiro ou Falso: Toda teologia deve ser cristocêntrica.</b>
-                <label class="opcao"><input type="radio" name="p5" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Falso</label>
-            </div>
+<div class="pergunta">
+<b>4. Teologia Sistemática:</b>
+<label class="opcao"><input type="radio" name="p4" value="1"> Organiza os ensinos por temas</label>
+<label class="opcao"><input type="radio" name="p4" value="0"> Analisa culturas</label>
+<label class="opcao"><input type="radio" name="p4" value="0"> Substitui a Bíblia</label>
+</div>
 
-            <div class="pergunta"><b>6. A teologia sistemática:</b>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Contradiz a Bíblia</label>
-                <label class="opcao"><input type="radio" name="p6" value="1"> Organiza as doutrinas</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Substitui as Escrituras</label>
-            </div>
+<div class="pergunta">
+<b>5. Um atributo de Deus é:</b>
+<label class="opcao"><input type="radio" name="p5" value="0"> Limitado</label>
+<label class="opcao"><input type="radio" name="p5" value="1"> Santo</label>
+<label class="opcao"><input type="radio" name="p5" value="0"> Mutável</label>
+</div>
 
-            <div class="pergunta"><b>7. A finalidade prática da teologia é:</b>
-                <label class="opcao"><input type="radio" name="p7" value="1"> Transformar a vida cristã</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Produzir debates</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Criar sistemas filosóficos</label>
-            </div>
+<div class="pergunta">
+<b>6. Verdadeiro ou Falso: os atributos divinos se contradizem.</b>
+<label class="opcao"><input type="radio" name="p6" value="0"> Verdadeiro</label>
+<label class="opcao"><input type="radio" name="p6" value="1"> Falso</label>
+</div>
 
-            <div class="pergunta"><b>8. Verdadeiro ou Falso: Doutrina correta leva à adoração correta.</b>
-                <label class="opcao"><input type="radio" name="p8" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Falso</label>
-            </div>
+<div class="pergunta">
+<b>7. Cristo é:</b>
+<label class="opcao"><input type="radio" name="p7" value="1"> Revelação plena de Deus</label>
+<label class="opcao"><input type="radio" name="p7" value="0"> Apenas um profeta</label>
+<label class="opcao"><input type="radio" name="p7" value="0"> Um líder moral</label>
+</div>
 
-            <div class="pergunta"><b>9. A centralidade da teologia está em:</b>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Sistemas humanos</label>
-                <label class="opcao"><input type="radio" name="p9" value="1"> Deus revelado em Cristo</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Tradições religiosas</label>
-            </div>
+<div class="pergunta">
+<b>8. A Teologia correta conduz à:</b>
+<label class="opcao"><input type="radio" name="p8" value="1"> Adoração verdadeira</label>
+<label class="opcao"><input type="radio" name="p8" value="0"> Exaltação humana</label>
+<label class="opcao"><input type="radio" name="p8" value="0"> Confusão espiritual</label>
+</div>
 
-            <div class="pergunta"><b>10. O propósito final da teologia é:</b>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Exaltação humana</label>
-                <label class="opcao"><input type="radio" name="p10" value="1"> A glória de Deus</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Conhecimento intelectual</label>
-            </div>
+<div class="pergunta">
+<b>9. A Bíblia é suficiente para:</b>
+<label class="opcao"><input type="radio" name="p9" value="1"> Conhecer a Deus salvadoramente</label>
+<label class="opcao"><input type="radio" name="p9" value="0"> Questões científicas modernas</label>
+<label class="opcao"><input type="radio" name="p9" value="0"> Tradições humanas</label>
+</div>
 
-        </form>
-        <button class="btn" onclick="corrigir()">FINALIZAR MÓDULO</button>
-    </div>
+<div class="pergunta">
+<b>10. Finalidade última da Teologia:</b>
+<label class="opcao"><input type="radio" name="p10" value="1"> Glória de Deus</label>
+<label class="opcao"><input type="radio" name="p10" value="0"> Status acadêmico</label>
+<label class="opcao"><input type="radio" name="p10" value="0"> Controle religioso</label>
+</div>
 
-    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+</form>
+
+<button class="btn" onclick="corrigir()">FINALIZAR CURSO</button>
+<div id="resultado" style="text-align:center; margin-top:20px;"></div>
+</div>
+
 </div>
 
 <div class="footer-copy">© AVANCE – Gilberto Moreira</div>
 
 <script>
-function irParaProva(){
-    document.getElementById('secao-leitura').style.display='none';
-    document.getElementById('secao-prova').style.display='block';
+function irParaProva() {
+    document.getElementById('secao-leitura').style.display = 'none';
+    document.getElementById('secao-prova').style.display = 'block';
     window.scrollTo(0,0);
 }
-function corrigir(){
-    const f=document.getElementById('quizForm');
-    let n=0;
-    for(let i=1;i<=10;i++) if(f['p'+i] && f['p'+i].value==="1") n++;
-    const r=document.getElementById('resultado');
-    r.style.display='block';
-    if(n>=7){
-        r.innerHTML=`<b style="color:green">APROVADO! Nota: ${n}/10.<br>Módulo Básico Concluído.</b>`;
-        // próximo passo: biblioteca.html
+
+function corrigir() {
+    const form = document.getElementById('quizForm');
+    let nota = 0;
+    for (let i = 1; i <= 10; i++) {
+        if (form['p' + i] && form['p' + i].value === "1") nota++;
+    }
+    const res = document.getElementById('resultado');
+    if (nota >= 7) {
+        res.innerHTML = `<b style="color:green">APROVADO! Nota ${nota}/10</b><br>Redirecionando...`;
+        setTimeout(() => {
+            window.location.href = 'bibliografia.html';
+        }, 3000);
     } else {
-        r.innerHTML=`<b style="color:red">REPROVADO. Nota: ${n}/10.</b>`;
-        setTimeout(()=>{ location.reload(); },3000);
+        res.innerHTML = `<b style="color:red">REPROVADO. Nota ${nota}/10</b><br>Tente novamente.`;
+        setTimeout(() => location.reload(), 3000);
     }
 }
 </script>
 
 </body>
-</html>
+    </html>
