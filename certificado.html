@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Certificado</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: #e6f0fa;
+    font-family: "Times New Roman", serif;
+}
+
+.certificado {
+    width: 1000px;
+    height: 700px;
+    margin: 40px auto;
+    background: #ffffff;
+    border: 12px solid #1e4f91;
+    padding: 40px 60px;
+    box-sizing: border-box;
+}
+
+.topo {
+    text-align: center;
+    color: #1e4f91;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 2.4rem;
+}
+
+.topo h2 {
+    margin: 10px 0 40px;
+    font-size: 1.3rem;
+    font-weight: normal;
+}
+
+.conteudo {
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 2;
+}
+
+.nome {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.rodape {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.assinatura {
+    text-align: left;
+}
+
+.assinatura img {
+    width: 220px;
+}
+
+.assinatura p {
+    margin: 5px 0;
+}
+
+.dados {
+    text-align: right;
+    font-size: 0.95rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="certificado">
+
+    <div class="topo">
+        <h1>FACULDADE TEOLÓGICA AVANCE</h1>
+        <h2>Certificado de Conclusão</h2>
+    </div>
+
+    <div class="conteudo">
+        Certificamos que<br>
+
+        <div class="nome" id="nomeAluno"></div>
+
+        portador do CPF <strong><span id="cpfAluno"></span></strong>,<br>
+        concluiu com êxito o<br><br>
+
+        <strong>CURSO BÁSICO EM TEOLOGIA</strong><br><br>
+
+        com carga horária total de <strong>600 horas</strong>,<br>
+        conforme os critérios da<br>
+        <strong>Faculdade Teológica AVANCE (FTA)</strong>.
+    </div>
+
+    <div class="rodape">
+        <div class="assinatura">
+            <!-- Se quiser, depois colocamos a imagem real da assinatura -->
+            <p>__________________________________</p>
+            <p><strong>Gilberto Moreira</strong></p>
+            <p>Diretor Geral</p>
+            <p>CGADB – Matrícula 65.099</p>
+        </div>
+
+        <div class="dados">
+            Emitido em:<br>
+            <script>
+                document.write(new Date().toLocaleDateString("pt-BR"));
+            </script>
+            <br><br>
+            E-mail do aluno:<br>
+            <span id="emailAluno"></span>
+        </div>
+    </div>
+
+</div>
+
+<script>
+document.getElementById("nomeAluno").innerText =
+    localStorage.getItem("nome");
+
+document.getElementById("cpfAluno").innerText =
+    localStorage.getItem("cpf");
+
+document.getElementById("emailAluno").innerText =
+    localStorage.getItem("email");
+</script>
+
+</body>
+</html>
