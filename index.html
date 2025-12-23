@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso Básico em Teologia - AVANCE</title>
+<style>
+:root { --azul-m:#001f3f; --azul-c:#0074D9; --br:#ffffff; }
+body{ margin:0; font-family:'Segoe UI',Arial,sans-serif; background:var(--azul-m); color:var(--br); text-align:center; }
+.container{ max-width:650px; margin:auto; padding:20px; }
+
+.moldura-grade{ 
+  width:90%; 
+  max-width:350px; 
+  margin:20px auto; 
+  border:2px solid var(--azul-c); 
+  padding:15px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+.moldura-grade h4 { text-align: center; color: var(--azul-c); margin-top: 0; }
+.item-grade { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 5px 0; }
+
+button{ width:85%; padding:18px; border:none; border-radius:35px; background:var(--azul-c); color:#fff; font-size:1.2rem; font-weight:bold; margin:15px 0; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+
+.card-mod{ background:rgba(255,255,255,0.1); padding:18px; margin:12px 0; border-radius:12px; display:flex; justify-content:space-between; align-items:center; text-decoration:none; color:white; border: 1px solid transparent; cursor: pointer; }
+.card-mod:hover{ border-color: var(--azul-c); }
+.bloq{ opacity:0.3; cursor:not-allowed; }
+
+.footer-copy { margin-top: 40px; font-size: 0.8rem; opacity: 0.7; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1 style="margin-bottom:0;">AVANCE</h1>
+  <p style="color:#0074D9; margin-top:5px;">www.escolateologicavance.com.br</p>
+  
+  <div class="moldura-grade">
+    <h4>GRADE CURRICULAR - MÓDULO I</h4>
+    <div class="item-grade"><span>1. Educação Cristã</span> <span>✔</span></div>
+    <div class="item-grade"><span>2. Hamartiologia</span> <span>🔒</span></div>
+    <div class="item-grade"><span>3. Missiologia</span> <span>🔒</span></div>
+    <div class="item-grade"><span>4. Pneumatologia</span> <span>🔒</span></div>
+    <div class="item-grade"><span>5. Escatologia</span> <span>🔒</span></div>
+    <div class="item-grade"><span>6. Antropologia Bíblica</span> <span>🔒</span></div>
+    <div class="item-grade"><span>7. Homilética</span> <span>🔒</span></div>
+    <div class="item-grade"><span>8. Hermenêutica</span> <span>🔒</span></div>
+    <div class="item-grade"><span>9. Soteriologia</span> <span>🔒</span></div>
+    <div class="item-grade"><span>10. Bibliologia</span> <span>🔒</span></div>
+  </div>
+  
+  <h2 style="margin:20px 0;">Curso Básico em Teologia</h2>
+  
+  <button onclick="abrirMateria()">ABRIR LIVRO DIGITAL</button>
+  
+  <div style="text-align:left; margin-top:30px;">
+    <div class="card-mod" onclick="abrirMateria()">
+      <span>Módulo 1: Educação Cristã</span>
+      <span>🔓 Acessar</span>
+    </div>
+  </div>
+
+  <div class="footer-copy">
+    <p>© 2025 AVANCE – Todos os direitos reservados<br>
+    Professor Gilberto Moreira</p>
+  </div>
+</div>
+
+<script>
+function abrirMateria() {
+  // Tenta abrir o arquivo materia1.html
+  window.location.assign("materia1.html");
+}
+</script>
+
+</body>
+</html>

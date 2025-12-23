@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1 - Educação Cristã | AVANCE</title>
+    <style>
+        :root { --azul-m:#001f3f; --azul-c:#0074D9; --br:#ffffff; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
+        .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
+        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; position: relative; }
+        
+        /* Controle de visibilidade real */
+        .secao { display: none; }
+        .ativa { display: block; }
+        
+        h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
+        h3 { color: var(--azul-c); margin-top: 25px; }
+        
+        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: left; }
+        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; transition: 0.3s; }
+        .opcao:hover { background: #e2efff; }
+        
+        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; text-align: center; border: none; cursor: pointer; font-size: 1.1rem; }
+        
+        #resultado { display: none; padding: 20px; border-radius: 10px; text-align: center; font-weight: bold; margin-top: 20px; }
+        .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+        p { text-align: justify; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>AVANCE</h1>
+    <p>Módulo 1: Educação Cristã</p>
+</div>
+
+<div class="container">
+    <div id="conteudo-leitura" class="secao ativa">
+        <h2>Matéria 1 – Educação Cristã</h2>
+        <p>A Educação Cristã é um processo contínuo de formação espiritual, fundamentado exclusivamente na revelação divina registrada nas Sagradas Escrituras. Ela não se limita à transmissão de informações religiosas, mas visa a transformação do caráter, da mente e da conduta do cristão à luz da Palavra de Deus.</p>
+        
+        <p>Dentro da teologia cristã protestante, a educação bíblica ocupa lugar central na formação do discípulo de Cristo, pois o verdadeiro conhecimento espiritual conduz à obediência, à maturidade e à vida transformada.</p>
+
+        <h3>1. Fundamento Bíblico da Educação Cristã</h3>
+        <p>A base da Educação Cristã encontra-se nos 66 livros da Bíblia, inspirados por Deus e suficientes para ensinar, repreender, corrigir e instruir na justiça, conforme ensina o apóstolo Paulo em 2 Timóteo 3:16–17.</p>
+        <p>A educação bíblica não se fundamenta em tradições humanas, filosofias seculares ou sistemas pedagógicos autônomos, mas na revelação divina suficiente e autoritativa.</p>
+
+        <h3>2. O Shemá e o Ensino Contínuo</h3>
+        <p>Deuteronômio 6:4–9, conhecido como Shemá, estabelece um dos princípios mais importantes da educação cristã. Nesse texto, Deus ordena que Sua Palavra seja ensinada de forma contínua, intencional e aplicada à vida diária.</p>
+        <p>O termo hebraico V’Shinantam, traduzido como “ensinar diligentemente”, comunica a ideia de repetição, constância e profundidade no ensino da fé.</p>
+
+        <h3>3. O Lar como Primeira Escola</h3>
+        <p>A Bíblia apresenta a família como a primeira instituição educacional criada por Deus. Provérbios 22:6 afirma: “Instrui o menino no caminho em que deve andar, e até quando envelhecer não se desviará dele”.</p>
+
+        <h3>4. Jesus Cristo – O Mestre por Excelência</h3>
+        <p>Jesus Cristo é o maior modelo de educador cristão. Seu método envolvia convivência, exemplo, discipulado e prática.</p>
+
+        <h3>5. Processo Contínuo e Finalidade</h3>
+        <p>A Educação Cristã acompanha o cristão durante toda a sua vida. O objetivo final é conduzir à maturidade espiritual e à conformidade com a imagem de Cristo.</p>
+
+        <button class="btn" onclick="mostrarProva()">IR PARA AVALIAÇÃO</button>
+    </div>
+
+    <div id="conteudo-prova" class="secao">
+        <h2>Avaliação de Conhecimento</h2>
+        <form id="quizForm">
+            <div class="pergunta">
+                <p><b>1. Qual a base da Educação Cristã?</b></p>
+                <label class="opcao"><input type="radio" name="p1" value="1"> Os 66 livros da Bíblia</label>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Filosofias humanas</label>
+            </div>
+            <div class="pergunta">
+                <p><b>10. Conhecimento sem transformação:</b></p>
+                <label class="opcao"><input type="radio" name="p10" value="1"> Não cumpre o propósito do ensino bíblico</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> É o suficiente</label>
+            </div>
+        </form>
+        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
+        <p onclick="mostrarLeitura()" style="text-align:center; color:var(--azul-c); cursor:pointer;">Voltar para o Texto</p>
+    </div>
+
+    <div id="resultado"></div>
+</div>
+
+<div class="footer-copy">
+    © AVANCE – Gilberto Moreira
+</div>
+
+<script>
+    function mostrarProva() {
+        document.getElementById('conteudo-leitura').style.display = 'none';
+        document.getElementById('conteudo-prova').style.display = 'block';
+        window.scrollTo(0,0);
+    }
+    function mostrarLeitura() {
+        document.getElementById('conteudo-prova').style.display = 'none';
+        document.getElementById('conteudo-leitura').style.display = 'block';
+        window.scrollTo(0,0);
+    }
+    function corrigir() {
+        const form = document.getElementById('quizForm');
+        let nota = 0;
+        if(form.p1.value === "1") nota++;
+        if(form.p10.value === "1") nota++;
+        
+        const res = document.getElementById('resultado');
+        res.style.display = 'block';
+        if(nota >= 1) { // Mudar para 7 quando completar as 10
+            res.innerHTML = "<div style='color:green'>Aprovado! Redirecionando...</div>";
+            setTimeout(() => { window.location.href='materia2.html'; }, 2000);
+        } else {
+            res.innerHTML = "<div style='color:red'>Tente novamente.</div>";
+        }
+    }
+</script>
+</body>
+</html>
