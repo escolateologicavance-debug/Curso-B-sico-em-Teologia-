@@ -2,39 +2,181 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Certificado de Conclusão</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- QRCode -->
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+<title>Certificado – Faculdade Teológica AVANCE</title>
 
 <style>
+/* ===== CONFIGURAÇÃO GLOBAL ===== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #e6eef7;
+  font-family: "Times New Roman", serif;
+}
+
+/* ===== CONFIGURAÇÃO DE IMPRESSÃO ===== */
 @page {
-    size: A4 landscape;
-    margin: 0;
+  size: A4 landscape;
+  margin: 0;
 }
 
-body {
-    margin: 0;
-    background: #e6f0fa;
-    font-family: "Times New Roman", serif;
+/* ===== ÁREA DO CERTIFICADO ===== */
+.certificado-wrapper {
+  width: 297mm;
+  height: 210mm;
+  margin: auto;
+  background: #ffffff;
+  border: 10px solid #0a3d6d;
+  padding: 25mm;
+  position: relative;
 }
 
-.certificado {
-    width: 1123px;
-    height: 794px;
-    margin: 20px auto;
-    background: #ffffff;
-    border: 14px solid #1e4f91;
-    padding: 50px 70px;
-    box-sizing: border-box;
-    position: relative;
-}
-
-/* TOPO */
+/* ===== CABEÇALHO ===== */
 .topo {
-    text-align: center;
-    color: #1e4f91;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.topo h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #0a3d6d;
+  letter-spacing: 1px;
+}
+
+.topo h2 {
+  margin: 6px 0 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* ===== TÍTULO ===== */
+.titulo {
+  text-align: center;
+  font-size: 34px;
+  margin: 30px 0 20px;
+  color: #0a3d6d;
+}
+
+/* ===== TEXTO ===== */
+.conteudo {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.8;
+  padding: 0 40px;
+}
+
+/* ===== NOME DO ALUNO ===== */
+.nome-aluno {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 15px 0;
+  word-wrap: break-word;
+}
+
+/* ===== RODAPÉ ===== */
+.rodape {
+  position: absolute;
+  bottom: 25mm;
+  left: 25mm;
+  right: 25mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* ===== ASSINATURA ===== */
+.assinatura {
+  text-align: left;
+}
+
+.assinatura img {
+  width: 180px;
+}
+
+.assinatura p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+/* ===== DADOS ALUNO ===== */
+.dados-aluno {
+  text-align: right;
+  font-size: 14px;
+}
+
+/* ===== RESPONSIVO (ANDROID) ===== */
+@media screen and (max-width: 900px) {
+  .certificado-wrapper {
+    transform: scale(0.85);
+    transform-origin: top left;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="certificado-wrapper">
+
+  <div class="topo">
+    <h1>FACULDADE TEOLÓGICA AVANCE</h1>
+    <h2>Certificado de Conclusão</h2>
+  </div>
+
+  <div class="titulo">CERTIFICADO</div>
+
+  <div class="conteudo">
+    Certificamos que
+    <div class="nome-aluno" id="nomeAluno">Nome do Aluno</div>
+
+    portador do CPF <strong id="cpfAluno">000.000.000-00</strong>, concluiu com êxito o
+
+    <br><br>
+    <strong>CURSO BÁSICO EM TEOLOGIA</strong>
+    <br><br>
+
+    com carga horária total de <strong>600 horas</strong>, conforme os critérios acadêmicos da
+    <strong>Faculdade Teológica AVANCE (FTA)</strong>.
+  </div>
+
+  <div class="rodape">
+
+    <div class="assinatura">
+      <img src="asssinatura.jpg" alt="Assinatura">
+      <p><strong>Gilberto Moreira</strong></p>
+      <p>Diretor Geral</p>
+      <p>CGADB – Matrícula 65.099</p>
+    </div>
+
+    <div class="dados-aluno">
+      <p>Data: <span id="dataConclusao"></span></p>
+      <p>E-mail: <span id="emailAluno"></span></p>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+document.getElementById("nomeAluno").innerText =
+  localStorage.getItem("nomeAluno") || "Aluno";
+
+document.getElementById("cpfAluno").innerText =
+  localStorage.getItem("cpfAluno") || "—";
+
+document.getElementById("emailAluno").innerText =
+  localStorage.getItem("emailAluno") || "—";
+
+const hoje = new Date().toLocaleDateString("pt-BR");
+document.getElementById("dataConclusao").innerText = hoje;
+</script>
+
+</body>
+</html>    color: #1e4f91;
 }
 
 .topo h1 {
