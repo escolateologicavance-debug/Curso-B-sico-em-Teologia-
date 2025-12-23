@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 7 - Homilética | AVANCE</title>
+    <style>
+        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
+        body { font-family:'Segoe UI',sans-serif; line-height:1.6; margin:0; background:var(--azul-m); display:flex; flex-direction:column; min-height:100vh; }
+        .header{ background:var(--azul-m); color:#fff; padding:20px; text-align:center; border-bottom:2px solid var(--azul-c);}
+        .container{ max-width:800px; margin:20px auto; background:#fff; padding:30px; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,.4); flex-grow:1;}
+        .secao{ display:none;}
+        .ativa{ display:block;}
+        h2{ color:var(--azul-m); border-bottom:2px solid var(--azul-c); padding-bottom:8px;}
+        h3{ color:var(--azul-c); margin-top:25px;}
+        p{ text-align:justify;}
+        .pergunta{ background:#fdfdfd; padding:20px; border-radius:12px; margin-bottom:20px; border-left:5px solid var(--azul-c);}
+        .opcao{ display:block; margin:10px 0; padding:12px; background:#f4f4f4; border-radius:8px; cursor:pointer;}
+        .btn{ display:block; width:100%; max-width:320px; margin:30px auto; padding:18px; background:var(--azul-c); color:#fff; border:none; border-radius:40px; font-weight:bold; font-size:1.1rem; cursor:pointer;}
+        .footer-copy{ text-align:center; padding:20px; color:rgba(255,255,255,.7); font-size:.9rem;}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>AVANCE</h1>
+    <p>Módulo 7: Homilética</p>
+</div>
+
+<div class="container">
+    <div id="secao-leitura" class="secao ativa">
+        <h2>Matéria 7 – Homilética</h2>
+
+        <p>A Homilética é a disciplina teológica que estuda a preparação e a comunicação da mensagem bíblica, visando transmitir fielmente a Palavra de Deus de forma clara, fiel e relevante.</p>
+
+        <h3>1. A Natureza da Pregação</h3>
+        <p>A pregação cristã não é mera oratória religiosa, mas a proclamação da Palavra inspirada. O pregador é um porta-voz de Deus, não um comunicador de ideias próprias.</p>
+
+        <h3>2. A Centralidade das Escrituras</h3>
+        <p>Toda pregação legítima deve nascer do texto bíblico. A autoridade do sermão está no texto, não na eloquência do pregador.</p>
+
+        <h3>3. O Chamado e o Caráter do Pregador</h3>
+        <p>O pregador deve unir preparo intelectual, vida piedosa e dependência do Espírito Santo. O caráter sustenta a mensagem.</p>
+
+        <h3>4. Tipos de Sermão</h3>
+        <p>Os principais tipos são: textual, temático e expositivo. O sermão expositivo preserva melhor o sentido original das Escrituras.</p>
+
+        <h3>5. Estrutura do Sermão</h3>
+        <p>Um bom sermão possui introdução, desenvolvimento coerente e aplicação prática, conduzindo o ouvinte à obediência.</p>
+
+        <h3>6. A Finalidade da Pregação</h3>
+        <p>A pregação visa glorificar a Deus, edificar a igreja e chamar os ouvintes ao arrependimento e à fé.</p>
+
+        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
+    </div>
+
+    <div id="secao-prova" class="secao">
+        <h2>Avaliação de Conhecimento</h2>
+        <form id="quizForm">
+
+            <div class="pergunta"><b>1. Homilética é o estudo:</b>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Da retórica secular</label>
+                <label class="opcao"><input type="radio" name="p1" value="1"> Da pregação bíblica</label>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Da liderança eclesiástica</label>
+            </div>
+
+            <div class="pergunta"><b>2. Verdadeiro ou Falso: A autoridade do sermão está no pregador.</b>
+                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>3. O sermão expositivo se caracteriza por:</b>
+                <label class="opcao"><input type="radio" name="p3" value="1"> Explicar fielmente o texto bíblico</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Usar temas livres</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Focar em histórias pessoais</label>
+            </div>
+
+            <div class="pergunta"><b>4. O caráter do pregador:</b>
+                <label class="opcao"><input type="radio" name="p4" value="0"> É secundário</label>
+                <label class="opcao"><input type="radio" name="p4" value="1"> Sustenta a mensagem</label>
+                <label class="opcao"><input type="radio" name="p4" value="0"> Não influencia</label>
+            </div>
+
+            <div class="pergunta"><b>5. Verdadeiro ou Falso: Pregação cristã é entretenimento.</b>
+                <label class="opcao"><input type="radio" name="p5" value="0"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p5" value="1"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>6. A estrutura básica de um sermão inclui:</b>
+                <label class="opcao"><input type="radio" name="p6" value="0"> Apenas introdução</label>
+                <label class="opcao"><input type="radio" name="p6" value="1"> Introdução, desenvolvimento e aplicação</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> Conclusão sem texto</label>
+            </div>
+
+            <div class="pergunta"><b>7. A finalidade da pregação é:</b>
+                <label class="opcao"><input type="radio" name="p7" value="0"> Exaltar o pregador</label>
+                <label class="opcao"><input type="radio" name="p7" value="1"> Glorificar a Deus</label>
+                <label class="opcao"><input type="radio" name="p7" value="0"> Convencer intelectualmente</label>
+            </div>
+
+            <div class="pergunta"><b>8. Verdadeiro ou Falso: A aplicação prática é essencial.</b>
+                <label class="opcao"><input type="radio" name="p8" value="1"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p8" value="0"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>9. A dependência do Espírito Santo:</b>
+                <label class="opcao"><input type="radio" name="p9" value="0"> Dispensa preparo</label>
+                <label class="opcao"><input type="radio" name="p9" value="1"> Acompanha o preparo</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> Substitui o estudo bíblico</label>
+            </div>
+
+            <div class="pergunta"><b>10. Homilética saudável conduz à:</b>
+                <label class="opcao"><input type="radio" name="p10" value="1"> Transformação de vidas</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> Performance religiosa</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> Vaidade ministerial</label>
+            </div>
+
+        </form>
+        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
+    </div>
+
+    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+</div>
+
+<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+
+<script>
+function irParaProva(){
+    document.getElementById('secao-leitura').style.display='none';
+    document.getElementById('secao-prova').style.display='block';
+    window.scrollTo(0,0);
+}
+function corrigir(){
+    const f=document.getElementById('quizForm');
+    let n=0;
+    for(let i=1;i<=10;i++) if(f['p'+i] && f['p'+i].value==="1") n++;
+    const r=document.getElementById('resultado');
+    r.style.display='block';
+    if(n>=7){
+        r.innerHTML=`<b style="color:green">APROVADO! Nota: ${n}/10.</b>`;
+        setTimeout(()=>{ window.location.href='materia8.html'; },3000);
+    } else {
+        r.innerHTML=`<b style="color:red">REPROVADO. Nota: ${n}/10.</b>`;
+        setTimeout(()=>{ location.reload(); },3000);
+    }
+}
+</script>
+
+</body>
+</html>
