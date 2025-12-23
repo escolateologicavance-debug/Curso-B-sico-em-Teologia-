@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 2 - Hamartiologia | AVANCE</title>
     <style>
-        :root { --azul-m:#001f3f; --azul-c:#0074D9; --br:#ffffff; }
+        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
         body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
         .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
         .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
@@ -15,7 +15,7 @@
         h3 { color: var(--azul-c); margin-top: 25px; }
         .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
         .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
-        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; text-align: center; border: none; cursor: pointer; font-size: 1.1rem; }
+        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; }
         .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
         p { text-align: justify; }
     </style>
@@ -30,11 +30,123 @@
 <div class="container">
     <div id="secao-leitura" class="secao ativa">
         <h2>Matéria 2 – Hamartiologia</h2>
-        <p>A Hamartiologia é o ramo da teologia que estuda a doutrina do pecado, sua origem, natureza, consequências e solução segundo as Escrituras.</p>
+        <p>A Hamartiologia é o ramo da teologia que estuda a doutrina do pecado à luz das Escrituras, analisando sua origem, natureza, extensão, consequências e a provisão divina para sua redenção.</p>
 
-        <h3>1. Conceito Bíblico de Pecado</h3>
-        <p>A palavra pecado (hamartía) significa errar o alvo. Biblicamente, é a transgressão da Lei de Deus (1 João 3:4).</p>
+        <h3>1. O Conceito Bíblico de Pecado</h3>
+        <p>Na Bíblia, o pecado é descrito como errar o alvo (hamartía), transgredir a Lei de Deus e rebelar-se contra Sua vontade. O pecado não é apenas um ato externo, mas uma condição interna do coração humano.</p>
 
+        <h3>2. A Origem do Pecado</h3>
+        <p>O pecado entrou no mundo por meio da desobediência de Adão, afetando toda a humanidade. A queda não foi apenas moral, mas espiritual, corrompendo a relação do homem com Deus.</p>
+
+        <h3>3. A Natureza do Pecado</h3>
+        <p>O pecado é universal e total em sua extensão, atingindo mente, emoções e vontade. Isso não significa que o homem seja tão mau quanto poderia ser, mas que todas as áreas de sua vida foram afetadas.</p>
+
+        <h3>4. A Transmissão do Pecado</h3>
+        <p>O pecado é transmitido de forma hereditária, conforme ensinado em Romanos 5. Todos nascem com uma natureza pecaminosa, necessitando da graça redentora de Deus.</p>
+
+        <h3>5. As Consequências do Pecado</h3>
+        <p>As consequências incluem morte espiritual, separação de Deus e, sem redenção, condenação eterna. O pecado também afeta relacionamentos, sociedade e a criação.</p>
+
+        <h3>6. A Provisão Divina para o Pecado</h3>
+        <p>Deus, em Sua graça, providenciou a solução definitiva por meio de Jesus Cristo. A expiação na cruz satisfaz a justiça divina e restaura o relacionamento com Deus.</p>
+
+        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
+    </div>
+
+    <div id="secao-prova" class="secao">
+        <h2>Avaliação de Conhecimento</h2>
+        <form id="quizForm">
+
+            <div class="pergunta"><b>1. O termo “hamartía” significa:</b>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Rebelião política</label>
+                <label class="opcao"><input type="radio" name="p1" value="1"> Errar o alvo</label>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Ignorância religiosa</label>
+            </div>
+
+            <div class="pergunta"><b>2. Verdadeiro ou Falso: O pecado é apenas um comportamento externo.</b>
+                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>3. A queda afetou:</b>
+                <label class="opcao"><input type="radio" name="p3" value="1"> Toda a humanidade</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Apenas Adão</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Apenas Israel</label>
+            </div>
+
+            <div class="pergunta"><b>4. Assinale a alternativa correta:</b>
+                <label class="opcao"><input type="radio" name="p4" value="0"> O pecado afeta somente ações</label>
+                <label class="opcao"><input type="radio" name="p4" value="1"> O pecado afeta toda a natureza humana</label>
+                <label class="opcao"><input type="radio" name="p4" value="0"> O pecado é apenas cultural</label>
+            </div>
+
+            <div class="pergunta"><b>5. Verdadeiro ou Falso: Todos nascem necessitando da graça redentora.</b>
+                <label class="opcao"><input type="radio" name="p5" value="1"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p5" value="0"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>6. A principal consequência do pecado é:</b>
+                <label class="opcao"><input type="radio" name="p6" value="0"> Falta de conhecimento</label>
+                <label class="opcao"><input type="radio" name="p6" value="1"> Separação de Deus</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> Problemas sociais apenas</label>
+            </div>
+
+            <div class="pergunta"><b>7. Romanos 5 ensina que:</b>
+                <label class="opcao"><input type="radio" name="p7" value="0"> O pecado é simbólico</label>
+                <label class="opcao"><input type="radio" name="p7" value="1"> O pecado entrou por um homem</label>
+                <label class="opcao"><input type="radio" name="p7" value="0"> A lei elimina o pecado</label>
+            </div>
+
+            <div class="pergunta"><b>8. A solução definitiva para o pecado é:</b>
+                <label class="opcao"><input type="radio" name="p8" value="0"> Boas obras</label>
+                <label class="opcao"><input type="radio" name="p8" value="0"> Reforma moral</label>
+                <label class="opcao"><input type="radio" name="p8" value="1"> Jesus Cristo</label>
+            </div>
+
+            <div class="pergunta"><b>9. Verdadeiro ou Falso: A cruz satisfaz a justiça divina.</b>
+                <label class="opcao"><input type="radio" name="p9" value="1"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>10. A Hamartiologia é essencial porque:</b>
+                <label class="opcao"><input type="radio" name="p10" value="0"> Minimiza o pecado</label>
+                <label class="opcao"><input type="radio" name="p10" value="1"> Revela a necessidade da graça</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> Substitui a Soteriologia</label>
+            </div>
+
+        </form>
+        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
+    </div>
+
+    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+</div>
+
+<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+
+<script>
+    function irParaProva() {
+        document.getElementById('secao-leitura').style.display = 'none';
+        document.getElementById('secao-prova').style.display = 'block';
+        window.scrollTo(0,0);
+    }
+    function corrigir() {
+        const form = document.getElementById('quizForm');
+        let nota = 0;
+        for(let i=1; i<=10; i++) if(form['p'+i] && form['p'+i].value === "1") nota++;
+        const res = document.getElementById('resultado');
+        res.style.display = 'block';
+        if(nota >= 7) {
+            res.innerHTML = `<b style="color:green">APROVADO! Nota: ${nota}/10.</b>`;
+            setTimeout(() => { window.location.href = 'materia3.html'; }, 3000);
+        } else {
+            res.innerHTML = `<b style="color:red">REPROVADO. Nota: ${nota}/10.</b>`;
+            setTimeout(() => { location.reload(); }, 3000);
+        }
+    }
+</script>
+
+</body>
+</html>
         <h3>2. Origem do Pecado</h3>
         <p>O pecado entrou no mundo pela desobediência de Adão (Gênesis 3), afetando toda a humanidade (Romanos 5:12).</p>
 
