@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 8 - Hermenêutica | AVANCE</title>
+    <style>
+        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
+        body { font-family:'Segoe UI',sans-serif; line-height:1.6; margin:0; background:var(--azul-m); display:flex; flex-direction:column; min-height:100vh; }
+        .header{ background:var(--azul-m); color:#fff; padding:20px; text-align:center; border-bottom:2px solid var(--azul-c);}
+        .container{ max-width:800px; margin:20px auto; background:#fff; padding:30px; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,.4); flex-grow:1;}
+        .secao{ display:none;}
+        .ativa{ display:block;}
+        h2{ color:var(--azul-m); border-bottom:2px solid var(--azul-c); padding-bottom:8px;}
+        h3{ color:var(--azul-c); margin-top:25px;}
+        p{ text-align:justify;}
+        .pergunta{ background:#fdfdfd; padding:20px; border-radius:12px; margin-bottom:20px; border-left:5px solid var(--azul-c);}
+        .opcao{ display:block; margin:10px 0; padding:12px; background:#f4f4f4; border-radius:8px; cursor:pointer;}
+        .btn{ display:block; width:100%; max-width:320px; margin:30px auto; padding:18px; background:var(--azul-c); color:#fff; border:none; border-radius:40px; font-weight:bold; font-size:1.1rem; cursor:pointer;}
+        .footer-copy{ text-align:center; padding:20px; color:rgba(255,255,255,.7); font-size:.9rem;}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>AVANCE</h1>
+    <p>Módulo 8: Hermenêutica</p>
+</div>
+
+<div class="container">
+    <div id="secao-leitura" class="secao ativa">
+        <h2>Matéria 8 – Hermenêutica</h2>
+
+        <p>A Hermenêutica é a ciência e a arte da interpretação bíblica. Ela fornece princípios corretos para compreender o texto sagrado conforme a intenção do autor e a revelação divina.</p>
+
+        <h3>1. A Necessidade da Hermenêutica</h3>
+        <p>A Bíblia foi escrita em diferentes contextos históricos, culturais e linguísticos. A hermenêutica protege o intérprete de leituras subjetivas e distorcidas.</p>
+
+        <h3>2. Autoridade e Inspiração das Escrituras</h3>
+        <p>A interpretação correta parte do pressuposto de que a Bíblia é inspirada por Deus e possui unidade interna, sendo o próprio texto seu melhor intérprete.</p>
+
+        <h3>3. Princípios Básicos de Interpretação</h3>
+        <p>Entre os princípios estão: observar o contexto imediato e geral, considerar o gênero literário e respeitar o sentido original do texto.</p>
+
+        <h3>4. Exegese e Eisegese</h3>
+        <p>A exegese extrai do texto o seu significado; a eisegese impõe ideias externas ao texto. O intérprete fiel pratica exegese responsável.</p>
+
+        <h3>5. A Analogia da Fé</h3>
+        <p>Textos mais claros devem iluminar textos mais difíceis. Nenhuma interpretação pode contradizer o ensino geral das Escrituras.</p>
+
+        <h3>6. O Papel do Espírito Santo</h3>
+        <p>O Espírito Santo ilumina o entendimento do intérprete, sem anular o estudo diligente e responsável do texto bíblico.</p>
+
+        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
+    </div>
+
+    <div id="secao-prova" class="secao">
+        <h2>Avaliação de Conhecimento</h2>
+        <form id="quizForm">
+
+            <div class="pergunta"><b>1. Hermenêutica é:</b>
+                <label class="opcao"><input type="radio" name="p1" value="1"> A ciência da interpretação bíblica</label>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Um método devocional</label>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Filosofia religiosa</label>
+            </div>
+
+            <div class="pergunta"><b>2. Verdadeiro ou Falso: O contexto não influencia a interpretação.</b>
+                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>3. Exegese significa:</b>
+                <label class="opcao"><input type="radio" name="p3" value="1"> Extrair o sentido do texto</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Inserir ideias pessoais</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Adaptar a cultura moderna</label>
+            </div>
+
+            <div class="pergunta"><b>4. Eisegese ocorre quando:</b>
+                <label class="opcao"><input type="radio" name="p4" value="0"> O texto é respeitado</label>
+                <label class="opcao"><input type="radio" name="p4" value="1"> Ideias externas são impostas</label>
+                <label class="opcao"><input type="radio" name="p4" value="0"> O contexto é analisado</label>
+            </div>
+
+            <div class="pergunta"><b>5. Verdadeiro ou Falso: A Bíblia possui unidade doutrinária.</b>
+                <label class="opcao"><input type="radio" name="p5" value="1"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p5" value="0"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>6. A analogia da fé ensina que:</b>
+                <label class="opcao"><input type="radio" name="p6" value="1"> Textos claros explicam os difíceis</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> Cada texto é isolado</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> A tradição define o sentido</label>
+            </div>
+
+            <div class="pergunta"><b>7. O gênero literário:</b>
+                <label class="opcao"><input type="radio" name="p7" value="0"> Não interfere</label>
+                <label class="opcao"><input type="radio" name="p7" value="1"> Influencia a interpretação</label>
+                <label class="opcao"><input type="radio" name="p7" value="0"> É irrelevante</label>
+            </div>
+
+            <div class="pergunta"><b>8. Verdadeiro ou Falso: O Espírito Santo dispensa o estudo.</b>
+                <label class="opcao"><input type="radio" name="p8" value="0"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p8" value="1"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>9. A interpretação bíblica deve buscar:</b>
+                <label class="opcao"><input type="radio" name="p9" value="1"> O sentido original do texto</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> Adequar à opinião pessoal</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> Criar novos significados</label>
+            </div>
+
+            <div class="pergunta"><b>10. Hermenêutica saudável produz:</b>
+                <label class="opcao"><input type="radio" name="p10" value="1"> Ensino fiel das Escrituras</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> Confusão doutrinária</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> Relativismo teológico</label>
+            </div>
+
+        </form>
+        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
+    </div>
+
+    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+</div>
+
+<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+
+<script>
+function irParaProva(){
+    document.getElementById('secao-leitura').style.display='none';
+    document.getElementById('secao-prova').style.display='block';
+    window.scrollTo(0,0);
+}
+function corrigir(){
+    const f=document.getElementById('quizForm');
+    let n=0;
+    for(let i=1;i<=10;i++) if(f['p'+i] && f['p'+i].value==="1") n++;
+    const r=document.getElementById('resultado');
+    r.style.display='block';
+    if(n>=7){
+        r.innerHTML=`<b style="color:green">APROVADO! Nota: ${n}/10.</b>`;
+        setTimeout(()=>{ window.location.href='materia9.html'; },3000);
+    } else {
+        r.innerHTML=`<b style="color:red">REPROVADO. Nota: ${n}/10.</b>`;
+        setTimeout(()=>{ location.reload(); },3000);
+    }
+}
+</script>
+
+</body>
+</html>
