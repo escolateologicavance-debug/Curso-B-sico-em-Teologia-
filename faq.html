@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>FAQ e Certificação | AVANCE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root{--azul-m:#001f3f;--azul-c:#0074D9;}
+body{margin:0;font-family:'Segoe UI',sans-serif;background:var(--azul-m);}
+.header{color:#fff;text-align:center;padding:20px;border-bottom:2px solid var(--azul-c);}
+.container{max-width:900px;margin:20px auto;background:#fff;padding:30px;border-radius:8px;}
+h2{color:var(--azul-m);border-bottom:2px solid var(--azul-c);}
+h3{color:var(--azul-c);}
+p{text-align:justify;}
+label{display:block;margin:8px 0;}
+.btn{margin-top:20px;padding:15px;background:var(--azul-c);color:#fff;border:none;border-radius:30px;width:100%;font-weight:bold;}
+.footer{color:#ccc;text-align:center;padding:20px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>AVANCE</h1>
+<p>FAQ • Feedback • Certificado</p>
+</div>
+
+<div class="container">
+<h2>FAQ – Dúvidas Frequentes</h2>
+
+<p><b>Preciso refazer avaliações reprovadas?</b><br>Sim. A nota mínima é 7.</p>
+<p><b>O curso é totalmente online?</b><br>Sim.</p>
+<p><b>O certificado é digital?</b><br>Sim, enviado por e-mail.</p>
+
+<h2>Feedback do Aluno</h2>
+<form>
+<label><input type="radio" name="fb"> Regular</label>
+<label><input type="radio" name="fb"> Bom</label>
+<label><input type="radio" name="fb"> Ótimo</label>
+<label><input type="radio" name="fb"> Excelente</label>
+</form>
+
+<h2>Requisição de Certificado</h2>
+<form action="mailto:escolateologicavance@gmail.com" method="post" enctype="text/plain">
+<label>Nome Completo:<br><input type="text" name="nome" required></label>
+<label>E-mail:<br><input type="email" name="email" required></label>
+<label>Curso Concluído:<br><input type="text" value="Curso Básico em Teologia – AVANCE"></label>
+<button class="btn" type="submit">SOLICITAR CERTIFICADO</button>
+</form>
+
+</div>
+
+<div class="footer">© AVANCE – Escola Teológica</div>
+</body>
+</html>
