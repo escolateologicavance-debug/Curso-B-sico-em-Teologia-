@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 6 - Antropologia Bíblica | AVANCE</title>
+    <style>
+        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
+        .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
+        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
+        .secao { display: none; }
+        .ativa { display: block; }
+        h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
+        h3 { color: var(--azul-c); margin-top: 25px; }
+        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
+        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
+        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; }
+        .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+        p { text-align: justify; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>AVANCE</h1>
+    <p>Módulo 6: Antropologia Bíblica</p>
+</div>
+
+<div class="container">
+    <div id="secao-leitura" class="secao ativa">
+        <h2>Matéria 6 – Antropologia Bíblica</h2>
+
+        <p>A Antropologia Bíblica estuda o ser humano à luz da revelação divina, compreendendo sua origem, natureza, propósito e condição moral conforme as Escrituras.</p>
+
+        <h3>1. A Criação do Homem</h3>
+        <p>O homem foi criado diretamente por Deus, à Sua imagem e semelhança (Gênesis 1:26–27). Essa imagem envolve aspectos racionais, morais, espirituais e relacionais.</p>
+
+        <h3>2. Composição do Ser Humano</h3>
+        <p>A Bíblia apresenta o homem como uma unidade integral, composta de elementos materiais e imateriais. Corpo, alma e espírito não são entidades independentes, mas dimensões do ser humano.</p>
+
+        <h3>3. A Queda e suas Consequências</h3>
+        <p>Com a queda, o pecado afetou todas as áreas da existência humana. O homem não perdeu a imagem de Deus, mas ela foi corrompida.</p>
+
+        <h3>4. Livre-arbítrio e Responsabilidade</h3>
+        <p>O ser humano é responsável diante de Deus por suas escolhas. A Escritura afirma tanto a soberania divina quanto a responsabilidade humana.</p>
+
+        <h3>5. A Dignidade Humana</h3>
+        <p>Todo ser humano possui dignidade intrínseca, independentemente de condição social, intelectual ou moral, pois foi criado por Deus.</p>
+
+        <h3>6. O Propósito do Homem</h3>
+        <p>O fim último do homem é glorificar a Deus e desfrutar de comunhão com Ele, vivendo de maneira santa e obediente.</p>
+
+        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
+    </div>
+
+    <div id="secao-prova" class="secao">
+        <h2>Avaliação de Conhecimento</h2>
+        <form id="quizForm">
+
+            <div class="pergunta"><b>1. Antropologia Bíblica estuda:</b>
+                <label class="opcao"><input type="radio" name="p1" value="1"> O homem à luz das Escrituras</label>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Apenas aspectos biológicos</label>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Psicologia moderna</label>
+            </div>
+
+            <div class="pergunta"><b>2. Verdadeiro ou Falso: O homem foi criado à imagem de Deus.</b>
+                <label class="opcao"><input type="radio" name="p2" value="1"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p2" value="0"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>3. A imagem de Deus no homem foi:</b>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Totalmente perdida</label>
+                <label class="opcao"><input type="radio" name="p3" value="1"> Corrompida pelo pecado</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Substituída</label>
+            </div>
+
+            <div class="pergunta"><b>4. A composição do ser humano é:</b>
+                <label class="opcao"><input type="radio" name="p4" value="1"> Uma unidade integral</label>
+                <label class="opcao"><input type="radio" name="p4" value="0"> Partes independentes</label>
+                <label class="opcao"><input type="radio" name="p4" value="0"> Apenas material</label>
+            </div>
+
+            <div class="pergunta"><b>5. Verdadeiro ou Falso: O pecado afetou todas as áreas do homem.</b>
+                <label class="opcao"><input type="radio" name="p5" value="1"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p5" value="0"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>6. O homem é responsável:</b>
+                <label class="opcao"><input type="radio" name="p6" value="0"> Apenas diante da sociedade</label>
+                <label class="opcao"><input type="radio" name="p6" value="1"> Diante de Deus</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> Apenas de si mesmo</label>
+            </div>
+
+            <div class="pergunta"><b>7. A dignidade humana decorre:</b>
+                <label class="opcao"><input type="radio" name="p7" value="0"> Do mérito pessoal</label>
+                <label class="opcao"><input type="radio" name="p7" value="1"> Da criação divina</label>
+                <label class="opcao"><input type="radio" name="p7" value="0"> Da posição social</label>
+            </div>
+
+            <div class="pergunta"><b>8. Verdadeiro ou Falso: Todo ser humano possui valor diante de Deus.</b>
+                <label class="opcao"><input type="radio" name="p8" value="1"> Verdadeiro</label>
+                <label class="opcao"><input type="radio" name="p8" value="0"> Falso</label>
+            </div>
+
+            <div class="pergunta"><b>9. O propósito final do homem é:</b>
+                <label class="opcao"><input type="radio" name="p9" value="1"> Glorificar a Deus</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> Autossatisfação</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> Poder político</label>
+            </div>
+
+            <div class="pergunta"><b>10. A Antropologia Bíblica aponta para:</b>
+                <label class="opcao"><input type="radio" name="p10" value="0"> Autonomia humana</label>
+                <label class="opcao"><input type="radio" name="p10" value="1"> Dependência de Deus</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> Relativismo moral</label>
+            </div>
+
+        </form>
+        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
+    </div>
+
+    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+</div>
+
+<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+
+<script>
+function irParaProva() {
+    document.getElementById('secao-leitura').style.display = 'none';
+    document.getElementById('secao-prova').style.display = 'block';
+    window.scrollTo(0,0);
+}
+function corrigir() {
+    const form = document.getElementById('quizForm');
+    let nota = 0;
+    for(let i=1;i<=10;i++) if(form['p'+i] && form['p'+i].value==="1") nota++;
+    const res = document.getElementById('resultado');
+    res.style.display = 'block';
+    if(nota>=7){
+        res.innerHTML = `<b style="color:green">APROVADO! Nota: ${nota}/10.</b>`;
+        setTimeout(()=>{ window.location.href='materia7.html'; },3000);
+    } else {
+        res.innerHTML = `<b style="color:red">REPROVADO. Nota: ${nota}/10.</b>`;
+        setTimeout(()=>{ location.reload(); },3000);
+    }
+}
+</script>
+
+</body>
+</html>
