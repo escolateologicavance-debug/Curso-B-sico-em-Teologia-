@@ -8,22 +8,14 @@
         :root { --azul-m:#001f3f; --azul-c:#0074D9; --br:#ffffff; }
         body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
         .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; position: relative; }
-        
-        /* Controle de visibilidade real */
+        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
         .secao { display: none; }
         .ativa { display: block; }
-        
         h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
         h3 { color: var(--azul-c); margin-top: 25px; }
-        
-        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: left; }
-        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; transition: 0.3s; }
-        .opcao:hover { background: #e2efff; }
-        
+        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
         .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; text-align: center; border: none; cursor: pointer; font-size: 1.1rem; }
-        
-        #resultado { display: none; padding: 20px; border-radius: 10px; text-align: center; font-weight: bold; margin-top: 20px; }
         .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
         p { text-align: justify; }
     </style>
@@ -36,81 +28,90 @@
 </div>
 
 <div class="container">
-    <div id="conteudo-leitura" class="secao ativa">
+    <div id="secao-leitura" class="secao ativa">
         <h2>Matéria 1 – Educação Cristã</h2>
-        <p>A Educação Cristã é um processo contínuo de formação espiritual, fundamentado exclusivamente na revelação divina registrada nas Sagradas Escrituras. Ela não se limita à transmissão de informações religiosas, mas visa a transformação do caráter, da mente e da conduta do cristão à luz da Palavra de Deus.</p>
-        
-        <p>Dentro da teologia cristã protestante, a educação bíblica ocupa lugar central na formação do discípulo de Cristo, pois o verdadeiro conhecimento espiritual conduz à obediência, à maturidade e à vida transformada.</p>
+        <p>A Educação Cristã é um processo contínuo de formação espiritual, fundamentado exclusivamente na revelação divina registrada nas Sagradas Escrituras.</p>
 
         <h3>1. Fundamento Bíblico da Educação Cristã</h3>
-        <p>A base da Educação Cristã encontra-se nos 66 livros da Bíblia, inspirados por Deus e suficientes para ensinar, repreender, corrigir e instruir na justiça, conforme ensina o apóstolo Paulo em 2 Timóteo 3:16–17.</p>
-        <p>A educação bíblica não se fundamenta em tradições humanas, filosofias seculares ou sistemas pedagógicos autônomos, mas na revelação divina suficiente e autoritativa.</p>
+        <p>A base encontra-se nos 66 livros da Bíblia, inspirados por Deus (2 Timóteo 3:16–17).</p>
 
         <h3>2. O Shemá e o Ensino Contínuo</h3>
-        <p>Deuteronômio 6:4–9, conhecido como Shemá, estabelece um dos princípios mais importantes da educação cristã. Nesse texto, Deus ordena que Sua Palavra seja ensinada de forma contínua, intencional e aplicada à vida diária.</p>
-        <p>O termo hebraico V’Shinantam, traduzido como “ensinar diligentemente”, comunica a ideia de repetição, constância e profundidade no ensino da fé.</p>
+        <p>Deuteronômio 6:4–9 estabelece que a Palavra seja ensinada de forma contínua. V’Shinantam significa ensinar diligentemente.</p>
 
         <h3>3. O Lar como Primeira Escola</h3>
-        <p>A Bíblia apresenta a família como a primeira instituição educacional criada por Deus. Provérbios 22:6 afirma: “Instrui o menino no caminho em que deve andar, e até quando envelhecer não se desviará dele”.</p>
+        <p>A família é a primeira instituição educacional. Provérbios 22:6 instrui a educar a criança no caminho.</p>
 
         <h3>4. Jesus Cristo – O Mestre por Excelência</h3>
-        <p>Jesus Cristo é o maior modelo de educador cristão. Seu método envolvia convivência, exemplo, discipulado e prática.</p>
+        <p>Jesus é o modelo supremo, formando discípulos através da convivência, exemplo e prática.</p>
 
-        <h3>5. Processo Contínuo e Finalidade</h3>
-        <p>A Educação Cristã acompanha o cristão durante toda a sua vida. O objetivo final é conduzir à maturidade espiritual e à conformidade com a imagem de Cristo.</p>
+        <h3>5. Educação Cristã como Processo Contínuo</h3>
+        <p>O crescimento espiritual ocorre à medida que o discípulo aprende, aplica e vive os princípios bíblicos.</p>
 
-        <button class="btn" onclick="mostrarProva()">IR PARA AVALIAÇÃO</button>
+        <h3>6. Finalidade da Educação Cristã</h3>
+        <p>O objetivo final é conduzir o cristão à maturidade espiritual e conformidade com a imagem de Cristo.</p>
+
+        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
     </div>
 
-    <div id="conteudo-prova" class="secao">
+    <div id="secao-prova" class="secao">
         <h2>Avaliação de Conhecimento</h2>
         <form id="quizForm">
-            <div class="pergunta">
-                <p><b>1. Qual a base da Educação Cristã?</b></p>
+            <div class="pergunta"><p><b>1. Qual a base da Educação Cristã?</b></p>
                 <label class="opcao"><input type="radio" name="p1" value="1"> Os 66 livros da Bíblia</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Filosofias humanas</label>
-            </div>
-            <div class="pergunta">
-                <p><b>10. Conhecimento sem transformação:</b></p>
-                <label class="opcao"><input type="radio" name="p10" value="1"> Não cumpre o propósito do ensino bíblico</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> É o suficiente</label>
-            </div>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Filosofias humanas</label></div>
+            <div class="pergunta"><p><b>2. O Shemá está em:</b></p>
+                <label class="opcao"><input type="radio" name="p2" value="1"> Deuteronômio 6:4-9</label>
+                <label class="opcao"><input type="radio" name="p2" value="0"> Êxodo 20</label></div>
+            <div class="pergunta"><p><b>3. V’Shinantam significa:</b></p>
+                <label class="opcao"><input type="radio" name="p3" value="1"> Ensinar diligentemente</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Orar sempre</label></div>
+            <div class="pergunta"><p><b>4. Primeira instituição educacional:</b></p>
+                <label class="opcao"><input type="radio" name="p4" value="1"> A Família</label>
+                <label class="opcao"><input type="radio" name="p4" value="0"> A Igreja</label></div>
+            <div class="pergunta"><p><b>5. Modelo supremo de mestre:</b></p>
+                <label class="opcao"><input type="radio" name="p5" value="1"> Jesus Cristo</label>
+                <label class="opcao"><input type="radio" name="p5" value="0"> Paulo</label></div>
+            <div class="pergunta"><p><b>6. Objetivo final da educação:</b></p>
+                <label class="opcao"><input type="radio" name="p6" value="1"> Maturidade espiritual</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> Status</label></div>
+            <div class="pergunta"><p><b>7. Provérbios 22:6 foca em:</b></p>
+                <label class="opcao"><input type="radio" name="p7" value="1"> Instruir a criança</label>
+                <label class="opcao"><input type="radio" name="p7" value="0"> Finanças</label></div>
+            <div class="pergunta"><p><b>8. A Educação Cristã é:</b></p>
+                <label class="opcao"><input type="radio" name="p8" value="1"> Um processo contínuo</label>
+                <label class="opcao"><input type="radio" name="p8" value="0"> Um evento único</label></div>
+            <div class="pergunta"><p><b>9. 2 Timóteo 3:16-17 diz que a Bíblia é:</b></p>
+                <label class="opcao"><input type="radio" name="p9" value="1"> Útil para instruir</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> Apenas história</label></div>
+            <div class="pergunta"><p><b>10. Conhecimento sem transformação:</b></p>
+                <label class="opcao"><input type="radio" name="p10" value="1"> Não cumpre o propósito</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> É o suficiente</label></div>
         </form>
         <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
-        <p onclick="mostrarLeitura()" style="text-align:center; color:var(--azul-c); cursor:pointer;">Voltar para o Texto</p>
     </div>
-
-    <div id="resultado"></div>
+    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
 </div>
 
-<div class="footer-copy">
-    © AVANCE – Gilberto Moreira
-</div>
+<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
 
 <script>
-    function mostrarProva() {
-        document.getElementById('conteudo-leitura').style.display = 'none';
-        document.getElementById('conteudo-prova').style.display = 'block';
-        window.scrollTo(0,0);
-    }
-    function mostrarLeitura() {
-        document.getElementById('conteudo-prova').style.display = 'none';
-        document.getElementById('conteudo-leitura').style.display = 'block';
+    function irParaProva() {
+        document.getElementById('secao-leitura').style.display = 'none';
+        document.getElementById('secao-prova').style.display = 'block';
         window.scrollTo(0,0);
     }
     function corrigir() {
         const form = document.getElementById('quizForm');
         let nota = 0;
-        if(form.p1.value === "1") nota++;
-        if(form.p10.value === "1") nota++;
-        
+        for(let i=1; i<=10; i++) if(form['p'+i] && form['p'+i].value === "1") nota++;
         const res = document.getElementById('resultado');
         res.style.display = 'block';
-        if(nota >= 1) { // Mudar para 7 quando completar as 10
-            res.innerHTML = "<div style='color:green'>Aprovado! Redirecionando...</div>";
-            setTimeout(() => { window.location.href='materia2.html'; }, 2000);
+        if(nota >= 7) {
+            res.innerHTML = `<b style="color:green">APROVADO! Nota: ${nota}/10.</b>`;
+            setTimeout(() => { window.location.href = 'materia2.html'; }, 3000);
         } else {
-            res.innerHTML = "<div style='color:red'>Tente novamente.</div>";
+            res.innerHTML = `<b style="color:red">REPROVADO. Nota: ${nota}/10.</b>`;
+            setTimeout(() => { location.reload(); }, 3000);
         }
     }
 </script>
