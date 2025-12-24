@@ -77,6 +77,12 @@ function abrirMateria() {
   window.location.assign("materia1.html");
 }
 </script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./service-worker.js');
+}
+</script>
+  
 
 </body>
 </html>
