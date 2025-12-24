@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <link rel="manifest" href="./manifest.json">
+<link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#003366">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +35,84 @@ button{ width:85%; padding:18px; border:none; border-radius:35px; background:var
 </style>
 </head>
 <body>
+
+<div class="container">
+  <h1 style="margin-bottom:0;">AVANCE</h1>
+  <p style="color:#0074D9; margin-top:5px;">www.escolateologicavance.com.br</p>
+  
+<div class="moldura-grade">
+  <h4>GRADE CURRICULAR – MÓDULO I</h4>
+
+  <div class="item-grade">
+    <span>1. Educação Cristã</span>
+  </div>
+
+  <div class="item-grade">
+    <span>2. Hamartiologia</span>
+  </div>
+
+  <div class="item-grade">
+    <span>3. Missiologia</span>
+  </div>
+
+  <div class="item-grade">
+    <span>4. Pneumatologia</span>
+  </div>
+
+  <div class="item-grade">
+    <span>5. Escatologia</span>
+  </div>
+
+  <div class="item-grade">
+    <span>6. Antropologia Bíblica</span>
+  </div>
+
+  <div class="item-grade">
+    <span>7. Homilética</span>
+  </div>
+
+  <div class="item-grade">
+    <span>8. Hermenêutica</span>
+  </div>
+
+  <div class="item-grade">
+    <span>9. Soteriologia</span>
+  </div>
+
+  <div class="item-grade">
+    <span>10. Bibliologia</span>
+  </div>
+</div>
+  
+  <h2 style="margin:20px 0;">Curso Básico em Teologia</h2>
+  
+  <button onclick="abrirMateria()">ABRIR LIVRO DIGITAL</button>
+  
+<div style="text-align:left; margin-top:30px;">
+  <div class="card-mod" onclick="abrirMateria()">
+    <span>Módulo 1: Educação Cristã</span>
+    <span> Acessar</span>
+  </div>
+</div>
+
+<div class="footer-copy">
+  <p>© 2025 AVANCE – Todos os direitos reservados<br>
+  Professor Gilberto Moreira</p>
+</div>
+<script>
+function abrirMateria() {
+  // Tenta abrir o arquivo materia1.html
+  window.location.assign("materia1.html");
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./service-worker.js');
+}
+</script>
+
+</body>
+</html><body>
 
 <div class="container">
   <h1 style="margin-bottom:0;">AVANCE</h1>
