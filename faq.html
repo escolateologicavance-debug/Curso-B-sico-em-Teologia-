@@ -72,6 +72,110 @@ button:hover {
 <h1>Perguntas Frequentes (FAQ)</h1>
 
 <p><strong>Validade do curso</strong><br>
+Curso livre – Constituição Federal (Art. 205 e 206) – LDB nº 9.394/1996.</p>
+
+<p><strong>Reconhecimento do certificado</strong><br>
+Decreto nº 5.154/2004 – Educação não-formal, sem vínculo com o MEC.</p>
+
+<p><strong>De quanto tempo é o curso?</strong><br>
+Na modalidade presencial e híbrida são de <strong>10 meses</strong>.  
+No modo EAD, o aluno estuda no seu tempo e decide quando concluir.</p>
+
+<p><strong>Se houver abandono do curso?</strong><br>
+Fica impedida a aprovação e a emissão do certificado.</p>
+
+<p><strong>Em que circunstâncias há reembolso do valor?</strong><br>
+Direito de Arrependimento – Art. 49 do Código de Defesa do Consumidor (CDC):  
+Para compras realizadas fora do estabelecimento comercial, o consumidor pode desistir em até <strong>7 dias</strong>, com reembolso integral, sem retenção de multas.</p>
+
+<p><strong>Momento de recebimento do certificado</strong><br>
+Imediatamente após a conclusão.</p>
+
+<hr>
+
+<h2>Feedback do Curso</h2>
+
+<p><strong>O que você achou do curso?</strong></p>
+
+<form action="mailto:escolateologicavance@gmail.com" method="post" enctype="text/plain">
+    <div class="opcoes-feedback">
+        <label><input type="radio" name="Avaliação" value="Ruim"> Ruim</label>
+        <label><input type="radio" name="Avaliação" value="Regular"> Regular</label>
+        <label><input type="radio" name="Avaliação" value="Bom"> Bom</label>
+        <label><input type="radio" name="Avaliação" value="Excelente"> Excelente</label>
+    </div>
+
+    <button type="submit">ENVIAR FEEDBACK</button>
+</form>
+
+<hr>
+
+<h2>Requisição do Certificado</h2>
+
+<input id="nome" type="text" placeholder="Nome completo">
+<input id="cpf" type="text" placeholder="CPF">
+
+<button onclick="prosseguir()">GERAR CERTIFICADO</button>
+
+<div class="footer">
+© AVANCE – Faculdade Teológica
+</div>
+
+</div>
+
+<script>
+function prosseguir() {
+    if (!nome.value || !cpf.value) {
+        alert("Preencha nome e CPF.");
+        return;
+    }
+
+    localStorage.setItem("nome", nome.value);
+    localStorage.setItem("cpf", cpf.value);
+
+    window.location.href = "certificado.html";
+}
+</script>
+
+</body>
+</html>
+.opcoes-feedback label {
+    display: block;
+    margin: 8px 0;
+    font-size: 1rem;
+}
+
+button {
+    background: #005fa3;
+    color: #ffffff;
+    border: none;
+    padding: 16px;
+    width: 100%;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #004a82;
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Perguntas Frequentes (FAQ)</h1>
+
+<p><strong>Validade do curso</strong><br>
 Curso Teológico – Constituição Federal (Art. 205 e 206) – LDB nº 9.394/1996.</p>
 
 <p><strong>Reconhecimento do certificado</strong><br>
