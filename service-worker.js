@@ -1,4 +1,4 @@
-const CACHE_NAME = 'avance-v2';
+const CACHE_NAME = 'avance-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -12,8 +12,6 @@ const ASSETS = [
   './materia8.html',
   './materia9.html',
   './materia10.html',
-  './bibliografia.html',
-  './faq.html',
   './manifest.json',
   './logo-192.png',
   './logo-512.png'
