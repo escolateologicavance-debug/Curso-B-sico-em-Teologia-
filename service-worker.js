@@ -15,8 +15,8 @@ const ASSETS = [
   './bibliografia.html',
   './faq.html',
   './manifest.json',
-  './icons/logo-192.png',
-  './icons/logo-512.png'
+  './logo-192.png',
+  './logo-512.png'
 ];
 
 // Instala e guarda os arquivos no cache
