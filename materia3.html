@@ -15,12 +15,14 @@
         h3 { color: var(--azul-c); margin-top: 25px; }
         .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
         .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
-        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; }
+        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; text-align: center; text-decoration: none; }
         .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
         p { text-align: justify; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; text-align: justify; }
     </style>
 </head>
-<body>
+<body onload="verificarProgresso()">
 
 <div class="header">
     <h1>AVANCE</h1>
@@ -30,25 +32,25 @@
 <div class="container">
     <div id="secao-leitura" class="secao ativa">
         <h2>Matéria 3 – Missiologia</h2>
-        <p>A Missiologia é o ramo da teologia que estuda a missão de Deus no mundo, a natureza da Igreja missionária e o chamado bíblico para a proclamação do Evangelho a todas as nações.</p>
+        <p>A Missiologia é o estudo teológico da missão. Ela investiga a natureza missionária de Deus e como isso define a tarefa da Igreja no mundo atual.</p>
 
         <h3>1. A Missão tem origem em Deus (Missio Dei)</h3>
-        <p>A missão não nasce na Igreja, mas no próprio Deus. Desde Gênesis, Deus se revela como Aquele que busca o homem caído. A eleição de Abraão teve um propósito missionário: “em ti serão benditas todas as famílias da terra”.</p>
+        <p>A missão não nasce de uma estratégia humana ou eclesiástica, mas no próprio caráter de Deus. O conceito de Missio Dei revela que Deus é o protagonista da missão. Ele é quem busca o homem desde a queda no Éden. A eleição de Abraão em Gênesis estabelece que a bênção divina tem um propósito universal: alcançar todas as famílias da terra através de sua descendência.</p>
 
         <h3>2. Fundamento Bíblico da Missão</h3>
-        <p>Toda a Escritura aponta para a redenção das nações. Os profetas, os salmos e os evangelhos revelam um Deus que deseja ser conhecido por todos os povos.</p>
+        <p>A Bíblia inteira é um livro missionário. Dos profetas que anunciavam o Reino às nações, passando pelos Salmos que declaram a glória de Deus entre os povos, até o Novo Testamento. O plano de redenção não é limitado a um grupo, mas revela um Deus que deseja ser conhecido, adorado e glorificado por todas as etnias e línguas da terra.</p>
 
         <h3>3. A Grande Comissão</h3>
-        <p>Em Mateus 28:18–20, Jesus ordena que a Igreja vá, faça discípulos, ensine e batize. A missão é um mandamento, não uma opção.</p>
+        <p>Em Mateus 28:18-20, Jesus deixa o mandato supremo para a Igreja. A Grande Comissão não é um conselho opcional, mas uma ordem imperativa que envolve: ir por todo o mundo, fazer discípulos de todas as nações, batizar em nome da Trindade e ensinar a guardar todos os mandamentos de Cristo. É a base legal e espiritual de toda atividade missionária.</p>
 
         <h3>4. A Igreja como Instrumento Missionário</h3>
-        <p>A Igreja existe para glorificar a Deus e anunciar o Evangelho. Onde a Igreja perde sua visão missionária, ela perde seu propósito.</p>
+        <p>A Igreja não apenas envia missionários; ela é missionária por natureza. Onde a Igreja perde sua visão para o campo e para a proclamação, ela se torna estéril e perde sua razão de existir. A Igreja é o agente escolhido para manifestar o Reino de Deus, sendo luz para o mundo e sal para a terra em uma dimensão contínua e global.</p>
 
         <h3>5. Dimensões da Missão</h3>
-        <p>A missão envolve proclamação, ensino, discipulado e ação prática. Evangelização e responsabilidade social caminham juntas, sem substituir a centralidade do Evangelho.</p>
+        <p>A missão cristã é integral e equilibrada. Ela envolve a Proclamação (anúncio verbal do Evangelho), o Ensino (instrução nas verdades bíblicas) e o Discipulado (acompanhamento para a maturidade). Além disso, a missão inclui a responsabilidade social, onde o amor de Deus é manifestado por meio de ações práticas que atendem às necessidades do próximo, sem nunca substituir a centralidade da mensagem da cruz.</p>
 
         <h3>6. O Papel do Cristão na Missão</h3>
-        <p>Todo cristão é chamado para participar da missão, seja indo, contribuindo ou intercedendo. A missão é coletiva e contínua.</p>
+        <p>A missão não é tarefa exclusiva de especialistas ou missionários transculturais. Todo cristão tem um papel vital e contínuo. Isso acontece através da Proclamação direta do Evangelho em seu cotidiano, da Intercessão constante pelos campos missionários e da Contribuição financeira para o sustento da obra. A missão é uma responsabilidade coletiva de todo o corpo de Cristo.</p>
 
         <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
     </div>
@@ -56,7 +58,6 @@
     <div id="secao-prova" class="secao">
         <h2>Avaliação de Conhecimento</h2>
         <form id="quizForm">
-
             <div class="pergunta"><b>1. A missão cristã tem origem:</b>
                 <label class="opcao"><input type="radio" name="p1" value="0"> Na Igreja</label>
                 <label class="opcao"><input type="radio" name="p1" value="1"> No próprio Deus</label>
@@ -113,7 +114,6 @@
                 <label class="opcao"><input type="radio" name="p10" value="0"> Local apenas</label>
                 <label class="opcao"><input type="radio" name="p10" value="1"> Contínua e global</label>
             </div>
-
         </form>
         <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
     </div>
@@ -124,22 +124,42 @@
 <div class="footer-copy">© AVANCE – Gilberto Moreira</div>
 
 <script>
+    function verificarProgresso() {
+        if (localStorage.getItem('modulo3_concluido') === 'true') {
+            const res = document.getElementById('resultado');
+            document.getElementById('secao-leitura').style.display = 'none';
+            document.getElementById('secao-prova').style.display = 'none';
+            res.style.display = 'block';
+            res.innerHTML = `
+                <b style="color:green; font-size:1.2rem;">Módulo concluído com sucesso!</b><br>
+                <button class="btn" onclick="window.location.href='materia4.html'">IR PARA O MÓDULO 4</button>
+            `;
+        }
+    }
+
     function irParaProva() {
         document.getElementById('secao-leitura').style.display = 'none';
         document.getElementById('secao-prova').style.display = 'block';
         window.scrollTo(0,0);
     }
+
     function corrigir() {
         const form = document.getElementById('quizForm');
         let nota = 0;
-        for(let i=1; i<=10; i++) if(form['p'+i] && form['p'+i].value === "1") nota++;
+        for(let i=1; i<=10; i++) {
+            const p = form['p'+i];
+            if(p && p.value === "1") nota++;
+        }
+        
         const res = document.getElementById('resultado');
         res.style.display = 'block';
+        
         if(nota >= 7) {
+            localStorage.setItem('modulo3_concluido', 'true');
             res.innerHTML = `<b style="color:green">APROVADO! Nota: ${nota}/10.</b>`;
             setTimeout(() => { window.location.href = 'materia4.html'; }, 3000);
         } else {
-            res.innerHTML = `<b style="color:red">REPROVADO. Nota: ${nota}/10.</b>`;
+            res.innerHTML = `<b style="color:red">REPROVADO. Nota: ${nota}/10.<br>Revise o conteúdo e tente novamente.</b>`;
             setTimeout(() => { location.reload(); }, 3000);
         }
     }
