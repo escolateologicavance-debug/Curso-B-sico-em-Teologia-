@@ -1,4 +1,4 @@
-const CACHE_NAME = 'avance-v1';
+const CACHE_NAME = 'avance-v2';
 const ASSETS = [
   './',
   './index.html',
