@@ -1,163 +1,439 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 
+
 <link rel="manifest" href="./manifest.json">
+
 <meta name="theme-color" content="#001f3f">
+
 <link rel="icon" href="logo-192.png">
 
+
 <meta name="apple-mobile-web-app-capable" content="yes">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>Curso Básico em Teologia - AVANCE</title>
 
+
 <style>
+
 :root { --azul-m:#001f3f; --azul-c:#0074D9; --br:#ffffff; }
 
+
 body{
+
 margin:0;
+
 font-family:'Segoe UI',Arial,sans-serif;
+
 background:var(--azul-m);
+
 color:var(--br);
+
 text-align:center;
+
 }
+
 
 .container{
+
 max-width:650px;
+
 margin:auto;
+
 padding:20px;
+
 }
+
 
 .moldura-grade{
+
 width:90%;
-max-width:350px;
+
+max-width:400px;
+
 margin:20px auto;
+
 border:2px solid var(--azul-c);
+
 padding:15px;
+
 background: rgba(0,0,0,0.3);
+
 border-radius:10px;
+
 text-align:left;
+
 font-size:0.9rem;
+
 }
+
 
 .moldura-grade h4{
+
 text-align:center;
+
 color:var(--azul-c);
+
 margin-top:0;
+
 }
+
 
 .item-grade{
+
 display:flex;
+
 justify-content:space-between;
+
+align-items:center;
+
 border-bottom:1px solid rgba(255,255,255,0.1);
-padding:5px 0;
+
+padding:8px 4px;
+
+text-decoration:none;
+
+color:inherit;
+
+border-radius:6px;
+
+transition:background 0.2s, padding-left 0.2s;
+
 }
+
+
+.item-grade:hover{
+
+background: rgba(0, 116, 217, 0.2);
+
+padding-left: 8px;
+
+}
+
+
+.item-grade span:last-child {
+
+font-size: 0.8rem;
+
+color: var(--azul-c);
+
+font-weight: bold;
+
+}
+
 
 button{
+
 width:85%;
+
 padding:18px;
+
 border:none;
+
 border-radius:35px;
+
 background:var(--azul-c);
+
 color:#fff;
+
 font-size:1.2rem;
+
 font-weight:bold;
+
 margin:15px 0;
+
 cursor:pointer;
+
 box-shadow:0 4px 15px rgba(0,0,0,0.3);
+
 }
+
 
 .card-mod{
+
 background:rgba(255,255,255,0.1);
-padding:18px;
-margin:12px 0;
+
+padding:15px 18px;
+
+margin:10px 0;
+
 border-radius:12px;
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
 text-decoration:none;
+
 color:white;
+
 border:1px solid transparent;
+
 cursor:pointer;
+
+transition: border-color 0.2s, background 0.2s;
+
 }
+
 
 .card-mod:hover{
+
 border-color:var(--azul-c);
+
+background:rgba(255,255,255,0.15);
+
 }
+
 
 .bloq{
+
 opacity:0.3;
+
 cursor:not-allowed;
+
 }
 
+
 .footer-copy{
+
 margin-top:40px;
+
 font-size:0.8rem;
+
 opacity:0.7;
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
+
 <h1 style="margin-bottom:0;">AVANCE</h1>
+
 <p style="color:#0074D9;margin-top:5px;">www.escolateologicavance.com.br</p>
+
 
 <div class="moldura-grade">
 
 <h4>GRADE CURRICULAR – MÓDULO I</h4>
 
-<div class="item-grade"><span>1. Educação Cristã</span></div>
-<div class="item-grade"><span>2. Hamartiologia</span></div>
-<div class="item-grade"><span>3. Missiologia</span></div>
-<div class="item-grade"><span>4. Pneumatologia</span></div>
-<div class="item-grade"><span>5. Escatologia</span></div>
-<div class="item-grade"><span>6. Antropologia Bíblica</span></div>
-<div class="item-grade"><span>7. Homilética</span></div>
-<div class="item-grade"><span>8. Hermenêutica</span></div>
-<div class="item-grade"><span>9. Soteriologia</span></div>
-<div class="item-grade"><span>10. Bibliologia</span></div>
 
-</div>
+<a href="materia1.html" class="item-grade">
 
-<h2 style="margin:20px 0;">Curso Básico em Teologia</h2>
+<span>1. Educação Cristã</span>
 
-<button onclick="abrirMateria()">ABRIR LIVRO DIGITAL</button>
-
-<div style="text-align:left;margin-top:30px;">
-
-<div class="card-mod" onclick="abrirMateria()">
-<span>Módulo 1: Educação Cristã</span>
 <span>➔ Acessar</span>
-</div>
+
+</a>
+
+<a href="materia2.html" class="item-grade">
+
+<span>2. Hamartiologia</span>
+
+<span>➔ Acessar</span>
+
+</a>
+
+<a href="materia3.html" class="item-grade">
+
+<span>3. Missiologia</span>
+
+<span>➔ Acessar</span>
+
+</a>
+
+<a href="materia4.html" class="item-grade">
+
+<span>4. Pneumatologia</span>
+
+<span>➔ Acessar</span>
+
+</a>
+
+<a href="materia5.html" class="item-grade">
+
+<span>5. Escatologia</span>
+
+<span>➔ Acessar</span>
+
+</a>
+
+<a href="materia6.html" class="item-grade">
+
+<span>6. Antropologia Bíblica</span>
+
+<span>➔ Acessar</span>
+
+</a>
+
+<a href="materia7.html" class="item-grade">
+
+<span>7. Homilética</span>
+
+<span>➔ Acessar</span>
+
+</a>
+
+<a href="materia8.html" class="item-grade">
+
+<span>8. Hermenêutica</span>
+
+<span>➔ Acessar</span>
+
+</a>
+
+<a href="materia9.html" class="item-grade">
+
+<span>9. Soteriologia</span>
+
+<span>➔ Acessar</span>
+
+</a>
+
+<a href="materia10.html" class="item-grade">
+
+<span>10. Bibliologia</span>
+
+<span>➔ Acessar</span>
+
+</a>
+
 
 </div>
+
+
+<h2 style="margin:25px 0 15px 0; font-size: 1.4rem;">Acesso Direto às Matérias</h2>
+
+
+<div style="text-align:left;">
+
+<a href="materia1.html" class="card-mod">
+
+<span>1. Educação Cristã</span>
+
+<span>➔ Estudar</span>
+
+</a>
+
+<a href="materia2.html" class="card-mod">
+
+<span>2. Hamartiologia</span>
+
+<span>➔ Estudar</span>
+
+</a>
+
+<a href="materia3.html" class="card-mod">
+
+<span>3. Missiologia</span>
+
+<span>➔ Estudar</span>
+
+</a>
+
+<a href="materia4.html" class="card-mod">
+
+<span>4. Pneumatologia</span>
+
+<span>➔ Estudar</span>
+
+</a>
+
+<a href="materia5.html" class="card-mod">
+
+<span>5. Escatologia</span>
+
+<span>➔ Estudar</span>
+
+</a>
+
+<a href="materia6.html" class="card-mod">
+
+<span>6. Antropologia Bíblica</span>
+
+<span>➔ Estudar</span>
+
+</a>
+
+<a href="materia7.html" class="card-mod">
+
+<span>7. Homilética</span>
+
+<span>➔ Estudar</span>
+
+</a>
+
+<a href="materia8.html" class="card-mod">
+
+<span>8. Hermenêutica</span>
+
+<span>➔ Estudar</span>
+
+</a>
+
+<a href="materia9.html" class="card-mod">
+
+<span>9. Soteriologia</span>
+
+<span>➔ Estudar</span>
+
+</a>
+
+<a href="materia10.html" class="card-mod">
+
+<span>10. Bibliologia</span>
+
+<span>➔ Estudar</span>
+
+</a>
+
+</div>
+
 
 <div class="footer-copy">
+
 <p>© 2026 AVANCE – Todos os direitos reservados<br>
+
 Professor Gilberto Moreira</p>
-</div>
 
 </div>
+
+
+</div>
+
 
 <script>
-
-function abrirMateria(){
-window.location.assign("materia1.html");
-}
 
 if('serviceWorker' in navigator){
 
 navigator.serviceWorker.register('./sw.js')
+
 .then(()=>console.log("PWA AVANCE Ativo"))
+
 .catch(err=>console.log("Erro SW:",err));
 
 }
 
 </script>
 
+
 </body>
+
 </html>
