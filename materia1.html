@@ -5,50 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 1 - Educação Cristã | AVANCE</title>
     <style>
-        :root { --azul-m:#001f3f; --azul-c:#0074D9; --br:#ffffff; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
-        .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
-        .secao { display: none; }
-        .ativa { display: block; }
-        h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
-        h3 { color: var(--azul-c); margin-top: 25px; }
-        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
-        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; text-align: center; border: none; cursor: pointer; font-size: 1.1rem; }
-        .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-        p { text-align: justify; }
+        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
+        body { font-family:'Segoe UI',sans-serif; line-height:1.6; color:#333; margin:0; background-color:var(--azul-m); display:flex; flex-direction:column; min-height:100vh; }
+        .header { background:var(--azul-m); color:white; padding:20px; text-align:center; border-bottom:2px solid var(--azul-c); }
+        .container { max-width:850px; margin:20px auto; background:white; padding:40px; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,0.4); flex-grow:1; }
+        .secao { display:none; }
+        .ativa { display:block; }
+        h2 { color:var(--azul-m); border-bottom:2px solid var(--azul-c); padding-bottom:8px; text-transform: uppercase; }
+        h3 { color:var(--azul-c); margin-top:30px; font-size: 1.4rem; }
+        p { text-align:justify; margin-bottom: 15px; }
+        .pergunta { background:#f9f9f9; padding:20px; border-radius:12px; margin-bottom:20px; border-left:5px solid var(--azul-c); }
+        .opcao { display:block; margin:10px 0; cursor:pointer; padding:12px; border-radius:8px; background:#eee; transition: 0.2s; }
+        .opcao:hover { background: #ddd; }
+        .btn { display:block; width:100%; max-width:320px; background:var(--azul-c); color:white; padding:18px; border-radius:40px; font-weight:bold; margin:30px auto; text-align:center; border:none; cursor:pointer; font-size:1.1rem; }
+        .footer-copy { text-align:center; padding:20px; color:rgba(255,255,255,0.7); }
+        #playerAula { position:fixed; bottom:20px; left:20px; background:#001f3f; padding:12px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.4); z-index:999; color:white; display:flex; align-items:center; gap:10px; }
+        #playerAula button { background:#ffcc00; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:bold; }
+        #barra { width:100px; height:6px; background:#444; border-radius:4px; }
+        #progresso { width:0%; height:6px; background:#00ffcc; border-radius:4px; }
+        .lendo { background:yellow !important; color: black; }
+        [vw] { z-index: 10000 !important; }
     </style>
 </head>
-<body onload="verificarProgresso()">
+<body>
 
 <div class="header">
     <h1>AVANCE</h1>
-    <p>Módulo 1: Educação Cristã</p>
+    <p>Módulo 1: Educação Cristã Profunda</p>
 </div>
 
-<div class="container">
+<div class="container" id="artigo">
     <div id="secao-leitura" class="secao ativa">
         <h2>Matéria 1 – Educação Cristã</h2>
-        <p>A Educação Cristã é um processo contínuo de formação espiritual, fundamentado exclusivamente na revelação divina registrada nas Sagradas Escrituras.</p>
+        <p>A Educação Cristã não é meramente a transmissão acadêmica de dogmas, mas um processo vivo de "metanoia" (mudança de mente). Ela visa a formação integral do ser humano, fundamentando sua visão de mundo na revelação teocêntrica das Escrituras para que o indivíduo responda com obediência e adoração.</p>
+        
+        <h3>1. O Fundamento Epistemológico: A Sola Scriptura</h3>
+        <p>A base da educação cristã repousa na autoridade suprema da Bíblia. Conforme 2 Timóteo 3:16-17, o texto sagrado é "theopneustos" (soprado por Deus). Isso significa que a educação não busca validar a Bíblia através da ciência ou filosofia humana, mas sim usar a Bíblia como a lente através da qual toda a realidade é interpretada. Ela é infalível para ensinar a verdade, repreender o erro, corrigir o comportamento e instruir na justiça.</p>
 
-        <h3>1. Fundamento Bíblico da Educação Cristã</h3>
-        <p>A base encontra-se nos 66 livros da Bíblia, inspirados por Deus (2 Timóteo 3:16–17).</p>
+        <h3>2. A Teologia do Shemá: O Ensino como Estilo de Vida</h3>
+        <p>Em Deuteronômio 6:4-9, o Shemá ("Ouve, ó Israel") estabelece o monoteísmo ético e a metodologia pedagógica divina. O termo "V’Shinantam" carrega a ideia de "afiar" ou "incutir". A educação aqui não é um evento semanal no templo, mas uma imersão constante: ao sentar, ao andar, ao deitar e ao levantar. É a integração total da fé na rotina diária, transformando o cotidiano em um currículo espiritual contínuo.</p>
 
-        <h3>2. O Shemá e o Ensino Contínuo</h3>
-        <p>Deuteronômio 6:4–9 estabelece que a Palavra seja ensinada de forma contínua. V’Shinantam significa ensinar diligentemente.</p>
+        <h3>3. A Primazia do Lar e a Aliança Familiar</h3>
+        <p>Diferente do sistema secular onde o Estado detém a primazia educativa, na cosmovisão bíblica, a família é a agência primária de ensino. Provérbios 22:6 não é apenas um conselho, mas um princípio de formação de caráter. O lar é o laboratório da graça, onde os pais, como sacerdotes, modelam o temor ao Senhor. A igreja auxilia, mas não substitui a responsabilidade indelegável dos pais na transferência da fé intergeracional.</p>
 
-        <h3>3. O Lar como Primeira Escola</h3>
-        <p>A família é a primeira instituição educacional. Provérbios 22:6 instrui a educar a criança no caminho.</p>
+        <h3>4. Cristocentrismo: Jesus, o Logos Encarnado</h3>
+        <p>Jesus Cristo é o "Didaskalos" (Mestre) por excelência. Sua pedagogia superou o método rabínico tradicional ao unir autoridade divina com empatia humana. Ele formou discípulos através da "Paideia" cristã: convivência íntima, confronto com a verdade e capacitação prática. Ele não apenas ensinava a verdade; Ele afirmava ser a Verdade. Todo esforço educativo cristão que não converge para a soberania de Cristo é apenas instrução moralista.</p>
 
-        <h3>4. Jesus Cristo – O Mestre por Excelência</h3>
-        <p>Jesus é o modelo supremo, formando discípulos através da convivência, exemplo e prática.</p>
+        <h3>5. O Processo de Santificação e Desenvolvimento</h3>
+        <p>A educação cristã é dinâmica e progressiva. Ela reconhece que o novo nascimento é o início, mas a maturidade exige esforço disciplinado. O crescimento espiritual envolve a renovação da mente para que o cristão não se conforme com este século. É um aprendizado que transita do "leite espiritual" para o "alimento sólido", onde o conhecimento intelectual deve obrigatoriamente resultar em frutos práticos de caráter e serviço.</p>
 
-        <h3>5. Educação Cristã como Processo Contínuo</h3>
-        <p>O crescimento espiritual ocorre à medida que o discípulo aprende, aplica e vive os princípios bíblicos.</p>
-
-        <h3>6. Finalidade da Educação Cristã</h3>
-        <p>O objetivo final é conduzir o cristão à maturidade espiritual e conformidade com a imagem de Cristo.</p>
+        <h3>6. A Teleologia: O Fim Principal do Homem</h3>
+        <p>Qual o objetivo final? Não é apenas obter conhecimento teológico para debates, mas a "Imago Dei" restaurada. A finalidade é a glória de Deus através da maturidade do crente, para que ele chegue à estatura de varão perfeito, conforme a imagem de Cristo. Educamos para que o homem seja plenamente equipado para toda boa obra, exercendo sua vocação no mundo como sal da terra e luz do mundo.</p>
 
         <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
     </div>
@@ -56,112 +63,150 @@
     <div id="secao-prova" class="secao">
         <h2>Avaliação de Conhecimento</h2>
         <form id="quizForm">
-            <div class="pergunta"><p><b>1. Qual a base da Educação Cristã?</b></p>
-                <label class="opcao"><input type="radio" name="p1" value="1"> Os 66 livros da Bíblia</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Filosofias humanas</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Tradições culturais</label>
+            <div class="pergunta"><p><b>1. Qual o significado teológico de "V’Shinantam" no contexto do Shemá?</b></p>
+                <label class="opcao"><input type="radio" name="p1" value="0"> A) Apenas ler as leis em voz alta uma vez por dia.</label>
+                <label class="opcao"><input type="radio" name="p1" value="1"> B) Ensinar diligentemente, afiando a palavra no coração do aluno.</label>
+                <label class="opcao"><input type="radio" name="p1" value="0"> C) Memorizar textos sem a necessidade de praticá-los.</label>
             </div>
-            <div class="pergunta"><p><b>2. O Shemá está em:</b></p>
-                <label class="opcao"><input type="radio" name="p2" value="1"> Deuteronômio 6:4–9</label>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Êxodo 20</label>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Levítico 19</label>
+
+            <div class="pergunta"><p><b>2. Segundo o texto, quem detém a responsabilidade primária pela educação?</b></p>
+                <label class="opcao"><input type="radio" name="p2" value="0"> A) O Estado e as escolas públicas.</label>
+                <label class="opcao"><input type="radio" name="p2" value="0"> B) Exclusivamente os pastores e a Escola Dominical.</label>
+                <label class="opcao"><input type="radio" name="p2" value="1"> C) A família, como instituição aliançada por Deus.</label>
             </div>
-            <div class="pergunta"><p><b>3. V’Shinantam significa:</b></p>
-                <label class="opcao"><input type="radio" name="p3" value="1"> Ensinar diligentemente</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Orar sempre</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Memorizar textos</label>
+
+            <div class="pergunta"><p><b>3. (V ou F) A Bíblia deve ser usada como uma lente para interpretar toda a realidade, e não apenas como um livro religioso entre outros.</b></p>
+                <label class="opcao"><input type="radio" name="p3" value="1"> VERDADEIRO</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> FALSO</label>
             </div>
-            <div class="pergunta"><p><b>4. Primeira instituição educacional:</b></p>
-                <label class="opcao"><input type="radio" name="p4" value="1"> A Família</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> A Igreja</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> A Escola formal</label>
+
+            <div class="pergunta"><p><b>4. (V ou F) O objetivo final da educação cristã é apenas o acúmulo de informações intelectuais para status eclesiástico.</b></p>
+                <label class="opcao"><input type="radio" name="p4" value="0"> VERDADEIRO</label>
+                <label class="opcao"><input type="radio" name="p4" value="1"> FALSO</label>
             </div>
-            <div class="pergunta"><p><b>5. Modelo supremo de mestre:</b></p>
-                <label class="opcao"><input type="radio" name="p5" value="1"> Jesus Cristo</label>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Paulo</label>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Moisés</label>
+
+            <div class="pergunta"><p><b>5. O termo "Theopneustos" em 2 Timóteo 3:16 indica que:</b></p>
+                <label class="opcao"><input type="radio" name="p5" value="1"> A) A Escritura é soprada por Deus, tendo autoridade divina.</label>
+                <label class="opcao"><input type="radio" name="p5" value="0"> B) A Bíblia é fruto apenas do gênio literário humano.</label>
+                <label class="opcao"><input type="radio" name="p5" value="0"> C) O texto sagrado é útil apenas para conselhos morais leves.</label>
             </div>
-            <div class="pergunta"><p><b>6. Objetivo final da educação:</b></p>
-                <label class="opcao"><input type="radio" name="p6" value="1"> Maturidade espiritual</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Status</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Reconhecimento social</label>
+
+            <div class="pergunta"><p><b>6. Como Jesus formou seus discípulos (Pedagogia de Cristo)?</b></p>
+                <label class="opcao"><input type="radio" name="p6" value="1"> A) Através da convivência, exemplo prático e autoridade da verdade.</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> B) Apenas dando palestras teóricas em sinagogas distantes.</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> C) Sem exigir compromisso ou mudança de caráter.</label>
             </div>
-            <div class="pergunta"><p><b>7. Provérbios 22:6 foca em:</b></p>
-                <label class="opcao"><input type="radio" name="p7" value="1"> Instruir a criança</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Finanças</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Liderança política</label>
+
+            <div class="pergunta"><p><b>7. (V ou F) A Educação Cristã foca na restauração da "Imago Dei" (Imagem de Deus) no homem.</b></p>
+                <label class="opcao"><input type="radio" name="p7" value="1"> VERDADEIRO</label>
+                <label class="opcao"><input type="radio" name="p7" value="0"> FALSO</label>
             </div>
-            <div class="pergunta"><p><b>8. A Educação Cristã é:</b></p>
-                <label class="opcao"><input type="radio" name="p8" value="1"> Um processo contínuo</label>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Um evento único</label>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Algo opcional</label>
+
+            <div class="pergunta"><p><b>8. (V ou F) Conforme o texto, o ensino bíblico deve ocorrer apenas dentro do templo em horários de culto.</b></p>
+                <label class="opcao"><input type="radio" name="p8" value="0"> VERDADEIRO</label>
+                <label class="opcao"><input type="radio" name="p8" value="1"> FALSO</label>
             </div>
-            <div class="pergunta"><p><b>9. 2 Timóteo 3:16–17 diz que a Bíblia é:</b></p>
-                <label class="opcao"><input type="radio" name="p9" value="1"> Útil para instruir</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Apenas história</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Um livro cultural</label>
+
+            <div class="pergunta"><p><b>9. O que significa "Metanoia" no contexto educativo?</b></p>
+                <label class="opcao"><input type="radio" name="p9" value="1"> A) Mudança de mente e de direção de vida.</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> B) Manutenção de velhos hábitos culturais.</label>
+                <label class="opcao"><input type="radio" name="p9" value="0"> C) Um ritual de passagem sem impacto no comportamento.</label>
             </div>
-            <div class="pergunta"><p><b>10. Conhecimento sem transformação:</b></p>
-                <label class="opcao"><input type="radio" name="p10" value="1"> Não cumpre o propósito</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> É o suficiente</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Garante maturidade</label>
+
+            <div class="pergunta"><p><b>10. Qual a teleologia (fim principal) da educação cristã?</b></p>
+                <label class="opcao"><input type="radio" name="p10" value="1"> A) A glória de Deus e a conformidade à imagem de Cristo.</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> B) Sucesso financeiro e prosperidade material imediata.</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> C) Apenas a obtenção de um certificado acadêmico.</label>
             </div>
         </form>
         <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
     </div>
 
-    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+    <div id="resultado" style="display:none;text-align:center;"></div>
 </div>
 
 <div class="footer-copy">© AVANCE – Gilberto Moreira</div>
 
+<div id="playerAula">
+    <button onclick="iniciar()">▶</button>
+    <button onclick="pausar()">⏸</button>
+    <button onclick="parar()">⏹</button>
+    <div id="barra"><div id="progresso"></div></div>
+</div>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
-    // Verifica se o aluno já passou nesta prova anteriormente
-    function verificarProgresso() {
-        if (localStorage.getItem('modulo1_concluido') === 'true') {
-            const res = document.getElementById('resultado');
-            document.getElementById('secao-leitura').style.display = 'none';
-            res.style.display = 'block';
-            res.innerHTML = `
-                <b style="color:green; font-size:1.2rem;">Você já concluiu este módulo!</b><br>
-                <button class="btn" onclick="window.location.href='materia2.html'">IR PARA O MÓDULO 2</button>
+    if (window.VLibras) { new window.VLibras.Widget('https://vlibras.gov.br/app'); }
+
+    function irParaProva() {
+        parar();
+        document.getElementById('secao-leitura').classList.remove('ativa');
+        document.getElementById('secao-prova').classList.add('ativa');
+        window.scrollTo(0,0);
+    }
+
+            function corrigir() {
+        let pontos = 0;
+        let form = document.getElementById('quizForm');
+        let d = new FormData(form);
+        
+        // Garante que o valor seja tratado como número para a soma
+        for(let v of d.values()) {
+            if(parseInt(v) === 1) pontos++;
+        }
+        
+        document.getElementById('secao-prova').style.display = 'none';
+        let r = document.getElementById('resultado');
+        r.style.display = 'block';
+        
+        // Lógica definitiva: 7 ou mais = APROVADO
+        if (pontos >= 7) {
+            r.innerHTML = `
+                <h2 style="color:green;">Aprovado! Nota: ${pontos}/10</h2>
+                <p>Parabéns! Você atingiu a média necessária.</p>
+                <button class="btn" style="background:green;" onclick="window.location.href='materia2.html'">AVANÇAR PARA MATÉRIA 2</button>
+            `;
+        } else {
+            r.innerHTML = `
+                <h2 style="color:red;">Nota: ${pontos}/10</h2>
+                <p>A média é 7. Você precisa de mais ${7 - pontos} acerto(s) para passar.</p>
+                <button class="btn" onclick="location.reload()">REFAZER AVALIAÇÃO</button>
             `;
         }
     }
 
-    function irParaProva() {
-        document.getElementById('secao-leitura').style.display = 'none';
-        document.getElementById('secao-prova').style.display = 'block';
-        window.scrollTo(0,0);
+
+    // VOZ
+    let synth = window.speechSynthesis;
+    let frases = [];
+    let idFrase = 0;
+
+    function iniciar() {
+        if(frases.length === 0) {
+            document.querySelectorAll("#secao-leitura h2, #secao-leitura h3, #secao-leitura p").forEach(el => frases.push(el));
+        }
+        falar();
     }
 
-    function corrigir() {
-        const form = document.getElementById('quizForm');
-        let nota = 0;
-        // Percorre as 10 questões
-        for(let i=1; i<=10; i++) {
-            const q = form['p'+i];
-            if(q) {
-                for(let r=0; r<q.length; r++) {
-                    if(q[r].checked && q[r].value === "1") nota++;
-                }
-            }
-        }
-
-        const res = document.getElementById('resultado');
-        res.style.display = 'block';
-        
-        if(nota >= 7) {
-            // SALVA O PROGRESSO NO NAVEGADOR
-            localStorage.setItem('modulo1_concluido', 'true');
-            
-            res.innerHTML = `<b style="color:green">APROVADO! Nota: ${nota}/10.<br>Redirecionando...</b>`;
-            setTimeout(() => { window.location.href = 'materia2.html'; }, 3000);
-        } else {
-            res.innerHTML = `<b style="color:red">REPROVADO. Nota: ${nota}/10.<br>Tente novamente.</b>`;
-            setTimeout(() => { location.reload(); }, 3000);
-        }
+    function falar() {
+        synth.cancel();
+        if(idFrase >= frases.length) return;
+        let u = new SpeechSynthesisUtterance(frases[idFrase].innerText);
+        u.lang = 'pt-BR';
+        limpar();
+        frases[idFrase].classList.add('lendo');
+        u.onend = () => { idFrase++; atualizarBarra(); falar(); };
+        synth.speak(u);
     }
+
+    function pausar() { synth.pause(); }
+    function parar() { synth.cancel(); idFrase=0; limpar(); document.getElementById('progresso').style.width="0%"; }
+    function limpar() { document.querySelectorAll('.lendo').forEach(e => e.classList.remove('lendo')); }
+    function atualizarBarra() { let pct = (idFrase/frases.length)*100; document.getElementById('progresso').style.width = pct + "%"; }
 </script>
 
 </body>
