@@ -1,166 +1,1038 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 5 - Escatologia | AVANCE</title>
-    <style>
-        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
-        .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
-        .secao { display: none; }
-        .ativa { display: block; }
-        h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
-        h3 { color: var(--azul-c); margin-top: 25px; font-size: 1.3rem; }
-        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
-        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
-        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; text-align: center; text-decoration: none; }
-        .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-        p { text-align: justify; text-indent: 1.5em; margin-bottom: 15px; }
-    </style>
-</head>
-<body onload="verificarProgresso()">
 
-<div class="header">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVANCE – Módulo 5: Escatologia</title>
+
+<style>
+:root {
+    --azul-escuro: #001f3f;
+    --azul: #0074D9;
+    --azul-claro: #eaf3fc;
+    --dourado: #d4af37;
+    --texto: #263238;
+    --fundo: #f3f6fa;
+    --branco: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    line-height: 1.75;
+}
+
+header {
+    background: var(--azul-escuro);
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+    border-bottom: 5px solid var(--dourado);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 27px;
+    letter-spacing: 1px;
+}
+
+header p {
+    margin: 7px 0 0;
+    font-size: 15px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+}
+
+h2 {
+    color: var(--azul-escuro);
+    border-bottom: 2px solid var(--dourado);
+    padding-bottom: 9px;
+    margin-top: 30px;
+}
+
+h3 {
+    color: var(--azul);
+    margin-top: 25px;
+}
+
+p {
+    text-align: justify;
+    margin: 12px 0;
+}
+
+.referencia {
+    background: var(--azul-claro);
+    border-left: 4px solid var(--azul);
+    padding: 13px 16px;
+    margin: 18px 0;
+    border-radius: 4px;
+}
+
+.destaque {
+    background: #fff9e8;
+    border-left: 4px solid var(--dourado);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.lista-biblica li,
+.bibliografia li {
+    margin-bottom: 9px;
+}
+
+.termo {
+    font-weight: bold;
+    color: var(--azul-escuro);
+}
+
+button {
+    border: none;
+    border-radius: 6px;
+    padding: 13px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.botao-principal {
+    background: var(--azul);
+    color: white;
+}
+
+.botao-secundario {
+    background: var(--azul-escuro);
+    color: white;
+}
+
+button:hover {
+    opacity: 0.88;
+}
+
+#leitor {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #ffffff;
+    border-bottom: 2px solid var(--dourado);
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+#leitor button {
+    padding: 9px 13px;
+    font-size: 13px;
+}
+
+#barra-container {
+    width: 90%;
+    max-width: 600px;
+    height: 7px;
+    background: #ddd;
+    border-radius: 10px;
+    margin: 8px auto 0;
+    overflow: hidden;
+}
+
+#barra-progresso {
+    height: 100%;
+    width: 0%;
+    background: var(--azul);
+    transition: width 0.2s;
+}
+
+.lendo {
+    background: #fff0b8;
+    outline: 2px solid var(--dourado);
+    border-radius: 4px;
+}
+
+#avaliacao {
+    display: none;
+}
+
+.questao {
+    background: #f7f9fc;
+    padding: 17px;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid #dce4ed;
+}
+
+.questao p {
+    font-weight: bold;
+    text-align: left;
+}
+
+.questao label {
+    display: block;
+    padding: 7px 5px;
+    cursor: pointer;
+    text-align: left;
+}
+
+#resultado {
+    display: none;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.aprovado {
+    background: #e1f5e8;
+    color: #145c2e;
+}
+
+.reprovado {
+    background: #fde8e7;
+    color: #8b1e18;
+}
+
+footer {
+    background: var(--azul-escuro);
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 30px;
+}
+
+@media(max-width:600px) {
+    .container {
+        margin: 10px;
+        padding: 18px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    button {
+        padding: 11px 14px;
+    }
+
+    #leitor button {
+        margin: 3px 1px;
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
     <h1>AVANCE</h1>
     <p>Módulo 5: Escatologia</p>
+    <p>Matéria 5 – A Doutrina das Últimas Coisas</p>
+</header>
+
+<div id="leitor">
+    <strong>Leitor de áudio</strong><br>
+    <button class="botao-principal" onclick="iniciarLeitura()">▶ Iniciar</button>
+    <button class="botao-secundario" onclick="pausarLeitura()">Ⅱ Pausar</button>
+    <button class="botao-secundario" onclick="continuarLeitura()">▶ Continuar</button>
+    <button class="botao-secundario" onclick="pararLeitura()">■ Parar</button>
+    <div id="barra-container">
+        <div id="barra-progresso"></div>
+    </div>
 </div>
 
-<div class="container">
-    <div id="secao-leitura" class="secao ativa">
-        <h2>Matéria 5 – Escatologia: A Doutrina das Últimas Coisas</h2>
-        <p>A Escatologia bíblica não é um exercício de adivinhação, mas o estudo sistemático do ápice do plano redentor de Deus. Ela lida com a transição da história humana temporal para a realidade eterna do Reino de Deus. Através dela, compreendemos que o tempo não é cíclico ou caótico, mas uma linha teleológica que converge para a glória de Cristo.</p>
+<main class="container" id="conteudo">
 
-        <h3>1. A Escatologia no Plano Bíblico e a Linearidade da História</h3>
-        <p>As Escrituras apresentam uma cosmovisão onde a história é linear e progressiva, possuindo um ponto de partida definido na Criação e um destino final na Consumação. Ao contrário das visões pagãs que enxergam o tempo como um ciclo interminável, a revelação bíblica afirma que Deus governa a sucessão dos tempos. A história caminha para um clímax estabelecido por Deus, onde cada evento, profecia e aliança aponta para a restauração final. A esperança do crente, portanto, não repousa no progresso tecnológico, político ou social humano, mas na intervenção soberana de Deus que porá fim à presente era maligna.</p>
+<section class="texto-audio">
+<h2>Introdução – O significado e a finalidade da Escatologia</h2>
 
-        <h3>2. A Segunda Vinda de Cristo (Parousia)</h3>
-        <p>O retorno de Jesus Cristo é o evento central da Escatologia do Novo Testamento. Esta vinda será literal, pessoal, visível e gloriosa. Jesus não retornará apenas de forma "espiritual" ou no coração dos crentes; Ele virá em corpo glorificado para exercer Sua autoridade máxima. A doutrina da Parousia não é um apêndice teológico, mas a "bendita esperança" que sustenta a Igreja em tempos de tribulação. Ela funciona como um motor para a santidade prática, pois o crente que aguarda seu Senhor vive em constante vigilância, purificando-se a si mesmo assim como Ele é puro.</p>
+<p>A Escatologia é o ramo da Teologia Sistemática dedicado ao estudo das últimas coisas, isto é, dos acontecimentos relacionados à consumação do plano divino para a humanidade e para toda a criação. Seu objeto de estudo envolve a morte, o estado intermediário, a volta de Jesus Cristo, a ressurreição dos mortos, o arrebatamento da Igreja, a tribulação, o Reino Milenar, o juízo final e o estabelecimento dos novos céus e da nova terra.</p>
 
-        <h3>3. A Ressurreição Corporal dos Mortos</h3>
-        <p>A fé cristã não prega a imortalidade da alma como uma existência fantasmagórica, mas a ressurreição corporal. No clímax da história, haverá uma ressurreição geral: os justos para a vida eterna e os injustos para a condenação eterna. A morte é descrita apenas como um estágio temporário de separação entre alma e corpo. Na ressurreição, o corpo do crente será transformado em um corpo glorioso, livre da corrupção e do pecado, semelhante ao corpo da ressurreição de Cristo, garantindo a vitória final sobre o último inimigo, que é a morte.</p>
+<p>A palavra Escatologia tem origem em dois vocábulos gregos: <strong>éschatos</strong>, que significa último ou final, e <strong>lógos</strong>, que significa palavra, discurso ou estudo. Portanto, em sentido teológico, Escatologia significa o estudo das últimas coisas.</p>
 
-        <h3>4. O Juízo Final e a Justiça Divina</h3>
-        <p>O conceito de um acerto de contas universal é intrínseco à santidade de Deus. Todos os seres humanos, de todas as eras, comparecerão diante do tribunal divino para serem julgados com justiça perfeita. Os ímpios enfrentarão o julgamento por suas rebeliões e pela rejeição da graça, enquanto os salvos terão suas obras avaliadas não para salvação (que é pela graça), mas para galardão e recompensa. O Juízo Final é a garantia de que nenhuma injustiça passará despercebida e que o governo moral de Deus sobre o universo será plenamente vindicado perante toda a criação.</p>
+<p>A Escatologia bíblica não é um exercício de adivinhação, especulação ou tentativa de estabelecer datas para acontecimentos futuros. É o estudo sistemático da revelação de Deus sobre o destino da história e a consumação de Seu propósito redentor. Seu fundamento não está em previsões humanas, mas na autoridade das Sagradas Escrituras.</p>
 
-        <h3>5. O Destino Eterno: Céu e Inferno</h3>
-        <p>A Bíblia estabelece uma dualidade final e irreversível para o destino humano. O Céu (ou Novos Céus e Nova Terra) não é um lugar de ócio, mas de comunhão plena, serviço e adoração profunda, onde a presença de Deus será a luz constante e toda lágrima será enxugada. Por outro lado, o Inferno é a realidade trágica da separação definitiva de Deus. Descrito com imagens de fogo e trevas, ele representa o estado final de quem escolheu a autonomia em vez da submissão ao Criador. A eternidade não é uma extensão do tempo, mas uma nova dimensão de existência fundamentada na presença ou ausência da glória de Deus.</p>
+<p>A Bíblia apresenta uma história com direção e propósito. O universo não está entregue ao acaso, e a humanidade não caminha para um ciclo interminável de acontecimentos sem significado. A história começa na criação, desenvolve-se sob a providência divina e caminha para a consumação estabelecida por Deus.</p>
 
-        <h3>6. A Esperança Escatológica e a Missão da Igreja</h3>
-        <p>A verdadeira Escatologia bíblica não paralisa o crente; ela o impulsiona. Longe de causar pavor mórbido, o estudo do fim deve gerar consolo nas aflições e perseverança nos momentos de crise. Saber que o mal tem um fim decretado e que a justiça de Deus prevalecerá motiva o cristão ao compromisso urgente com a missão de evangelização. A expectativa da eternidade não nos torna indiferentes ao presente; pelo contrário, ela molda nosso caráter, redefine nossas prioridades financeiras e emocionais, e nos faz trabalhar com afinco por um Reino que não tem fim e que já começou a se manifestar entre nós.</p>
+<p>O centro dessa esperança é Jesus Cristo. Sua primeira vinda inaugurou a manifestação histórica do Reino de Deus; Sua morte e ressurreição garantiram a vitória sobre o pecado e a morte; e Sua segunda vinda conduzirá a história ao cumprimento das promessas divinas.</p>
 
-        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
-    </div>
-
-    <div id="secao-prova" class="secao">
-        <h2>Avaliação de Conhecimento</h2>
-        <form id="quizForm">
-            <div class="pergunta"><b>1. Escatologia estuda:</b>
-                <label class="opcao"><input type="radio" name="p1" value="0"> O passado bíblico</label>
-                <label class="opcao"><input type="radio" name="p1" value="1"> As últimas coisas</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Apenas profecias de Israel</label>
-            </div>
-
-            <div class="pergunta"><b>2. Verdadeiro ou Falso: A história caminha sem direção definida.</b>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>3. A segunda vinda de Cristo será:</b>
-                <label class="opcao"><input type="radio" name="p3" value="1"> Literal e gloriosa</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Apenas simbólica</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Espiritual apenas</label>
-            </div>
-
-            <div class="pergunta"><b>4. Assinale a alternativa correta:</b>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Não haverá juízo</label>
-                <label class="opcao"><input type="radio" name="p4" value="1"> Todos comparecerão diante de Deus</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Apenas líderes serão julgados</label>
-            </div>
-
-            <div class="pergunta"><b>5. Verdadeiro ou Falso: A ressurreição é apenas espiritual.</b>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p5" value="1"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>6. O destino eterno dos salvos é:</b>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Aniquilação</label>
-                <label class="opcao"><input type="radio" name="p6" value="1"> Comunhão eterna com Deus</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Reencarnação</label>
-            </div>
-
-            <div class="pergunta"><b>7. O juízo final demonstra:</b>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Injustiça divina</label>
-                <label class="opcao"><input type="radio" name="p7" value="1"> Justiça perfeita de Deus</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Falha humana</label>
-            </div>
-
-            <div class="pergunta"><b>8. Verdadeiro ou Falso: A escatologia gera esperança.</b>
-                <label class="opcao"><input type="radio" name="p8" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>9. A esperança cristã está baseada:</b>
-                <label class="opcao"><input type="radio" name="p9" value="0"> No progresso humano</label>
-                <label class="opcao"><input type="radio" name="p9" value="1"> Na promessa de Deus</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Em sistemas políticos</label>
-            </div>
-
-            <div class="pergunta"><b>10. A escatologia bíblica nos chama à:</b>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Passividade</label>
-                <label class="opcao"><input type="radio" name="p10" value="1"> Vigilância e santidade</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Indiferença</label>
-            </div>
-        </form>
-        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
-    </div>
-
-    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+<div class="destaque">
+<strong>Princípio fundamental:</strong> a Escatologia não foi revelada para alimentar curiosidade sensacionalista, mas para produzir esperança, vigilância, santidade, perseverança e compromisso com a missão cristã.
 </div>
 
-<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Gênesis 1:1; Isaías 46:9-10; Daniel 2:20-22; Atos 1:6-8; Romanos 8:18-25; Apocalipse 21:1-5.
+</div>
+</section>
 
+<section class="texto-audio">
+<h2>1. A Escatologia no Plano Bíblico e a Linearidade da História</h2>
+
+<p>As Escrituras apresentam uma compreensão linear da história. Isso significa que a existência humana possui um princípio, desenvolve-se dentro de um propósito divino e caminha para um destino final. A criação não é apresentada como resultado de um processo eterno e sem finalidade, mas como obra intencional de Deus.</p>
+
+<p>Essa perspectiva diferencia a cosmovisão bíblica das concepções que interpretam a existência como repetição interminável de ciclos. Na revelação bíblica, os acontecimentos possuem significado dentro do governo soberano de Deus. O tempo histórico não está acima do Criador: é parte da realidade por Ele estabelecida.</p>
+
+<h3>1.1. Criação, queda, redenção e consumação</h3>
+
+<p>O desenvolvimento do plano bíblico pode ser compreendido por quatro grandes movimentos:</p>
+
+<ul>
+<li><strong>Criação:</strong> Deus cria os céus, a terra e a humanidade, estabelecendo a ordem original da existência (Gênesis 1–2).</li>
+<li><strong>Queda:</strong> a entrada do pecado introduz corrupção, sofrimento e morte na experiência humana (Gênesis 3; Romanos 5:12).</li>
+<li><strong>Redenção:</strong> Deus desenvolve Seu plano salvador, cumprido decisivamente na obra de Jesus Cristo (Efésios 1:7-10; Colossenses 1:19-20).</li>
+<li><strong>Consumação:</strong> Deus estabelece definitivamente Seu Reino, derrota o mal e conduz a criação à realidade prometida (Apocalipse 21–22).</li>
+</ul>
+
+<p>A consumação não significa que Deus abandonará Sua criação. A esperança bíblica aponta para a renovação de todas as coisas, a derrota definitiva do pecado e a restauração da comunhão entre Deus e Seu povo.</p>
+
+<h3>1.2. O Reino de Deus: presente e futuro</h3>
+
+<p>O Novo Testamento apresenta o Reino de Deus como uma realidade que já se manifestou por meio de Jesus Cristo, mas que ainda aguarda sua plena consumação. Cristo anunciou a proximidade do Reino, demonstrou sua autoridade e inaugurou uma nova realidade espiritual por meio de Sua obra redentora.</p>
+
+<p>Entretanto, a presença atual do Reino não significa que todas as consequências do pecado já tenham desaparecido. A Igreja vive entre a inauguração do Reino e sua manifestação plena. Por isso, experimenta a ação de Deus no presente enquanto aguarda a vitória final.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Marcos 1:14-15; Lucas 17:20-21; Romanos 8:19-23; 1 Coríntios 15:24-28; Efésios 1:9-10.
+</div>
+
+<h3>1.3. A soberania divina sobre os tempos</h3>
+
+<p>Daniel declara que Deus muda os tempos e as estações, remove reis e estabelece reis (Daniel 2:21). Essa afirmação demonstra que os poderes humanos não possuem autoridade absoluta sobre a história. Governos, impérios e sistemas políticos são temporários, mas o governo de Deus permanece.</p>
+
+<p>Essa verdade impede que o cristão transforme acontecimentos políticos ou sociais em interpretações proféticas definitivas sem fundamento bíblico. A Escatologia exige responsabilidade interpretativa, respeito ao contexto das profecias e reconhecimento dos limites do conhecimento humano.</p>
+
+<div class="destaque">
+A certeza da consumação pertence à revelação divina. A tentativa de determinar datas, identificar personagens proféticos sem fundamento ou transformar notícias em cumprimento automático de profecias deve ser rejeitada.
+</div>
+</section>
+
+<section class="texto-audio">
+<h2>2. A Segunda Vinda de Cristo – Parousia</h2>
+
+<p>A segunda vinda de Jesus Cristo constitui um dos principais fundamentos da esperança cristã. O Novo Testamento ensina que o mesmo Jesus que morreu, ressuscitou e ascendeu aos céus retornará para consumar Sua obra e manifestar plenamente Seu domínio.</p>
+
+<p>O termo grego <strong>parousía</strong> (παρουσία) pode significar presença, chegada ou vinda. No contexto escatológico, é utilizado para tratar da manifestação futura de Cristo. Não se refere simplesmente a uma experiência interior ou simbólica, mas à expectativa de Seu retorno conforme a promessa bíblica.</p>
+
+<h3>2.1. A natureza da segunda vinda</h3>
+
+<p>O retorno de Cristo será pessoal, real, glorioso e visível. Os anjos anunciaram aos discípulos que Jesus voltaria da mesma maneira como foi visto subir ao céu. A promessa apostólica não apresenta um retorno meramente psicológico, simbólico ou limitado à experiência individual dos cristãos.</p>
+
+<p>A segunda vinda está relacionada à autoridade universal de Cristo. Aquele que foi rejeitado e crucificado será manifestado como Senhor e Rei. Sua autoridade não dependerá do reconhecimento das instituições humanas, pois Seu domínio é estabelecido pelo próprio Deus.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> João 14:1-3; Atos 1:9-11; Mateus 24:27-31; 1 Tessalonicenses 4:16-17; Apocalipse 1:7.
+</div>
+
+<h3>2.2. A bendita esperança</h3>
+
+<p>Paulo apresenta a expectativa da manifestação gloriosa de Jesus como a bendita esperança da Igreja (Tito 2:11-13). Essa esperança não é uma fuga da realidade, mas uma certeza que transforma a maneira como o cristão vive no presente.</p>
+
+<p>Aguardando o retorno do Senhor, o cristão é chamado a desenvolver uma vida de vigilância, fidelidade, responsabilidade e santidade. A expectativa da eternidade não justifica negligência profissional, abandono familiar ou indiferença social. Ao contrário, exige uma vida coerente com a fé professada.</p>
+
+<h3>2.3. O arrebatamento da Igreja</h3>
+
+<p>Na interpretação pentecostal clássica pré-tribulacionista, o arrebatamento é compreendido como o acontecimento em que Cristo recolherá Sua Igreja para estar com Ele. Os crentes que estiverem vivos serão transformados, e os que morreram em Cristo ressuscitarão. Todos serão reunidos ao Senhor.</p>
+
+<p>O texto central dessa doutrina encontra-se em 1 Tessalonicenses 4:13-18. Paulo apresenta o arrebatamento como fonte de consolo para os cristãos diante da morte e da separação temporária daqueles que faleceram em Cristo.</p>
+
+<p>Na perspectiva pré-tribulacionista, o arrebatamento ocorre antes do período de tribulação escatológica. Essa interpretação distingue o encontro de Cristo com Sua Igreja da manifestação pública e gloriosa de Cristo em juízo e vitória, embora ambas estejam relacionadas à esperança de Seu retorno.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> João 14:1-3; 1 Coríntios 15:51-52; 1 Tessalonicenses 4:13-18; 1 Tessalonicenses 5:9-11; Apocalipse 3:10.
+</div>
+
+<h3>2.4. A Grande Tribulação</h3>
+
+<p>A Grande Tribulação é apresentada nas Escrituras como um período de sofrimento, juízo e intensa oposição a Deus. Jesus descreveu um tempo de angústia sem precedentes, enquanto Daniel e o Apocalipse apresentam imagens proféticas relacionadas à manifestação do juízo divino e ao conflito final entre o Reino de Deus e as forças do mal.</p>
+
+<p>Na interpretação pré-tribulacionista, esse período está relacionado à septuagésima semana de Daniel e ao desenvolvimento dos acontecimentos descritos em Daniel 9:24-27, Mateus 24 e Apocalipse 6–19.</p>
+
+<p>A Igreja deve estudar esses textos com reverência, sem transformar cada acontecimento contemporâneo em cumprimento profético definitivo. A finalidade da profecia é revelar a soberania de Deus e fortalecer a perseverança dos fiéis.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Daniel 9:24-27; Daniel 12:1; Mateus 24:15-22; 2 Tessalonicenses 2:1-12; Apocalipse 6–19.
+</div>
+</section>
+
+<section class="texto-audio">
+<h2>3. A Ressurreição Corporal dos Mortos</h2>
+
+<p>A ressurreição corporal é uma doutrina essencial da fé cristã. O cristianismo não fundamenta sua esperança em uma existência desencarnada e definitiva, mas na promessa de que Deus ressuscitará os mortos e transformará os corpos daqueles que pertencem a Cristo.</p>
+
+<p>A ressurreição de Jesus é o fundamento histórico e teológico dessa esperança. Cristo não permaneceu no sepulcro: ressuscitou corporalmente, tornando-se as primícias dos que dormem. Sua vitória garante a futura ressurreição dos que estão unidos a Ele pela fé.</p>
+
+<h3>3.1. A morte e o estado intermediário</h3>
+
+<p>A morte representa a separação entre o corpo e a dimensão espiritual da pessoa. O corpo retorna ao pó, enquanto a existência consciente diante de Deus é apresentada em diferentes passagens do Novo Testamento. A condição entre a morte física e a ressurreição final é tradicionalmente chamada de estado intermediário.</p>
+
+<p>Jesus apresentou a realidade consciente após a morte na narrativa do rico e Lázaro. Paulo também expressou o desejo de partir e estar com Cristo. Essas passagens são utilizadas pela teologia cristã para sustentar que a morte não representa o desaparecimento da pessoa nem o fim da esperança dos que pertencem ao Senhor.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Lucas 16:19-31; Lucas 23:43; Filipenses 1:21-23; 2 Coríntios 5:1-8.
+</div>
+
+<h3>3.2. A ressurreição dos justos</h3>
+
+<p>Os que morreram em Cristo ressuscitarão para a vida eterna. O corpo ressuscitado será transformado, incorruptível e glorificado. Paulo ensina que aquilo que é semeado em corrupção ressuscitará em incorrupção; aquilo que é semeado em fraqueza ressuscitará em poder.</p>
+
+<p>O corpo glorificado não será uma simples recuperação das limitações físicas da existência presente. Será uma condição transformada, adequada à vida eterna e à plena comunhão com Deus.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> João 5:28-29; 1 Coríntios 15:20-23; 1 Coríntios 15:35-54; Filipenses 3:20-21; 1 Tessalonicenses 4:16.
+</div>
+
+<h3>3.3. A ressurreição dos injustos</h3>
+
+<p>As Escrituras também ensinam que haverá ressurreição para aqueles que não pertencem à vida eterna em Cristo. A ressurreição não é apresentada como privilégio exclusivo dos justos, mas como parte do juízo universal de Deus.</p>
+
+<p>Jesus declara que haverá ressurreição para a vida e ressurreição para o juízo. O destino eterno está relacionado à resposta humana diante de Deus e à justiça divina, que não pode ser corrompida nem manipulada.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Daniel 12:2; João 5:28-29; Atos 24:15; Apocalipse 20:11-15.
+</div>
+
+<div class="destaque">
+A ressurreição de Cristo é a garantia da esperança cristã. A morte não terá a palavra final: o último inimigo a ser destruído será a própria morte.
+</div>
+</section>
+
+<section class="texto-audio">
+<h2>4. O Juízo Final e a Justiça Divina</h2>
+
+<p>O juízo divino é uma consequência necessária da santidade, justiça e soberania de Deus. A Bíblia ensina que a humanidade prestará contas diante do Criador. Nenhuma ação, intenção ou injustiça permanecerá definitivamente escondida diante daquele que conhece todas as coisas.</p>
+
+<p>O juízo final não deve ser entendido como uma reação impulsiva de Deus, mas como a manifestação perfeita de Sua justiça. O Senhor julgará sem parcialidade, corrupção, ignorância ou influência de interesses humanos.</p>
+
+<h3>4.1. O julgamento das obras</h3>
+
+<p>As Escrituras afirmam que cada pessoa comparecerá diante de Deus e responderá por sua existência. As obras humanas serão consideradas no julgamento divino, pois revelam a realidade das escolhas e da conduta de cada indivíduo.</p>
+
+<p>Entretanto, a salvação não é conquistada por mérito humano. O pecador é salvo pela graça, mediante a fé em Jesus Cristo. As boas obras são consequência da transformação produzida pela graça, não o preço pago pela salvação.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Romanos 2:5-11; Efésios 2:8-10; 2 Coríntios 5:10; Apocalipse 20:11-13.
+</div>
+
+<h3>4.2. O Tribunal de Cristo</h3>
+
+<p>Na compreensão pentecostal pré-tribulacionista, o Tribunal de Cristo está relacionado à avaliação das obras dos salvos. Essa avaliação não determina a aquisição da salvação, pois a redenção é recebida pela graça. Seu propósito está relacionado à manifestação da fidelidade, à qualidade do serviço cristão e à distribuição de recompensas segundo a justiça de Deus.</p>
+
+<p>O cristão deve compreender que a liberdade concedida pela graça não significa ausência de responsabilidade. A vida cristã envolve serviço, fidelidade e compromisso com aquilo que Deus confiou a cada pessoa.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Romanos 14:10-12; 1 Coríntios 3:11-15; 2 Coríntios 5:10.
+</div>
+
+<h3>4.3. O Grande Trono Branco</h3>
+
+<p>Apocalipse 20:11-15 apresenta a visão do Grande Trono Branco, diante do qual os mortos comparecem para julgamento. Os livros são abertos, e os mortos são julgados segundo suas obras. O texto também menciona o Livro da Vida e apresenta a condenação final daqueles que não são encontrados nele.</p>
+
+<p>Essa passagem revela a seriedade da responsabilidade humana diante de Deus. O juízo final representa a derrota definitiva da rebelião contra o Criador e a manifestação pública de Sua justiça.</p>
+
+<h3>4.4. A justiça divina e a responsabilidade humana</h3>
+
+<p>A doutrina do juízo final também possui implicações éticas. Ela ensina que a injustiça não será eternamente tolerada, que o sofrimento dos inocentes não será ignorado e que os poderosos não escaparão da responsabilidade por seus atos.</p>
+
+<p>Por isso, a esperança no juízo divino não deve produzir vingança pessoal. Deve fortalecer a confiança em Deus e incentivar uma vida marcada pela justiça, verdade, misericórdia e integridade.</p>
+</section>
+
+<section class="texto-audio">
+<h2>5. O Destino Eterno: Novos Céus, Nova Terra e Condenação Final</h2>
+
+<p>A Escatologia bíblica apresenta dois destinos finais distintos: a vida eterna em comunhão com Deus e a condenação definitiva daqueles que permanecem em oposição a Ele. Essa realidade não deve ser tratada com sensacionalismo, mas com seriedade, responsabilidade e fidelidade ao texto bíblico.</p>
+
+<h3>5.1. Os novos céus e a nova terra</h3>
+
+<p>Apocalipse 21 e 22 apresentam a consumação da esperança cristã. João contempla novos céus e nova terra, nos quais Deus habita com Seu povo. A morte, o luto, o sofrimento e a dor não terão lugar nessa realidade definitiva.</p>
+
+<p>A esperança cristã não consiste simplesmente em escapar do mundo material, mas em participar da realidade renovada que Deus estabelece. A criação será liberta da corrupção, e a comunhão entre o Criador e os redimidos alcançará sua plenitude.</p>
+
+<p>A expressão novos céus e nova terra comunica a renovação da ordem criada. O texto não descreve uma eternidade de inatividade, mas uma existência de comunhão, adoração e serviço diante de Deus.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Isaías 65:17; Isaías 66:22; 2 Pedro 3:13; Apocalipse 21:1-7; Apocalipse 22:1-5.
+</div>
+
+<h3>5.2. A Nova Jerusalém</h3>
+
+<p>A Nova Jerusalém é apresentada em Apocalipse como a cidade santa que desce do céu, preparada como noiva adornada para seu esposo. A imagem comunica a comunhão definitiva entre Deus e Seu povo.</p>
+
+<p>O texto descreve a cidade com imagens de beleza, pureza, glória e perfeição. A ausência de templo, conforme Apocalipse 21:22, indica que a presença de Deus e do Cordeiro será plena, sem a necessidade de um espaço intermediário de acesso.</p>
+
+<p>A cidade não terá necessidade de sol ou lua como fonte de iluminação, pois a glória de Deus a iluminará. A linguagem profética aponta para a plenitude da presença divina.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Gálatas 4:26; Hebreus 11:10; Hebreus 12:22-24; Apocalipse 21:9-27; Apocalipse 22:1-5.
+</div>
+
+<h3>5.3. O estado final dos ímpios</h3>
+
+<p>As Escrituras ensinam a realidade da condenação eterna. Jesus utilizou imagens de fogo, trevas e exclusão para advertir sobre a gravidade do juízo. Apocalipse apresenta a imagem do lago de fogo como expressão do destino final daqueles que permanecem fora da redenção divina.</p>
+
+<p>As imagens bíblicas devem ser interpretadas com atenção ao gênero literário e ao contexto. Isso não significa diminuir a seriedade da doutrina, mas evitar interpretações superficiais que confundam linguagem simbólica, realidade espiritual e descrições literais.</p>
+
+<p>A doutrina do juízo eterno deve produzir reverência, consciência da responsabilidade humana e urgência evangelística. A Igreja não anuncia condenação por prazer ou superioridade moral, mas proclama a salvação oferecida por Deus em Jesus Cristo.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Mateus 25:31-46; Marcos 9:43-48; 2 Tessalonicenses 1:8-9; Apocalipse 20:11-15; Apocalipse 21:8.
+</div>
+
+<h3>5.4. A eternidade e a plenitude da comunhão com Deus</h3>
+
+<p>A vida eterna não deve ser reduzida a uma duração interminável. No pensamento bíblico, ela envolve uma qualidade de existência fundamentada na comunhão com Deus. Jesus relaciona a vida eterna ao conhecimento do Pai e daquele que Ele enviou, Jesus Cristo.</p>
+
+<p>O destino dos redimidos é participar da presença divina, livres da corrupção e da condenação. A esperança escatológica encontra sua expressão máxima na promessa de que os servos de Deus verão Sua face e reinarão pelos séculos dos séculos.</p>
+</section>
+
+<section class="texto-audio">
+<h2>6. O Reino Milenar e a Consumação do Governo de Cristo</h2>
+
+<p>Apocalipse 20 apresenta o período de mil anos durante o qual Satanás estará preso e Cristo exercerá Seu governo. A interpretação desse capítulo é um dos pontos de debate entre diferentes tradições escatológicas cristãs.</p>
+
+<p>Na interpretação pré-milenista, adotada pela tradição pentecostal clássica aqui apresentada, o Reino Milenar é compreendido como um período futuro do governo de Cristo, relacionado à manifestação de Sua autoridade sobre as nações.</p>
+
+<h3>6.1. O significado do milênio</h3>
+
+<p>O termo milênio é derivado do latim <em>mille</em>, mil, e <em>annus</em>, ano. Em Apocalipse 20, a expressão aparece associada ao período de mil anos. A interpretação pré-milenista entende essa referência como um período futuro do governo messiânico de Cristo.</p>
+
+<p>Esse entendimento considera a sequência literária de Apocalipse 19 e 20: a manifestação vitoriosa de Cristo, a derrota de Seus adversários e a apresentação do período milenar.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Isaías 2:1-4; Isaías 11:1-10; Zacarias 14:4-9; Apocalipse 19:11-21; Apocalipse 20:1-6.
+</div>
+
+<h3>6.2. A prisão de Satanás e a justiça do Reino</h3>
+
+<p>Apocalipse 20 descreve Satanás sendo preso para que não engane as nações durante o período indicado. O texto também apresenta aqueles que participam da primeira ressurreição e reinam com Cristo.</p>
+
+<p>Na leitura pré-milenista, esse período representa uma manifestação especial do governo de Cristo e da justiça divina. Não se trata da capacidade humana de construir um mundo perfeito por meio de sistemas políticos ou sociais, mas da autoridade soberana do próprio Messias.</p>
+
+<h3>6.3. A rebelião final e o juízo definitivo</h3>
+
+<p>Após o período dos mil anos, Apocalipse 20 descreve a soltura de Satanás e uma última tentativa de enganar as nações. A rebelião é derrotada pela intervenção divina, e o texto prossegue com a visão do Grande Trono Branco.</p>
+
+<p>Essa sequência demonstra que o mal não possui futuro permanente. Sua atuação está limitada pela soberania de Deus, e sua derrota definitiva é certa.</p>
+</section>
+
+<section class="texto-audio">
+<h2>7. A Interpretação das Profecias e as Principais Correntes Escatológicas</h2>
+
+<p>O estudo escatológico exige métodos responsáveis de interpretação. A leitura das profecias deve considerar o contexto histórico, o gênero literário, o público original, a linguagem utilizada e a relação entre os textos do Antigo e do Novo Testamento.</p>
+
+<h3>7.1. Pré-milenismo</h3>
+
+<p>O pré-milenismo entende que Cristo retornará antes do estabelecimento do Reino Milenar descrito em Apocalipse 20. Essa perspectiva interpreta o milênio como um período futuro do governo de Cristo.</p>
+
+<p>Dentro do pré-milenismo existem diferentes entendimentos sobre o arrebatamento. O pré-tribulacionismo, adotado neste material, ensina que a Igreja será arrebatada antes da Grande Tribulação.</p>
+
+<h3>7.2. Pós-milenismo</h3>
+
+<p>O pós-milenismo compreende que a volta de Cristo ocorrerá após um período de expansão e influência do Reino de Deus na história. Há diferentes versões dessa interpretação, mas ela geralmente atribui papel importante à transformação progressiva das sociedades pela ação do Evangelho.</p>
+
+<h3>7.3. Amilenismo</h3>
+
+<p>O amilenismo interpreta o milênio de Apocalipse 20 de maneira simbólica, entendendo-o como referência ao período atual do reinado de Cristo, especialmente em relação à Igreja e à realidade espiritual do Reino.</p>
+
+<h3>7.4. Pré-tribulacionismo</h3>
+
+<p>O pré-tribulacionismo é uma posição específica sobre o momento do arrebatamento. Entende que Cristo recolherá Sua Igreja antes do período da Grande Tribulação. Essa interpretação é historicamente representativa de setores importantes do pentecostalismo clássico e será adotada como referência doutrinária desta matéria.</p>
+
+<p>É importante não confundir as categorias: pré-milenismo trata da relação entre a volta de Cristo e o milênio; pré-tribulacionismo trata da relação entre o arrebatamento e a Grande Tribulação. São conceitos relacionados, mas não equivalentes.</p>
+
+<div class="destaque">
+<strong>Critério de interpretação:</strong> nenhuma corrente escatológica deve ser sustentada por frases isoladas. O estudante deve comparar as passagens bíblicas, respeitar seu contexto e distinguir aquilo que o texto afirma claramente das conclusões interpretativas construídas a partir dele.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas para estudo:</strong> Daniel 7–12; Mateus 24–25; 1 Coríntios 15; 1 Tessalonicenses 4–5; 2 Tessalonicenses 2; 2 Pedro 3; Apocalipse 19–22.
+</div>
+</section>
+
+<section class="texto-audio">
+<h2>8. A Esperança Escatológica e a Missão da Igreja</h2>
+
+<p>A verdadeira Escatologia bíblica não paralisa o cristão. Ela o impulsiona à fidelidade, à perseverança e ao compromisso com a missão. A certeza de que Cristo retornará deve produzir uma vida coerente com o Evangelho e uma atuação responsável no mundo presente.</p>
+
+<h3>8.1. Esperança diante das aflições</h3>
+
+<p>A Igreja não está isenta de perseguições, sofrimentos ou dificuldades. Entretanto, a esperança cristã não depende da ausência de problemas. Ela está fundamentada na fidelidade de Deus e na promessa de que o sofrimento presente não pode ser comparado à glória futura que será revelada.</p>
+
+<p>Paulo utiliza a esperança da ressurreição para consolar os cristãos diante da morte. A promessa da volta de Cristo também deve ser utilizada para fortalecer os que enfrentam tribulações e perdas.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Romanos 8:18; 2 Coríntios 4:16-18; 1 Tessalonicenses 4:13-18; 1 Pedro 1:3-9.
+</div>
+
+<h3>8.2. Santidade e vigilância</h3>
+
+<p>A expectativa da volta de Cristo possui implicações diretas sobre o comportamento cristão. João ensina que aquele que possui essa esperança purifica-se a si mesmo, assim como Cristo é puro.</p>
+
+<p>Vigilância não significa viver dominado pelo medo, abandonar responsabilidades ou interpretar compulsivamente os acontecimentos do mundo. Significa permanecer espiritualmente preparado, fiel à Palavra e comprometido com a vontade de Deus.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Mateus 24:42-44; Tito 2:11-14; 1 João 3:2-3; 2 Pedro 3:11-14.
+</div>
+
+<h3>8.3. Evangelização e responsabilidade missionária</h3>
+
+<p>A doutrina das últimas coisas fortalece a urgência da evangelização. Se a história caminha para a consumação, a proclamação do Evangelho não pode ser tratada como atividade secundária. A Igreja recebeu a responsabilidade de anunciar a salvação em Cristo e fazer discípulos entre todas as nações.</p>
+
+<p>A expectativa da volta do Senhor não deve gerar isolamento, mas compromisso. O cristão continua trabalhando, servindo, educando, cuidando da família e contribuindo para o bem do próximo, reconhecendo que sua existência presente deve refletir os valores do Reino de Deus.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong> Mateus 28:18-20; Marcos 16:15; Atos 1:8; 2 Pedro 3:9; Apocalipse 22:17.
+</div>
+
+<h3>8.4. A administração responsável da vida</h3>
+
+<p>A consciência da eternidade também redefine a maneira como o cristão administra seus recursos, seu tempo, seus relacionamentos e suas capacidades. Os bens materiais são instrumentos de responsabilidade, não fundamentos da identidade humana.</p>
+
+<p>A esperança futura não autoriza irresponsabilidade financeira nem desprezo pela vida presente. Pelo contrário, ensina que tudo o que foi confiado ao ser humano deve ser administrado com sabedoria, honestidade e propósito.</p>
+
+<h3>8.5. A conclusão da esperança cristã</h3>
+
+<p>A Escatologia encontra seu ponto culminante na promessa da presença eterna de Deus com Seu povo. A história não termina no triunfo do pecado, da violência ou da morte. Seu destino final está nas mãos do Criador, que fará novas todas as coisas.</p>
+
+<p>Por isso, a Igreja proclama a esperança que atravessa os séculos: Jesus Cristo voltará. A morte será vencida, a justiça divina será plenamente manifestada e os redimidos participarão da realidade eterna prometida por Deus.</p>
+
+<div class="destaque">
+<strong>Conclusão doutrinária:</strong> estudar Escatologia é compreender que o futuro pertence a Deus. A Igreja aguarda a volta de Cristo, proclama o Evangelho, persevera na santidade e vive no presente orientada pela esperança da eternidade.
+</div>
+</section>
+
+<section class="texto-audio">
+<h2>9. Referências Lexicográficas e Termos Fundamentais</h2>
+
+<p>O estudo das palavras bíblicas contribui para a compreensão dos conceitos escatológicos. Entretanto, nenhuma palavra deve ser interpretada isoladamente. O significado de um termo depende de seu contexto, de sua construção gramatical e do uso que recebe no conjunto das Escrituras.</p>
+
+<h3>9.1. Termos do Antigo Testamento – Hebraico</h3>
+
+<ul>
+<li><span class="termo">אַחֲרִית – Acharit:</span> fim, parte final, resultado ou futuro. O termo pode indicar o desfecho de uma situação ou o destino de determinado acontecimento. Referência: Daniel 10:14.</li>
+<li><span class="termo">יוֹם – Yom:</span> dia. Pode indicar um dia comum, um período ou uma ocasião determinada, conforme o contexto. Referência: Joel 2:1.</li>
+<li><span class="termo">מָשִׁיחַ – Mashiach:</span> ungido. Termo relacionado à expectativa messiânica e à figura daquele que recebe uma missão especial de Deus. Referência: Daniel 9:25-26.</li>
+<li><span class="termo">מַלְכוּת – Malkut:</span> reino, reinado ou domínio. Relaciona-se ao exercício da autoridade real. Referência: Daniel 7:14.</li>
+<li><span class="termo">עוֹלָם – Olam:</span> duração remota, antiguidade ou eternidade, conforme o contexto. Referência: Daniel 12:2.</li>
+</ul>
+
+<h3>9.2. Termos do Novo Testamento – Grego</h3>
+
+<ul>
+<li><span class="termo">ἔσχατος – Éschatos:</span> último, final ou extremo. É a raiz do termo Escatologia. Referência: João 6:39-40.</li>
+<li><span class="termo">λόγος – Lógos:</span> palavra, discurso ou razão. Associado a éschatos na formação do termo Escatologia.</li>
+<li><span class="termo">παρουσία – Parousía:</span> presença, chegada ou vinda. Utilizado em textos relacionados ao retorno de Cristo. Referência: 1 Tessalonicenses 4:15.</li>
+<li><span class="termo">ἁρπάζω – Harpázō:</span> arrebatar, tomar ou retirar rapidamente. É o verbo utilizado em 1 Tessalonicenses 4:17 para descrever o arrebatamento dos crentes.</li>
+<li><span class="termo">ἀνάστασις – Anástasis:</span> ressurreição ou levantar-se. Referência: João 11:25; 1 Coríntios 15:21.</li>
+<li><span class="termo">κρίσις – Krísis:</span> julgamento, juízo ou decisão judicial. Referência: João 5:24.</li>
+<li><span class="termo">αἰώνιος – Aiónios:</span> eterno ou pertencente à era vindoura. Referência: Mateus 25:46.</li>
+<li><span class="termo">βασιλεία – Basileía:</span> reino, reinado ou domínio real. Referência: Mateus 6:33.</li>
+<li><span class="termo">καινός – Kainós:</span> novo em qualidade ou natureza, conforme o contexto. Utilizado na expressão novos céus e nova terra. Referência: Apocalipse 21:1.</li>
+<li><span class="termo">θλῖψις – Thlípsis:</span> tribulação, aflição ou pressão. Referência: Mateus 24:21.</li>
+</ul>
+
+<h3>9.3. Instrumentos lexicográficos recomendados</h3>
+
+<ul>
+<li><strong>James Strong – Concordância Bíblica Exaustiva:</strong> ferramenta de identificação e consulta de termos hebraicos e gregos, útil para localizar ocorrências e comparar usos.</li>
+<li><strong>W. E. Vine – Dicionário Vine:</strong> obra de referência para o estudo expositivo de palavras do Antigo e do Novo Testamento.</li>
+<li><strong>Walter Bauer, Frederick Danker, William Arndt e F. Wilbur Gingrich – BDAG:</strong> léxico de referência para o grego do Novo Testamento e da literatura cristã primitiva.</li>
+<li><strong>Johannes Louw e Eugene Nida – Greek-English Lexicon of the New Testament Based on Semantic Domains:</strong> instrumento que organiza o vocabulário do Novo Testamento por campos semânticos.</li>
+</ul>
+
+<div class="destaque">
+<strong>Orientação metodológica:</strong> a numeração de Strong e as definições de dicionários são ferramentas auxiliares. O estudante deve verificar o uso do termo no versículo, no parágrafo e no contexto histórico-literário antes de estabelecer uma conclusão doutrinária.
+</div>
+</section>
+
+<section class="texto-audio">
+<h2>10. Referências Teológicas e Bibliografia de Apoio</h2>
+
+<p>O desenvolvimento da Escatologia exige diálogo com obras de Teologia Sistemática, interpretação profética e estudos bíblicos. As obras abaixo oferecem referências relevantes para a formação teológica, especialmente no ambiente pentecostal e evangélico.</p>
+
+<ul class="bibliografia">
+<li><strong>HORTON, Stanley M. (editor).</strong> <em>Teologia Sistemática: Uma Perspectiva Pentecostal.</em> CPAD. Obra de referência para o estudo das doutrinas cristãs a partir de uma perspectiva pentecostal.</li>
+
+<li><strong>PEARLMAN, Myer.</strong> <em>Conhecendo as Doutrinas da Bíblia.</em> Vida. Introdução sistemática às principais doutrinas da fé cristã.</li>
+
+<li><strong>BERGSTÉN, Eurico.</strong> <em>Teologia Sistemática.</em> CPAD. Obra de apoio à formação doutrinária no contexto pentecostal brasileiro.</li>
+
+<li><strong>GILBERTO, Antonio (organizador).</strong> <em>Teologia Sistemática Pentecostal.</em> CPAD. Referência de estudo das doutrinas cristãs sob perspectiva pentecostal.</li>
+
+<li><strong>WALVOORD, John F.</strong> <em>The Rapture Question.</em> Obra de referência para o estudo das diferentes interpretações sobre o arrebatamento.</li>
+
+<li><strong>RYRIE, Charles C.</strong> <em>Basic Theology.</em> Obra de Teologia Sistemática que apresenta temas relacionados à volta de Cristo, ressurreição e consumação.</li>
+
+<li><strong>HOEKEMA, Anthony A.</strong> <em>The Bible and the Future.</em> Obra importante para o estudo das principais questões escatológicas e de suas diferentes interpretações.</li>
+</ul>
+
+<p>As referências bibliográficas devem ser consultadas nas edições disponíveis, pois títulos traduzidos, editoras, organização editorial e anos de publicação podem variar. A utilização dessas obras não significa que todos os autores defendam a mesma posição sobre cada detalhe da Escatologia.</p>
+
+<h3>Orientação para o estudante</h3>
+
+<p>O estudante deverá comparar as interpretações, identificar os argumentos bíblicos utilizados por cada corrente e desenvolver capacidade de análise textual. O objetivo não é apenas memorizar acontecimentos futuros, mas compreender a relação entre a promessa da volta de Cristo, a esperança da ressurreição e a missão da Igreja.</p>
+</section>
+
+<div class="destaque">
+<h2>Considerações finais da matéria</h2>
+
+<p>A Escatologia revela que a história humana possui um destino determinado pela soberania de Deus. A criação, a redenção e a consumação pertencem a um único propósito divino, cujo centro é Jesus Cristo.</p>
+
+<p>A Igreja aguarda a volta do Senhor, anuncia o Evangelho, persevera na fé e vive em santidade. A ressurreição dos mortos, o juízo divino e a promessa dos novos céus e da nova terra demonstram que o mal, o pecado e a morte não terão a palavra final.</p>
+
+<p>O estudante que compreende a doutrina das últimas coisas deve desenvolver uma fé mais consciente, uma esperança mais firme e uma responsabilidade maior diante de Deus e dos homens.</p>
+
+<p><strong>MARANATA! Ora vem, Senhor Jesus.</strong> (Apocalipse 22:20)</p>
+</div>
+
+<div style="text-align:center; margin-top:35px;">
+    <button class="botao-principal" onclick="irParaAvaliacao()">
+        IR PARA AVALIAÇÃO
+    </button>
+</div>
+
+<section id="avaliacao">
+    <h2>Avaliação – Módulo 5: Escatologia</h2>
+    <p>Responda às 10 questões. A nota mínima para aprovação é 7,0.</p>
+
+    <form id="formulario">
+        <div class="questao">
+            <p>1. Qual é o significado fundamental do termo Escatologia?</p>
+            <label><input type="radio" name="q1" value="0"> Estudo da origem das civilizações.</label>
+            <label><input type="radio" name="q1" value="1"> Estudo das últimas coisas e da consumação do plano divino.</label>
+            <label><input type="radio" name="q1" value="0"> Estudo exclusivo dos acontecimentos políticos.</label>
+            <label><input type="radio" name="q1" value="0"> Estudo das leis naturais do universo.</label>
+        </div>
+
+        <div class="questao">
+            <p>2. O que significa o termo grego Parousia no contexto escatológico?</p>
+            <label><input type="radio" name="q2" value="0"> Criação do universo.</label>
+            <label><input type="radio" name="q2" value="0"> Ressurreição espiritual do pecador.</label>
+            <label><input type="radio" name="q2" value="1"> Presença, chegada ou vinda, especialmente relacionada ao retorno de Cristo.</label>
+            <label><input type="radio" name="q2" value="0"> Julgamento das obras da Igreja.</label>
+        </div>
+
+        <div class="questao">
+            <p>3. Segundo 1 Tessalonicenses 4:16-17, o que acontecerá no arrebatamento?</p>
+            <label><input type="radio" name="q3" value="0"> A humanidade será imediatamente destruída.</label>
+            <label><input type="radio" name="q3" value="1"> Os mortos em Cristo ressuscitarão, e os crentes vivos serão reunidos ao Senhor.</label>
+            <label><input type="radio" name="q3" value="0"> O Reino Milenar será encerrado.</label>
+            <label><input type="radio" name="q3" value="0"> A Igreja deixará de anunciar o Evangelho.</label>
+        </div>
+
+        <div class="questao">
+            <p>4. Qual é o fundamento da esperança cristã na ressurreição corporal?</p>
+            <label><input type="radio" name="q4" value="0"> A imortalidade natural do corpo humano.</label>
+            <label><input type="radio" name="q4" value="0"> A evolução da humanidade.</label>
+            <label><input type="radio" name="q4" value="1"> A ressurreição de Jesus Cristo.</label>
+            <label><input type="radio" name="q4" value="0"> A capacidade humana de vencer a morte.</label>
+        </div>
+
+        <div class="questao">
+            <p>5. O que caracteriza o Tribunal de Cristo na interpretação pré-tribulacionista?</p>
+            <label><input type="radio" name="q5" value="0"> A determinação da salvação por obras humanas.</label>
+            <label><input type="radio" name="q5" value="1"> A avaliação das obras e da fidelidade dos salvos, relacionada aos galardões.</label>
+            <label><input type="radio" name="q5" value="0"> O julgamento exclusivo dos anjos.</label>
+            <label><input type="radio" name="q5" value="0"> A condenação de todos os cristãos.</label>
+        </div>
+
+        <div class="questao">
+            <p>6. O que Apocalipse 20:11-15 apresenta?</p>
+            <label><input type="radio" name="q6" value="0"> A criação do primeiro homem.</label>
+            <label><input type="radio" name="q6" value="0"> O nascimento de Jesus.</label>
+            <label><input type="radio" name="q6" value="0"> A instituição da Igreja em Jerusalém.</label>
+            <label><input type="radio" name="q6" value="1"> O julgamento diante do Grande Trono Branco.</label>
+        </div>
+
+        <div class="questao">
+            <p>7. Na interpretação pré-milenista, como é compreendido o Reino Milenar?</p>
+            <label><input type="radio" name="q7" value="1"> Como um período futuro do governo de Cristo.</label>
+            <label><input type="radio" name="q7" value="0"> Como uma referência exclusiva à criação.</label>
+            <label><input type="radio" name="q7" value="0"> Como um período anterior à primeira vinda de Jesus.</label>
+            <label><input type="radio" name="q7" value="0"> Como uma realidade sem relação com Cristo.</label>
+        </div>
+
+        <div class="questao">
+            <p>8. Qual é a posição pré-tribulacionista sobre o arrebatamento?</p>
+            <label><input type="radio" name="q8" value="0"> O arrebatamento acontece depois do juízo final.</label>
+            <label><input type="radio" name="q8" value="0"> O arrebatamento é apenas uma experiência simbólica.</label>
+            <label><input type="radio" name="q8" value="1"> A Igreja será arrebatada antes do período da Grande Tribulação.</label>
+            <label><input type="radio" name="q8" value="0"> O arrebatamento não possui fundamento bíblico.</label>
+        </div>
+
+        <div class="questao">
+            <p>9. Qual é o significado da promessa dos novos céus e da nova terra?</p>
+            <label><input type="radio" name="q9" value="0"> A continuidade definitiva do pecado.</label>
+            <label><input type="radio" name="q9" value="1"> A renovação da criação e a plenitude da comunhão de Deus com Seu povo.</label>
+            <label><input type="radio" name="q9" value="0"> O desaparecimento da soberania divina.</label>
+            <label><input type="radio" name="q9" value="0"> A repetição interminável da história humana.</label>
+        </div>
+
+        <div class="questao">
+            <p>10. Qual deve ser o efeito prático da esperança escatológica na vida da Igreja?</p>
+            <label><input type="radio" name="q10" value="0"> Abandonar as responsabilidades presentes.</label>
+            <label><input type="radio" name="q10" value="0"> Viver exclusivamente preocupada com datas proféticas.</label>
+            <label><input type="radio" name="q10" value="0"> Ignorar a evangelização e o serviço cristão.</label>
+            <label><input type="radio" name="q10" value="1"> Viver em santidade, vigilância, perseverança e compromisso missionário.</label>
+        </div>
+
+        <div style="text-align:center;">
+            <button type="button" class="botao-principal" onclick="corrigirAvaliacao()">
+                FINALIZAR AVALIAÇÃO
+            </button>
+        </div>
+    </form>
+
+    <div id="resultado"></div>
+</section>
+
+<div id="avancar" style="display:none; text-align:center; margin-top:25px;">
+    <h2>Matéria concluída!</h2>
+    <p>Parabéns! Você foi aprovado em Escatologia.</p>
+    <button class="botao-principal" onclick="irParaProximaMateria()">
+        AVANÇAR PARA A PRÓXIMA MATÉRIA
+    </button>
+</div>
+
+</main>
+
+<footer>
+    © 2026 AVANCE – Professor Gilberto Moreira
+</footer>
+
+<!-- VLibras -->
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
-    function verificarProgresso() {
-        if (localStorage.getItem('modulo5_concluido') === 'true') {
-            const res = document.getElementById('resultado');
-            document.getElementById('secao-leitura').style.display = 'none';
-            document.getElementById('secao-prova').style.display = 'none';
-            res.style.display = 'block';
-            res.innerHTML = `
-                <b style="color:green; font-size:1.2rem;">Módulo concluído com sucesso!</b><br>
-                <button class="btn" onclick="window.location.href='materia6.html'">IR PARA O MÓDULO 6</button>
-            `;
+new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+let frases = [];
+let indiceAtual = 0;
+let leituraAtiva = false;
+let leituraPausada = false;
+let falaAtual = null;
+
+function prepararLeitura() {
+    frases = Array.from(
+        document.querySelectorAll('#conteudo .texto-audio')
+    ).flatMap(secao => {
+        return Array.from(secao.querySelectorAll('p, li, h2, h3'))
+            .filter(el => el.innerText.trim().length > 0);
+    });
+
+    frases = frases.filter(el => {
+        return !el.closest('#avaliacao');
+    });
+}
+
+function limparDestaques() {
+    document.querySelectorAll('.lendo').forEach(el => {
+        el.classList.remove('lendo');
+    });
+}
+
+function atualizarProgresso() {
+    const percentual = frases.length
+        ? (indiceAtual / frases.length) * 100
+        : 0;
+
+    document.getElementById('barra-progresso').style.width =
+        Math.min(percentual, 100) + '%';
+}
+
+function falarProximo() {
+    if (!leituraAtiva || leituraPausada) return;
+
+    if (indiceAtual >= frases.length) {
+        pararLeitura();
+        document.getElementById('barra-progresso').style.width = '100%';
+        return;
+    }
+
+    limparDestaques();
+
+    const elemento = frases[indiceAtual];
+    elemento.classList.add('lendo');
+    elemento.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+
+    falaAtual = new SpeechSynthesisUtterance(
+        elemento.innerText
+    );
+
+    falaAtual.lang = 'pt-BR';
+    falaAtual.rate = 0.95;
+    falaAtual.pitch = 1;
+
+    falaAtual.onend = function() {
+        if (!leituraAtiva || leituraPausada) return;
+
+        indiceAtual++;
+        atualizarProgresso();
+        falarProximo();
+    };
+
+    falaAtual.onerror = function(evento) {
+        if (evento.error === 'interrupted' ||
+            evento.error === 'canceled') return;
+
+        leituraAtiva = false;
+        leituraPausada = false;
+        limparDestaques();
+    };
+
+    speechSynthesis.speak(falaAtual);
+    atualizarProgresso();
+}
+
+function iniciarLeitura() {
+    if (!('speechSynthesis' in window)) {
+        alert('Este navegador não oferece suporte à leitura de áudio.');
+        return;
+    }
+
+    speechSynthesis.cancel();
+    prepararLeitura();
+
+    indiceAtual = 0;
+    leituraAtiva = true;
+    leituraPausada = false;
+
+    falarProximo();
+}
+
+function pausarLeitura() {
+    if (!('speechSynthesis' in window)) return;
+
+    if (speechSynthesis.speaking) {
+        speechSynthesis.pause();
+        leituraPausada = true;
+    }
+}
+
+function continuarLeitura() {
+    if (!('speechSynthesis' in window)) return;
+
+    if (leituraPausada) {
+        leituraPausada = false;
+        speechSynthesis.resume();
+    } else if (!leituraAtiva) {
+        iniciarLeitura();
+    }
+}
+
+function pararLeitura() {
+    if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+    }
+
+    leituraAtiva = false;
+    leituraPausada = false;
+    limparDestaques();
+
+    falaAtual = null;
+    document.getElementById('barra-progresso').style.width = '0%';
+}
+
+function irParaAvaliacao() {
+    pararLeitura();
+
+    document.getElementById('avaliacao').style.display = 'block';
+
+    document.getElementById('avaliacao').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+function corrigirAvaliacao() {
+    const totalQuestoes = 10;
+    let acertos = 0;
+
+    for (let i = 1; i <= totalQuestoes; i++) {
+        const resposta = document.querySelector(
+            'input[name="q' + i + '"]:checked'
+        );
+
+        if (!resposta) {
+            alert('Responda todas as questões antes de finalizar.');
+            document.querySelector('.questao:not(:has(input:checked))')
+                ?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            return;
+        }
+
+        if (resposta.value === '1') {
+            acertos++;
         }
     }
 
-    function irParaProva() {
-        document.getElementById('secao-leitura').style.display = 'none';
-        document.getElementById('secao-prova').style.display = 'block';
-        window.scrollTo(0,0);
+    const nota = acertos;
+    const resultado = document.getElementById('resultado');
+
+    resultado.style.display = 'block';
+
+    if (nota >= 7) {
+        resultado.className = 'aprovado';
+        resultado.innerHTML =
+            'APROVADO!<br>Você acertou ' + acertos +
+            ' de 10 questões.<br>Nota: ' + nota.toFixed(1) +
+            '<br>Parabéns pela conclusão da matéria!';
+
+        localStorage.setItem('modulo5_concluido', 'true');
+
+        document.getElementById('avancar').style.display = 'block';
+    } else {
+        resultado.className = 'reprovado';
+        resultado.innerHTML =
+            'NÃO APROVADO.<br>Você acertou ' + acertos +
+            ' de 10 questões.<br>Nota: ' + nota.toFixed(1) +
+            '<br>É necessário alcançar nota mínima 7,0. Revise o conteúdo e tente novamente.';
+
+        document.getElementById('avancar').style.display = 'none';
     }
 
-    function corrigir() {
-        const form = document.getElementById('quizForm');
-        let nota = 0;
-        for(let i=1; i<=10; i++) {
-            const p = form['p'+i];
-            if(p && p.value === "1") nota++;
-        }
-        
-        const res = document.getElementById('resultado');
-        res.style.display = 'block';
-        
-        if(nota >= 7) {
-            localStorage.setItem('modulo5_concluido', 'true');
-            res.innerHTML = `<b style="color:green">APROVADO! Nota: ${nota}/10.</b>`;
-            setTimeout(() => { window.location.href = 'materia6.html'; }, 3000);
-        } else {
-            res.innerHTML = `<b style="color:red">REPROVADO. Nota: ${nota}/10.<br>Refaça a leitura e tente novamente.</b>`;
-            setTimeout(() => { location.reload(); }, 3000);
-        }
+    resultado.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+}
+
+function irParaProximaMateria() {
+    pararLeitura();
+    window.location.href = 'materia6.html';
+}
+
+window.addEventListener('load', function() {
+    if (localStorage.getItem('modulo5_concluido') === 'true') {
+        document.getElementById('avancar').style.display = 'block';
     }
+});
 </script>
 
 </body>
