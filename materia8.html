@@ -1,162 +1,1322 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 8 - Hermenêutica | AVANCE</title>
-    <style>
-        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
-        .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
-        .secao { display: none; }
-        .ativa { display: block; }
-        h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
-        h3 { color: var(--azul-c); margin-top: 25px; font-size: 1.3rem; }
-        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
-        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
-        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; text-align: center; text-decoration: none; }
-        .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-        p { text-align: justify; text-indent: 1.5em; margin-bottom: 15px; }
-    </style>
-</head>
-<body onload="verificarProgresso()">
 
-<div class="header">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matéria 8 – Hermenêutica | AVANCE</title>
+
+<style>
+:root {
+    --azul-escuro: #001f3f;
+    --azul: #0074D9;
+    --dourado: #d4af37;
+    --fundo: #f3f6fa;
+    --texto: #263238;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.75;
+}
+
+header {
+    background: var(--azul-escuro);
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+    border-bottom: 5px solid var(--dourado);
+}
+
+header h1 { margin: 0; font-size: 27px; }
+header p { margin: 8px 0 0; color: #e4eaf1; }
+
+.container {
+    max-width: 950px;
+    margin: 25px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+}
+
+h2 {
+    color: var(--azul-escuro);
+    border-bottom: 2px solid var(--dourado);
+    padding-bottom: 8px;
+    margin-top: 35px;
+}
+
+h3 {
+    color: var(--azul);
+    margin-top: 25px;
+}
+
+p { text-align: justify; }
+
+.referencia, .termo, .destaque {
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.referencia {
+    background: #eef4fa;
+    border-left: 4px solid var(--azul);
+}
+
+.termo {
+    background: #fff8e4;
+    border-left: 4px solid var(--dourado);
+}
+
+.destaque {
+    background: #f1f5f9;
+    border-left: 4px solid var(--azul-escuro);
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin: 12px 0 18px;
+}
+
+.controles button {
+    background: #edf3f8;
+    color: #334b61;
+    border: 1px solid #d6e0e9;
+    padding: 7px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    width: auto;
+}
+
+.controles button:hover {
+    background: #dce9f4;
+}
+
+.controles .ouvir {
+    color: var(--azul-escuro);
+    font-weight: bold;
+}
+
+.progresso-area {
+    margin: 15px 0 22px;
+    font-size: 13px;
+    color: #52606d;
+}
+
+.progresso-fundo {
+    height: 7px;
+    background: #dce3eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+#barraProgresso {
+    height: 100%;
+    width: 0%;
+    background: var(--azul);
+    transition: width 0.3s;
+}
+
+.secao { padding-bottom: 15px; }
+
+.secao.lida {
+    background: #f7faff;
+    border-radius: 6px;
+}
+
+.bibliografia li { margin-bottom: 9px; }
+
+#avaliacao {
+    display: none;
+    margin-top: 35px;
+    border-top: 3px solid var(--dourado);
+    padding-top: 20px;
+}
+
+.questao {
+    background: #f5f8fc;
+    padding: 15px;
+    margin: 18px 0;
+    border-radius: 7px;
+}
+
+.questao label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+.botao-enviar {
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#resultado {
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+#proximaMateria {
+    display: none;
+    background: #176b38;
+    margin-top: 15px;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    background: var(--azul-escuro);
+    color: white;
+    padding: 22px 10px;
+    margin-top: 40px;
+    border-top: 4px solid var(--dourado);
+}
+
+@media(max-width:600px) {
+    .container { margin: 12px; padding: 17px; }
+    header h1 { font-size: 22px; }
+    .botao-enviar, #proximaMateria { width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
     <h1>AVANCE</h1>
-    <p>Módulo 8: Hermenêutica</p>
-</div>
+    <p>Faculdade Teológica – Ultrapassando Limites!</p>
+    <h2 style="color:white;border:none;">MÓDULO 8</h2>
+    <p>Matéria 8 – Hermenêutica</p>
+    <p>A Ciência da Interpretação Sagrada</p>
+</header>
 
 <div class="container">
-    <div id="secao-leitura" class="secao ativa">
-        <h2>Matéria 8 – Hermenêutica: A Ciência da Interpretação Sagrada</h2>
-        <p>A Hermenêutica Bíblica é a disciplina que estabelece as regras, princípios e métodos necessários para a correta interpretação das Escrituras. Ela atua como uma ponte sobre o abismo histórico, cultural, linguístico e geográfico que separa o leitor moderno dos autores bíblicos originais, garantindo que a mensagem extraída seja a verdade revelada por Deus e não uma projeção da mente humana.</p>
 
-        <h3>1. A Necessidade Imperativa da Hermenêutica</h3>
-        <p>A Bíblia não caiu do céu em um vácuo cultural; ela foi inspirada em contextos específicos, utilizando idiomas (Hebraico, Aramaico e Grego) com estruturas de pensamento próprias. Sem o auxílio da hermenêutica, o intérprete corre o risco de cair no anacronismo e no subjetivismo, tratando o texto como um "teste de Rorschach" onde cada um vê o que quer. O estudo sistemático protege a igreja de heresias, fornecendo ferramentas para que a voz do autor original seja ouvida com clareza acima do ruído das opiniões contemporâneas.</p>
+<h2>APRESENTAÇÃO DA MATÉRIA</h2>
 
-        <h3>2. O Pressuposto da Unidade e Autoridade Bíblica</h3>
-        <p>Uma hermenêutica saudável parte do princípio de que toda a Escritura é Theopneustos (soprada por Deus) e, portanto, possui uma unidade orgânica e doutrinária infalível. Embora escrita por cerca de 40 autores diferentes em 1500 anos, a Bíblia apresenta uma história de redenção coesa. Isso implica que a Escritura é sua própria intérprete (Scriptura sacra sui ipsius interpres). Quando um texto parece obscuro, o intérprete deve recorrer à totalidade da revelação para encontrar luz, nunca forçando uma contradição entre passagens.</p>
-
-        <h3>3. Princípios Fundamentais de Interpretação</h3>
-        <p>A interpretação correta exige o respeito ao contexto em três níveis: o contexto imediato (versículos anteriores e posteriores), o contexto do livro e o contexto geral de toda a Bíblia. Além disso, é vital identificar o gênero literário do texto — não se interpreta poesia como se fosse lei, nem parábola como se fosse narrativa histórica. Ignorar essas distinções literárias leva a interpretações absurdas e distorções teológicas graves. O objetivo final é sempre o "Sentido Gramático-Histórico", ou seja, o que o autor quis dizer aos seus primeiros leitores sob as regras gramaticais de sua época.</p>
-
-        <h3>4. A Distinção entre Exegese e Eisegese</h3>
-        <p>Este é o divisor de águas da fidelidade bíblica. A Exegese (do grego ex-hegeomai, "levar para fora") é o ato de extrair do texto o seu verdadeiro significado original. Já a Eisegese (do grego eis-hegeomai, "levar para dentro") ocorre quando o leitor impõe suas próprias ideias, preconceitos e ideologias sobre o texto. O intérprete fiel atua como um escavador que remove o entulho para expor a joia da verdade; o místico ou o ideólogo atua como um pintor que sobrepõe suas cores à tela sagrada.</p>
-
-        <h3>5. A Analogia da Fé (Analogia Fidei)</h3>
-        <p>Este princípio reformado estabelece que nenhum ponto da Escritura pode ser interpretado de modo a contradizer o ensino geral da fé cristã. Textos obscuros ou difíceis devem ser sempre iluminados por textos claros e didáticos. A analogia da fé impede que doutrinas inteiras sejam construídas sobre passagens isoladas ou metafóricas, garantindo que o "corpo de doutrina" das Escrituras permaneça íntegro e seguro contra interpretações inovadoras e perigosas.</p>
-
-        <h3>6. O Papel Vital da Iluminação do Espírito Santo</h3>
-        <p>A Hermenêutica não é um exercício puramente acadêmico ou intelectual. Embora exija estudo diligente e ferramentas linguísticas, a compreensão espiritual das profundezas de Deus requer a iluminação do Espírito Santo. O Espírito não traz "novas revelações" fora da Bíblia, mas abre os olhos do entendimento do crente para perceber a glória e a aplicação da verdade já revelada. O estudo responsável e a oração dependente não são excludentes, mas faces da mesma moeda na busca pelo conhecimento de Deus.</p>
-
-        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
-    </div>
-
-    <div id="secao-prova" class="secao">
-        <h2>Avaliação de Conhecimento</h2>
-        <form id="quizForm">
-            <div class="pergunta"><b>1. Hermenêutica é definida como:</b>
-                <label class="opcao"><input type="radio" name="p1" value="1"> A ciência e arte da interpretação bíblica sistemática</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Um método de leitura rápida para memorização</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Uma filosofia que nega a autoridade do autor</label>
-            </div>
-
-            <div class="pergunta"><b>2. Verdadeiro ou Falso: O contexto é irrelevante se o leitor tiver "unção".</b>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>3. O termo "Exegese" significa:</b>
-                <label class="opcao"><input type="radio" name="p3" value="1"> Extrair o sentido original do texto bíblico</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Adaptar o texto à cultura moderna a qualquer custo</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Inserir opiniões pessoais na passagem bíblica</label>
-            </div>
-
-            <div class="pergunta"><b>4. O erro da "Eisegese" ocorre quando:</b>
-                <label class="opcao"><input type="radio" name="p4" value="0"> O contexto gramatical é respeitado</label>
-                <label class="opcao"><input type="radio" name="p4" value="1"> Ideias e preconceitos externos são impostos ao texto</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> O autor original é ouvido com atenção</label>
-            </div>
-
-            <div class="pergunta"><b>5. Verdadeiro ou Falso: A Bíblia é sua própria intérprete.</b>
-                <label class="opcao"><input type="radio" name="p5" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>6. O princípio da "Analogia da Fé" ensina que:</b>
-                <label class="opcao"><input type="radio" name="p6" value="1"> Textos claros devem iluminar passagens obscuras</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Cada texto deve ser lido de forma isolada</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> A experiência pessoal está acima da doutrina geral</label>
-            </div>
-
-            <div class="pergunta"><b>7. Sobre os gêneros literários na Bíblia:</b>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Devem ser ignorados em favor do sentido místico</label>
-                <label class="opcao"><input type="radio" name="p7" value="1"> Devem ser respeitados para uma interpretação precisa</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> São todos iguais e seguem as mesmas regras</label>
-            </div>
-
-            <div class="pergunta"><b>8. Verdadeiro ou Falso: O Espírito Santo anula a necessidade de estudo diligente.</b>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p8" value="1"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>9. O objetivo final do intérprete fiel é encontrar:</b>
-                <label class="opcao"><input type="radio" name="p9" value="1"> O sentido pretendido pelo autor original (gramático-histórico)</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Uma nova revelação que ninguém nunca viu</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> O significado mais confortável para o público atual</label>
-            </div>
-
-            <div class="pergunta"><b>10. Hermenêutica saudável resulta em:</b>
-                <label class="opcao"><input type="radio" name="p10" value="1"> Fidelidade doutrinária e maturidade espiritual</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Pluralismo de interpretações contraditórias</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Foco exclusivo na sabedoria humana</label>
-            </div>
-        </form>
-        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
-    </div>
-
-    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+<!-- CONTROLES DISCRETOS DE ÁUDIO -->
+<div class="controles">
+    <button class="ouvir" onclick="iniciarLeitura()">▶ Ouvir matéria</button>
+    <button onclick="pausarLeitura()">Ⅱ Pausar</button>
+    <button onclick="pararLeitura()">■ Parar</button>
 </div>
 
-<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+<div class="progresso-area">
+    <span id="statusProgresso">Progresso da leitura: 0%</span>
+    <div class="progresso-fundo">
+        <div id="barraProgresso"></div>
+    </div>
+</div>
+
+<p>
+A Hermenêutica Bíblica é a disciplina teológica que estabelece
+os princípios, as regras e os métodos necessários para a correta
+interpretação das Escrituras. Seu objetivo é compreender
+adequadamente a mensagem bíblica, respeitando o contexto
+histórico, cultural, linguístico, literário e teológico
+em que cada texto foi produzido.
+</p>
+
+<p>
+A distância histórica entre o leitor contemporâneo e os autores
+bíblicos exige um trabalho cuidadoso de interpretação. A Bíblia
+foi escrita em diferentes épocas, por autores humanos distintos,
+utilizando principalmente o hebraico, o aramaico e o grego.
+Compreender essas particularidades é fundamental para evitar
+interpretações equivocadas.
+</p>
+
+<p>
+A Hermenêutica procura impedir que opiniões pessoais, ideologias
+ou preferências individuais sejam projetadas sobre o texto.
+O intérprete deve procurar compreender aquilo que a passagem
+comunicava originalmente e, a partir desse entendimento,
+identificar sua aplicação legítima para a atualidade.
+</p>
+
+<div class="referencia">
+<strong>Objetivo geral:</strong> compreender os fundamentos
+da interpretação bíblica, desenvolver capacidade de análise
+textual e aplicar princípios hermenêuticos que preservem
+a fidelidade à mensagem das Escrituras.
+</div>
+
+<h2>1. A NECESSIDADE IMPERATIVA DA HERMENÊUTICA</h2>
+
+<div class="secao">
+
+<p>
+A Bíblia não foi produzida em um ambiente cultural único
+ou em um período histórico isolado. Seus livros foram escritos
+em diferentes circunstâncias, utilizando idiomas, costumes,
+instituições sociais e formas de comunicação próprias de
+seus respectivos contextos.
+</p>
+
+<p>
+O leitor contemporâneo encontra-se separado dos autores
+bíblicos por uma distância histórica, geográfica e cultural.
+Por isso, não basta ler uma passagem superficialmente.
+É necessário investigar seu ambiente original, o significado
+das palavras, a intenção comunicativa e a relação do texto
+com o restante das Escrituras.
+</p>
+
+<p>
+A ausência de princípios interpretativos pode produzir
+anacronismo, quando ideias modernas são projetadas sobre
+situações antigas, e subjetivismo, quando o significado
+do texto passa a depender exclusivamente da opinião do leitor.
+</p>
+
+<p>
+A Hermenêutica também possui importância doutrinária.
+Interpretações equivocadas podem produzir conclusões
+que não correspondem ao ensino bíblico, favorecer
+heresias e comprometer a compreensão da fé cristã.
+</p>
+
+<p>
+O estudo responsável da interpretação protege a igreja
+contra o uso arbitrário das Escrituras e favorece uma
+compreensão coerente da revelação divina.
+</p>
+
+<div class="termo">
+<strong>Termo grego – ἑρμηνεία (Hermēneía):</strong>
+significa “interpretação”, “explicação” ou “tradução”.
+Está relacionado à compreensão e à comunicação do significado
+de uma mensagem.
+</div>
+
+<div class="termo">
+<strong>Termo grego – ἑρμηνεύω (Hermēneúō):</strong>
+significa “interpretar”, “explicar” ou “traduzir”.
+É utilizado no Novo Testamento em contextos de explicação
+e interpretação de palavras.
+</div>
+
+<div class="destaque">
+<strong>Conceito fundamental:</strong>
+a Hermenêutica não autoriza o intérprete a criar significados.
+Ela oferece princípios para reconhecer o significado
+comunicado pelo texto bíblico.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Neemias 8:8; Lucas 24:27; Lucas 24:45;
+Atos 8:30-35; 2 Pedro 3:15-16.
+</div>
+
+</div>
+
+<h2>2. O PRESSUPOSTO DA UNIDADE E AUTORIDADE BÍBLICA</h2>
+
+<div class="secao">
+
+<p>
+A interpretação bíblica cristã parte do reconhecimento
+da autoridade das Escrituras como revelação inspirada
+por Deus. A expressão grega <em>Theopneustos</em>,
+utilizada em 2 Timóteo 3:16, significa literalmente
+“soprada por Deus”.
+</p>
+
+<p>
+A Bíblia foi escrita por aproximadamente quarenta autores
+humanos, ao longo de muitos séculos. Apesar da diversidade
+de autores, épocas, estilos e circunstâncias, apresenta
+uma narrativa teológica abrangente que se desenvolve
+em torno da criação, da queda, da redenção e da consumação
+do propósito divino.
+</p>
+
+<p>
+Essa unidade não significa que todos os textos possuam
+o mesmo gênero literário ou que utilizem a mesma linguagem.
+Significa que as diferentes partes das Escrituras devem
+ser compreendidas dentro do conjunto da revelação bíblica,
+sem produzir contradições artificiais.
+</p>
+
+<p>
+Um princípio tradicional da interpretação cristã afirma
+que a própria Escritura deve auxiliar na interpretação
+de suas passagens. Textos mais claros podem contribuir
+para esclarecer textos difíceis, desde que sejam respeitados
+os contextos e as particularidades de cada passagem.
+</p>
+
+<h3>2.1. A inspiração das Escrituras</h3>
+
+<p>
+A inspiração bíblica estabelece a origem divina da mensagem
+escrita por meio de autores humanos. O Espírito Santo
+supervisionou o processo de produção das Escrituras,
+sem eliminar as características individuais dos escritores.
+</p>
+
+<h3>2.2. A unidade da revelação</h3>
+
+<p>
+A unidade bíblica permite compreender a progressão
+da revelação divina. Determinadas verdades são apresentadas
+inicialmente e posteriormente desenvolvidas com maior clareza
+no decorrer da história da redenção.
+</p>
+
+<h3>2.3. A Escritura interpreta a Escritura</h3>
+
+<p>
+Esse princípio exige que nenhuma passagem seja interpretada
+isoladamente quando existem outras referências capazes
+de esclarecer seu significado. A comparação de textos
+deve respeitar o contexto original de cada um.
+</p>
+
+<div class="termo">
+<strong>Termo grego – θεόπνευστος (Theópneustos):</strong>
+significa “soprado por Deus”. É a expressão utilizada
+em 2 Timóteo 3:16 para descrever a origem divina das Escrituras.
+</div>
+
+<div class="termo">
+<strong>Expressão latina – Scriptura sacra sui ipsius interpres:</strong>
+significa “a Sagrada Escritura é sua própria intérprete”.
+É uma formulação tradicional do princípio de que as passagens
+bíblicas devem ser compreendidas em harmonia com o conjunto
+da revelação.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Salmos 119:160; Lucas 24:27; João 10:35;
+2 Timóteo 3:16-17; 2 Pedro 1:20-21.
+</div>
+
+</div>
+
+<h2>3. PRINCÍPIOS FUNDAMENTAIS DE INTERPRETAÇÃO</h2>
+
+<div class="secao">
+
+<p>
+A interpretação correta exige a observação de princípios
+que permitam compreender o texto em seu ambiente original.
+O intérprete precisa considerar o contexto, a gramática,
+o vocabulário, o gênero literário e a intenção comunicativa
+do autor bíblico.
+</p>
+
+<h3>3.1. Contexto imediato</h3>
+
+<p>
+O contexto imediato compreende os versículos anteriores
+e posteriores à passagem estudada. Ele permite identificar
+o assunto desenvolvido, os argumentos apresentados
+e a relação entre as afirmações do texto.
+</p>
+
+<h3>3.2. Contexto do livro</h3>
+
+<p>
+Cada livro bíblico possui características próprias,
+objetivos específicos e circunstâncias históricas.
+Uma passagem deve ser compreendida em relação à mensagem
+geral do livro no qual está inserida.
+</p>
+
+<h3>3.3. Contexto histórico e cultural</h3>
+
+<p>
+O contexto histórico considera os acontecimentos,
+as instituições, os costumes e as condições sociais
+existentes na época da produção do texto.
+</p>
+
+<p>
+Compreender esses elementos ajuda a evitar interpretações
+baseadas em costumes modernos que não correspondem
+à realidade dos primeiros leitores.
+</p>
+
+<h3>3.4. Contexto gramatical e linguístico</h3>
+
+<p>
+A análise gramatical observa a estrutura das frases,
+os tempos verbais, as relações entre palavras e o significado
+dos termos utilizados pelo autor.
+</p>
+
+<h3>3.5. Gêneros literários</h3>
+
+<p>
+A Bíblia contém diferentes gêneros literários, entre eles
+narrativa, poesia, lei, profecia, sabedoria, evangelho,
+parábola, discurso e epístola.
+</p>
+
+<p>
+Cada gênero possui características próprias. A poesia
+pode utilizar metáforas e paralelismos; as narrativas
+descrevem acontecimentos; as epístolas apresentam argumentos
+e instruções; e as parábolas comunicam verdades por meio
+de narrativas ilustrativas.
+</p>
+
+<p>
+Não se deve interpretar uma figura poética como se fosse
+uma descrição científica, nem transformar uma parábola
+em um relato histórico literal.
+</p>
+
+<h3>3.6. Sentido gramático-histórico</h3>
+
+<p>
+O método gramático-histórico procura identificar o significado
+do texto considerando as regras gramaticais, o vocabulário,
+o contexto histórico e a intenção comunicativa do autor.
+</p>
+
+<p>
+Esse método não ignora a dimensão espiritual da Bíblia.
+Ele reconhece que a mensagem divina foi comunicada por meio
+de palavras, idiomas e circunstâncias históricas concretas.
+</p>
+
+<div class="termo">
+<strong>Termo técnico – Anacronismo:</strong>
+erro de interpretação que consiste em atribuir a uma época
+ideias, costumes ou conceitos pertencentes a outro período histórico.
+</div>
+
+<div class="termo">
+<strong>Termo técnico – Contexto:</strong>
+conjunto de elementos linguísticos, literários, históricos
+e culturais que contribuem para determinar o sentido
+de uma passagem.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Mateus 5:17-20; Lucas 1:1-4; João 4:9-10;
+1 Coríntios 10:1-11; Gálatas 3:15-18;
+Hebreus 1:1-2.
+</div>
+
+</div>
+
+<h2>4. A DISTINÇÃO ENTRE EXEGESE E EISEGESE</h2>
+
+<div class="secao">
+
+<p>
+A distinção entre exegese e eisegese é fundamental para
+a fidelidade interpretativa. Os dois conceitos representam
+movimentos diferentes na relação entre o leitor e o texto.
+</p>
+
+<h3>4.1. Exegese</h3>
+
+<p>
+A exegese é o procedimento de investigação pelo qual
+o intérprete procura extrair do texto seu significado,
+considerando o contexto histórico, a gramática, o vocabulário
+e a intenção do autor.
+</p>
+
+<p>
+O objetivo é compreender o que a passagem comunicava
+aos seus primeiros destinatários antes de estabelecer
+sua aplicação contemporânea.
+</p>
+
+<h3>4.2. Eisegese</h3>
+
+<p>
+A eisegese ocorre quando o intérprete introduz no texto
+ideias, interesses, preconceitos ou conclusões previamente
+estabelecidas, atribuindo à passagem um significado
+que ela não comunica em seu contexto.
+</p>
+
+<p>
+Nesse procedimento, o texto deixa de governar a interpretação
+e passa a ser utilizado como justificativa para opiniões
+particulares.
+</p>
+
+<h3>4.3. Exemplo comparativo</h3>
+
+<div class="destaque">
+<strong>Texto:</strong> Filipenses 4:13 – “Posso todas as coisas
+naquele que me fortalece.”
+<br><br>
+<strong>Exegese:</strong> considera o contexto da carta,
+no qual Paulo fala sobre aprender a viver em diferentes
+circunstâncias, inclusive na necessidade e na abundância,
+encontrando força em Cristo.
+<br><br>
+<strong>Eisegese:</strong> utiliza o versículo como promessa
+de sucesso ilimitado, como se significasse que o cristão
+conseguirá realizar qualquer projeto pessoal sem considerar
+o contexto da passagem.
+</div>
+
+<p>
+A exegese procura ouvir o texto; a eisegese faz o texto
+parecer dizer aquilo que o leitor deseja ouvir.
+</p>
+
+<div class="termo">
+<strong>Termo grego – ἐξηγέομαι (Exēgéomai):</strong>
+significa “explicar”, “narrar” ou “expor detalhadamente”.
+Está relacionado à origem da palavra exegese.
+</div>
+
+<div class="termo">
+<strong>Termo grego – εἰσηγέομαι (Eisēgéomai):</strong>
+expressão relacionada à ideia de introduzir ou apresentar
+algo. É utilizada na formação do termo técnico eisegese,
+que descreve a imposição de ideias ao texto.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Neemias 8:8; Atos 17:11; 2 Timóteo 2:15;
+2 Pedro 1:20-21; 2 Pedro 3:16.
+</div>
+
+</div>
+
+<h2>5. A ANALOGIA DA FÉ – ANALOGIA FIDEI</h2>
+
+<div class="secao">
+
+<p>
+A Analogia da Fé é um princípio tradicional da interpretação
+cristã segundo o qual nenhuma passagem deve ser interpretada
+de maneira que contradiga o ensino geral das Escrituras.
+</p>
+
+<p>
+Esse princípio considera a unidade doutrinária da revelação
+e estabelece que textos difíceis devem ser examinados
+à luz de outras passagens que tratem do mesmo assunto
+de maneira mais clara.
+</p>
+
+<p>
+A Analogia da Fé não autoriza ignorar diferenças de contexto,
+nem significa que todos os textos possam ser reduzidos
+a uma única formulação doutrinária simplificada. Seu propósito
+é impedir que uma interpretação isolada comprometa o conjunto
+do ensino bíblico.
+</p>
+
+<h3>5.1. Textos claros e textos difíceis</h3>
+
+<p>
+Quando uma passagem apresenta dificuldade interpretativa,
+o intérprete deve comparar seu conteúdo com outras referências
+que tratem do mesmo tema. A clareza de uma passagem pode
+contribuir para compreender outra, desde que ambas sejam
+interpretadas corretamente.
+</p>
+
+<h3>5.2. A unidade doutrinária</h3>
+
+<p>
+As doutrinas cristãs devem ser construídas a partir do conjunto
+das Escrituras. Não é adequado estabelecer uma doutrina inteira
+com base em uma expressão isolada, ignorando outras passagens
+que esclarecem o assunto.
+</p>
+
+<h3>5.3. Limites da interpretação particular</h3>
+
+<p>
+O intérprete não deve apresentar uma interpretação inovadora
+como verdade doutrinária apenas porque encontrou uma leitura
+possível de determinada expressão. É necessário avaliar
+se essa compreensão se harmoniza com o restante da revelação.
+</p>
+
+<div class="termo">
+<strong>Expressão latina – Analogia Fidei:</strong>
+significa “Analogia da Fé”. Designa o princípio segundo
+o qual as passagens bíblicas devem ser interpretadas
+em harmonia com o conjunto da doutrina cristã.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Isaías 8:20; Lucas 24:27; Atos 20:27;
+Romanos 12:6; 1 Coríntios 2:13;
+2 Timóteo 3:16-17.
+</div>
+
+</div>
+
+<h2>6. O PAPEL VITAL DA ILUMINAÇÃO DO ESPÍRITO SANTO</h2>
+
+<div class="secao">
+
+<p>
+A interpretação bíblica exige estudo, pesquisa e dedicação,
+mas também deve ser acompanhada de dependência espiritual.
+A compreensão das Escrituras não deve ser reduzida a um
+exercício intelectual desprovido de reverência diante de Deus.
+</p>
+
+<p>
+A iluminação do Espírito Santo é a ação divina pela qual
+o entendimento do crente é capacitado a perceber e acolher
+a verdade revelada nas Escrituras. Essa iluminação não
+substitui o estudo, não dispensa a interpretação responsável
+e não transforma impressões particulares em novas doutrinas.
+</p>
+
+<p>
+É importante distinguir inspiração e iluminação.
+A inspiração está relacionada à origem divina das Escrituras.
+A iluminação refere-se à ação do Espírito Santo no entendimento
+daqueles que leem e estudam a Palavra.
+</p>
+
+<h3>6.1. Inspiração</h3>
+
+<p>
+A inspiração bíblica diz respeito à ação divina na produção
+das Escrituras, conforme 2 Timóteo 3:16 e 2 Pedro 1:20-21.
+</p>
+
+<h3>6.2. Iluminação</h3>
+
+<p>
+A iluminação está relacionada à capacitação espiritual
+para compreender e receber a verdade bíblica. Em Efésios 1:17-18,
+Paulo ora para que os crentes tenham iluminados os olhos
+do entendimento.
+</p>
+
+<h3>6.3. Dependência e responsabilidade</h3>
+
+<p>
+O intérprete deve estudar diligentemente, consultar ferramentas
+adequadas, comparar passagens e orar por compreensão.
+A oração não substitui a investigação textual, assim como
+o conhecimento acadêmico não elimina a necessidade de
+dependência do Espírito Santo.
+</p>
+
+<p>
+Na perspectiva pentecostal clássica, a atuação do Espírito
+Santo está vinculada à verdade das Escrituras. O Espírito
+não conduz a igreja a aceitar doutrinas que contradigam
+a revelação bíblica, mas auxilia o crente a compreender,
+acolher e viver a Palavra.
+</p>
+
+<div class="termo">
+<strong>Termo grego – φωτίζω (Phōtízō):</strong>
+significa “iluminar”, “esclarecer” ou “trazer luz”.
+É utilizado em contextos relacionados à iluminação
+e ao esclarecimento.
+</div>
+
+<div class="termo">
+<strong>Termo grego – πνεῦμα (Pneuma):</strong>
+significa “espírito”, “vento” ou “sopro”. No contexto
+do Novo Testamento, pode designar o Espírito Santo.
+</div>
+
+<div class="destaque">
+<strong>Princípio fundamental:</strong>
+a iluminação do Espírito Santo não substitui o significado
+do texto nem autoriza interpretações contrárias às Escrituras.
+Ela conduz o intérprete à compreensão e à aplicação fiel
+da verdade revelada.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Lucas 24:45; João 14:26; João 16:13;
+1 Coríntios 2:10-16; Efésios 1:17-18;
+2 Timóteo 3:16-17; 1 João 2:20,27.
+</div>
+
+</div>
+
+<h2>7. FERRAMENTAS AUXILIARES DA INTERPRETAÇÃO</h2>
+
+<div class="secao">
+
+<p>
+O intérprete bíblico pode utilizar ferramentas de pesquisa
+para aprofundar a compreensão do texto. Essas ferramentas
+não substituem a autoridade das Escrituras, mas auxiliam
+na investigação linguística, histórica e teológica.
+</p>
+
+<h3>7.1. Dicionários bíblicos</h3>
+<p>
+Apresentam definições de termos, personagens, lugares,
+costumes e conceitos encontrados na Bíblia.
+</p>
+
+<h3>7.2. Léxicos dos idiomas originais</h3>
+<p>
+Auxiliam no estudo do vocabulário hebraico, aramaico e grego,
+apresentando significados, usos e relações entre palavras.
+</p>
+
+<h3>7.3. Concordâncias bíblicas</h3>
+<p>
+Permitem localizar ocorrências de palavras e expressões
+nas Escrituras, facilitando a comparação de passagens.
+</p>
+
+<h3>7.4. Comentários bíblicos</h3>
+<p>
+Apresentam análises históricas, linguísticas e teológicas
+de livros e passagens. Devem ser consultados criticamente,
+pois representam interpretações de seus respectivos autores.
+</p>
+
+<h3>7.5. Atlas e materiais históricos</h3>
+<p>
+Auxiliam na identificação de regiões, cidades, rotas,
+fronteiras e acontecimentos relacionados ao ambiente
+geográfico e histórico dos textos bíblicos.
+</p>
+
+<div class="destaque">
+<strong>Regra metodológica:</strong>
+as ferramentas devem servir ao texto bíblico. O intérprete
+não deve aceitar automaticamente uma conclusão apenas
+porque ela aparece em um comentário ou dicionário.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Provérbios 18:15; Atos 17:11;
+2 Timóteo 2:15; 2 Timóteo 3:16-17.
+</div>
+
+</div>
+
+<h2>8. EXEMPLO PRÁTICO DE ANÁLISE HERMENÊUTICA</h2>
+
+<div class="secao">
+
+<p>
+Para compreender a aplicação dos princípios hermenêuticos,
+considere a passagem de Jeremias 29:11, frequentemente
+utilizada em mensagens cristãs.
+</p>
+
+<div class="destaque">
+<strong>Texto:</strong> Jeremias 29:11 apresenta a declaração
+de Deus acerca dos planos de paz e esperança destinados
+ao Seu povo.
+</div>
+
+<h3>Primeira etapa – Identificação do contexto</h3>
+
+<p>
+A passagem está inserida em uma carta dirigida aos judeus
+levados ao exílio na Babilônia. O texto faz parte de uma
+orientação divina para um povo que atravessava uma situação
+histórica de disciplina e deslocamento.
+</p>
+
+<h3>Segunda etapa – Identificação dos destinatários</h3>
+
+<p>
+Os destinatários imediatos eram os exilados judeus.
+A mensagem não foi originalmente dirigida a uma pessoa
+isolada que buscava uma promessa individual de prosperidade.
+</p>
+
+<h3>Terceira etapa – Identificação da intenção</h3>
+
+<p>
+O texto comunica a fidelidade de Deus ao Seu povo,
+demonstrando que o exílio não representava o abandono
+definitivo da nação. Deus havia estabelecido um propósito
+e um futuro para aquele povo dentro da história da redenção.
+</p>
+
+<h3>Quarta etapa – Aplicação responsável</h3>
+
+<p>
+O princípio teológico da fidelidade de Deus permanece
+relevante para a vida cristã. Entretanto, a aplicação
+não deve apagar a situação histórica original nem transformar
+a promessa específica aos exilados em garantia automática
+de realização de qualquer projeto pessoal.
+</p>
+
+<div class="referencia">
+<strong>Referências complementares:</strong>
+Jeremias 25:11-12; Jeremias 29:1-14;
+Daniel 9:1-2; Romanos 15:4.
+</div>
+
+</div>
+
+<h2>9. ERROS COMUNS NA INTERPRETAÇÃO BÍBLICA</h2>
+
+<div class="secao">
+
+<p>
+O estudo hermenêutico exige atenção a erros que podem
+comprometer a compreensão das Escrituras.
+</p>
+
+<ul>
+<li><strong>Isolamento textual:</strong> interpretar um versículo sem considerar seu contexto.</li>
+<li><strong>Anacronismo:</strong> impor conceitos modernos a situações históricas antigas.</li>
+<li><strong>Eisegese:</strong> introduzir no texto ideias que não pertencem ao seu significado.</li>
+<li><strong>Literalismo inadequado:</strong> ignorar metáforas, símbolos e figuras de linguagem.</li>
+<li><strong>Espiritualização arbitrária:</strong> atribuir significados simbólicos sem fundamento textual.</li>
+<li><strong>Confusão de destinatários:</strong> aplicar diretamente a todos os cristãos uma instrução específica sem avaliar seu contexto.</li>
+<li><strong>Desconsideração do gênero literário:</strong> interpretar poesia, narrativa e profecia como se fossem textos do mesmo tipo.</li>
+<li><strong>Uso inadequado dos idiomas originais:</strong> atribuir a uma palavra todos os seus possíveis significados simultaneamente, sem considerar o contexto.</li>
+</ul>
+
+<p>
+O intérprete responsável reconhece que uma palavra pode
+apresentar diferentes sentidos conforme seu uso. Por isso,
+não basta consultar um dicionário: é necessário observar
+como o termo funciona na passagem específica.
+</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Mateus 22:29; Marcos 7:13;
+2 Timóteo 2:15; 2 Pedro 3:16.
+</div>
+
+</div>
+
+<h2>10. SÍNTESE E CONCLUSÃO</h2>
+
+<div class="secao">
+
+<p>
+A Hermenêutica Bíblica é indispensável à formação teológica
+porque estabelece os princípios que orientam a compreensão
+correta das Escrituras. Seu estudo protege a igreja contra
+interpretações arbitrárias e permite que a mensagem bíblica
+seja compreendida com fidelidade.
+</p>
+
+<p>
+O intérprete precisa considerar o contexto histórico,
+cultural, linguístico e literário, respeitar os gêneros
+bíblicos, distinguir exegese de eisegese e reconhecer
+a unidade da revelação.
+</p>
+
+<p>
+Também deve compreender que o estudo diligente e a iluminação
+do Espírito Santo são dimensões complementares da busca
+pelo conhecimento bíblico. A dependência espiritual não
+dispensa a responsabilidade intelectual, e o conhecimento
+acadêmico não substitui a reverência diante de Deus.
+</p>
+
+<p>
+Interpretar corretamente as Escrituras significa respeitar
+a mensagem que Deus revelou, evitando transformar a Palavra
+em instrumento de interesses pessoais ou opiniões particulares.
+</p>
+
+<div class="destaque">
+<strong>Princípio fundamental da Hermenêutica:</strong><br>
+Compreender o texto em seu contexto original, respeitar
+sua estrutura e intenção comunicativa, harmonizá-lo com
+o conjunto das Escrituras e aplicar sua verdade de maneira
+fiel e responsável.
+</div>
+
+</div>
+
+<h2>BIBLIOGRAFIA RECOMENDADA</h2>
+
+<ul class="bibliografia">
+<li>
+BÍBLIA SAGRADA. Antigo e Novo Testamento.
+Almeida Revista e Atualizada.
+</li>
+<li>
+VIRKLER, Henry A. <em>Hermenêutica: Princípios e Processos
+de Interpretação Bíblica</em>. Vida.
+</li>
+<li>
+FEE, Gordon D.; STUART, Douglas.
+<em>Entendes o que Lês?</em>. Vida Nova.
+</li>
+<li>
+KLEIN, William W.; BLOMBERG, Craig L.; HUBBARD JR., Robert L.
+<em>Introdução à Interpretação Bíblica</em>.
+</li>
+<li>
+OSBORNE, Grant R. <em>A Espiral Hermenêutica</em>.
+Vida Nova.
+</li>
+<li>
+CARSON, D. A. <em>Os Perigos da Interpretação Bíblica</em>.
+</li>
+<li>
+GRUDEM, Wayne. <em>Teologia Sistemática</em>.
+Vida Nova.
+</li>
+<li>
+HORTON, Stanley M. (org.). <em>Teologia Sistemática:
+Uma Perspectiva Pentecostal</em>. CPAD.
+</li>
+<li>
+VINE, W. E.; UNGER, Merril F.; WHITE JR., William.
+<em>Dicionário Vine</em>. CPAD.
+</li>
+</ul>
+
+<div class="referencia">
+<strong>Orientação para avaliação:</strong>
+revise os conceitos de inspiração, iluminação,
+Theopneustos, unidade bíblica, contexto, gênero literário,
+método gramático-histórico, exegese, eisegese,
+Analogia da Fé e ferramentas de interpretação.
+</div>
+
+<div id="avaliacao">
+
+<h2>AVALIAÇÃO – MATÉRIA 8</h2>
+
+<p>
+Responda às 10 questões. Cada questão vale 1 ponto.
+A nota mínima para aprovação é 7,0.
+</p>
+
+<form id="formAvaliacao">
+
+<div class="questao">
+<strong>1. Qual é o principal objetivo da Hermenêutica Bíblica?</strong>
+<label><input type="radio" name="q1" value="a"> A) Criar novos significados para as Escrituras.</label>
+<label><input type="radio" name="q1" value="b"> B) Interpretar corretamente as Escrituras por meio de princípios e métodos adequados.</label>
+<label><input type="radio" name="q1" value="c"> C) Substituir a leitura bíblica por opiniões pessoais.</label>
+<label><input type="radio" name="q1" value="d"> D) Eliminar a importância do contexto histórico.</label>
+</div>
+
+<div class="questao">
+<strong>2. O que significa o termo grego Theopneustos?</strong>
+<label><input type="radio" name="q2" value="a"> A) Inspirado pela cultura.</label>
+<label><input type="radio" name="q2" value="b"> B) Interpretado pelo homem.</label>
+<label><input type="radio" name="q2" value="c"> C) Soprada por Deus.</label>
+<label><input type="radio" name="q2" value="d"> D) Traduzido pelos profetas.</label>
+</div>
+
+<div class="questao">
+<strong>3. O que significa o princípio Scriptura sacra sui ipsius interpres?</strong>
+<label><input type="radio" name="q3" value="a"> A) A Escritura deve ser interpretada em harmonia com o conjunto da própria revelação.</label>
+<label><input type="radio" name="q3" value="b"> B) Cada pessoa pode atribuir qualquer significado ao texto.</label>
+<label><input type="radio" name="q3" value="c"> C) Os textos bíblicos não possuem relação entre si.</label>
+<label><input type="radio" name="q3" value="d"> D) Somente comentários teológicos podem interpretar a Bíblia.</label>
+</div>
+
+<div class="questao">
+<strong>4. Qual é a finalidade do método gramático-histórico?</strong>
+<label><input type="radio" name="q4" value="a"> A) Interpretar todos os textos literalmente.</label>
+<label><input type="radio" name="q4" value="b"> B) Desconsiderar os idiomas originais.</label>
+<label><input type="radio" name="q4" value="c"> C) Substituir a interpretação pela tradição.</label>
+<label><input type="radio" name="q4" value="d"> D) Compreender o texto considerando gramática, linguagem e contexto histórico.</label>
+</div>
+
+<div class="questao">
+<strong>5. O que caracteriza a exegese?</strong>
+<label><input type="radio" name="q5" value="a"> A) Introduzir opiniões pessoais no texto.</label>
+<label><input type="radio" name="q5" value="b"> B) Investigar e extrair do texto seu significado no contexto original.</label>
+<label><input type="radio" name="q5" value="c"> C) Ignorar o contexto dos primeiros leitores.</label>
+<label><input type="radio" name="q5" value="d"> D) Utilizar versículos isolados para defender qualquer ideia.</label>
+</div>
+
+<div class="questao">
+<strong>6. O que é eisegese?</strong>
+<label><input type="radio" name="q6" value="a"> A) Comparação de passagens bíblicas.</label>
+<label><input type="radio" name="q6" value="b"> B) Análise gramatical do texto.</label>
+<label><input type="radio" name="q6" value="c"> C) Introdução de ideias pessoais no texto, atribuindo-lhe um significado que não corresponde ao contexto.</label>
+<label><input type="radio" name="q6" value="d"> D) Estudo do contexto histórico.</label>
+</div>
+
+<div class="questao">
+<strong>7. O que estabelece a Analogia da Fé?</strong>
+<label><input type="radio" name="q7" value="a"> A) Uma passagem deve ser interpretada em harmonia com o conjunto do ensino bíblico.</label>
+<label><input type="radio" name="q7" value="b"> B) Cada doutrina deve ser baseada em um único versículo.</label>
+<label><input type="radio" name="q7" value="c"> C) Textos difíceis devem ser ignorados.</label>
+<label><input type="radio" name="q7" value="d"> D) O contexto não possui importância.</label>
+</div>
+
+<div class="questao">
+<strong>8. Qual é a diferença entre inspiração e iluminação?</strong>
+<label><input type="radio" name="q8" value="a"> A) Não existe diferença entre os dois conceitos.</label>
+<label><input type="radio" name="q8" value="b"> B) A iluminação produziu os textos bíblicos e a inspiração interpreta os textos.</label>
+<label><input type="radio" name="q8" value="c"> C) Ambos representam opiniões pessoais.</label>
+<label><input type="radio" name="q8" value="d"> D) Inspiração refere-se à origem divina das Escrituras; iluminação, à ação do Espírito no entendimento do crente.</label>
+</div>
+
+<div class="questao">
+<strong>9. Por que é importante identificar o gênero literário de uma passagem?</strong>
+<label><input type="radio" name="q9" value="a"> A) Para eliminar o contexto histórico.</label>
+<label><input type="radio" name="q9" value="b"> B) Para interpretar adequadamente o tipo de comunicação utilizado pelo autor.</label>
+<label><input type="radio" name="q9" value="c"> C) Para transformar todas as passagens em narrativas literais.</label>
+<label><input type="radio" name="q9" value="d"> D) Para evitar a análise gramatical.</label>
+</div>
+
+<div class="questao">
+<strong>10. Qual deve ser a postura do intérprete bíblico?</strong>
+<label><input type="radio" name="q10" value="a"> A) Impor suas opiniões ao texto.</label>
+<label><input type="radio" name="q10" value="b"> B) Ignorar os idiomas originais.</label>
+<label><input type="radio" name="q10" value="c"> C) Estudar com diligência, respeitar o contexto e depender da iluminação do Espírito Santo.</label>
+<label><input type="radio" name="q10" value="d"> D) Interpretar cada passagem independentemente do restante das Escrituras.</label>
+</div>
+
+<button class="botao-enviar" type="button" onclick="corrigirAvaliacao()">
+ENVIAR AVALIAÇÃO
+</button>
+
+</form>
+
+<div id="resultado"></div>
+
+<button id="proximaMateria" onclick="irProximaMateria()">
+IR PARA A PRÓXIMA MATÉRIA
+</button>
+
+</div>
+
+</div>
+
+<footer>
+© AVANCE – Gilberto Moreira
+<br>
+Ultrapassando Limites!
+</footer>
+
+<!-- ACESSIBILIDADE EM LIBRAS -->
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
 
 <script>
-function verificarProgresso() {
-    if (localStorage.getItem('modulo8_concluido') === 'true') {
-        const res = document.getElementById('resultado');
-        document.getElementById('secao-leitura').style.display = 'none';
-        document.getElementById('secao-prova').style.display = 'none';
-        res.style.display = 'block';
-        res.innerHTML = `
-            <b style="color:green; font-size:1.2rem;">Módulo concluído com sucesso!</b><br>
-            <button class="btn" onclick="window.location.href='materia9.html'">IR PARA O MÓDULO 9</button>
-        `;
+const secoes = document.querySelectorAll(".secao");
+let indiceLeitura = 0;
+let pausado = false;
+let falaAtual = null;
+
+function atualizarProgresso() {
+    const total = secoes.length;
+    const lidas = document.querySelectorAll(".secao.lida").length;
+    const percentual = Math.round((lidas / total) * 100);
+
+    document.getElementById("barraProgresso").style.width =
+        percentual + "%";
+
+    document.getElementById("statusProgresso").textContent =
+        "Progresso da leitura: " + percentual + "%";
+}
+
+function destacarSecao(indice) {
+    secoes.forEach(secao => secao.classList.remove("lida"));
+
+    if (secoes[indice]) {
+        secoes[indice].classList.add("lida");
+        secoes[indice].scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+
+    atualizarProgresso();
+}
+
+function iniciarLeitura() {
+    if (!("speechSynthesis" in window)) {
+        alert("Seu navegador não oferece suporte à leitura em áudio.");
+        return;
+    }
+
+    if (speechSynthesis.paused) {
+        speechSynthesis.resume();
+        pausado = false;
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    if (indiceLeitura >= secoes.length) {
+        indiceLeitura = 0;
+    }
+
+    pausado = false;
+    lerProximaSecao();
+}
+
+function lerProximaSecao() {
+    if (indiceLeitura >= secoes.length) {
+        atualizarProgresso();
+        return;
+    }
+
+    destacarSecao(indiceLeitura);
+
+    falaAtual = new SpeechSynthesisUtterance(
+        secoes[indiceLeitura].innerText
+    );
+
+    falaAtual.lang = "pt-BR";
+    falaAtual.rate = 0.95;
+
+    falaAtual.onend = function() {
+        if (!pausado) {
+            indiceLeitura++;
+            lerProximaSecao();
+        }
+    };
+
+    speechSynthesis.speak(falaAtual);
+}
+
+function pausarLeitura() {
+    if (speechSynthesis.speaking) {
+        speechSynthesis.pause();
+        pausado = true;
     }
 }
 
-function irParaProva(){
-    document.getElementById('secao-leitura').style.display='none';
-    document.getElementById('secao-prova').style.display='block';
-    window.scrollTo(0,0);
+function pararLeitura() {
+    speechSynthesis.cancel();
+    pausado = false;
+    indiceLeitura = 0;
+
+    secoes.forEach(secao => secao.classList.remove("lida"));
+    atualizarProgresso();
 }
 
-function corrigir(){
-    const f=document.getElementById('quizForm');
-    let n=0;
-    for(let i=1;i<=10;i++) if(f['p'+i] && f['p'+i].value==="1") n++;
-    const r=document.getElementById('resultado');
-    r.style.display='block';
-    
-    if(n>=7){
-        localStorage.setItem('modulo8_concluido', 'true');
-        r.innerHTML=`<b style="color:green">APROVADO! Nota: ${n}/10.</b>`;
-        setTimeout(()=>{ window.location.href='materia9.html'; },3000);
+function corrigirAvaliacao() {
+    const respostas = {
+        q1: "b",
+        q2: "c",
+        q3: "a",
+        q4: "d",
+        q5: "b",
+        q6: "c",
+        q7: "a",
+        q8: "d",
+        q9: "b",
+        q10: "c"
+    };
+
+    let pontos = 0;
+    let respondidas = 0;
+
+    for (let questao in respostas) {
+        const selecionada = document.querySelector(
+            'input[name="' + questao + '"]:checked'
+        );
+
+        if (selecionada) {
+            respondidas++;
+
+            if (selecionada.value === respostas[questao]) {
+                pontos++;
+            }
+        }
+    }
+
+    if (respondidas < 10) {
+        alert("Responda todas as 10 questões antes de enviar.");
+        return;
+    }
+
+    const nota = pontos;
+    const resultado = document.getElementById("resultado");
+
+    if (nota >= 7) {
+        resultado.style.background = "#e1f5e7";
+        resultado.style.color = "#176b38";
+
+        resultado.innerHTML =
+            "APROVADO!<br>Você acertou " + pontos +
+            " de 10 questões.<br>Nota: " + nota.toFixed(1);
+
+        localStorage.setItem("modulo8_concluido", "sim");
+
+        document.getElementById("proximaMateria").style.display =
+            "inline-block";
+
     } else {
-        r.innerHTML=`<b style="color:red">REPROVADO. Nota: ${n}/10.<br>Reveja os princípios e tente novamente.</b>`;
-        setTimeout(()=>{ location.reload(); },3000);
+        resultado.style.background = "#fdeaea";
+        resultado.style.color = "#a32020";
+
+        resultado.innerHTML =
+            "NÃO APROVADO.<br>Você acertou " + pontos +
+            " de 10 questões.<br>Nota: " + nota.toFixed(1) +
+            "<br>Revise o conteúdo e tente novamente.";
+
+        localStorage.removeItem("modulo8_concluido");
+
+        document.getElementById("proximaMateria").style.display =
+            "none";
     }
 }
+
+function irProximaMateria() {
+    if (localStorage.getItem("modulo8_concluido") === "sim") {
+        window.location.href = "materia9.html";
+    } else {
+        alert("É necessário obter nota mínima 7 para avançar.");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("avaliacao").style.display = "block";
+    atualizarProgresso();
+});
 </script>
 
 </body>
