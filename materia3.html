@@ -1,168 +1,904 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 3 - Missiologia | AVANCE</title>
-    <style>
-        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
-        .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
-        .secao { display: none; }
-        .ativa { display: block; }
-        h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
-        h3 { color: var(--azul-c); margin-top: 25px; }
-        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
-        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
-        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; text-align: center; text-decoration: none; }
-        .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-        p { text-align: justify; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; text-align: justify; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 3 - Missiologia | AVANCE</title>
+
+<style>
+:root {
+    --azul-m:#001f3f;
+    --azul-c:#0074D9;
+}
+* { box-sizing:border-box; }
+
+body {
+    font-family:'Segoe UI',sans-serif;
+    line-height:1.7;
+    color:#333;
+    margin:0;
+    background:var(--azul-m);
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
+.header {
+    background:var(--azul-m);
+    color:white;
+    padding:20px;
+    text-align:center;
+    border-bottom:2px solid var(--azul-c);
+}
+.header h1 { margin:0; }
+.header p { text-align:center; }
+
+.container {
+    width:calc(100% - 24px);
+    max-width:850px;
+    margin:20px auto;
+    background:white;
+    padding:40px;
+    border-radius:8px;
+    box-shadow:0 4px 15px rgba(0,0,0,.4);
+    flex-grow:1;
+}
+.secao { display:none; }
+.ativa { display:block; }
+
+h2 {
+    color:var(--azul-m);
+    border-bottom:2px solid var(--azul-c);
+    padding-bottom:8px;
+    text-transform:uppercase;
+    font-size:1.5rem;
+}
+h3 {
+    color:var(--azul-c);
+    margin-top:35px;
+    font-size:1.22rem;
+    border-left:4px solid var(--azul-c);
+    padding-left:10px;
+}
+p {
+    text-align:justify;
+    margin-bottom:15px;
+    font-size:1.02rem;
+}
+blockquote {
+    background:#f4f7fa;
+    border-left:5px solid var(--azul-c);
+    margin:25px 0;
+    padding:18px 22px;
+    font-style:italic;
+    color:#1a202c;
+    font-size:.98rem;
+}
+blockquote cite {
+    display:block;
+    margin-top:10px;
+    font-style:normal;
+    font-weight:bold;
+    color:var(--azul-m);
+    font-size:.88rem;
+}
+.lexico {
+    background:#eef5fb;
+    padding:16px;
+    border-radius:8px;
+    margin:15px 0;
+    border-left:4px solid #0074D9;
+}
+.lexico strong { color:#001f3f; }
+.referencia {
+    font-size:.91rem;
+    color:#555;
+    background:#f7f7f7;
+    padding:14px;
+    border-radius:8px;
+    margin:12px 0;
+}
+.pergunta {
+    background:#f9f9f9;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    border-left:5px solid var(--azul-c);
+}
+.opcao {
+    display:block;
+    margin:10px 0;
+    cursor:pointer;
+    padding:12px;
+    border-radius:8px;
+    background:#eee;
+}
+.opcao:hover { background:#ddd; }
+
+.btn {
+    display:block;
+    width:100%;
+    max-width:320px;
+    background:var(--azul-c);
+    color:white;
+    padding:17px;
+    border-radius:40px;
+    font-weight:bold;
+    margin:30px auto;
+    text-align:center;
+    border:none;
+    cursor:pointer;
+    font-size:1.05rem;
+}
+.footer-copy {
+    text-align:center;
+    padding:20px;
+    color:rgba(255,255,255,.7);
+}
+#playerAula {
+    position:fixed;
+    bottom:12px;
+    left:12px;
+    background:#001f3f;
+    padding:10px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.4);
+    z-index:999;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+#playerAula button {
+    background:#ffcc00;
+    border:none;
+    padding:8px 10px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+#barra {
+    width:75px;
+    height:6px;
+    background:#444;
+    border-radius:4px;
+}
+#progresso {
+    width:0%;
+    height:6px;
+    background:#00ffcc;
+    border-radius:4px;
+}
+.lendo {
+    background:#fff2a8 !important;
+    color:#111;
+    border-radius:4px;
+}
+.audio-info {
+    font-size:11px;
+    text-align:center;
+    color:white;
+}
+[ vw ] { z-index:10000 !important; }
+
+@media(max-width:600px) {
+    .container { padding:20px; }
+    #playerAula { gap:5px; }
+    #barra { width:45px; }
+    #playerAula button { padding:8px; }
+}
+</style>
 </head>
+
 <body onload="verificarProgresso()">
 
 <div class="header">
     <h1>AVANCE</h1>
-    <p>Módulo 3: Missiologia</p>
+    <p>Módulo 3: Missiologia – Tratado Acadêmico</p>
 </div>
 
-<div class="container">
-    <div id="secao-leitura" class="secao ativa">
-        <h2>Matéria 3 – Missiologia</h2>
-        <p>A Missiologia é o estudo teológico da missão. Ela investiga a natureza missionária de Deus e como isso define a tarefa da Igreja no mundo atual.</p>
+<div class="container" id="artigo">
 
-        <h3>1. A Missão tem origem em Deus (Missio Dei)</h3>
-        <p>A missão não nasce de uma estratégia humana ou eclesiástica, mas no próprio caráter de Deus. O conceito de Missio Dei revela que Deus é o protagonista da missão. Ele é quem busca o homem desde a queda no Éden. A eleição de Abraão em Gênesis estabelece que a bênção divina tem um propósito universal: alcançar todas as famílias da terra através de sua descendência.</p>
+<div id="secao-leitura" class="secao ativa">
 
-        <h3>2. Fundamento Bíblico da Missão</h3>
-        <p>A Bíblia inteira é um livro missionário. Dos profetas que anunciavam o Reino às nações, passando pelos Salmos que declaram a glória de Deus entre os povos, até o Novo Testamento. O plano de redenção não é limitado a um grupo, mas revela um Deus que deseja ser conhecido, adorado e glorificado por todas as etnias e línguas da terra.</p>
+<h2>Matéria 3 – Fundamentos da Missiologia Pentecostal</h2>
 
-        <h3>3. A Grande Comissão</h3>
-        <p>Em Mateus 28:18-20, Jesus deixa o mandato supremo para a Igreja. A Grande Comissão não é um conselho opcional, mas uma ordem imperativa que envolve: ir por todo o mundo, fazer discípulos de todas as nações, batizar em nome da Trindade e ensinar a guardar todos os mandamentos de Cristo. É a base legal e espiritual de toda atividade missionária.</p>
+<p>A Missiologia constitui o campo de investigação teológica dedicado ao estudo sistemático da missão de Deus, de seus fundamentos escriturísticos, de sua manifestação histórica e da responsabilidade da Igreja na proclamação do Evangelho entre todos os povos. Não se restringe à organização de viagens missionárias, à implantação de instituições religiosas ou à manutenção de departamentos eclesiásticos. Trata-se de uma disciplina que examina a finalidade redentora de Deus na história humana e a participação da comunidade cristã nesse propósito.</p>
 
-        <h3>4. A Igreja como Instrumento Missionário</h3>
-        <p>A Igreja não apenas envia missionários; ela é missionária por natureza. Onde a Igreja perde sua visão para o campo e para a proclamação, ela se torna estéril e perde sua razão de existir. A Igreja é o agente escolhido para manifestar o Reino de Deus, sendo luz para o mundo e sal para a terra em uma dimensão contínua e global.</p>
+<p>Na perspectiva pentecostal clássica, a missão encontra sua fundamentação na revelação bíblica, na obra redentora de Jesus Cristo e na capacitação sobrenatural do Espírito Santo. A proclamação do Evangelho, a formação de discípulos, a implantação de comunidades cristãs e o testemunho entre diferentes povos constituem dimensões inseparáveis dessa responsabilidade.</p>
 
-        <h3>5. Dimensões da Missão</h3>
-        <p>A missão cristã é integral e equilibrada. Ela envolve a Proclamação (anúncio verbal do Evangelho), o Ensino (instrução nas verdades bíblicas) e o Discipulado (acompanhamento para a maturidade). Além disso, a missão inclui a responsabilidade social, onde o amor de Deus é manifestado por meio de ações práticas que atendem às necessidades do próximo, sem nunca substituir a centralidade da mensagem da cruz.</p>
+<h3>1. A Missio Dei: A origem divina da missão</h3>
 
-        <h3>6. O Papel do Cristão na Missão</h3>
-        <p>A missão não é tarefa exclusiva de especialistas ou missionários transculturais. Todo cristão tem um papel vital e contínuo. Isso acontece através da Proclamação direta do Evangelho em seu cotidiano, da Intercessão constante pelos campos missionários e da Contribuição financeira para o sustento da obra. A missão é uma responsabilidade coletiva de todo o corpo de Cristo.</p>
+<p>A expressão latina <i>Missio Dei</i> significa missão de Deus. Seu princípio fundamental consiste em reconhecer que a missão não nasceu da iniciativa institucional da Igreja, mas do próprio propósito divino de revelar sua glória e executar seu plano redentor na história.</p>
 
-        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
-    </div>
+<p>Em Gênesis 3:9, após a desobediência humana, Deus toma a iniciativa de procurar o homem. Posteriormente, em Gênesis 12:1-3, o chamado de Abraão estabelece uma dimensão universal da promessa: por meio de sua descendência, todas as famílias da terra seriam alcançadas pela bênção divina.</p>
 
-    <div id="secao-prova" class="secao">
-        <h2>Avaliação de Conhecimento</h2>
-        <form id="quizForm">
-            <div class="pergunta"><b>1. A missão cristã tem origem:</b>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Na Igreja</label>
-                <label class="opcao"><input type="radio" name="p1" value="1"> No próprio Deus</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Nos apóstolos</label>
-            </div>
+<p>O texto de Gênesis 12:3 apresenta uma perspectiva que ultrapassa os limites étnicos de Israel. A eleição de Abraão não representa um propósito de exclusividade absoluta, mas uma escolha vinculada ao alcance das demais famílias da humanidade.</p>
 
-            <div class="pergunta"><b>2. Verdadeiro ou Falso: A missão é opcional para a Igreja.</b>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
-            </div>
+<p>O desenvolvimento desse princípio alcança sua expressão máxima em Jesus Cristo, cuja obra redentora constitui o fundamento da reconciliação entre Deus e a humanidade. A Igreja participa dessa missão como comunidade enviada, testemunha e proclamadora da mensagem do Reino.</p>
 
-            <div class="pergunta"><b>3. A Grande Comissão está registrada em:</b>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Atos 2</label>
-                <label class="opcao"><input type="radio" name="p3" value="1"> Mateus 28:18–20</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Romanos 8</label>
-            </div>
-
-            <div class="pergunta"><b>4. Assinale a alternativa correta:</b>
-                <label class="opcao"><input type="radio" name="p4" value="1"> A Igreja é instrumento da missão de Deus</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> A missão substitui a Igreja</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Apenas missionários são responsáveis</label>
-            </div>
-
-            <div class="pergunta"><b>5. Verdadeiro ou Falso: Evangelização e ação social se excluem.</b>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p5" value="1"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>6. O chamado missionário é:</b>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Apenas para líderes</label>
-                <label class="opcao"><input type="radio" name="p6" value="1"> Para todo cristão</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Exclusivo de missionários transculturais</label>
-            </div>
-
-            <div class="pergunta"><b>7. A promessa a Abraão tinha alcance:</b>
-                <label class="opcao"><input type="radio" name="p7" value="1"> Universal</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Apenas nacional</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Simbólico</label>
-            </div>
-
-            <div class="pergunta"><b>8. Verdadeiro ou Falso: Missiologia estuda a missão de Deus.</b>
-                <label class="opcao"><input type="radio" name="p8" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>9. A missão envolve:</b>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Apenas pregação</label>
-                <label class="opcao"><input type="radio" name="p9" value="1"> Proclamação, discipulado e ensino</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Apenas obras sociais</label>
-            </div>
-
-            <div class="pergunta"><b>10. A missão da Igreja deve ser:</b>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Eventual</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Local apenas</label>
-                <label class="opcao"><input type="radio" name="p10" value="1"> Contínua e global</label>
-            </div>
-        </form>
-        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
-    </div>
-
-    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+<div class="lexico">
+<strong>Referência lexicográfica – Hebraico:</strong>
+<br><br>
+<strong>שָׁלַח – Shalach</strong>
+<br>
+Transliteração: Shalach.
+<br>
+Significado: enviar, despachar, comissionar.
+<br>
+Referência: Gênesis 45:5; Êxodo 3:10.
+<br><br>
+O campo semântico desse verbo ajuda a compreender a linguagem bíblica do envio. A missão envolve iniciativa, designação e deslocamento para cumprir uma finalidade.
 </div>
 
-<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+<blockquote>
+A missão deve ser compreendida a partir do propósito de Deus, e não simplesmente das necessidades administrativas ou institucionais de uma organização religiosa.
+<cite>— Síntese teológica do conceito de Missio Dei</cite>
+</blockquote>
+
+<h3>2. A fundamentação missionária no Antigo Testamento</h3>
+
+<p>O Antigo Testamento apresenta fundamentos missionários que se desenvolvem progressivamente na história da revelação. Embora Israel tenha recebido uma aliança específica, a revelação divina nunca esteve destituída de uma dimensão universal.</p>
+
+<p>Em Gênesis 12:1-3, a promessa abraâmica estabelece a bênção das famílias da terra. Em Êxodo 19:5-6, Israel é apresentado como reino sacerdotal e nação santa. Em Salmos 67:1-7, o salmista relaciona a bênção divina ao conhecimento dos caminhos de Deus entre todas as nações.</p>
+
+<p>Isaías 49:6 amplia a dimensão do chamado do Servo do Senhor, apresentando a restauração de Israel e a manifestação da salvação até os confins da terra. Jonas, por sua vez, demonstra que a compaixão divina alcança também povos estrangeiros, como Nínive.</p>
+
+<div class="lexico">
+<strong>Referência lexicográfica – Hebraico:</strong>
+<br><br>
+<strong>גּוֹיִם – Goyim</strong>
+<br>
+Singular: גּוֹי – Goy.
+<br>
+Significado: nações, povos, grupos étnicos.
+<br>
+Referências: Gênesis 12:2-3; Salmos 67:2-4.
+<br><br>
+<strong>בָּרַךְ – Barak</strong>
+<br>
+Significado: abençoar, conceder bênção.
+<br>
+Referência: Gênesis 12:2-3.
+<br><br>
+A relação entre bênção e nações demonstra que a promessa feita a Abraão possui uma finalidade que ultrapassa sua própria família e descendência imediata.
+</div>
+
+<h3>3. A Grande Comissão: O mandato missionário de Cristo</h3>
+
+<p>Mateus 28:18-20 apresenta o fundamento da responsabilidade missionária da Igreja. Antes de ordenar a expansão do discipulado, Jesus declara sua autoridade universal: toda autoridade lhe foi dada no céu e na terra.</p>
+
+<p>A ordem de Cristo compreende quatro dimensões fundamentais: fazer discípulos de todas as nações, batizar os convertidos em nome do Pai, do Filho e do Espírito Santo, ensinar a observância de seus mandamentos e reconhecer sua presença permanente com aqueles que cumprem essa missão.</p>
+
+<p>O verbo grego central da passagem é <i>mathēteúsate</i>, traduzido como fazer discípulos. A construção gramatical da passagem estabelece a formação de discípulos como a ordem principal, enquanto os particípios relacionados apresentam as ações de ir, batizar e ensinar.</p>
+
+<div class="lexico">
+<strong>Referência lexicográfica – Grego:</strong>
+<br><br>
+<strong>μαθητεύσατε – Mathēteúsate</strong>
+<br>
+Raiz: μαθητεύω – Mathēteúō.
+<br>
+Significado: fazer discípulos, formar discípulos.
+<br>
+Referência: Mateus 28:19.
+<br><br>
+<strong>πορεύομαι – Poreúomai</strong>
+<br>
+Significado: ir, partir, deslocar-se.
+<br>
+Referência: Mateus 28:19.
+<br><br>
+<strong>βαπτίζω – Baptízō</strong>
+<br>
+Significado: batizar, imergir.
+<br>
+Referência: Mateus 28:19.
+<br><br>
+<strong>ἔθνη – Éthnē</strong>
+<br>
+Singular: ἔθνος – Éthnos.
+<br>
+Significado: nações, povos, grupos étnicos.
+<br>
+Referência: Mateus 28:19.
+</div>
+
+<p>O alcance da Grande Comissão não permite que a Igreja reduza sua responsabilidade missionária a atividades ocasionais. A ordem de Cristo possui abrangência geográfica, étnica e geracional, exigindo continuidade na proclamação e na formação de discípulos.</p>
+
+<blockquote>
+A Grande Comissão não termina quando alguém aceita a mensagem do Evangelho. Seu propósito inclui a formação de discípulos comprometidos com os ensinamentos de Cristo.
+<cite>— Síntese exegética de Mateus 28:18-20</cite>
+</blockquote>
+
+<h3>4. A Missiologia Pentecostal e a capacitação do Espírito Santo</h3>
+
+<p>A contribuição pentecostal à Missiologia encontra uma de suas expressões mais importantes em Atos 1:8. Jesus estabelece uma relação direta entre o recebimento do poder do Espírito Santo e o exercício do testemunho cristão.</p>
+
+<p>O Pentecostes não deve ser compreendido apenas como uma experiência individual de edificação espiritual. Em Atos dos Apóstolos, a manifestação do Espírito está profundamente relacionada à expansão do testemunho de Cristo, à proclamação pública e ao avanço do Evangelho entre diferentes povos.</p>
+
+<p>A progressão apresentada em Atos 1:8 — Jerusalém, Judeia, Samaria e confins da terra — estabelece uma estrutura geográfica e missionária. O testemunho começa no ambiente imediato, alcança territórios culturalmente distintos e avança até os limites do mundo conhecido.</p>
+
+<div class="lexico">
+<strong>Referência lexicográfica – Grego:</strong>
+<br><br>
+<strong>δύναμις – Dýnamis</strong>
+<br>
+Significado: poder, capacidade, força.
+<br>
+Referência: Atos 1:8.
+<br><br>
+<strong>πνεῦμα – Pneûma</strong>
+<br>
+Significado: espírito, sopro, vento.
+<br>
+Referência: Atos 1:8.
+<br><br>
+<strong>μάρτυς – Mártys</strong>
+<br>
+Significado: testemunha.
+<br>
+Referência: Atos 1:8.
+<br><br>
+<strong>εὐαγγελίζω – Euangelízō</strong>
+<br>
+Significado: anunciar boas-novas, evangelizar.
+<br>
+Referências: Lucas 4:18; Atos 8:4.
+</div>
+
+<p>O pensamento missionário pentecostal reconhece que a capacitação espiritual não substitui o planejamento, a preparação bíblica ou a responsabilidade humana. Antes, a ação do Espírito Santo deve orientar e capacitar a Igreja para cumprir sua vocação testemunhal.</p>
+
+<p>O teólogo pentecostal <strong>Roger Stronstad</strong>, em sua investigação sobre a teologia carismática de Lucas, destaca a importância de compreender o Espírito Santo no desenvolvimento do testemunho e da vocação do povo de Deus.</p>
+
+<div class="referencia">
+<strong>Referência bibliográfica:</strong>
+<br>
+STRONSTAD, Roger. <i>The Prophethood of All Believers: A Study in Luke's Charismatic Theology.</i> Sheffield Academic Press, 1999.
+</div>
+
+<h3>5. A Igreja como comunidade enviada</h3>
+
+<p>A Igreja não pode ser compreendida exclusivamente como uma instituição que realiza atividades internas. Sua identidade bíblica inclui a responsabilidade de testemunhar publicamente a obra de Cristo.</p>
+
+<p>Em João 20:21, Jesus declara: assim como o Pai o enviou, também Ele envia seus discípulos. Essa declaração estabelece uma relação entre a missão de Cristo e o envio de seus seguidores.</p>
+
+<p>Em Atos 13:1-4, encontramos uma demonstração prática desse princípio. Durante um período de adoração, jejum e serviço, o Espírito Santo direciona a separação de Barnabé e Saulo para uma obra específica. A comunidade de Antioquia participa desse processo mediante oração, imposição de mãos e envio.</p>
+
+<p>Esse episódio revela que a atividade missionária deve envolver discernimento espiritual, preparo, reconhecimento ministerial e participação comunitária.</p>
+
+<p>O missionário e missiólogo pentecostal <strong>Melvin L. Hodges</strong> contribuiu significativamente para a compreensão da formação de igrejas nacionais. Sua proposta valorizava comunidades cristãs capazes de desenvolver liderança local, responsabilidade administrativa e autonomia para a expansão do Evangelho.</p>
+
+<blockquote>
+A formação de comunidades cristãs maduras exige que o trabalho missionário não produza dependência permanente do missionário estrangeiro, mas desenvolva liderança e responsabilidade na própria comunidade.
+<cite>— Síntese da contribuição missiológica de Melvin L. Hodges</cite>
+</blockquote>
+
+<div class="referencia">
+<strong>Obras de referência:</strong>
+<br>
+HODGES, Melvin L. <i>The Indigenous Church.</i> Gospel Publishing House, 1953.
+<br><br>
+HODGES, Melvin L. <i>A Theology of the Church and Its Mission: A Pentecostal Perspective.</i> Gospel Publishing House, 1977.
+</div>
+
+<h3>6. Evangelização, discipulado e implantação de igrejas</h3>
+
+<p>A expansão missionária não se limita à realização de eventos evangelísticos. A proclamação inicial deve ser acompanhada de instrução bíblica, integração comunitária e formação de discípulos.</p>
+
+<p>Atos 2:41-47 apresenta um modelo de desenvolvimento da comunidade cristã primitiva: recebimento da Palavra, batismo, perseverança na doutrina apostólica, comunhão, oração e testemunho público.</p>
+
+<p>Em Atos 14:21-23, Paulo e Barnabé anunciam o Evangelho, fazem discípulos, fortalecem as comunidades e estabelecem presbíteros. O texto demonstra que a implantação de igrejas exige continuidade e organização.</p>
+
+<p>O processo missionário pode ser analisado por meio de cinco etapas complementares:</p>
+
+<p><strong>1. Evangelização:</strong> proclamação da mensagem de salvação em Jesus Cristo.</p>
+
+<p><strong>2. Conversão e integração:</strong> acolhimento dos que recebem a mensagem e sua integração à comunidade cristã.</p>
+
+<p><strong>3. Discipulado:</strong> formação doutrinária, moral e espiritual fundamentada nas Escrituras.</p>
+
+<p><strong>4. Organização comunitária:</strong> desenvolvimento de liderança, serviço e estrutura eclesiástica.</p>
+
+<p><strong>5. Multiplicação:</strong> preparação de novos discípulos e comunidades capazes de participar da expansão missionária.</p>
+
+<p>O teólogo pentecostal <strong>Stanley M. Horton</strong> oferece importante contribuição para o estudo da ação do Espírito Santo e da expansão da Igreja no livro de Atos.</p>
+
+<div class="referencia">
+<strong>Obra de referência:</strong>
+<br>
+HORTON, Stanley M. <i>Acts: A Logion Press Commentary.</i> Gospel Publishing House, 2001.
+</div>
+
+<h3>7. Missões transculturais e o alcance das nações</h3>
+
+<p>A Missiologia também investiga os desafios relacionados à proclamação do Evangelho entre povos que possuem diferentes idiomas, costumes, estruturas sociais e referências culturais.</p>
+
+<p>Uma missão transcultural exige conhecimento do contexto no qual a mensagem será anunciada. O missionário precisa compreender as particularidades linguísticas e sociais da comunidade, sem comprometer o conteúdo essencial da revelação bíblica.</p>
+
+<p>Em Atos 10, a experiência de Pedro na casa de Cornélio demonstra a ampliação do testemunho cristão entre os gentios. Em Atos 17:22-31, Paulo apresenta a mensagem do Deus verdadeiro em um ambiente cultural e religioso diferente do judaísmo.</p>
+
+<div class="lexico">
+<strong>Referência lexicográfica – Grego:</strong>
+<br><br>
+<strong>διάλεκτος – Diálektos</strong>
+<br>
+Significado: idioma, língua, modo de falar.
+<br>
+Referência: Atos 2:6.
+<br><br>
+<strong>λαός – Laós</strong>
+<br>
+Significado: povo, comunidade, população.
+<br>
+Referências: Atos 3:23; Atos 10:2.
+<br><br>
+<strong>κόσμος – Kósmos</strong>
+<br>
+Significado: mundo, ordem, humanidade, conforme o contexto.
+<br>
+Referência: João 3:16.
+</div>
+
+<p>A contextualização missionária deve distinguir a forma cultural da mensagem de seu conteúdo doutrinário. A linguagem pode ser adaptada à compreensão do público, mas a identidade de Cristo, a realidade do pecado, a necessidade de arrependimento e a mensagem da salvação não podem ser substituídas por conveniências culturais.</p>
+
+<p>O missiólogo pentecostal <strong>Allan Anderson</strong> contribui para esse debate ao estudar o desenvolvimento global do pentecostalismo e sua presença em diferentes contextos culturais.</p>
+
+<div class="referencia">
+<strong>Obra de referência:</strong>
+<br>
+ANDERSON, Allan. <i>To the Ends of the Earth: Pentecostalism and the Transformation of World Christianity.</i> Oxford University Press, 2012.
+</div>
+
+<h3>8. A responsabilidade social na missão cristã</h3>
+
+<p>A missão cristã possui implicações que alcançam a realidade concreta da existência humana. O anúncio do Evangelho deve ser acompanhado de uma conduta coerente com os princípios de justiça, misericórdia, serviço e amor ao próximo.</p>
+
+<p>Lucas 4:18-19 apresenta a proclamação de Cristo relacionada à libertação dos cativos, à recuperação da vista dos cegos e à manifestação das boas-novas aos pobres.</p>
+
+<p>Tiago 2:14-17 demonstra a incompatibilidade entre uma declaração de fé desprovida de responsabilidade prática e o ensino cristão sobre as obras decorrentes da fé.</p>
+
+<p>Entretanto, é necessário preservar a distinção entre a missão evangelizadora da Igreja e os instrumentos sociais utilizados para manifestar o amor cristão. A assistência material não substitui a proclamação da salvação, assim como a proclamação não deve servir de justificativa para negligenciar o sofrimento humano.</p>
+
+<p>O missiólogo pentecostal <strong>Douglas Petersen</strong> desenvolve uma importante reflexão sobre a responsabilidade social do pentecostalismo, especialmente no contexto latino-americano.</p>
+
+<div class="referencia">
+<strong>Obra de referência:</strong>
+<br>
+PETERSEN, Douglas. <i>Not by Might Nor by Power: A Pentecostal Theology of Social Concern in Latin America.</i> Regnum Books, 1996.
+</div>
+
+<h3>9. O papel do cristão na expansão missionária</h3>
+
+<p>A responsabilidade missionária não está restrita aos ministros ordenados, pastores ou missionários transculturais. A Igreja é constituída por diferentes membros, e cada um possui responsabilidades na edificação e no testemunho cristão.</p>
+
+<p>O envolvimento missionário pode ocorrer mediante três formas fundamentais:</p>
+
+<p><strong>Intercessão:</strong> oração pelos missionários, comunidades alcançadas, povos não evangelizados e abertura de oportunidades para a proclamação do Evangelho.</p>
+
+<p><strong>Contribuição:</strong> participação responsável no sustento de missionários, projetos de evangelização, formação ministerial e implantação de comunidades cristãs.</p>
+
+<p><strong>Proclamação:</strong> testemunho pessoal e coletivo, evangelização no cotidiano e participação na formação de discípulos.</p>
+
+<p>Em Filipenses 4:15-18, Paulo reconhece a participação da igreja de Filipos em seu trabalho missionário. O texto demonstra que a contribuição material também pode constituir uma participação efetiva na expansão do Evangelho.</p>
+
+<p>O pastor e ensinador pentecostal <strong>Donald Gee</strong> é uma referência histórica importante para a compreensão da espiritualidade, dos dons e da responsabilidade ministerial no movimento pentecostal.</p>
+
+<div class="referencia">
+<strong>Obra de referência:</strong>
+<br>
+GEE, Donald. <i>Concerning Spiritual Gifts.</i> Gospel Publishing House.
+</div>
+
+<h3>10. A teleologia missionária: A glória de Deus entre os povos</h3>
+
+<p>A finalidade última da missão cristã não consiste na promoção de personalidades religiosas, no crescimento de instituições isoladas ou na conquista de prestígio denominacional. Seu propósito está relacionado à manifestação da glória de Deus e à proclamação da salvação em Jesus Cristo.</p>
+
+<p>Apocalipse 7:9 apresenta uma multidão proveniente de todas as nações, tribos, povos e línguas diante do trono e do Cordeiro. Essa visão escatológica demonstra a abrangência universal do propósito redentor de Deus.</p>
+
+<p>O texto não apresenta a uniformização cultural das nações, mas uma comunidade de adoradores que reconhece a soberania divina e a redenção realizada pelo Cordeiro.</p>
+
+<p>A Missiologia, portanto, deve conduzir à compreensão de que a Igreja possui uma responsabilidade histórica, espiritual e coletiva: anunciar Cristo, formar discípulos, estabelecer comunidades bíblicas e testemunhar a soberania de Deus até os confins da terra.</p>
+
+<blockquote>
+A Igreja não existe para si mesma. Sua vocação inclui testemunhar Cristo diante do mundo, formar discípulos e participar da proclamação do Evangelho entre todas as nações.
+<cite>— Síntese teológica da responsabilidade missionária</cite>
+</blockquote>
+
+<h3>11. Referências lexicográficas e instrumentos de pesquisa</h3>
+
+<p>O estudo acadêmico da Missiologia exige atenção ao significado dos termos empregados nas Escrituras originais. A consulta a léxicos e dicionários especializados permite examinar raízes, campos semânticos, construções gramaticais e variações contextuais.</p>
+
+<p>As seguintes obras constituem instrumentos de pesquisa recomendados:</p>
+
+<div class="referencia">
+<strong>1. Hebraico bíblico</strong>
+<br>
+BROWN, Francis; DRIVER, S. R.; BRIGGS, Charles A. <i>A Hebrew and English Lexicon of the Old Testament.</i> Oxford University Press.
+<br><br>
+<strong>2. Hebraico e aramaico</strong>
+<br>
+KOEHLER, Ludwig; BAUMGARTNER, Walter; STAMM, Johann Jakob. <i>The Hebrew and Aramaic Lexicon of the Old Testament (HALOT).</i>
+<br><br>
+<strong>3. Grego do Novo Testamento</strong>
+<br>
+DANKER, Frederick William (ed.). <i>A Greek-English Lexicon of the New Testament and Other Early Christian Literature (BDAG).</i> 3rd edition. University of Chicago Press, 2000.
+<br><br>
+<strong>4. Semântica do grego bíblico</strong>
+<br>
+LOUW, Johannes P.; NIDA, Eugene A. <i>Greek-English Lexicon of the New Testament Based on Semantic Domains.</i> United Bible Societies.
+<br><br>
+<strong>5. Concordância bíblica</strong>
+<br>
+STRONG, James. <i>Strong's Exhaustive Concordance of the Bible.</i>
+</div>
+
+<p>Os termos apresentados ao longo desta matéria devem ser examinados considerando seu contexto gramatical, histórico e literário. Uma definição de dicionário, isoladamente, não determina todo o sentido de uma passagem bíblica.</p>
+
+<h3>12. Bibliografia pentecostal e missiológica complementar</h3>
+
+<p>Para aprofundamento acadêmico, recomenda-se a leitura das seguintes obras e autores:</p>
+
+<div class="referencia">
+<strong>MELVIN L. HODGES</strong>
+<br>
+<i>The Indigenous Church.</i>
+<br>
+<i>A Theology of the Church and Its Mission: A Pentecostal Perspective.</i>
+<br><br>
+
+<strong>STANLEY M. HORTON</strong>
+<br>
+<i>Acts: A Logion Press Commentary.</i>
+<br>
+<i>What the Bible Says About the Holy Spirit.</i>
+<br><br>
+
+<strong>ROGER STRONSTAD</strong>
+<br>
+<i>The Prophethood of All Believers: A Study in Luke's Charismatic Theology.</i>
+<br><br>
+
+<strong>ALLAN ANDERSON</strong>
+<br>
+<i>To the Ends of the Earth: Pentecostalism and the Transformation of World Christianity.</i>
+<br><br>
+
+<strong>GARY B. McGEE</strong>
+<br>
+<i>This Gospel Shall Be Preached: A History and Theology of Assemblies of God Foreign Missions.</i>
+<br><br>
+
+<strong>DOUGLAS PETERSEN</strong>
+<br>
+<i>Not by Might Nor by Power: A Pentecostal Theology of Social Concern in Latin America.</i>
+<br><br>
+
+<strong>MURRAY A. DEMPSTER, BYRON D. KLAUS E DOUGLAS PETERSEN</strong>
+<br>
+<i>Called and Empowered: Global Mission in Pentecostal Perspective.</i>
+<br><br>
+
+<strong>DONALD GEE</strong>
+<br>
+<i>Concerning Spiritual Gifts.</i>
+</div>
+
+<p>Essas referências permitem ampliar a investigação sobre a relação entre pneumatologia, evangelização, expansão pentecostal, formação de igrejas e responsabilidade social.</p>
+
+<p><strong>Conclusão acadêmica:</strong> A Missiologia não deve ser reduzida a uma disciplina administrativa da Igreja. Ela constitui um campo de estudo teológico que investiga os fundamentos, os agentes, os métodos, os territórios e os resultados da missão cristã. Sua compreensão exige fidelidade às Escrituras, rigor exegético, conhecimento histórico, discernimento espiritual e responsabilidade na formação de discípulos.</p>
+
+<button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO CATEDRÁTICA</button>
+
+</div>
+
+<!-- AVALIAÇÃO -->
+
+<div id="secao-prova" class="secao">
+
+<h2>Avaliação de Conhecimento</h2>
+
+<p>Responda às dez questões com base no conteúdo acadêmico estudado. A aprovação exige, no mínimo, sete acertos.</p>
+
+<form id="quizForm">
+
+<div class="pergunta">
+<b>1. O conceito de Missio Dei estabelece que a origem da missão cristã está:</b>
+<label class="opcao"><input type="radio" name="p1" value="0"> A) Na organização administrativa da Igreja.</label>
+<label class="opcao"><input type="radio" name="p1" value="1"> B) No próprio propósito e iniciativa de Deus.</label>
+<label class="opcao"><input type="radio" name="p1" value="0"> C) Na iniciativa exclusiva dos missionários.</label>
+</div>
+
+<div class="pergunta">
+<b>2. Qual é o significado do verbo hebraico Shalach (שָׁלַח)?</b>
+<label class="opcao"><input type="radio" name="p2" value="0"> A) Abençoar e adorar.</label>
+<label class="opcao"><input type="radio" name="p2" value="1"> B) Enviar, despachar ou comissionar.</label>
+<label class="opcao"><input type="radio" name="p2" value="0"> C) Ensinar e disciplinar.</label>
+</div>
+
+<div class="pergunta">
+<b>3. Em Mateus 28:19, qual é o sentido de Mathēteúsate (μαθητεύσατε)?</b>
+<label class="opcao"><input type="radio" name="p3" value="0"> A) Construir templos.</label>
+<label class="opcao"><input type="radio" name="p3" value="1"> B) Fazer discípulos.</label>
+<label class="opcao"><input type="radio" name="p3" value="0"> C) Realizar somente cerimônias religiosas.</label>
+</div>
+
+<div class="pergunta">
+<b>4. Segundo Atos 1:8, qual é a relação entre o Espírito Santo e a missão?</b>
+<label class="opcao"><input type="radio" name="p4" value="1"> A) O Espírito capacita os discípulos para serem testemunhas de Cristo.</label>
+<label class="opcao"><input type="radio" name="p4" value="0"> B) O Espírito substitui a proclamação do Evangelho.</label>
+<label class="opcao"><input type="radio" name="p4" value="0"> C) O Espírito restringe o testemunho à comunidade local.</label>
+</div>
+
+<div class="pergunta">
+<b>5. Qual foi uma contribuição importante de Melvin L. Hodges à Missiologia Pentecostal?</b>
+<label class="opcao"><input type="radio" name="p5" value="0"> A) Defender a dependência permanente das igrejas em relação aos missionários estrangeiros.</label>
+<label class="opcao"><input type="radio" name="p5" value="1"> B) Valorizar a formação de igrejas nacionais, com liderança e responsabilidade próprias.</label>
+<label class="opcao"><input type="radio" name="p5" value="0"> C) Substituir o discipulado pela assistência financeira.</label>
+</div>
+
+<div class="pergunta">
+<b>6. A missão transcultural exige:</b>
+<label class="opcao"><input type="radio" name="p6" value="0"> A) A eliminação de todas as diferenças culturais.</label>
+<label class="opcao"><input type="radio" name="p6" value="1"> B) Conhecimento cultural e linguístico, preservando a mensagem bíblica.</label>
+<label class="opcao"><input type="radio" name="p6" value="0"> C) A substituição das Escrituras por costumes locais.</label>
+</div>
+
+<div class="pergunta">
+<b>7. Verdadeiro ou Falso: A evangelização e a responsabilidade social podem coexistir na missão cristã, sem que uma substitua a outra.</b>
+<label class="opcao"><input type="radio" name="p7" value="1"> VERDADEIRO</label>
+<label class="opcao"><input type="radio" name="p7" value="0"> FALSO</label>
+</div>
+
+<div class="pergunta">
+<b>8. Qual passagem bíblica apresenta a progressão missionária Jerusalém, Judeia, Samaria e confins da terra?</b>
+<label class="opcao"><input type="radio" name="p8" value="0"> A) Mateus 5:1-12.</label>
+<label class="opcao"><input type="radio" name="p8" value="1"> B) Atos 1:8.</label>
+<label class="opcao"><input type="radio" name="p8" value="0"> C) Romanos 12:1-2.</label>
+</div>
+
+<div class="pergunta">
+<b>9. Qual é a principal finalidade do discipulado no processo missionário?</b>
+<label class="opcao"><input type="radio" name="p9" value="0"> A) Produzir somente conhecimento intelectual.</label>
+<label class="opcao"><input type="radio" name="p9" value="1"> B) Formar pessoas comprometidas com Cristo e seus ensinamentos.</label>
+<label class="opcao"><input type="radio" name="p9" value="0"> C) Criar dependência permanente de um líder religioso.</label>
+</div>
+
+<div class="pergunta">
+<b>10. Apocalipse 7:9 apresenta qual perspectiva para a consumação do propósito missionário de Deus?</b>
+<label class="opcao"><input type="radio" name="p10" value="0"> A) A salvação restrita a uma única nacionalidade.</label>
+<label class="opcao"><input type="radio" name="p10" value="0"> B) A extinção das diferenças entre os povos.</label>
+<label class="opcao"><input type="radio" name="p10" value="1"> C) Uma multidão de todas as nações, povos, tribos e línguas diante do Cordeiro.</label>
+</div>
+
+</form>
+
+<button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
+
+</div>
+
+<div id="resultado" style="display:none;text-align:center;padding:20px;"></div>
+
+</div>
+
+<div class="footer-copy">
+© 2026 AVANCE – Professor Gilberto Moreira
+</div>
+
+<!-- PLAYER DE ÁUDIO -->
+
+<div id="playerAula">
+    <button onclick="iniciar()" title="Iniciar leitura">▶</button>
+    <button onclick="pausar()" title="Pausar ou continuar">⏯</button>
+    <button onclick="parar()" title="Parar leitura">⏹</button>
+    <div id="barra"><div id="progresso"></div></div>
+</div>
+
+<!-- LIBRAS -->
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 
 <script>
-    function verificarProgresso() {
-        if (localStorage.getItem('modulo3_concluido') === 'true') {
-            const res = document.getElementById('resultado');
-            document.getElementById('secao-leitura').style.display = 'none';
-            document.getElementById('secao-prova').style.display = 'none';
-            res.style.display = 'block';
-            res.innerHTML = `
-                <b style="color:green; font-size:1.2rem;">Módulo concluído com sucesso!</b><br>
-                <button class="btn" onclick="window.location.href='materia4.html'">IR PARA O MÓDULO 4</button>
-            `;
+if (window.VLibras) {
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+}
+
+// PROGRESSO
+
+function verificarProgresso() {
+    if (localStorage.getItem('modulo3_concluido') === 'true') {
+        document.getElementById('secao-leitura').style.display='none';
+        document.getElementById('secao-prova').style.display='none';
+
+        const res=document.getElementById('resultado');
+        res.style.display='block';
+
+        res.innerHTML=`
+            <h2 style="color:green">MÓDULO CONCLUÍDO!</h2>
+            <p>Você já foi aprovado nesta matéria.</p>
+            <button class="btn" onclick="window.location.href='materia4.html'">
+            IR PARA O MÓDULO 4
+            </button>
+        `;
+    }
+}
+
+// NAVEGAÇÃO
+
+function irParaProva() {
+    parar();
+    document.getElementById('secao-leitura').style.display='none';
+    document.getElementById('secao-prova').style.display='block';
+    window.scrollTo(0,0);
+}
+
+// AVALIAÇÃO
+
+function corrigir() {
+    const form=document.getElementById('quizForm');
+    let nota=0;
+
+    for(let i=1;i<=10;i++) {
+        const resposta=form.querySelector('input[name="p'+i+'"]:checked');
+
+        if(resposta && resposta.value==="1") {
+            nota++;
         }
     }
 
-    function irParaProva() {
-        document.getElementById('secao-leitura').style.display = 'none';
-        document.getElementById('secao-prova').style.display = 'block';
-        window.scrollTo(0,0);
+    const res=document.getElementById('resultado');
+
+    document.getElementById('secao-prova').style.display='none';
+    res.style.display='block';
+
+    if(nota>=7) {
+        localStorage.setItem('modulo3_concluido','true');
+
+        res.innerHTML=`
+            <h2 style="color:green">APROVADO!</h2>
+            <h3>Nota: ${nota}/10</h3>
+            <p>Parabéns! Você demonstrou domínio dos fundamentos bíblicos e missiológicos estudados.</p>
+            <button class="btn" onclick="window.location.href='materia4.html'">
+            AVANÇAR PARA O MÓDULO 4
+            </button>
+        `;
+    } else {
+        res.innerHTML=`
+            <h2 style="color:red">NÃO APROVADO</h2>
+            <h3>Nota: ${nota}/10</h3>
+            <p>A média exigida é 7. Revise o conteúdo e realize uma nova avaliação.</p>
+            <button class="btn" onclick="location.reload()">
+            REFAZER AVALIAÇÃO
+            </button>
+        `;
     }
 
-    function corrigir() {
-        const form = document.getElementById('quizForm');
-        let nota = 0;
-        for(let i=1; i<=10; i++) {
-            const p = form['p'+i];
-            if(p && p.value === "1") nota++;
-        }
-        
-        const res = document.getElementById('resultado');
-        res.style.display = 'block';
-        
-        if(nota >= 7) {
-            localStorage.setItem('modulo3_concluido', 'true');
-            res.innerHTML = `<b style="color:green">APROVADO! Nota: ${nota}/10.</b>`;
-            setTimeout(() => { window.location.href = 'materia4.html'; }, 3000);
-        } else {
-            res.innerHTML = `<b style="color:red">REPROVADO. Nota: ${nota}/10.<br>Revise o conteúdo e tente novamente.</b>`;
-            setTimeout(() => { location.reload(); }, 3000);
-        }
+    window.scrollTo(0,0);
+}
+
+// SISTEMA DE ÁUDIO
+
+let synth=window.speechSynthesis;
+let frases=[];
+let idFrase=0;
+let emPausa=false;
+let falando=false;
+
+function carregarFrases() {
+    frases=Array.from(
+        document.querySelectorAll(
+            '#secao-leitura h2, #secao-leitura h3, #secao-leitura p, #secao-leitura blockquote, #secao-leitura .lexico, #secao-leitura .referencia'
+        )
+    );
+}
+
+function iniciar() {
+    if(!frases.length) carregarFrases();
+
+    if(!frases.length) return;
+
+    if(emPausa) {
+        synth.resume();
+        emPausa=false;
+        falando=true;
+        return;
     }
+
+    if(idFrase>=frases.length) idFrase=0;
+
+    falar();
+}
+
+function falar() {
+    if(idFrase>=frases.length) {
+        parar();
+        return;
+    }
+
+    synth.cancel();
+
+    const elemento=frases[idFrase];
+    const texto=elemento.innerText.trim();
+
+    if(!texto) {
+        idFrase++;
+        falar();
+        return;
+    }
+
+    limpar();
+    elemento.classList.add('lendo');
+
+    const u=new SpeechSynthesisUtterance(texto);
+    u.lang='pt-BR';
+    u.rate=0.92;
+    u.pitch=1;
+
+    falando=true;
+    emPausa=false;
+
+    u.onend=()=>{
+        if(!falando) return;
+
+        idFrase++;
+        atualizarBarra();
+        falar();
+    };
+
+    u.onerror=()=>{
+        falando=false;
+    };
+
+    synth.speak(u);
+}
+
+function pausar() {
+    if(!falando) return;
+
+    if(synth.paused) {
+        synth.resume();
+        emPausa=false;
+    } else {
+        synth.pause();
+        emPausa=true;
+    }
+}
+
+function parar() {
+    falando=false;
+    emPausa=false;
+    synth.cancel();
+    idFrase=0;
+    limpar();
+
+    document.getElementById('progresso').style.width='0%';
+}
+
+function limpar() {
+    document.querySelectorAll('.lendo').forEach(el=>{
+        el.classList.remove('lendo');
+    });
+}
+
+function atualizarBarra() {
+    let pct=(idFrase/frases.length)*100;
+    document.getElementById('progresso').style.width=pct+'%';
+}
+
+// LIMPEZA DO ÁUDIO AO SAIR DA LEITURA
+
+document.addEventListener('visibilitychange',()=>{
+    if(document.hidden && falando) {
+        synth.pause();
+    }
+});
 </script>
 
 </body>
