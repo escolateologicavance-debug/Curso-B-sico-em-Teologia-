@@ -1,162 +1,1213 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 7 - Homilética | AVANCE</title>
-    <style>
-        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
-        .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
-        .secao { display: none; }
-        .ativa { display: block; }
-        h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
-        h3 { color: var(--azul-c); margin-top: 25px; font-size: 1.3rem; }
-        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
-        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
-        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; text-align: center; text-decoration: none; }
-        .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-        p { text-align: justify; text-indent: 1.5em; margin-bottom: 15px; }
-    </style>
-</head>
-<body onload="verificarProgresso()">
 
-<div class="header">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matéria 7 – Homilética | AVANCE</title>
+
+<style>
+:root {
+    --azul-escuro: #001f3f;
+    --azul: #0074D9;
+    --dourado: #d4af37;
+    --fundo: #f3f6fa;
+    --texto: #263238;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.75;
+}
+
+header {
+    background: var(--azul-escuro);
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+    border-bottom: 5px solid var(--dourado);
+}
+
+header h1 { margin: 0; font-size: 27px; }
+header p { margin: 8px 0 0; color: #e4eaf1; }
+
+.container {
+    max-width: 950px;
+    margin: 25px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+}
+
+h2 {
+    color: var(--azul-escuro);
+    border-bottom: 2px solid var(--dourado);
+    padding-bottom: 8px;
+    margin-top: 35px;
+}
+
+h3 {
+    color: var(--azul);
+    margin-top: 25px;
+}
+
+p { text-align: justify; }
+
+.referencia, .termo, .destaque {
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.referencia {
+    background: #eef4fa;
+    border-left: 4px solid var(--azul);
+}
+
+.termo {
+    background: #fff8e4;
+    border-left: 4px solid var(--dourado);
+}
+
+.destaque {
+    background: #f1f5f9;
+    border-left: 4px solid var(--azul-escuro);
+}
+
+.controles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+button {
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover { background: var(--azul-escuro); }
+
+.progresso-area { margin: 20px 0; }
+
+.progresso-fundo {
+    height: 12px;
+    background: #dce3eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#barraProgresso {
+    height: 100%;
+    width: 0%;
+    background: var(--azul);
+    transition: width 0.3s;
+}
+
+#statusProgresso {
+    font-size: 13px;
+    color: #52606d;
+    margin-top: 5px;
+}
+
+.secao { padding-bottom: 15px; }
+
+.secao.lida {
+    background: #f7faff;
+    border-radius: 6px;
+}
+
+.bibliografia li { margin-bottom: 9px; }
+
+#avaliacao {
+    display: none;
+    margin-top: 35px;
+    border-top: 3px solid var(--dourado);
+    padding-top: 20px;
+}
+
+.questao {
+    background: #f5f8fc;
+    padding: 15px;
+    margin: 18px 0;
+    border-radius: 7px;
+}
+
+.questao label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+#resultado {
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+#proximaMateria {
+    display: none;
+    background: #176b38;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    background: var(--azul-escuro);
+    color: white;
+    padding: 22px 10px;
+    margin-top: 40px;
+    border-top: 4px solid var(--dourado);
+}
+
+@media(max-width:600px) {
+    .container { margin: 12px; padding: 17px; }
+    header h1 { font-size: 22px; }
+    button { width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
     <h1>AVANCE</h1>
-    <p>Módulo 7: Homilética</p>
-</div>
+    <p>Faculdade Teológica – Ultrapassando Limites!</p>
+    <h2 style="color:white;border:none;">MÓDULO 7</h2>
+    <p>Matéria 7 – Homilética</p>
+    <p>A Arte e Ciência da Pregação</p>
+</header>
 
 <div class="container">
-    <div id="secao-leitura" class="secao ativa">
-        <h2>Matéria 7 – Homilética: A Arte e Ciência da Pregação</h2>
-        <p>A Homilética é a disciplina da Teologia Prática que se dedica ao estudo da preparação e da entrega da mensagem bíblica. Ela não se limita a técnicas de oratória, mas busca a integração entre a exegese rigorosa (o que o texto disse), a hermenêutica (o que o texto diz) e a comunicação eficaz para que a verdade divina confronte e transforme a realidade humana contemporânea.</p>
 
-        <h3>1. A Natureza Sagrada da Pregação</h3>
-        <p>A pregação cristã (Kerygma) é a proclamação da autoridade divina delegada ao homem. O pregador não é um conferencista de ideias filosóficas ou um motivador de autoajuda, mas um arauto que comunica uma mensagem que não é sua. A natureza da pregação exige que o orador desapareça para que a mensagem de Cristo prevaleça. É a manifestação do poder de Deus através da fraqueza humana, onde a palavra falada se torna o veículo para o encontro do Espírito Santo com a igreja.</p>
+<h2>APRESENTAÇÃO DA MATÉRIA</h2>
 
-        <h3>2. A Centralidade Absoluta das Escrituras</h3>
-        <p>Toda pregação que se pretenda cristã deve estar ancorada na Palavra de Deus. A autoridade do púlpito não emana do carisma, do cargo ou da inteligência do pregador, mas da fidelidade ao texto sagrado. Um sermão sem base bíblica é apenas um discurso secular. A Homilética ensina que o texto deve governar o sermão, e não o sermão ser imposto ao texto. O pregador deve ser um servo da Palavra, esforçando-se para que o significado original pretendido pelo autor bíblico seja preservado e honrado.</p>
+<p>
+A Homilética é a disciplina da Teologia Prática que estuda os princípios,
+os métodos e os procedimentos envolvidos na preparação e na comunicação
+da mensagem bíblica. Seu propósito não é simplesmente ensinar alguém
+a falar em público, mas capacitar o pregador a transmitir fielmente
+o conteúdo das Escrituras, com clareza, coerência, reverência e aplicação.
+</p>
 
-        <h3>3. O Binômio: Caráter e Preparo do Pregador</h3>
-        <p>A Homilética exige uma harmonia entre o "ser" e o "fazer". O preparo intelectual (estudo, leitura e exegese) é indispensável, mas é a vida piedosa do pregador que dá autoridade moral à mensagem. O caráter sustenta o que a boca profere; sem integridade, a pregação torna-se um "metal que soa". Além disso, a dependência do Espírito Santo não é desculpa para a preguiça intelectual. O pregador prepara-se como se tudo dependesse dele, mas prega como se tudo dependesse exclusivamente de Deus.</p>
+<p>
+A pregação bíblica exige integração entre exegese, hermenêutica e
+comunicação. A exegese investiga o significado do texto em seu contexto
+original; a hermenêutica estabelece os princípios para sua interpretação;
+e a Homilética organiza a mensagem para que esse conteúdo seja comunicado
+à igreja de maneira compreensível e espiritualmente edificante.
+</p>
 
-        <h3>4. A Classificação dos Métodos Homiléticos</h3>
-        <p>Historicamente, os sermões são classificados em três tipos principais: Textual (baseado em um versículo curto), Temático (baseado em um assunto que percorre várias passagens) e Expositivo. O método Expositivo é amplamente considerado o mais robusto, pois se propõe a explicar uma passagem bíblica em seu contexto original, deixando que o próprio fluxo do texto determine as divisões e o conteúdo da pregação, garantindo que a igreja seja alimentada por todo o conselho de Deus.</p>
-
-        <h3>5. A Estrutura Organizacional do Sermão</h3>
-        <p>Um sermão eficaz precisa de ordem e clareza. A estrutura básica compreende: a Introdução (que desperta o interesse e apresenta o tema), o Desenvolvimento (onde as verdades bíblicas são explicadas através de pontos lógicos) e a Conclusão com Aplicação. A aplicação é o ponto vital da Homilética; é o momento em que o pregador responde à pergunta do ouvinte: "O que eu faço com isso?". Sem aplicação prática e específica para o dia a dia, o sermão permanece uma mera transferência de informação acadêmica.</p>
-
-        <h3>6. A Finalidade Doxológica e Evangelística</h3>
-        <p>A finalidade última da pregação não é o entretenimento ou a satisfação intelectual do auditório, mas a glória de Deus (Doxologia). O objetivo é edificar o corpo de Cristo, promovendo o crescimento espiritual e a maturidade dos santos. Simultaneamente, a pregação deve ser um chamado urgente ao arrependimento e à fé para os descrentes. O resultado esperado de uma pregação homileticamente saudável não é o elogio ao pregador, mas uma igreja que sai do culto mais consciente de sua missão e mais apaixonada por Cristo.</p>
-
-        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
-    </div>
-
-    <div id="secao-prova" class="secao">
-        <h2>Avaliação de Conhecimento</h2>
-        <form id="quizForm">
-            <div class="pergunta"><b>1. Homilética é o estudo:</b>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Da retórica secular</label>
-                <label class="opcao"><input type="radio" name="p1" value="1"> Da pregação bíblica</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Da liderança eclesiástica</label>
-            </div>
-
-            <div class="pergunta"><b>2. Verdadeiro ou Falso: A autoridade do sermão está no pregador.</b>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>3. O sermão expositivo se caracteriza por:</b>
-                <label class="opcao"><input type="radio" name="p3" value="1"> Explicar fielmente o texto bíblico em seu contexto</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Usar temas livres sem base textual</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Focar apenas em histórias pessoais</label>
-            </div>
-
-            <div class="pergunta"><b>4. O caráter do pregador:</b>
-                <label class="opcao"><input type="radio" name="p4" value="0"> É secundário ao seu talento</label>
-                <label class="opcao"><input type="radio" name="p4" value="1"> Dá autoridade moral e sustenta a mensagem</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Não influencia no resultado espiritual</label>
-            </div>
-
-            <div class="pergunta"><b>5. Verdadeiro ou Falso: Pregação cristã é uma forma de entretenimento religioso.</b>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p5" value="1"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>6. A estrutura básica de um sermão inclui:</b>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Apenas uma boa história inicial</label>
-                <label class="opcao"><input type="radio" name="p6" value="1"> Introdução, desenvolvimento e aplicação prática</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Uma conclusão sem ligação com o texto</label>
-            </div>
-
-            <div class="pergunta"><b>7. A finalidade máxima da pregação é:</b>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Exaltar a eloquência do orador</label>
-                <label class="opcao"><input type="radio" name="p7" value="1"> Glorificar a Deus e edificar a igreja</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Apenas convencer intelectualmente os ouvintes</label>
-            </div>
-
-            <div class="pergunta"><b>8. Verdadeiro ou Falso: A aplicação prática responde à pergunta "o que eu faço com isso?".</b>
-                <label class="opcao"><input type="radio" name="p8" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>9. A dependência do Espírito Santo na pregação:</b>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Dispensa a necessidade de estudo prévio</label>
-                <label class="opcao"><input type="radio" name="p9" value="1"> Deve acompanhar o preparo diligente do pregador</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> É automática, independente da vida do orador</label>
-            </div>
-
-            <div class="pergunta"><b>10. Um sermão homileticamente saudável foca em:</b>
-                <label class="opcao"><input type="radio" name="p10" value="1"> Transformação de vidas pela Palavra</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Performance oratória e aplausos</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Opiniões políticas e pessoais</label>
-            </div>
-        </form>
-        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
-    </div>
-
-    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+<div class="referencia">
+<strong>Objetivo geral:</strong> compreender os fundamentos bíblicos,
+teológicos e práticos da pregação cristã, desenvolvendo capacidade
+de interpretar, organizar e comunicar mensagens fundamentadas
+nas Escrituras.
 </div>
 
-<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+<div class="controles">
+    <button onclick="iniciarLeitura()">▶ Ouvir matéria</button>
+    <button onclick="pausarLeitura()">⏸ Pausar</button>
+    <button onclick="pararLeitura()">⏹ Parar</button>
+</div>
+
+<div class="progresso-area">
+    <strong>Progresso de leitura</strong>
+    <div class="progresso-fundo">
+        <div id="barraProgresso"></div>
+    </div>
+    <div id="statusProgresso">0% concluído</div>
+</div>
+
+<h2>1. A NATUREZA SAGRADA DA PREGAÇÃO</h2>
+
+<div class="secao">
+<p>
+A pregação cristã é uma atividade de proclamação da mensagem revelada
+por Deus nas Escrituras. O pregador não é proprietário da mensagem,
+mas seu anunciador. Sua responsabilidade consiste em comunicar
+o Evangelho sem substituir a autoridade bíblica por opiniões
+particulares, interesses pessoais ou discursos meramente motivacionais.
+</p>
+
+<p>
+O Novo Testamento utiliza o termo <em>kerygma</em> para descrever
+a proclamação da mensagem. A pregação apostólica anunciava especialmente
+a morte e a ressurreição de Jesus Cristo, chamando os ouvintes
+à fé, ao arrependimento e à obediência.
+</p>
+
+<p>
+O pregador exerce uma função de arauto: alguém encarregado de anunciar
+uma mensagem recebida de uma autoridade superior. Por isso, sua
+responsabilidade não é inventar novidades, mas preservar e proclamar
+a verdade que lhe foi confiada.
+</p>
+
+<p>
+A natureza sagrada da pregação também exige humildade. O pregador
+não deve utilizar o púlpito para exaltar sua própria personalidade.
+A mensagem cristã tem Cristo como centro, e a finalidade da comunicação
+é conduzir os ouvintes ao conhecimento de Deus.
+</p>
+
+<p>
+Na perspectiva pentecostal clássica, a proclamação bíblica deve ser
+realizada sob dependência do Espírito Santo. A unção espiritual,
+porém, não substitui o estudo das Escrituras. O Espírito Santo
+não conduz o pregador à negligência do texto bíblico, mas à sua
+compreensão e proclamação fiel.
+</p>
+
+<div class="termo">
+<strong>Termo grego – κήρυγμα (Kḗrygma):</strong>
+significa “proclamação” ou “anúncio”. Refere-se à mensagem
+proclamada publicamente, especialmente à proclamação do Evangelho.
+</div>
+
+<div class="termo">
+<strong>Termo grego – κῆρυξ (Kḗryx):</strong>
+significa “arauto” ou “mensageiro oficial”. É uma figura
+utilizada para compreender a responsabilidade daquele que
+anuncia uma mensagem recebida de uma autoridade.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Marcos 16:15; Atos 2:14-36; Romanos 10:14-17;
+1 Coríntios 1:21-24; 1 Coríntios 2:1-5;
+2 Timóteo 4:1-5.
+</div>
+</div>
+
+<h2>2. A CENTRALIDADE ABSOLUTA DAS ESCRITURAS</h2>
+
+<div class="secao">
+<p>
+A autoridade da pregação cristã está fundamentada na Palavra de Deus.
+O púlpito não recebe autoridade simplesmente pela posição ocupada
+pelo pregador, por sua eloquência, popularidade ou capacidade
+de emocionar o auditório. Sua autoridade depende da fidelidade
+à revelação bíblica.
+</p>
+
+<p>
+O princípio fundamental da Homilética bíblica é que o texto deve
+governar o sermão. Isso significa que o pregador não deve selecionar
+uma passagem apenas para justificar uma opinião que já possui.
+É necessário investigar o que o autor bíblico comunicou em seu
+contexto histórico, literário e teológico.
+</p>
+
+<p>
+A exegese procura identificar o sentido pretendido pelo autor
+bíblico, considerando vocabulário, estrutura, gênero literário
+e contexto. A hermenêutica oferece os princípios que orientam
+a interpretação e a aplicação da mensagem.
+</p>
+
+<h3>2.1. Exegese</h3>
+
+<p>
+A exegese é o processo de investigação do texto bíblico.
+Seu objetivo é extrair do texto aquilo que ele comunica,
+em vez de impor ao texto ideias externas.
+</p>
+
+<h3>2.2. Hermenêutica</h3>
+
+<p>
+A hermenêutica estuda os princípios de interpretação.
+Ela considera a distância histórica e cultural entre o mundo
+bíblico e o leitor contemporâneo, buscando uma aplicação
+responsável e coerente com o sentido original.
+</p>
+
+<h3>2.3. Aplicação</h3>
+
+<p>
+A aplicação relaciona a verdade bíblica à realidade dos ouvintes.
+Ela deve decorrer da interpretação correta e não contradizer
+o significado da passagem.
+</p>
+
+<div class="termo">
+<strong>Termo grego – γραφή (Graphḗ):</strong>
+significa “escritura” ou “escrito”. É utilizado no Novo Testamento
+para se referir às Escrituras.
+</div>
+
+<div class="termo">
+<strong>Termo grego – ἐξήγησις (Exḗgēsis):</strong>
+termo relacionado à explicação ou exposição. Na linguagem teológica,
+designa a investigação do sentido do texto bíblico.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Salmos 119:105; Neemias 8:8; Lucas 24:27;
+Atos 17:11; 2 Timóteo 3:16-17; 2 Pedro 1:20-21.
+</div>
+</div>
+
+<h2>3. O BINÔMIO: CARÁTER E PREPARO DO PREGADOR</h2>
+
+<div class="secao">
+<p>
+A preparação de um pregador envolve duas dimensões inseparáveis:
+a formação intelectual e a formação moral e espiritual.
+Conhecimento sem integridade pode produzir discursos tecnicamente
+elaborados, mas contraditórios com a própria mensagem anunciada.
+Da mesma maneira, sinceridade sem preparo pode resultar em
+interpretações equivocadas e comunicação confusa.
+</p>
+
+<p>
+O pregador deve dedicar-se ao estudo bíblico, à leitura,
+à pesquisa histórica, à compreensão dos idiomas originais
+e ao desenvolvimento de sua capacidade de comunicação.
+Esse preparo não representa falta de fé, mas responsabilidade
+diante da tarefa recebida.
+</p>
+
+<p>
+O caráter também é indispensável. A vida do pregador deve
+ser coerente com os princípios que proclama. A integridade,
+a humildade, a honestidade, a disciplina e a vida de oração
+são elementos importantes para o exercício do ministério.
+</p>
+
+<p>
+A dependência do Espírito Santo não deve ser utilizada como
+justificativa para improvisação irresponsável. O preparo humano
+e a capacitação espiritual não são necessariamente concorrentes.
+O pregador estuda, organiza e prepara a mensagem, reconhecendo
+que a transformação espiritual pertence à ação de Deus.
+</p>
+
+<p>
+A recomendação de Paulo a Timóteo demonstra essa integração:
+o ministro deve apresentar-se aprovado, manejando corretamente
+a Palavra da verdade.
+</p>
+
+<div class="termo">
+<strong>Termo grego – σπουδάζω (Spoudázō):</strong>
+significa “esforçar-se”, “dedicar-se” ou “empenhar-se”.
+Em 2 Timóteo 2:15, expressa a necessidade de diligência
+no tratamento da Palavra.
+</div>
+
+<div class="termo">
+<strong>Termo grego – ἀνεπίλημπτος (Anepílēmptos):</strong>
+significa “irrepreensível” ou “que não oferece motivo
+legítimo de acusação”. Aparece nas qualificações ministeriais
+apresentadas em 1 Timóteo 3:2.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+1 Timóteo 3:1-7; 1 Timóteo 4:12-16;
+2 Timóteo 2:15; 2 Timóteo 4:2;
+Tito 2:7-8; Tiago 3:1.
+</div>
+</div>
+
+<h2>4. A CLASSIFICAÇÃO DOS MÉTODOS HOMILÉTICOS</h2>
+
+<div class="secao">
+<p>
+A Homilética organiza os sermões segundo diferentes métodos
+de desenvolvimento. Cada método possui características próprias
+e pode ser utilizado conforme a natureza do texto, o objetivo
+da mensagem e a necessidade da congregação.
+</p>
+
+<h3>4.1. Sermão textual</h3>
+
+<p>
+O sermão textual é desenvolvido a partir de um texto bíblico
+relativamente curto. Suas divisões principais são extraídas
+das expressões, ideias ou afirmações presentes na própria passagem.
+O pregador deve respeitar o contexto, evitando transformar
+uma frase isolada em fundamento para conclusões que o texto
+não sustenta.
+</p>
+
+<div class="destaque">
+<strong>Exemplo:</strong> Salmos 23:1 – “O Senhor é o meu pastor;
+nada me faltará.”
+<br>
+Tema: A suficiência do cuidado divino.
+<br>
+Possíveis divisões: O Senhor como pastor; o relacionamento
+de confiança; a provisão divina.
+</div>
+
+<h3>4.2. Sermão temático</h3>
+
+<p>
+O sermão temático parte de um assunto central e desenvolve
+seus aspectos com base em diferentes passagens bíblicas.
+É necessário selecionar textos que realmente contribuam
+para o tema, considerando o contexto de cada referência.
+</p>
+
+<div class="destaque">
+<strong>Exemplo:</strong> Tema: A oração na vida cristã.
+<br>
+Referências: Mateus 6:9-13; Filipenses 4:6-7;
+1 Tessalonicenses 5:17.
+</div>
+
+<h3>4.3. Sermão expositivo</h3>
+
+<p>
+O sermão expositivo apresenta e explica uma passagem bíblica
+em seu contexto, permitindo que a estrutura e o desenvolvimento
+do texto orientem a organização da mensagem.
+</p>
+
+<p>
+Esse método procura comunicar a intenção do texto, explicando
+seu conteúdo, identificando seus princípios teológicos e
+demonstrando sua aplicação à vida contemporânea.
+</p>
+
+<p>
+A exposição pode abranger um parágrafo, uma narrativa,
+um discurso ou uma unidade literária maior. Sua característica
+fundamental não é simplesmente a quantidade de versículos
+utilizados, mas a fidelidade ao sentido e ao desenvolvimento
+da passagem.
+</p>
+
+<div class="termo">
+<strong>Termo grego – ἐκτίθημι (Ektíthēmi):</strong>
+significa “expor”, “apresentar” ou “explicar”.
+Em Atos 28:23, aparece relacionado à exposição e explicação
+do Reino de Deus.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Neemias 8:8; Lucas 4:16-21; Atos 17:2-3;
+Atos 28:23; 2 Timóteo 4:2.
+</div>
+</div>
+
+<h2>5. A ESTRUTURA ORGANIZACIONAL DO SERMÃO</h2>
+
+<div class="secao">
+<p>
+Um sermão precisa apresentar organização lógica.
+A estrutura não deve aprisionar a comunicação, mas ajudar
+o pregador a transmitir a mensagem com clareza e facilitar
+a compreensão dos ouvintes.
+</p>
+
+<h3>5.1. Introdução</h3>
+
+<p>
+A introdução estabelece o contato inicial com o auditório.
+Ela apresenta o assunto, desperta o interesse e prepara
+os ouvintes para acompanhar o desenvolvimento da mensagem.
+Pode utilizar uma pergunta, uma situação cotidiana,
+um contexto histórico ou uma explicação inicial do texto.
+</p>
+
+<p>
+A introdução deve ser objetiva e relacionada ao tema.
+Histórias longas ou informações sem conexão podem desviar
+a atenção da mensagem principal.
+</p>
+
+<h3>5.2. Desenvolvimento</h3>
+
+<p>
+O desenvolvimento constitui a parte principal do sermão.
+Nele, o pregador apresenta as divisões, explica o texto,
+demonstra suas relações com outras passagens e esclarece
+as verdades doutrinárias envolvidas.
+</p>
+
+<p>
+Cada ponto deve contribuir para o propósito geral da mensagem.
+As divisões precisam seguir uma sequência compreensível,
+evitando repetições desnecessárias ou afirmações desconectadas.
+</p>
+
+<h3>5.3. Ilustração</h3>
+
+<p>
+A ilustração auxilia na compreensão de uma verdade.
+Pode ser uma comparação, um acontecimento histórico,
+uma situação cotidiana ou uma narrativa. Sua função é
+esclarecer a mensagem, não substituir a explicação bíblica.
+</p>
+
+<h3>5.4. Aplicação</h3>
+
+<p>
+A aplicação demonstra como a verdade bíblica deve influenciar
+a vida dos ouvintes. Ela responde à pergunta: “O que essa
+mensagem exige de mim?”
+</p>
+
+<p>
+Uma aplicação responsável deve ser específica, coerente
+com o texto e adequada à realidade da congregação.
+Pode envolver arrependimento, mudança de comportamento,
+reconciliação, perseverança, serviço cristão ou fortalecimento
+da fé.
+</p>
+
+<h3>5.5. Conclusão</h3>
+
+<p>
+A conclusão retoma a ideia central e conduz o sermão ao seu
+desfecho. Deve reforçar a verdade principal, apresentar o
+chamado correspondente e evitar a introdução de assuntos
+novos que não foram desenvolvidos.
+</p>
+
+<div class="destaque">
+<strong>Estrutura básica:</strong><br>
+1. Introdução – apresenta o assunto.<br>
+2. Desenvolvimento – explica e demonstra a mensagem.<br>
+3. Aplicação – relaciona a verdade à vida dos ouvintes.<br>
+4. Conclusão – reafirma o propósito e conduz à resposta.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Neemias 8:8; Lucas 24:32; Atos 2:37-38;
+Atos 13:16-41; 2 Timóteo 3:16-17.
+</div>
+</div>
+
+<h2>6. A FINALIDADE DOXOLÓGICA E EVANGELÍSTICA</h2>
+
+<div class="secao">
+<p>
+A pregação cristã tem como finalidade principal glorificar a Deus.
+A comunicação da Palavra não deve ser transformada em espetáculo,
+instrumento de autopromoção ou mecanismo para conquistar
+a admiração do auditório.
+</p>
+
+<p>
+O termo doxologia está relacionado à atribuição de glória,
+honra e louvor a Deus. A pregação cumpre sua finalidade
+doxológica quando apresenta a grandeza do Criador, a obra
+de Cristo e a verdade do Evangelho, conduzindo os ouvintes
+à adoração e à obediência.
+</p>
+
+<p>
+A pregação também possui finalidade edificadora.
+A igreja precisa ser instruída, fortalecida e conduzida
+à maturidade espiritual. A exposição da Palavra contribui
+para a formação doutrinária e para o desenvolvimento
+de uma comunidade comprometida com a verdade.
+</p>
+
+<p>
+Além disso, a pregação possui dimensão evangelística.
+O anúncio do Evangelho chama os pecadores ao arrependimento
+e à fé em Jesus Cristo. A proclamação cristã não deve
+esconder a realidade do pecado nem deixar de apresentar
+a graça e a salvação oferecidas por Deus.
+</p>
+
+<p>
+Na perspectiva pentecostal, a pregação também reconhece
+a atuação do Espírito Santo na convicção do pecado,
+na edificação da igreja e no testemunho de Cristo.
+O resultado esperado não é a exaltação do pregador,
+mas a glorificação de Deus e a transformação da vida
+dos ouvintes.
+</p>
+
+<div class="termo">
+<strong>Termo grego – δοξολογία (Doxología):</strong>
+significa “glorificação” ou “atribuição de glória”.
+É utilizado para descrever expressões de louvor e honra
+dirigidas a Deus.
+</div>
+
+<div class="termo">
+<strong>Termo grego – οἰκοδομή (Oikodomḗ):</strong>
+significa “edificação” ou “construção”.
+No contexto cristão, descreve o fortalecimento espiritual
+da igreja.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Mateus 28:19-20; João 16:8-14; Atos 2:37-41;
+Romanos 10:14-17; 1 Coríntios 14:3;
+Efésios 4:11-16; 1 Pedro 4:11.
+</div>
+</div>
+
+<h2>7. A PREPARAÇÃO PRÁTICA DE UM SERMÃO</h2>
+
+<div class="secao">
+<p>
+A preparação de uma mensagem deve começar pela escolha
+responsável da passagem bíblica. O pregador precisa identificar
+o contexto, compreender o conteúdo e estabelecer o propósito
+da comunicação.
+</p>
+
+<h3>Etapa 1 – Escolha do texto</h3>
+<p>
+Selecione uma passagem bíblica adequada ao propósito da mensagem.
+Leia o texto em seu contexto e observe sua relação com o capítulo
+e com o livro bíblico.
+</p>
+
+<h3>Etapa 2 – Observação</h3>
+<p>
+Identifique personagens, acontecimentos, argumentos,
+repetições, contrastes, palavras importantes e conexões
+entre as partes do texto.
+</p>
+
+<h3>Etapa 3 – Interpretação</h3>
+<p>
+Investigue o significado histórico, literário e teológico
+da passagem. Consulte referências cruzadas, dicionários,
+comentários e ferramentas de estudo.
+</p>
+
+<h3>Etapa 4 – Identificação da ideia central</h3>
+<p>
+Resuma em uma frase a principal verdade comunicada pelo texto.
+Essa ideia deve orientar toda a organização do sermão.
+</p>
+
+<h3>Etapa 5 – Organização das divisões</h3>
+<p>
+Organize os pontos principais de maneira lógica, respeitando
+o desenvolvimento da passagem e evitando divisões artificiais.
+</p>
+
+<h3>Etapa 6 – Aplicação</h3>
+<p>
+Identifique as implicações práticas da verdade bíblica.
+Considere como ela confronta, orienta, corrige e fortalece
+a vida dos ouvintes.
+</p>
+
+<h3>Etapa 7 – Revisão e oração</h3>
+<p>
+Revise a mensagem, verifique as referências, elimine
+repetições e organize a comunicação. Ore, reconhecendo
+que a eficácia espiritual da pregação depende da ação
+de Deus.
+</p>
+
+<div class="destaque">
+<strong>Modelo de ficha homilética:</strong><br>
+Texto bíblico: __________________________<br>
+Tema: _________________________________<br>
+Objetivo: ______________________________<br>
+Ideia central: __________________________<br>
+Introdução: ____________________________<br>
+Ponto 1: _______________________________<br>
+Ponto 2: _______________________________<br>
+Ponto 3: _______________________________<br>
+Aplicação: _____________________________<br>
+Conclusão: _____________________________
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Esdras 7:10; Neemias 8:8; Atos 17:11;
+1 Timóteo 4:13-16; 2 Timóteo 2:15.
+</div>
+</div>
+
+<h2>8. A COMUNICAÇÃO E A ENTREGA DA MENSAGEM</h2>
+
+<div class="secao">
+<p>
+A comunicação é parte integrante da pregação. Uma mensagem
+biblicamente correta precisa ser apresentada de maneira
+compreensível, organizada e adequada ao público.
+</p>
+
+<p>
+A clareza exige linguagem acessível, frases bem construídas
+e explicações suficientes. O pregador deve evitar o uso
+desnecessário de termos técnicos ou expressões que dificultem
+a compreensão da mensagem.
+</p>
+
+<p>
+A voz deve ser utilizada com naturalidade, respeitando
+a necessidade de ênfase, pausa e variação de intensidade.
+A comunicação corporal também deve contribuir para a
+transmissão da mensagem, sem exageros ou teatralidade.
+</p>
+
+<p>
+A eloquência não deve ser confundida com gritos, gesticulações
+excessivas ou demonstrações artificiais de emoção. A comunicação
+eficaz nasce da combinação entre conteúdo verdadeiro,
+organização, clareza e convicção.
+</p>
+
+<p>
+O pregador também deve considerar a realidade cultural
+e o nível de compreensão dos ouvintes, sem alterar o
+conteúdo da revelação para agradar ao auditório.
+</p>
+
+<div class="termo">
+<strong>Termo grego – παρρησία (Parrēsía):</strong>
+significa “franqueza”, “ousadia” ou “liberdade de expressão”.
+No contexto do Novo Testamento, pode descrever a coragem
+para anunciar a mensagem de Deus.
+</div>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Atos 4:29-31; 1 Coríntios 14:9;
+Colossenses 4:4; Efésios 6:19-20;
+2 Timóteo 2:24-25.
+</div>
+</div>
+
+<h2>9. OS ERROS QUE COMPROMETEM A PREGAÇÃO</h2>
+
+<div class="secao">
+<p>
+A responsabilidade homilética também exige reconhecer
+práticas que prejudicam a interpretação e a comunicação
+da mensagem bíblica.
+</p>
+
+<ul>
+<li><strong>Descontextualização:</strong> utilizar versículos isolados, ignorando o contexto.</li>
+<li><strong>Imposição de ideias:</strong> obrigar o texto a sustentar uma opinião pessoal.</li>
+<li><strong>Excesso de informações:</strong> acumular dados sem uma ideia central.</li>
+<li><strong>Falta de aplicação:</strong> transmitir conhecimento sem demonstrar suas implicações práticas.</li>
+<li><strong>Improvisação irresponsável:</strong> negligenciar o estudo e a preparação.</li>
+<li><strong>Autopromoção:</strong> utilizar a mensagem para exaltar o pregador.</li>
+<li><strong>Manipulação emocional:</strong> substituir a verdade bíblica por recursos artificiais para controlar o auditório.</li>
+<li><strong>Uso inadequado de ilustrações:</strong> apresentar histórias sem comprovação como se fossem fatos reais.</li>
+</ul>
+
+<p>
+A fidelidade às Escrituras exige que o pregador examine
+seu próprio método e mantenha a mensagem subordinada
+à autoridade da Palavra de Deus.
+</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+Mateus 15:8-9; 2 Coríntios 4:2;
+1 Timóteo 4:16; 2 Timóteo 2:15;
+2 Timóteo 4:3-5; 1 Pedro 5:2-3.
+</div>
+</div>
+
+<h2>10. SÍNTESE E CONCLUSÃO</h2>
+
+<div class="secao">
+<p>
+A Homilética é uma disciplina essencial à formação ministerial,
+pois estabelece princípios para a preparação e a comunicação
+responsável da mensagem bíblica. Seu estudo integra conhecimento
+das Escrituras, interpretação correta, organização do sermão,
+caráter ministerial e dependência do Espírito Santo.
+</p>
+
+<p>
+O pregador deve compreender que sua responsabilidade não consiste
+em produzir uma mensagem original, mas em comunicar com fidelidade
+a revelação que recebeu. A qualidade de uma pregação não pode
+ser medida apenas pela reação emocional do auditório ou pelo
+reconhecimento público de quem a transmite.
+</p>
+
+<p>
+Uma pregação saudável preserva a centralidade de Cristo,
+respeita o contexto bíblico, apresenta doutrina consistente,
+promove edificação e convoca à obediência.
+</p>
+
+<p>
+O púlpito não é espaço para a promoção pessoal, mas lugar
+de serviço à Palavra. O pregador fiel prepara-se com diligência,
+proclama com coragem e reconhece que a glória pertence
+exclusivamente a Deus.
+</p>
+
+<div class="destaque">
+<strong>Princípio fundamental da Homilética:</strong><br>
+O texto bíblico determina a mensagem; a interpretação
+estabelece seu significado; a estrutura organiza sua
+comunicação; e a aplicação demonstra sua relevância
+para a vida dos ouvintes.
+</div>
+</div>
+
+<h2>BIBLIOGRAFIA RECOMENDADA</h2>
+
+<ul class="bibliografia">
+<li>
+BÍBLIA SAGRADA. Antigo e Novo Testamento.
+Almeida Revista e Atualizada.
+</li>
+<li>
+BRAGA, James. <em>Como Preparar Mensagens Bíblicas</em>.
+São Paulo: Vida.
+</li>
+<li>
+ROBINSON, Haddon W. <em>Pregação Bíblica: O Desenvolvimento
+e a Entrega de Sermões Expositivos</em>.
+</li>
+<li>
+STOTT, John. <em>Eu Creio na Pregação</em>.
+</li>
+<li>
+CRANE, James D. <em>O Sermão Eficaz</em>.
+</li>
+<li>
+HADDON, W. Robinson; LARSON, Craig Brian.
+<em>A Arte e o Ofício da Pregação</em>.
+</li>
+<li>
+HORTON, Stanley M. (org.). <em>Teologia Sistemática:
+Uma Perspectiva Pentecostal</em>. Rio de Janeiro: CPAD.
+</li>
+<li>
+VINE, W. E.; UNGER, Merril F.; WHITE JR., William.
+<em>Dicionário Vine</em>. Rio de Janeiro: CPAD.
+</li>
+</ul>
+
+<div class="referencia">
+<strong>Orientação para avaliação:</strong>
+revise os conceitos de Kerygma, exegese, hermenêutica,
+caráter do pregador, sermão textual, temático e expositivo,
+estrutura do sermão, aplicação, doxologia e finalidade evangelística.
+</div>
+
+<div id="avaliacao">
+<h2>AVALIAÇÃO – MATÉRIA 7</h2>
+
+<p>
+Responda às 10 questões. Cada questão vale 1 ponto.
+A nota mínima para aprovação é 7,0.
+</p>
+
+<form id="formAvaliacao">
+
+<div class="questao">
+<strong>1. O que é Homilética?</strong>
+<label><input type="radio" name="q1" value="a"> A) Estudo exclusivo da história da Igreja.</label>
+<label><input type="radio" name="q1" value="b"> B) Disciplina que estuda a preparação e a comunicação da mensagem bíblica.</label>
+<label><input type="radio" name="q1" value="c"> C) Técnica de entretenimento religioso.</label>
+<label><input type="radio" name="q1" value="d"> D) Estudo exclusivo dos idiomas bíblicos.</label>
+</div>
+
+<div class="questao">
+<strong>2. O termo grego Kerygma significa:</strong>
+<label><input type="radio" name="q2" value="a"> A) Proclamação ou anúncio.</label>
+<label><input type="radio" name="q2" value="b"> B) Silêncio ou meditação.</label>
+<label><input type="radio" name="q2" value="c"> C) Construção de templos.</label>
+<label><input type="radio" name="q2" value="d"> D) Governo religioso.</label>
+</div>
+
+<div class="questao">
+<strong>3. Qual é a relação correta entre exegese e hermenêutica?</strong>
+<label><input type="radio" name="q3" value="a"> A) Ambas substituem a leitura bíblica.</label>
+<label><input type="radio" name="q3" value="b"> B) A exegese cria significados e a hermenêutica ignora o contexto.</label>
+<label><input type="radio" name="q3" value="c"> C) A exegese investiga o sentido do texto e a hermenêutica estuda os princípios de interpretação.</label>
+<label><input type="radio" name="q3" value="d"> D) São técnicas exclusivas de oratória.</label>
+</div>
+
+<div class="questao">
+<strong>4. Qual é o fundamento da autoridade da pregação cristã?</strong>
+<label><input type="radio" name="q4" value="a"> A) A popularidade do pregador.</label>
+<label><input type="radio" name="q4" value="b"> B) A capacidade de emocionar o público.</label>
+<label><input type="radio" name="q4" value="c"> C) O cargo ministerial isoladamente.</label>
+<label><input type="radio" name="q4" value="d"> D) A fidelidade à Palavra de Deus.</label>
+</div>
+
+<div class="questao">
+<strong>5. O que caracteriza o sermão textual?</strong>
+<label><input type="radio" name="q5" value="a"> A) É baseado em um texto bíblico específico, geralmente curto.</label>
+<label><input type="radio" name="q5" value="b"> B) Não utiliza referências bíblicas.</label>
+<label><input type="radio" name="q5" value="c"> C) Trata exclusivamente de assuntos históricos.</label>
+<label><input type="radio" name="q5" value="d"> D) É formado apenas por testemunhos pessoais.</label>
+</div>
+
+<div class="questao">
+<strong>6. Qual é a característica principal do sermão temático?</strong>
+<label><input type="radio" name="q6" value="a"> A) Explicar somente um versículo.</label>
+<label><input type="radio" name="q6" value="b"> B) Desenvolver um assunto central utilizando diferentes passagens bíblicas.</label>
+<label><input type="radio" name="q6" value="c"> C) Evitar qualquer divisão.</label>
+<label><input type="radio" name="q6" value="d"> D) Utilizar somente ilustrações.</label>
+</div>
+
+<div class="questao">
+<strong>7. O que caracteriza o sermão expositivo?</strong>
+<label><input type="radio" name="q7" value="a"> A) A utilização de muitos assuntos sem conexão.</label>
+<label><input type="radio" name="q7" value="b"> B) A exposição das opiniões pessoais do pregador.</label>
+<label><input type="radio" name="q7" value="c"> C) A explicação de uma passagem em seu contexto, respeitando seu desenvolvimento.</label>
+<label><input type="radio" name="q7" value="d"> D) A ausência de interpretação bíblica.</label>
+</div>
+
+<div class="questao">
+<strong>8. Qual é a função da aplicação no sermão?</strong>
+<label><input type="radio" name="q8" value="a"> A) Substituir a introdução.</label>
+<label><input type="radio" name="q8" value="b"> B) Apresentar informações sem relação com o texto.</label>
+<label><input type="radio" name="q8" value="c"> C) Prolongar a mensagem desnecessariamente.</label>
+<label><input type="radio" name="q8" value="d"> D) Demonstrar como a verdade bíblica deve influenciar a vida dos ouvintes.</label>
+</div>
+
+<div class="questao">
+<strong>9. O que significa doxologia?</strong>
+<label><input type="radio" name="q9" value="a"> A) Atribuição de glória, honra e louvor a Deus.</label>
+<label><input type="radio" name="q9" value="b"> B) Técnica de comunicação pública.</label>
+<label><input type="radio" name="q9" value="c"> C) Estudo da organização administrativa.</label>
+<label><input type="radio" name="q9" value="d"> D) Método de interpretação histórica.</label>
+</div>
+
+<div class="questao">
+<strong>10. Qual deve ser o resultado esperado de uma pregação biblicamente saudável?</strong>
+<label><input type="radio" name="q10" value="a"> A) A promoção da imagem do pregador.</label>
+<label><input type="radio" name="q10" value="b"> B) A glorificação de Deus, a edificação da igreja e o chamado à fé e à obediência.</label>
+<label><input type="radio" name="q10" value="c"> C) O entretenimento do auditório.</label>
+<label><input type="radio" name="q10" value="d"> D) A substituição das Escrituras por opiniões pessoais.</label>
+</div>
+
+<button type="button" onclick="corrigirAvaliacao()">
+ENVIAR AVALIAÇÃO
+</button>
+
+</form>
+
+<div id="resultado"></div>
+
+<button id="proximaMateria" onclick="irProximaMateria()">
+IR PARA A PRÓXIMA MATÉRIA
+</button>
+
+</div>
+
+</div>
+
+<footer>
+© AVANCE – Gilberto Moreira
+<br>
+Ultrapassando Limites!
+</footer>
+
+<!-- ACESSIBILIDADE EM LIBRAS -->
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
 
 <script>
-function verificarProgresso() {
-    if (localStorage.getItem('modulo7_concluido') === 'true') {
-        const res = document.getElementById('resultado');
-        document.getElementById('secao-leitura').style.display = 'none';
-        document.getElementById('secao-prova').style.display = 'none';
-        res.style.display = 'block';
-        res.innerHTML = `
-            <b style="color:green; font-size:1.2rem;">Módulo concluído com sucesso!</b><br>
-            <button class="btn" onclick="window.location.href='materia8.html'">IR PARA O MÓDULO 8</button>
-        `;
+const secoes = document.querySelectorAll(".secao");
+let indiceLeitura = 0;
+let falaAtual = null;
+
+function atualizarProgresso() {
+    const total = secoes.length;
+    const lidas = document.querySelectorAll(".secao.lida").length;
+    const percentual = Math.round((lidas / total) * 100);
+
+    document.getElementById("barraProgresso").style.width =
+        percentual + "%";
+
+    document.getElementById("statusProgresso").textContent =
+        percentual + "% concluído";
+}
+
+function destacarSecao(indice) {
+    secoes.forEach(secao => secao.classList.remove("lida"));
+
+    if (secoes[indice]) {
+        secoes[indice].classList.add("lida");
+        secoes[indice].scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+
+    atualizarProgresso();
+}
+
+function iniciarLeitura() {
+    if (!("speechSynthesis" in window)) {
+        alert("Seu navegador não oferece suporte à leitura em áudio.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    if (indiceLeitura >= secoes.length) {
+        indiceLeitura = 0;
+    }
+
+    lerProximaSecao();
+}
+
+function lerProximaSecao() {
+    if (indiceLeitura >= secoes.length) {
+        alert("Leitura da matéria concluída!");
+        return;
+    }
+
+    destacarSecao(indiceLeitura);
+
+    falaAtual = new SpeechSynthesisUtterance(
+        secoes[indiceLeitura].innerText
+    );
+
+    falaAtual.lang = "pt-BR";
+    falaAtual.rate = 0.95;
+
+    falaAtual.onend = function() {
+        indiceLeitura++;
+        lerProximaSecao();
+    };
+
+    speechSynthesis.speak(falaAtual);
+}
+
+function pausarLeitura() {
+    if (speechSynthesis.speaking) {
+        speechSynthesis.pause();
     }
 }
 
-function irParaProva(){
-    document.getElementById('secao-leitura').style.display='none';
-    document.getElementById('secao-prova').style.display='block';
-    window.scrollTo(0,0);
+function pararLeitura() {
+    speechSynthesis.cancel();
+    indiceLeitura = 0;
 }
 
-function corrigir(){
-    const f=document.getElementById('quizForm');
-    let n=0;
-    for(let i=1;i<=10;i++) if(f['p'+i] && f['p'+i].value==="1") n++;
-    const r=document.getElementById('resultado');
-    r.style.display='block';
-    
-    if(n>=7){
-        localStorage.setItem('modulo7_concluido', 'true');
-        r.innerHTML=`<b style="color:green">APROVADO! Nota: ${n}/10.</b>`;
-        setTimeout(()=>{ window.location.href='materia8.html'; },3000);
+window.addEventListener("scroll", function() {
+    const altura = document.documentElement.scrollHeight -
+                   document.documentElement.clientHeight;
+
+    if (altura > 0) {
+        const percentual = Math.round(
+            (window.scrollY / altura) * 100
+        );
+
+        document.getElementById("barraProgresso").style.width =
+            percentual + "%";
+    }
+});
+
+function corrigirAvaliacao() {
+    const respostas = {
+        q1: "b",
+        q2: "a",
+        q3: "c",
+        q4: "d",
+        q5: "a",
+        q6: "b",
+        q7: "c",
+        q8: "d",
+        q9: "a",
+        q10: "b"
+    };
+
+    let pontos = 0;
+    let respondidas = 0;
+
+    for (let questao in respostas) {
+        const selecionada = document.querySelector(
+            'input[name="' + questao + '"]:checked'
+        );
+
+        if (selecionada) {
+            respondidas++;
+
+            if (selecionada.value === respostas[questao]) {
+                pontos++;
+            }
+        }
+    }
+
+    if (respondidas < 10) {
+        alert("Responda todas as 10 questões antes de enviar.");
+        return;
+    }
+
+    const nota = pontos;
+    const resultado = document.getElementById("resultado");
+
+    if (nota >= 7) {
+        resultado.style.background = "#e1f5e7";
+        resultado.style.color = "#176b38";
+
+        resultado.innerHTML =
+            "APROVADO!<br>Você acertou " + pontos +
+            " de 10 questões.<br>Nota: " + nota.toFixed(1);
+
+        localStorage.setItem("modulo7_concluido", "sim");
+
+        document.getElementById("proximaMateria").style.display =
+            "inline-block";
+
     } else {
-        r.innerHTML=`<b style="color:red">REPROVADO. Nota: ${n}/10.<br>Estude o conteúdo e tente novamente.</b>`;
-        setTimeout(()=>{ location.reload(); },3000);
+        resultado.style.background = "#fdeaea";
+        resultado.style.color = "#a32020";
+
+        resultado.innerHTML =
+            "NÃO APROVADO.<br>Você acertou " + pontos +
+            " de 10 questões.<br>Nota: " + nota.toFixed(1) +
+            "<br>Revise o conteúdo e tente novamente.";
+
+        localStorage.removeItem("modulo7_concluido");
+
+        document.getElementById("proximaMateria").style.display =
+            "none";
     }
 }
+
+function irProximaMateria() {
+    if (localStorage.getItem("modulo7_concluido") === "sim") {
+        window.location.href = "materia8.html";
+    } else {
+        alert("É necessário obter nota mínima 7 para avançar.");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("avaliacao").style.display = "block";
+});
 </script>
 
 </body>
