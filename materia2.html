@@ -8,20 +8,21 @@
         :root { --azul-m:#001f3f; --azul-c:#0074D9; }
         body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
         .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
+        .container { max-width: 850px; margin: 20px auto; background: white; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
         .secao { display: none; }
         .ativa { display: block; }
         h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
-        h3 { color: var(--azul-c); margin-top: 25px; }
+        h3 { color: var(--azul-c); margin-top: 30px; }
         .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
         .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
         .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; text-align: center; text-decoration: none; }
         .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
         p { text-align: justify; }
         ul { text-align: justify; margin-bottom: 15px; }
-        .barra-audio { background: #eef5fc; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--azul-c); }
+        .barra-audio { background: #eef5fc; padding: 15px; border-radius: 8px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--azul-c); }
         .btn-audio { background: var(--azul-c); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; }
         .btn-audio:hover { background: #0056b3; }
+        blockquote { border-left: 4px solid var(--azul-c); margin: 15px 0; padding: 10px 20px; background: #f8f9fa; font-style: italic; text-align: justify; }
     </style>
 </head>
 <body onload="verificarProgresso()">
@@ -33,65 +34,68 @@
 
 <div class="container">
     <div id="secao-leitura" class="secao ativa">
-        <h2>Matéria 2 – Hamartiologia Avançada</h2>
+        <h2>Matéria 2 – Hamartiologia Sistemática e Exegética</h2>
         
-        <!-- Barra de Recursos de Áudio -->
+        <!-- Barra de Áudio Funcional -->
         <div class="barra-audio">
-            <span>🔊 <b>Ouvir Conteúdo da Matéria:</b></span>
+            <span>🔊 <b>Ouvir Conteúdo Completo:</b></span>
             <div>
-                <button class="btn-audio" onclick="lerTexto()">Ouvir</button>
-                <button class="btn-audio" style="background:#555;" onclick="pararTexto()">Parar</button>
+                <button class="btn-audio" onclick="lerTexto()">Ouvir / Retomar</button>
+                <button class="btn-audio" style="background:#555;" onclick="pararTexto()">Pausar</button>
             </div>
         </div>
 
-        <p>A Hamartiologia é o ramo fundamental da teologia sistemática que investiga a doutrina do pecado exclusivamente sob a autoridade das Sagradas Escrituras. Este tratado examina a origem metafísica e histórica do mal moral, a natureza transgressora do pecado em oposição à santidade divina, sua extensão total sobre a humanidade caída, as consequências espirituais e físicas, e a gloriosa provisão redentora operada por Cristo.</p>
+        <p>A Hamartiologia é o tratado teológico sistemático que examina a doutrina do pecado exclusivamente sob a ótica da inerrante Palavra de Deus. Conforme destaca o teólogo pentecostal Myer Pearlman em sua clássica obra <i>Teologia Bíblica e Sistemática</i>, o entendimento correto do pecado é a base indispensável para a compreensão da soteriologia, pois o remédio da graça só pode ser avaliado por aqueles que conhecem a profundidade da enfermidade espiritual humana.</p>
 
-        <h3>1. O Conceito Bíblico e Linguístico de Pecado</h3>
-        <p>Nas Escrituras Sagradas, o pecado não é mera imperfeição cultural, mas uma ofensa direta contra o caráter de Deus. Os termos originais revelam facetas vitais:</p>
+        <h3>1. A Lexicologia Bíblica do Pecado: Termos Originais</h3>
+        <p>As Escrituras empregam termos técnicos precisos no hebraico e no grego para expor as múltiplas facetas da rebelião humana contra o Criador:</p>
         <ul>
-            <li><b>Hamartía (Grego):</b> Significa "errar o alvo", falhar em alcançar o padrão absoluto de justiça e glória estabelecido por Deus (Romanos 3:23).</li>
-            <li><b>Transgressão (Heb. <i>Pesha</i> / Gr. <i>Parabasis</i>):</b> A quebra voluntária de uma lei ou mandamento divino, ultrapassando limites traçados (Romanos 4:15).</li>
-            <li><b>Iniqüidade (Heb. <i>Avon</i>):</b> Descreve a perversão ou torção moral do caráter, afastando o ser humano da retidão original.</li>
+            <li><b>Hamartía (Grego - ἁμαρτία):</b> Significa primordialmente "errar o alvo" ou distanciar-se da marca traçada pela santidade divina. Referência base: <i>"Porque todos pecaram e destituídos estão da glória de Deus"</i> (Romanos 3:23).</li>
+            <li><b>Pesha / Parabasis (Hebraico / Grego):</b> Descreve a transgressão, a quebra intencional e rebelde de um pacto ou mandamento expresso da autoridade soberana de Deus. Referência base: <i>"Porque a lei opera a ira; porque onde não há lei também não há transgressão [parabasis]"</i> (Romanos 4:15).</li>
+            <li><b>Avon (Hebraico - עָוֹן / Iniqüidade):</b> Aponta para a perversão, torção ou distorção moral do caráter interno, descrevendo a culpa acumulada e o desvio da retidão original. Referência base: <i>"Contra ti, contra ti somente pequei, e fiz o mal diante dos teus olhos... Eis que em iniqüidade [avon] fui formado, e em pecado me concebeu minha mãe"</i> (Salmo 51:4-5).</li>
         </ul>
 
-        <h3>2. A Origem Cósmica e Humana do Mal</h3>
-        <p>O mal e o pecado não procedem de Deus, cuja essência é absolutamente pura. A origem cósmica remonta à queda de Lúcifer e dos anjos rebeldes por soberba (Isaías 14:12-15; Ezequiel 28:15-17). Na esfera humana, o pecado entrou no mundo por meio da desobediência voluntária de Adão no Jardim do Éden (Gênesis 3; Romanos 5:12), inaugurando uma fratura espiritual e corrompendo a comunhão com o Criador.</p>
+        <h3>2. A Origem Cósmica e Histórica do Mal Moral</h3>
+        <p>O pecado não teve origem em Deus, cuja essência é absolutamente santa (Habacuque 1:13). A vertente cósmica do mal iniciou-se com a queda de Querubim Ungido (Lúcifer) no céu, motivada por soberba e ambição de igualar-se ao Altíssimo (Isaías 14:12-15; Ezequiel 28:12-17). Na terra, a entrada oficial do pecado ocorreu no Éden por meio da desobediência voluntária e federal de Adão, o representante da raça humana (Gênesis 3:6; Romanos 5:12).</p>
 
-        <h3>3. A Natureza e a Extensão da Queda</h3>
-        <p>A Bíblia ensina que o pecado é universal — atinge a todos sem exceção (Romanos 3:10-12) — e total em sua extensão na constituição humana. A doutrina da <i>depravação total</i> esclarece que o pecado corrompeu todas as facetas da vida: a mente (cegueira espiritual), as emoções (afetos desviados) e a vontade (escravidão ao pecado), tornando o homem incapaz de salvar a si mesmo por méritos próprios (Efésios 2:1-3).</p>
-
-        <h3>4. A Transmissão Hereditária do Pecado</h3>
-        <p>A culpa e a corrupção de Adão foram transmitidas a toda a sua posteridade. Conforme o apóstolo Paulo resume em Romanos 5:12: <i>"Portanto, assim como por um só homem entrou o pecado no mundo, e pelo pecado, a morte, assim também a morte passou a todos os homens, porquanto todos pecaram"</i>. Todos nascemos com natureza pecaminosa herdada (Salmo 51:5).</p>
-
-        <h3>5. Pecado Original vs. Pecado Atual</h3>
-        <p>A teologia bíblica distingue com clareza duas dimensões da desobediência humana:</p>
+        <h3>3. A Doutrina da Depravação Total e Extensão da Queda</h3>
+        <p>Teólogos pentecostais clássicos, como Stanley Horton em <i>Teologia Sistemática: Uma Perspectiva Pentecostal</i>, pontuam que a "depravação total" não significa que o homem seja tão depravado quanto poderia ser na sociedade (restringido pela graça comum divina), mas sim que <b>absolutamente todas as esferas da natureza humana</b> foram afetadas e corrompidas pela queda:</p>
         <ul>
-            <li><b>Pecado Original:</b> A condição herdada e a culpa imputada a toda a raça humana devido à transgressão representativa de Adão.</li>
-            <li><b>Pecados Atuais (ou Atos Pecaminosos):</b> As transgressões práticas, pensamentos, palavras e omissões deliberadas cometidas por cada indivíduo ao longo da vida, fluindo diretamente de sua natureza caída (Tiago 1:14-15).</p>
+            <li><b>A Mente:</b> Cegueira espiritual e inimizade contra as coisas divinas (1 Coríntios 2:14; Efésios 4:18).</li>
+            <li><b>O Coração e Emoções:</b> Afetos desviados, egoísmo e propensão constante ao mal (Jeremias 17:9; Romanos 1:21).</li>
+            <li><b>A Vontade:</b> Escravidão moral; o homem natural é destituído de poder espiritual autônomo para gerar sua própria salvação (João 8:34; Romanos 6:17).</li>
         </ul>
 
-        <h3>6. A Dimensão Relacional e Social do Pecado</h3>
-        <p>Embora o pecado seja primariamente contra Deus (Salmo 51:4), ele possui inevitáveis ramificações horizontais. O pecado destrói a harmonia nos relacionamentos familiares, corrompe as estruturas sociais, promove a injustiça, gera opressão e submete toda a criação material a gemidos de dor e decadência (Romanos 8:20-22).</p>
+        <h3>4. A Transmissão Hereditária e o Pecado Original</h3>
+        <p>A teologia reformada e pentecostal corrobora que a culpa jurídica e a mancha corruptora da queda de Adão foram transmitidas organicamente a toda a sua posteridade. O apóstolo Paulo estabelece o princípio da solidariedade racial em Romanos 5:12: <i>"Portanto, assim como por um só homem entrou o pecado no mundo, e pelo pecado, a morte, assim também a morte passou a todos os homens, porquanto todos pecaram"</i>. Todos nascem pecadores por natureza antes mesmo de cometerem o primeiro ato pecaminoso.</p>
 
-        <h3>7. As Consequências Espirituais e Físicas</h3>
-        <p>O pecado acarreta desdobramentos severos e inevitáveis:</p>
+        <h3>5. Pecado Original vs. Transgressões Atuais</h3>
+        <p>É fundamental distinguir na teologia bíblica o estado herdado dos atos práticos:</p>
+        <blockquote>"O pecado original é a raiz corrompida plantada na humanidade no Éden; os pecados atuais são os frutos amargos que brotam dessa raiz todos os dias através de pensamentos, palavras, desejos e omissões voluntárias." — Comentário Teológico AVANCE</blockquote>
+        <p>Conforme Tiago 1:14-15 expõe, cada um é tentado quando atraído e engodado pela sua própria concupiscência, gerando o pecado que, consumado, gera a morte.</p>
+
+        <h3>6. A Dimensão Relacional, Social e Cósmica do Pecado</h3>
+        <p>Embora toda transgressão seja vertical — uma ofensa direta à majestade de Deus —, ela produz inevitáveis frutos horizontais catastróficos. O pecado corrompe o tecido familiar, fomenta a violência nas cidades, gera exploração social e submete toda a criação material a um estado de frustração e gemido contínuo (Romanos 8:19-22).</p>
+
+        <h3>7. As Consequências Tríplices do Pecado</h3>
+        <p>A penalidade imposta pela justiça de Deus desdobra-se em três esferas absolutas:</p>
         <ul>
-            <li><b>Morte Espiritual:</b> A separação imediata da comunhão vital com Deus (Efésios 2:1).</li>
-            <li><b>Morte Física:</b> A dissolução e retorno do corpo ao pó como cumprimento da sentença divina (Gênesis 3:19; Hebreus 9:27).</li>
-            <li><b>Condenação Eterna:</b> A separação irrevogável de Deus na separação definitiva para os que rejeitam a graça (Apocalipse 20:11-15).</li>
+            <li><b>Morte Espiritual:</b> O imediato corte da comunhão vital e relacional com a fonte da vida (Efésios 2:1).</li>
+            <li><b>Morte Física:</b> A desintegração progressiva e o retorno do pó ao pó, decretados em Gênesis 3:19 e ratificados em Hebreus 9:27.</li>
+            <li><b>Morte Eterna (Segunda Morte):</b> A separação irrevogável e consciente de Deus no lago de fogo para aqueles que rejeitam a redenção (Apocalipse 20:14-15).</li>
         </ul>
 
-        <h3>8. A Ineficácia dos Esforços Humanos e da Lei</h3>
-        <p>Diante da gravidade do pecado, nenhuma tentativa de reforma moral, autoajuda psicológica, filosofias laicas ou cumprimento ritualístico da lei mosaica tem o poder de purificar o coração humano ou justificar o pecador perante o tribunal divino. A Lei atua como um espelho que revela o pecado, mas não possui poder regenerador (Gálatas 2:16; Romanos 3:20).</p>
+        <h3>8. A Insuficiência das Obras, da Lei e da Filosofia Humana</h3>
+        <p>Nenhuma estrutura religiosa, preceito filosófico laico, ética humanista ou esforço de autoajuda comportamental pode remediar a condição hamartiológica do homem. A Lei Mosaica foi dada por Deus não para salvar, mas para funcionar como um espelho cirúrgico que expõe a infecção do pecado (Romanos 3:20; Gálatas 3:24), silenciando toda boca humana perante o tribunal divino (Romanos 3:19).</p>
 
-        <h3>9. A Provisão Divina e a Expiação Vicária em Cristo</h3>
-        <p>A iniciativa da salvação pertence inteiramente a Deus. Em Sua infinita graça, Ele providenciou a solução definitiva por meio de Jesus Cristo. A morte vicária de Cristo na cruz — a Sua expiação — satisfez plenamente as exigências da justiça santa de Deus contra o pecado, propiciando o perdão, a justificação e a reconciliação eterna para todo aquele que crê (Romanos 3:24-26; 2 Coríntios 5:21).</p>
+        <h3>9. A Provisão Divina: A Expiação Vicária e Subistitutiva em Cristo</h3>
+        <p>A única resposta aceitável para o problema do pecado veio da iniciativa soberana da graça de Deus através da obra expiatória de Cristo. Na cruz do Calvário, Jesus Cristo operou a substituição penal: Ele levou sobre si os nossos pecados em Seu próprio corpo, satisfazendo plenamente as exigências da ira e da justiça santa de Deus (Isaías 53:5-6; 2 Coríntios 5:21; 1 Pedro 2:24).</p>
 
-        <h3>10. A Regeneração e a Graça Irresistível</h3>
-        <p>Para que o pecador morto em seus delitos possa responder ao Evangelho, o Espírito Santo opera a regeneração (o novo nascimento, João 3:3-5). Esta obra soberana vivifica o espírito humano, iluminando a mente e inclinando a vontade para abraçar a fé em Cristo, desfazendo o domínio absoluto do pecado na vida do crente (Romanos 6:14).</p>
+        <h3>10. A Regeneração pelo Espírito Santo e a Quebra do Domínio</h3>
+        <p>A aplicação da obra de Cristo efetua-se mediante a regeneração (o novo nascimento operado soberanamente pelo Espírito Santo, Tito 3:5). Para o teólogo pentecostal, o batismo e a habitação do Espírito no crente quebram o domínio absoluto e a tirania do pecado, concedendo poder espiritual para viver em santidade e vitória sobre a carne (Romanos 6:14; 8:1-2).</p>
 
-        <h3>11. A Vitória Final sobre o Pecado na Escatologia</h3>
-        <p>Embora o pecado ainda habite na carne do crente durante sua peregrinação terrena (1 João 1:8), a Hamartiologia culmina com a promessa escatológica da redenção completa. Na consumação dos séculos, com a ressurreição dos corpos e a glorificação final, a presença, o poder e a memória do pecado serão inteiramente erradicados, habitando para sempre a justiça nos novos céus e nova terra (Apocalipse 21:1-4; 2 Pedro 3:13).</p>
+        <h3>11. A Escatologia da Redenção: A Erradicação Definitiva do Mal</h3>
+        <p>A Hamartiologia encerra-se com a bendita esperança da consumação escatológica. Na glorificação final dos santos e na manifestação dos novos céus e nova terra, a presença, a tentação, o poder e até mesmo a memória do pecado serão inteiramente banidos da realidade criada, reinando a justiça absoluta para todo o sempre (Apocalipse 21:1-4; 2 Pedro 3:13).</p>
 
         <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
     </div>
@@ -100,61 +104,63 @@
         <h2>Avaliação de Conhecimento</h2>
         <form id="quizForm">
 
-            <div class="pergunta"><b>1. O termo grego “hamartía”, utilizado nas Escrituras para definir o pecado, significa literalmente:</b>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Rebelião política contra o Estado</label>
-                <label class="opcao"><input type="radio" name="p1" value="1"> Errar o alvo estabelecido por Deus</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Falta de instrução acadêmica</label>
+            <div class="pergunta"><b>1. O termo grego “hamartía” (ἁμαρτία), conforme empregado nas Escrituras, designa primordialmente:</b>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Um erro administrativo ou fiscal</label>
+                <label class="opcao"><input type="radio" name="p1" value="1"> Errar o alvo estabelecido pela santidade de Deus</label>
+                <label class="opcao"><input type="radio" name="p1" value="0"> Uma falha biológica puramente evolutiva</label>
             </div>
 
-            <div class="pergunta"><b>2. Verdadeiro ou Falso: Segundo a antropologia bíblica, o pecado restringe-se exclusivamente aos atos externos praticados pelo corpo.</b>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
+            <div class="pergunta"><b>2. O termo hebraico <i>Avon</i> (עָוֹן) refere-se especificamente a qual aspecto do pecado?</b>
+                <label class="opcao"><input type="radio" name="p2" value="0"> À punição física aplicada pelos homens</label>
+                <label class="opcao"><input type="radio" name="p2" value="1"> À perversão, torção moral do caráter e culpa acumulada</label>
+                <label class="opcao"><input type="radio" name="p2" value="0"> Ao sacrifício de animais no altar</label>
             </div>
 
-            <div class="pergunta"><b>3. A origem do pecado humano na Terra está descrita nas Escrituras como decorrente de:</b>
-                <label class="opcao"><input type="radio" name="p3" value="1"> A desobediência voluntária de Adão no Jardim do Éden</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Uma falha evolutiva natural da espécie</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Um decreto de criação divina do mal</label>
+            <div class="pergunta"><b>3. Segundo a doutrina bíblica e a teologia pentecostal clássica, qual foi a origem cósmica do pecado?</b>
+                <label class="opcao"><input type="radio" name="p3" value="1"> A rebelião e soberba de Lúcifer no céu antes da criação humana</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> Um decreto arbitrário de destruição emitido por Deus</label>
+                <label class="opcao"><input type="radio" name="p3" value="0"> A invenção humana de mitos antigos</label>
             </div>
 
-            <div class="pergunta"><b>4. O conceito teológico da "depravação total" ensina que:</b>
-                <label class="opcao"><input type="radio" name="p4" value="0"> O ser humano é tão mau quanto biologicamente poderia ser</label>
-                <label class="opcao"><input type="radio" name="p4" value="1"> Todas as áreas da constituição humana (mente, emoções e vontade) foram afetadas pelo pecado</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Apenas a vontade humana foi corrompida, permanecendo a mente pura</label>
+            <div class="pergunta"><b>4. O que a doutrina teológica da "depravação total" afirma sobre o ser humano caído?</b>
+                <label class="opcao"><input type="radio" name="p4" value="0"> Que o homem pratica todo mal possível em todos os momentos</label>
+                <label class="opcao"><input type="radio" name="p4" value="1"> Que todas as esferas da constituição humana (mente, emoções e vontade) foram afetadas pelo pecado</label>
+                <label class="opcao"><input type="radio" name="p4" value="0"> Que a vontade humana permaneceu intacta e livre do pecado</label>
             </div>
 
-            <div class="pergunta"><b>5. Verdadeiro ou Falso: Todos os seres humanos nascem herdando uma natureza pecaminosa, conforme ensinado no texto de Romanos 5.</b>
-                <label class="opcao"><input type="radio" name="p5" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Falso</label>
+            <div class="pergunta"><b>5. Em Romanos 5:12, o apóstolo Paulo fundamenta a transmissão do pecado afirmando que:</b>
+                <label class="opcao"><input type="radio" name="p5" value="1"> Por um só homem o pecado entrou no mundo, e a morte passou a todos os homens</label>
+                <label class="opcao"><input type="radio" name="p5" value="0"> Cada ser humano nasce espiritualmente puro e corrompe-se por livre escolha aos 20 anos</label>
+                <label class="opcao"><input type="radio" name="p5" value="0"> O pecado é transmitido apenas por fatores culturais e ambientais</label>
             </div>
 
             <div class="pergunta"><b>6. Qual a distinção correta entre pecado original e pecados atuais?</b>
-                <label class="opcao"><input type="radio" name="p6" value="0"> O pecado original refere-se aos erros do Antigo Testamento e o atual aos dias de hoje</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> O pecado original é o erro dos patriarcas; o atual é o erro moderno</label>
                 <label class="opcao"><input type="radio" name="p6" value="1"> O pecado original é a condição herdada de Adão, enquanto os atuais são as transgressões práticas cometidas pelo indivíduo</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Não há distinção teológica entre ambos</label>
+                <label class="opcao"><input type="radio" name="p6" value="0"> Não há distinção bíblica entre ambos os conceitos</label>
             </div>
 
-            <div class="pergunta"><b>7. O que o apóstolo Paulo demonstra no capítulo 5 de Romanos acerca da solidariedade na raça humana?</b>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Que o pecado de Adão afetou unicamente a sua própria pessoa</label>
-                <label class="opcao"><input type="radio" name="p7" value="1"> Que por um só homem o pecado entrou no mundo e passou a todos os homens</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Que a obediência humana anula a necessidade da cruz</label>
+            <div class="pergunta"><b>7. Qual era o propósito principal da Lei Mosaica em relação ao pecado, segundo o apóstolo Paulo?</b>
+                <label class="opcao"><input type="radio" name="p7" value="0"> Conceder capacidade regeneradora para a salvação por méritos</label>
+                <label class="opcao"><input type="radio" name="p7" value="1"> Atuar como espelho para expor a transgressão e silenciar a autoconfiança humana</label>
+                <label class="opcao"><input type="radio" name="p7" value="0"> Substituir a necessidade da graça divina</label>
             </div>
 
-            <div class="pergunta"><b>8. Qual é o papel da Lei Mosaica diante do problema do pecado?</b>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Conceder poder espiritual para a salvação por méritos</label>
-                <label class="opcao"><input type="radio" name="p8" value="1"> Atuar como espelho que revela e expõe o pecado, mostrando a necessidade da graça</label>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Substituir definitivamente a necessidade de sacrifícios</label>
+            <div class="pergunta"><b>8. A provisão divina definitiva para a remissão da culpa do pecado consiste teologicamente em:</b>
+                <label class="opcao"><input type="radio" name="p8" value="0"> Reformas educacionais e progresso moral da sociedade</label>
+                <label class="opcao"><input type="radio" name="p8" value="0"> Esforços de meditação interior e evolução espiritual</label>
+                <label class="opcao"><input type="radio" name="p8" value="1"> A expiação vicária e substitutiva de Jesus Cristo na cruz do Calvário</label>
             </div>
 
-            <div class="pergunta"><b>9. Verdadeiro ou Falso: A morte sacrificial de Cristo na cruz satisfez plenamente as exigências da justiça de Deus contra o pecado.</b>
+            <div class="pergunta"><b>9. Verdadeiro ou Falso: A morte sacrificial de Cristo satisfez plenamente as exigências da justiça de Deus contra o pecado.</b>
                 <label class="opcao"><input type="radio" name="p9" value="1"> Verdadeiro</label>
                 <label class="opcao"><input type="radio" name="p9" value="0"> Falso</label>
             </div>
 
-            <div class="pergunta"><b>10. O que a escatologia cristã garante quanto ao futuro do pecado na consumação dos séculos?</b>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Que o pecado continuará existindo eternamente em paralelo com a justiça</label>
+            <div class="pergunta"><b>10. O que a escatologia bíblica assegura quanto ao destino final do pecado na consumação dos séculos?</b>
+                <label class="opcao"><input type="radio" name="p10" value="0"> Que o pecado coexistirá eternamente em harmonia com a justiça</label>
                 <label class="opcao"><input type="radio" name="p10" value="1"> Que a presença, o poder e a memória do pecado serão inteiramente erradicados nos novos céus e nova terra</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Que o pecado será transformado em virtude moral</label>
+                <label class="opcao"><input type="radio" name="p10" value="0"> Que o pecado será gradativamente transformado em virtude</label>
             </div>
 
         </form>
@@ -222,26 +228,23 @@
         }
     }
 
-    // Sintaxe de voz (Áudio)
+    // Sistema de Áudio Corrigido e Otimizado
     let utterance = null;
     function lerTexto() {
         if ('speechSynthesis' in window) {
-            if (speechSynthesis.speaking) {
-                speechSynthesis.resume();
-                return;
-            }
+            speechSynthesis.cancel(); // Cancela qualquer instância anterior travada
             const texto = document.getElementById('secao-leitura').innerText;
             utterance = new SpeechSynthesisUtterance(texto);
             utterance.lang = 'pt-BR';
             utterance.rate = 1.0;
             speechSynthesis.speak(utterance);
         } else {
-            alert('Seu navegador não suporta recurso de áudio.');
+            alert('Seu navegador não suporta o recurso de síntese de áudio.');
         }
     }
 
     function pararTexto() {
-        if ('speechSynthesis' in window && speechSynthesis.speaking) {
+        if ('speechSynthesis' in window) {
             speechSynthesis.cancel();
         }
     }
