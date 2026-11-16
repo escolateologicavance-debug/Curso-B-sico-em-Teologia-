@@ -1,166 +1,740 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 9 - Soteriologia | AVANCE</title>
-    <style>
-        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
-        .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
-        .secao { display: none; }
-        .ativa { display: block; }
-        h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
-        h3 { color: var(--azul-c); margin-top: 25px; font-size: 1.3rem; }
-        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
-        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
-        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; text-align: center; text-decoration: none; }
-        .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-        p { text-align: justify; text-indent: 1.5em; margin-bottom: 15px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matéria 9 – Soteriologia | AVANCE</title>
+
+<style>
+:root {
+    --azul-escuro: #001f3f;
+    --azul: #0074D9;
+    --dourado: #d4af37;
+    --fundo: #f3f6fa;
+    --texto: #263238;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    line-height: 1.7;
+}
+
+header {
+    background: var(--azul-escuro);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    border-bottom: 5px solid var(--dourado);
+}
+
+header h1 {
+    margin: 0;
+    color: var(--dourado);
+    font-size: 29px;
+    letter-spacing: 2px;
+}
+
+header p {
+    margin: 5px 0;
+}
+
+.container {
+    max-width: 950px;
+    margin: 25px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+h2 {
+    color: var(--azul-escuro);
+    border-bottom: 2px solid var(--dourado);
+    padding-bottom: 8px;
+}
+
+h3 {
+    color: var(--azul);
+    margin-top: 30px;
+}
+
+.secao {
+    padding: 12px 15px;
+    margin: 18px 0;
+    border-left: 4px solid transparent;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.secao.lendo {
+    background: #fff8df;
+    border-left-color: var(--dourado);
+}
+
+.controles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin: 12px 0 20px;
+}
+
+button {
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.botao-audio {
+    background: #e9eef4;
+    color: var(--azul-escuro);
+    border: 1px solid #cbd5df;
+    padding: 7px 12px;
+    font-size: 13px;
+}
+
+.progresso-area {
+    margin: 20px 0;
+}
+
+.barra {
+    width: 100%;
+    height: 10px;
+    background: #e0e5eb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.barra-preenchida {
+    width: 0%;
+    height: 100%;
+    background: var(--azul);
+    transition: width 0.3s;
+}
+
+#percentual {
+    font-size: 13px;
+    color: #536273;
+    margin-top: 5px;
+}
+
+.referencia, .bibliografia {
+    background: #f4f7fa;
+    padding: 15px 20px;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+
+#avaliacao {
+    margin-top: 35px;
+    border-top: 3px solid var(--dourado);
+    padding-top: 20px;
+}
+
+.questao {
+    background: #f7f9fc;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 7px;
+}
+
+.questao label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+#resultado {
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 7px;
+}
+
+.aprovado {
+    background: #e1f5e5;
+    color: #155724;
+}
+
+.reprovado {
+    background: #fde8e8;
+    color: #842029;
+}
+
+footer {
+    text-align: center;
+    background: var(--azul-escuro);
+    color: white;
+    padding: 20px;
+    margin-top: 35px;
+    border-top: 4px solid var(--dourado);
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 12px;
+        padding: 18px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+}
+</style>
 </head>
-<body onload="verificarProgresso()">
 
-<div class="header">
+<body>
+
+<header>
     <h1>AVANCE</h1>
-    <p>Módulo 9: Soteriologia</p>
+    <p>Ultrapassando Limites!</p>
+    <p>Módulo 9 – Soteriologia</p>
+</header>
+
+<main class="container">
+
+<h2>Matéria 9 – Soteriologia: A Doutrina da Redenção</h2>
+
+<div class="controles">
+    <button class="botao-audio" onclick="iniciarLeitura()">🔊 Ouvir matéria</button>
+    <button class="botao-audio" onclick="pausarLeitura()">⏸ Pausar</button>
+    <button class="botao-audio" onclick="continuarLeitura()">▶ Continuar</button>
+    <button class="botao-audio" onclick="pararLeitura()">■ Parar</button>
 </div>
 
-<div class="container">
-    <div id="secao-leitura" class="secao ativa">
-        <h2>Matéria 9 – Soteriologia: A Doutrina da Redenção</h2>
-        <p>A Soteriologia (do grego soteria, "salvação" e logos, "estudo") é o ramo da Teologia Sistemática que investiga a obra redentora de Deus em favor da humanidade caída. Ela analisa desde o decreto eterno da salvação até a sua aplicação final na glorificação do crente, focando na pessoa e obra de Jesus Cristo como o único Mediador entre Deus e os homens.</p>
-
-        <h3>1. A Condição Humana e a Necessidade da Graça</h3>
-        <p>A necessidade da salvação fundamenta-se na realidade trágica do pecado e na separação espiritual do homem em relação ao seu Criador. Mortos em delitos e pecados, os seres humanos são incapazes de gerar justiça própria ou de mover-se em direção a Deus por mérito pessoal. A Soteriologia afirma que a salvação não é uma "melhoria" do homem, mas uma ressurreição espiritual. Sem a iniciativa soberana da graça divina (Sola Gratia), o destino humano seria a justa condenação eterna sob o juízo de um Deus perfeitamente santo.</p>
-
-        <h3>2. A Expiação Substitutiva e a Vitória de Cristo</h3>
-        <p>O centro da soteriologia cristã é a obra de Cristo na cruz. Jesus não morreu apenas como um mártir ou exemplo moral, mas como um substituto vicário. Ele assumiu o lugar dos pecadores, recebendo sobre Si a ira divina que nos era devida. Através de Sua vida de obediência perfeita e de Sua morte sacrificial, Cristo satisfez as exigências da justiça de Deus (Propiciação) e resgatou o homem do cativeiro do pecado (Redenção). Sua ressurreição corporal é a garantia de que o sacrifício foi aceito e que a morte foi definitivamente vencida.</p>
-
-        <h3>3. Justificação: A Declaração Legal de Deus</h3>
-        <p>A Justificação é um ato jurídico de Deus pelo qual Ele declara o pecador justo perante o tribunal divino. Importante notar: a justificação não significa que o pecador tornou-se inerentemente perfeito, mas que a justiça de Cristo lhe foi "imputada" (creditada em sua conta espiritual). Pela fé em Jesus, somos aceitos por Deus como se nunca tivéssemos pecado e como se tivéssemos cumprido toda a lei. É uma mudança de status legal: de condenado para amado e aceito, exclusivamente pelos méritos de Cristo (Sola Fide).</p>
-
-        <h3>4. Regeneração e o Novo Nascimento</h3>
-        <p>Enquanto a justificação muda nossa posição legal diante de Deus, a regeneração muda nossa natureza interna. É o "novo nascimento" operado soberanamente pelo Espírito Santo, que implanta vida espiritual onde havia morte. A regeneração é uma obra instantânea e monergista (exclusiva de Deus), que capacita o pecador a crer e a se arrepender. Ela é a fonte de onde fluem todas as outras graças da vida cristã, tornando o indivíduo uma "nova criatura" em Cristo Jesus.</p>
-
-        <h3>5. Santificação: O Processo de Conformidade</h3>
-        <p>Ao contrário da justificação, que é instantânea e completa, a santificação é um processo gradual e sinérgico (envolve a cooperação do crente com o Espírito Santo). É a obra contínua pela qual o salvo é libertado do poder do pecado e conformado à imagem de Cristo. A santificação exige esforço, disciplina, oração e o uso dos meios de graça (Palavra e Sacramentos). O crente é chamado a "aperfeiçoar a santidade no temor de Deus", lutando contra as inclinações da carne enquanto cresce em amor e obediência.</p>
-
-        <h3>6. Perseverança e a Consumação na Glorificação</h3>
-        <p>A Soteriologia bíblica assegura que aqueles que foram verdadeiramente regenerados e justificados perseverarão na fé até o fim. Essa perseverança não repousa na força do crente, mas na fidelidade inabalável de Deus em preservar Seus eleitos. O clímax desse processo é a Glorificação, que ocorrerá na vinda de Cristo. Naquele momento, o crente será libertado não apenas da culpa e do poder do pecado, mas da própria presença do pecado, recebendo um corpo glorificado e entrando na plenitude da vida eterna na presença de Deus.</p>
-
-        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
+<div class="progresso-area">
+    <div class="barra">
+        <div class="barra-preenchida" id="barraProgresso"></div>
     </div>
-
-    <div id="secao-prova" class="secao">
-        <h2>Avaliação de Conhecimento</h2>
-        <form id="quizForm">
-            <div class="pergunta"><b>1. Soteriologia é o estudo teológico sobre:</b>
-                <label class="opcao"><input type="radio" name="p1" value="0"> A origem dos anjos</label>
-                <label class="opcao"><input type="radio" name="p1" value="1"> A doutrina da salvação em Cristo</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> O fim dos tempos</label>
-            </div>
-
-            <div class="pergunta"><b>2. Verdadeiro ou Falso: O homem pode alcançar a salvação através de suas boas obras e méritos.</b>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p2" value="1"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>3. O termo "Propiciação" refere-se a:</b>
-                <label class="opcao"><input type="radio" name="p3" value="1"> Cristo satisfazendo a justiça de Deus em nosso lugar</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> A tentativa do homem de agradar a Deus</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Um ritual simbólico sem efeito real</label>
-            </div>
-
-            <div class="pergunta"><b>4. Na Justificação, a justiça de Cristo é:</b>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Conquistada por nós gradualmente</label>
-                <label class="opcao"><input type="radio" name="p4" value="1"> Imputada (creditada) ao pecador mediante a fé</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Ignorada por Deus</label>
-            </div>
-
-            <div class="pergunta"><b>5. Verdadeiro ou Falso: A Justificação é um ato instantâneo de Deus, não um processo.</b>
-                <label class="opcao"><input type="radio" name="p5" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>6. A Regeneração (Novo Nascimento) é operada por:</b>
-                <label class="opcao"><input type="radio" name="p6" value="1"> Soberana ação do Espírito Santo</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Decisão lógica e intelectual do homem</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Frequência assídua à igreja</label>
-            </div>
-
-            <div class="pergunta"><b>7. A Santificação difere da Justificação porque:</b>
-                <label class="opcao"><input type="radio" name="p7" value="0"> A Santificação é automática e sem esforço</label>
-                <label class="opcao"><input type="radio" name="p7" value="1"> É um processo contínuo de crescimento em santidade</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> A Justificação depende das nossas obras</label>
-            </div>
-
-            <div class="pergunta"><b>8. Verdadeiro ou Falso: A perseverança dos santos baseia-se na fidelidade de Deus.</b>
-                <label class="opcao"><input type="radio" name="p8" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Falso</label>
-            </div>
-
-            <div class="pergunta"><b>9. O estágio final da salvação, na vinda de Cristo, chama-se:</b>
-                <label class="opcao"><input type="radio" name="p9" value="1"> Glorificação</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Reencarnação</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Evolução espiritual</label>
-            </div>
-
-            <div class="pergunta"><b>10. A doutrina da salvação (Soteriologia) exalta principalmente:</b>
-                <label class="opcao"><input type="radio" name="p10" value="1"> A glória da graça de Deus</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> A capacidade humana de escolha</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> A força das tradições religiosas</label>
-            </div>
-        </form>
-        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
-    </div>
-
-    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+    <div id="percentual">Progresso da leitura: 0%</div>
 </div>
 
-<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+<section class="secao">
+<p>
+A Soteriologia (do grego <i>sōtēría</i>, "salvação", e <i>lógos</i>, "estudo") é o ramo da Teologia Sistemática que investiga a obra redentora de Deus em favor da humanidade caída. Ela analisa desde o propósito divino da salvação até sua aplicação final na glorificação do crente, focando na pessoa e obra de Jesus Cristo como o único Mediador entre Deus e os homens.
+</p>
 
+<p>
+A doutrina da redenção procura responder questões fundamentais: por que o ser humano precisa ser salvo? Como a obra de Cristo torna possível a reconciliação com Deus? O que acontece na vida daquele que recebe a salvação? Qual é o destino final dos redimidos?
+</p>
+
+<p>
+A salvação bíblica não se limita ao perdão dos pecados. Ela envolve reconciliação, transformação, santificação e esperança da vida eterna. Seu fundamento está na graça de Deus, sua realização está na obra de Jesus Cristo e sua aplicação ocorre pela atuação do Espírito Santo.
+</p>
+</section>
+
+<section class="secao">
+<h3>1. A Condição Humana e a Necessidade da Graça</h3>
+
+<p>
+A necessidade da salvação fundamenta-se na realidade do pecado e na separação espiritual do ser humano em relação ao seu Criador. A Escritura declara que todos pecaram e carecem da glória de Deus (Romanos 3:23). O pecado comprometeu a relação entre a humanidade e Deus, produzindo morte espiritual e sujeição ao juízo divino.
+</p>
+
+<p>
+A expressão bíblica "mortos em delitos e pecados" (Efésios 2:1) descreve a condição espiritual da humanidade sem Cristo. O ser humano não pode produzir, por mérito próprio, a justiça necessária para reconciliar-se com Deus. Suas obras não podem comprar a salvação nem apagar a culpa do pecado.
+</p>
+
+<p>
+A salvação, portanto, não é simplesmente uma melhoria moral ou uma reforma exterior do indivíduo. É uma obra de restauração espiritual realizada pela iniciativa divina. A expressão <i>Sola Gratia</i> significa "somente pela graça" e destaca que a salvação tem sua origem na bondade e misericórdia de Deus, e não no merecimento humano.
+</p>
+
+<p>
+A graça divina não torna o pecado insignificante. Pelo contrário, revela a gravidade da condição humana e a grandeza do amor de Deus, que oferece redenção por meio de Jesus Cristo (Efésios 2:8-9; Tito 3:5).
+</p>
+</section>
+
+<section class="secao">
+<h3>2. A Expiação Substitutiva e a Vitória de Cristo</h3>
+
+<p>
+O centro da Soteriologia cristã é a obra de Jesus Cristo na cruz. Sua morte não foi apenas a de um mártir ou a demonstração de um exemplo moral. Cristo entregou-se voluntariamente em favor dos pecadores, realizando uma obra redentora que nenhum ser humano poderia realizar por si mesmo.
+</p>
+
+<p>
+A substituição vicária expressa a realidade de que Jesus tomou o lugar dos pecadores, levando sobre si o peso do pecado e oferecendo-se como sacrifício perfeito. Isaías 53:5 declara que Ele foi ferido pelas nossas transgressões e moído pelas nossas iniquidades.
+</p>
+
+<p>
+A <i>propiciação</i> aponta para a satisfação da justiça divina em relação ao pecado. A <i>redenção</i> apresenta a libertação do ser humano do domínio e da escravidão do pecado, mediante o preço pago por Cristo (Romanos 3:24-26; Efésios 1:7).
+</p>
+
+<p>
+A ressurreição corporal de Jesus é indispensável à mensagem da redenção. Ela confirma a vitória de Cristo sobre a morte, demonstra a eficácia de sua obra e fundamenta a esperança da ressurreição dos que pertencem a Ele (1 Coríntios 15:17-22).
+</p>
+</section>
+
+<section class="secao">
+<h3>3. Justificação: A Declaração Legal de Deus</h3>
+
+<p>
+A justificação é um ato judicial de Deus pelo qual o pecador que crê em Jesus Cristo é declarado justo diante do tribunal divino. Não significa que o indivíduo tenha alcançado imediatamente a perfeição moral, mas que recebe uma nova posição diante de Deus com base na justiça de Cristo.
+</p>
+
+<p>
+A doutrina da imputação explica que a justiça de Cristo é creditada ao crente. Assim, sua aceitação diante de Deus não depende de uma justiça produzida por seus próprios méritos, mas da obra perfeita de Jesus Cristo.
+</p>
+
+<p>
+A expressão <i>Sola Fide</i>, "somente pela fé", destaca que a justificação é recebida mediante a fé em Cristo, e não conquistada por obras humanas. A fé não é um pagamento oferecido a Deus, mas o meio pelo qual o pecador recebe a graça que lhe é oferecida.
+</p>
+
+<p>
+Romanos 5:1 declara: "Sendo, pois, justificados pela fé, temos paz com Deus por nosso Senhor Jesus Cristo". A justificação representa uma mudança de condição: de culpado e condenado para perdoado e aceito em Cristo.
+</p>
+</section>
+
+<section class="secao">
+<h3>4. Regeneração e o Novo Nascimento</h3>
+
+<p>
+Enquanto a justificação trata da posição do pecador diante de Deus, a regeneração diz respeito à transformação interior produzida pelo Espírito Santo. É o novo nascimento, pelo qual a pessoa recebe vida espiritual e passa a experimentar uma nova realidade em Cristo.
+</p>
+
+<p>
+Jesus ensinou a necessidade do novo nascimento em João 3:3-7. Não se trata de uma simples mudança de comportamento, de uma decisão religiosa exterior ou de uma reforma de hábitos. A regeneração é uma obra divina que transforma a disposição interior do ser humano.
+</p>
+
+<p>
+O termo teológico <i>monergismo</i> descreve a compreensão de que a regeneração é uma obra realizada por Deus, não sendo produzida pelo esforço humano. Essa terminologia é especialmente utilizada em determinadas tradições teológicas para explicar a iniciativa divina no novo nascimento.
+</p>
+
+<p>
+A regeneração capacita o indivíduo a viver uma nova realidade espiritual. Em Cristo, ele é chamado de nova criatura (2 Coríntios 5:17), passando a manifestar uma vida caracterizada pela fé, pelo arrependimento e pela busca da vontade de Deus.
+</p>
+</section>
+
+<section class="secao">
+<h3>5. Santificação: O Processo de Conformidade</h3>
+
+<p>
+Diferentemente da justificação, que é apresentada como um ato de declaração divina, a santificação envolve o desenvolvimento contínuo da vida cristã. É a obra pela qual o salvo é separado para Deus e progressivamente conformado à imagem de Jesus Cristo.
+</p>
+
+<p>
+A santificação envolve a atuação do Espírito Santo e a responsabilidade do crente. A Escritura orienta os cristãos a desenvolverem uma vida de obediência, disciplina, oração, domínio próprio e amor, abandonando as práticas incompatíveis com a vontade de Deus.
+</p>
+
+<p>
+O termo <i>sinergismo</i> é utilizado em algumas abordagens teológicas para descrever a cooperação humana com a ação da graça divina no desenvolvimento da vida cristã. Isso não significa que o ser humano produza sua própria salvação, mas que responde à atuação de Deus mediante uma vida de fé e obediência.
+</p>
+
+<p>
+A Palavra de Deus, a oração e a comunhão cristã são instrumentos importantes no crescimento espiritual. O crente é chamado a aperfeiçoar a santidade no temor de Deus (2 Coríntios 7:1), lutando contra o pecado e crescendo em amor e obediência.
+</p>
+</section>
+
+<section class="secao">
+<h3>6. Perseverança e a Consumação na Glorificação</h3>
+
+<p>
+A perseverança na fé está relacionada à continuidade da vida cristã diante das dificuldades, tentações e provações. A Escritura apresenta a fidelidade de Deus como fundamento da esperança do crente e exorta os cristãos a permanecerem firmes em Cristo até o fim (Filipenses 1:6; Hebreus 10:23).
+</p>
+
+<p>
+As tradições cristãs apresentam diferentes formulações sobre a relação entre a preservação divina e a responsabilidade humana na perseverança. Algumas enfatizam a preservação dos verdadeiramente regenerados pela fidelidade de Deus; outras destacam também as advertências bíblicas sobre a necessidade de permanecer na fé. Em qualquer abordagem, a vida cristã é apresentada como uma caminhada de confiança, fidelidade e dependência de Deus.
+</p>
+
+<p>
+O ponto culminante da salvação é a glorificação. Ela ocorrerá na consumação da obra redentora, quando os que pertencem a Cristo serão plenamente libertados da presença do pecado e receberão corpos transformados, conforme a promessa bíblica (1 Coríntios 15:51-54; Filipenses 3:20-21).
+</p>
+
+<p>
+A glorificação representa a plenitude da esperança cristã: o salvo não estará mais sujeito à corrupção, à morte e ao domínio do pecado. Estará eternamente na presença de Deus, desfrutando da vida eterna prometida em Jesus Cristo.
+</p>
+</section>
+
+<section class="secao">
+<h3>7. A Ordem da Salvação: Uma Visão Integrada</h3>
+
+<p>
+A Teologia Sistemática utiliza a expressão latina <i>Ordo Salutis</i>, ou "ordem da salvação", para organizar os aspectos da aplicação da redenção na vida do indivíduo. Essa organização ajuda a compreender como as diferentes dimensões da salvação se relacionam.
+</p>
+
+<p>
+Entre os elementos tradicionalmente estudados estão:
+</p>
+
+<ul>
+    <li><strong>Chamado:</strong> o convite de Deus à salvação por meio do Evangelho.</li>
+    <li><strong>Conversão:</strong> resposta que envolve arrependimento e fé.</li>
+    <li><strong>Regeneração:</strong> novo nascimento produzido pelo Espírito Santo.</li>
+    <li><strong>Justificação:</strong> declaração divina de justiça mediante a fé em Cristo.</li>
+    <li><strong>Adoção:</strong> recebimento da condição de filhos de Deus.</li>
+    <li><strong>Santificação:</strong> desenvolvimento contínuo de uma vida separada para Deus.</li>
+    <li><strong>Perseverança:</strong> permanência na fé durante a caminhada cristã.</li>
+    <li><strong>Glorificação:</strong> consumação da salvação na presença de Deus.</li>
+</ul>
+
+<p>
+As tradições teológicas podem divergir quanto à ordem lógica e à relação temporal entre alguns desses elementos. Entretanto, todos apontam para a centralidade da obra de Cristo e para a necessidade da graça divina na redenção humana.
+</p>
+</section>
+
+<section class="secao">
+<h3>8. Adoção: A Nova Condição de Filhos de Deus</h3>
+
+<p>
+A adoção é uma dimensão da salvação pela qual aqueles que recebem a Cristo passam a desfrutar de uma nova relação com Deus: a condição de filhos. Não se trata apenas de receber perdão, mas também de ser acolhido na família de Deus.
+</p>
+
+<p>
+Romanos 8:15-17 apresenta a realidade da adoção e o privilégio de chamar Deus de Pai. Essa condição estabelece uma relação de pertencimento, comunhão e herança espiritual.
+</p>
+
+<p>
+A adoção também fundamenta a esperança futura. Os filhos de Deus aguardam a consumação da redenção, quando experimentarão plenamente aquilo que lhes foi prometido em Cristo. Essa verdade deve produzir confiança, gratidão e compromisso com a vida cristã.
+</p>
+</section>
+
+<section class="secao">
+<h3>9. Arrependimento e Fé: A Resposta ao Evangelho</h3>
+
+<p>
+O arrependimento e a fé são elementos fundamentais da resposta humana ao anúncio da salvação. O arrependimento envolve reconhecimento do pecado, mudança de entendimento e disposição de abandonar o caminho contrário à vontade de Deus.
+</p>
+
+<p>
+A fé cristã não consiste apenas em concordar intelectualmente com determinadas afirmações religiosas. É confiança pessoal em Jesus Cristo, em sua identidade, em sua obra redentora e em suas promessas.
+</p>
+
+<p>
+Marcos 1:15 apresenta a mensagem de Jesus: "Arrependei-vos e crede no evangelho". Esses dois elementos estão profundamente relacionados: o arrependimento volta-se para Deus, enquanto a fé confia em Cristo como Salvador e Senhor.
+</p>
+
+<p>
+As boas obras não são a causa meritória da salvação, mas constituem fruto de uma vida transformada. Efésios 2:8-10 apresenta essa relação: a salvação é pela graça, mediante a fé, e os salvos são chamados a viver nas boas obras preparadas por Deus.
+</p>
+</section>
+
+<section class="secao">
+<h3>10. Síntese e Conclusão: A Plenitude da Redenção</h3>
+
+<p>
+A Soteriologia demonstra que a salvação é uma obra abrangente, fundamentada no amor e na graça de Deus, realizada por Jesus Cristo e aplicada pelo Espírito Santo. Ela começa na iniciativa divina, alcança o ser humano mediante o Evangelho e conduz à esperança da glorificação.
+</p>
+
+<p>
+A redenção envolve perdão, reconciliação, justificação, regeneração, adoção, santificação e a promessa da vida eterna. Cada uma dessas dimensões revela aspectos da grandeza da obra de Cristo e da transformação que Deus realiza na vida daqueles que creem.
+</p>
+
+<p>
+Portanto, a salvação não deve ser compreendida apenas como livramento de uma condenação futura, mas também como uma nova relação com Deus, uma vida transformada no presente e uma esperança segura para a eternidade.
+</p>
+
+<p>
+<strong>Conclusão doutrinária:</strong> Jesus Cristo é o centro da redenção. Nele, o pecador encontra perdão, reconciliação e vida. A salvação é recebida pela graça, mediante a fé, e manifesta seus frutos em uma vida de santidade, fidelidade e esperança.
+</p>
+</section>
+
+<div class="referencia">
+<h3>Referências Bíblicas</h3>
+<ul>
+    <li>Gênesis 3:1-24 – A entrada do pecado e suas consequências.</li>
+    <li>Isaías 53:4-12 – O Servo sofredor e a expiação.</li>
+    <li>João 3:1-8 – O novo nascimento.</li>
+    <li>João 14:6 – Cristo como caminho para o Pai.</li>
+    <li>Romanos 3:21-26 – Justiça divina e redenção.</li>
+    <li>Romanos 5:1-11 – Justificação e reconciliação.</li>
+    <li>Romanos 8:15-30 – Adoção e glorificação.</li>
+    <li>Efésios 1:3-14 – O propósito da redenção.</li>
+    <li>Efésios 2:1-10 – Salvação pela graça mediante a fé.</li>
+    <li>1 Coríntios 15:50-58 – Ressurreição e vitória sobre a morte.</li>
+    <li>Filipenses 1:6 – A continuidade da obra divina.</li>
+    <li>1 Pedro 1:3-9 – A esperança da salvação.</li>
+</ul>
+</div>
+
+<div class="bibliografia">
+<h3>Bibliografia Recomendada</h3>
+<ul>
+    <li>GRUDEM, Wayne. <i>Teologia Sistemática</i>. Vida Nova.</li>
+    <li>ERICKSON, Millard J. <i>Teologia Sistemática</i>. Vida Nova.</li>
+    <li>BERKHOF, Louis. <i>Teologia Sistemática</i>. Cultura Cristã.</li>
+    <li>THIESSEN, Henry C. <i>Palestras em Teologia Sistemática</i>. Imprensa Batista Regular.</li>
+    <li>HORTON, Stanley M. <i>Teologia Sistemática: Uma Perspectiva Pentecostal</i>. CPAD.</li>
+</ul>
+</div>
+
+<section id="avaliacao">
+<h2>Avaliação – Matéria 9: Soteriologia</h2>
+<p>Leia atentamente cada questão e assinale apenas uma alternativa. A nota mínima para aprovação é 7,0.</p>
+
+<form id="formAvaliacao">
+
+<div class="questao">
+<p><strong>1. O que significa Soteriologia?</strong></p>
+<label><input type="radio" name="q1" value="a"> Estudo dos anjos.</label>
+<label><input type="radio" name="q1" value="b"> Estudo da salvação.</label>
+<label><input type="radio" name="q1" value="c"> Estudo da criação.</label>
+<label><input type="radio" name="q1" value="d"> Estudo da Igreja.</label>
+</div>
+
+<div class="questao">
+<p><strong>2. Qual é a condição humana que fundamenta a necessidade da salvação?</strong></p>
+<label><input type="radio" name="q2" value="a"> A falta de conhecimento acadêmico.</label>
+<label><input type="radio" name="q2" value="b"> A ausência de tradições religiosas.</label>
+<label><input type="radio" name="q2" value="c"> O pecado e a separação espiritual de Deus.</label>
+<label><input type="radio" name="q2" value="d"> A incapacidade de realizar boas obras sociais.</label>
+</div>
+
+<div class="questao">
+<p><strong>3. O que caracteriza a expiação substitutiva de Cristo?</strong></p>
+<label><input type="radio" name="q3" value="a"> Cristo tomou o lugar dos pecadores e ofereceu-se por eles.</label>
+<label><input type="radio" name="q3" value="b"> Cristo morreu somente como exemplo moral.</label>
+<label><input type="radio" name="q3" value="c"> Cristo anulou a necessidade de arrependimento.</label>
+<label><input type="radio" name="q3" value="d"> Cristo ensinou que o pecado não possui consequências.</label>
+</div>
+
+<div class="questao">
+<p><strong>4. O que é justificação?</strong></p>
+<label><input type="radio" name="q4" value="a"> Um processo de aperfeiçoamento físico.</label>
+<label><input type="radio" name="q4" value="b"> Uma conquista humana por meio de boas obras.</label>
+<label><input type="radio" name="q4" value="c"> A eliminação imediata de todas as tentações.</label>
+<label><input type="radio" name="q4" value="d"> O ato de Deus declarar justo o pecador que crê em Cristo.</label>
+</div>
+
+<div class="questao">
+<p><strong>5. O que significa regeneração?</strong></p>
+<label><input type="radio" name="q5" value="a"> A participação em uma cerimônia religiosa.</label>
+<label><input type="radio" name="q5" value="b"> O novo nascimento produzido pelo Espírito Santo.</label>
+<label><input type="radio" name="q5" value="c"> A aquisição de conhecimento teológico.</label>
+<label><input type="radio" name="q5" value="d"> A mudança de posição social.</label>
+</div>
+
+<div class="questao">
+<p><strong>6. Qual é a principal característica da santificação?</strong></p>
+<label><input type="radio" name="q6" value="a"> É exclusivamente uma declaração jurídica.</label>
+<label><input type="radio" name="q6" value="b"> É uma experiência sem relação com a conduta.</label>
+<label><input type="radio" name="q6" value="c"> É o processo de crescimento em santidade e conformidade com Cristo.</label>
+<label><input type="radio" name="q6" value="d"> É uma obra realizada sem a atuação do Espírito Santo.</label>
+</div>
+
+<div class="questao">
+<p><strong>7. O que é glorificação?</strong></p>
+<label><input type="radio" name="q7" value="a"> A consumação da salvação, com a transformação final dos redimidos.</label>
+<label><input type="radio" name="q7" value="b"> O início da vida religiosa.</label>
+<label><input type="radio" name="q7" value="c"> A justificação pelas obras.</label>
+<label><input type="radio" name="q7" value="d"> A aquisição de reconhecimento público.</label>
+</div>
+
+<div class="questao">
+<p><strong>8. O que significa adoção na Soteriologia?</strong></p>
+<label><input type="radio" name="q8" value="a"> A entrada em uma instituição religiosa.</label>
+<label><input type="radio" name="q8" value="b"> A substituição da fé por obras.</label>
+<label><input type="radio" name="q8" value="c"> A conquista de uma posição ministerial.</label>
+<label><input type="radio" name="q8" value="d"> O recebimento da condição de filhos de Deus.</label>
+</div>
+
+<div class="questao">
+<p><strong>9. Qual é a relação entre arrependimento e fé?</strong></p>
+<label><input type="radio" name="q9" value="a"> São práticas sem relação com a salvação.</label>
+<label><input type="radio" name="q9" value="b"> São respostas fundamentais ao anúncio do Evangelho.</label>
+<label><input type="radio" name="q9" value="c"> São substitutos da obra de Cristo.</label>
+<label><input type="radio" name="q9" value="d"> São méritos suficientes para comprar o perdão.</label>
+</div>
+
+<div class="questao">
+<p><strong>10. Qual é o fundamento central da redenção cristã?</strong></p>
+<label><input type="radio" name="q10" value="a"> O esforço moral do ser humano.</label>
+<label><input type="radio" name="q10" value="b"> A tradição das instituições religiosas.</label>
+<label><input type="radio" name="q10" value="c"> A pessoa e a obra redentora de Jesus Cristo.</label>
+<label><input type="radio" name="q10" value="d"> O conhecimento intelectual isolado.</label>
+</div>
+
+<button type="button" onclick="corrigirAvaliacao()">Enviar avaliação</button>
+
+</form>
+
+<div id="resultado"></div>
+
+<div id="proximaMateria" style="display:none; margin-top:25px;">
+    <h3>Parabéns! Você foi aprovado na Matéria 9.</h3>
+    <p>Seu progresso foi registrado. Você já pode avançar para a próxima matéria.</p>
+    <button onclick="window.location.href='materia10.html'">Avançar para Matéria 10</button>
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<p>© AVANCE – Gilberto Moreira</p>
+<p>Ultrapassando Limites!</p>
+</footer>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
-function verificarProgresso() {
-    if (localStorage.getItem('modulo9_concluido') === 'true') {
-        const res = document.getElementById('resultado');
-        document.getElementById('secao-leitura').style.display = 'none';
-        document.getElementById('secao-prova').style.display = 'none';
-        res.style.display = 'block';
-        res.innerHTML = `
-            <b style="color:green; font-size:1.2rem;">Módulo concluído com sucesso!</b><br>
-            <button class="btn" onclick="window.location.href='materia10.html'">IR PARA O MÓDULO 10</button>
-        `;
+new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+const secoes = document.querySelectorAll('.secao');
+let indiceLeitura = 0;
+let textoLeitura = [];
+let leituraAtiva = false;
+
+function atualizarProgresso() {
+    const percentual = Math.round((indiceLeitura / secoes.length) * 100);
+    document.getElementById('barraProgresso').style.width = percentual + '%';
+    document.getElementById('percentual').textContent =
+        'Progresso da leitura: ' + percentual + '%';
+}
+
+function destacarSecao(indice) {
+    secoes.forEach(secao => secao.classList.remove('lendo'));
+
+    if (indice < secoes.length) {
+        secoes[indice].classList.add('lendo');
+        indiceLeitura = indice + 1;
+        atualizarProgresso();
     }
 }
 
-function irParaProva(){
-    document.getElementById('secao-leitura').style.display='none';
-    document.getElementById('secao-prova').style.display='block';
-    window.scrollTo(0,0);
+function prepararTexto() {
+    textoLeitura = [];
+
+    secoes.forEach(secao => {
+        textoLeitura.push(secao.innerText);
+    });
 }
 
-function corrigir(){
-    const f=document.getElementById('quizForm');
-    let n=0;
-    for(let i=1; i<=10; i++) {
-        const p = f['p'+i];
-        if(p && p.value === "1") n++;
+function falarIndice(indice) {
+    if (indice >= textoLeitura.length || !leituraAtiva) {
+        leituraAtiva = false;
+        return;
     }
-    
-    const r=document.getElementById('resultado');
-    r.style.display='block';
-    
-    if(n>=7){
+
+    destacarSecao(indice);
+
+    const fala = new SpeechSynthesisUtterance(textoLeitura[indice]);
+    fala.lang = 'pt-BR';
+    fala.rate = 0.95;
+
+    fala.onend = function() {
+        if (leituraAtiva) {
+            falarIndice(indice + 1);
+        }
+    };
+
+    speechSynthesis.speak(fala);
+}
+
+function iniciarLeitura() {
+    if (!('speechSynthesis' in window)) {
+        alert('Seu navegador não oferece suporte à leitura de voz.');
+        return;
+    }
+
+    speechSynthesis.cancel();
+    prepararTexto();
+    indiceLeitura = 0;
+    leituraAtiva = true;
+    falarIndice(0);
+}
+
+function pausarLeitura() {
+    if (speechSynthesis.speaking) {
+        speechSynthesis.pause();
+    }
+}
+
+function continuarLeitura() {
+    if (speechSynthesis.paused) {
+        speechSynthesis.resume();
+    }
+}
+
+function pararLeitura() {
+    leituraAtiva = false;
+    speechSynthesis.cancel();
+    secoes.forEach(secao => secao.classList.remove('lendo'));
+}
+
+const respostas = {
+    q1: 'b',
+    q2: 'c',
+    q3: 'a',
+    q4: 'd',
+    q5: 'b',
+    q6: 'c',
+    q7: 'a',
+    q8: 'd',
+    q9: 'b',
+    q10: 'c'
+};
+
+function corrigirAvaliacao() {
+    let acertos = 0;
+    let respondidas = 0;
+
+    for (let i = 1; i <= 10; i++) {
+        const resposta = document.querySelector(
+            'input[name="q' + i + '"]:checked'
+        );
+
+        if (resposta) {
+            respondidas++;
+            if (resposta.value === respostas['q' + i]) {
+                acertos++;
+            }
+        }
+    }
+
+    const resultado = document.getElementById('resultado');
+
+    if (respondidas < 10) {
+        resultado.className = 'reprovado';
+        resultado.textContent =
+            'Responda todas as 10 questões antes de enviar sua avaliação. Você respondeu ' +
+            respondidas + ' questão(ões).';
+        return;
+    }
+
+    const nota = acertos;
+    resultado.className = nota >= 7 ? 'aprovado' : 'reprovado';
+
+    if (nota >= 7) {
+        resultado.innerHTML =
+            'APROVADO!<br>Você acertou ' + acertos +
+            ' de 10 questões.<br>Nota: ' + nota.toFixed(1) +
+            '<br>Parabéns pelo seu desempenho!';
+
         localStorage.setItem('modulo9_concluido', 'true');
-        r.innerHTML=`<b style="color:green">APROVADO! Nota: ${n}/10.</b>`;
-        setTimeout(()=>{ window.location.href='materia10.html'; }, 3000);
+        document.getElementById('proximaMateria').style.display = 'block';
     } else {
-        r.innerHTML=`<b style="color:red">REPROVADO. Nota: ${n}/10.<br>Refaça a leitura e tente novamente.</b>`;
-        setTimeout(()=>{ location.reload(); }, 3000);
+        resultado.innerHTML =
+            'NÃO APROVADO.<br>Você acertou ' + acertos +
+            ' de 10 questões.<br>Nota: ' + nota.toFixed(1) +
+            '<br>É necessário obter nota mínima 7,0. Revise a matéria e tente novamente.';
+
+        document.getElementById('proximaMateria').style.display = 'none';
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    atualizarProgresso();
+});
 </script>
 
 </body>
