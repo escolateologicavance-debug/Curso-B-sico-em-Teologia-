@@ -1,166 +1,1108 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 6 - Antropologia Bíblica | AVANCE</title>
-    <style>
-        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
-        .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
-        .secao { display: none; }
-        .ativa { display: block; }
-        h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
-        h3 { color: var(--azul-c); margin-top: 25px; font-size: 1.3rem; }
-        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
-        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
-        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; text-align: center; text-decoration: none; }
-        .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-        p { text-align: justify; text-indent: 1.5em; margin-bottom: 15px; }
-    </style>
-</head>
-<body onload="verificarProgresso()">
 
-<div class="header">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matéria 6 – Antropologia Bíblica | AVANCE</title>
+
+<style>
+:root {
+    --azul-escuro: #001f3f;
+    --azul: #0074D9;
+    --dourado: #d4af37;
+    --fundo: #f3f6fa;
+    --texto: #263238;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.75;
+}
+
+header {
+    background: var(--azul-escuro);
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+    border-bottom: 5px solid var(--dourado);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 27px;
+}
+
+header p {
+    margin: 8px 0 0;
+    color: #e4eaf1;
+}
+
+.container {
+    max-width: 950px;
+    margin: 25px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+}
+
+h2 {
+    color: var(--azul-escuro);
+    border-bottom: 2px solid var(--dourado);
+    padding-bottom: 8px;
+    margin-top: 35px;
+}
+
+h3 {
+    color: var(--azul);
+    margin-top: 25px;
+}
+
+p {
+    text-align: justify;
+}
+
+.referencia {
+    background: #eef4fa;
+    border-left: 4px solid var(--azul);
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.termo {
+    background: #fff8e4;
+    border-left: 4px solid var(--dourado);
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.controles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+button {
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background: var(--azul-escuro);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.progresso-area {
+    margin: 20px 0;
+}
+
+.progresso-fundo {
+    height: 12px;
+    background: #dce3eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#barraProgresso {
+    height: 100%;
+    width: 0%;
+    background: var(--azul);
+    transition: width 0.3s;
+}
+
+#statusProgresso {
+    font-size: 13px;
+    color: #52606d;
+    margin-top: 5px;
+}
+
+.secao {
+    padding-bottom: 15px;
+}
+
+.secao.lida {
+    background: #f7faff;
+    border-radius: 6px;
+}
+
+.bibliografia li {
+    margin-bottom: 9px;
+}
+
+#avaliacao {
+    display: none;
+    margin-top: 35px;
+    border-top: 3px solid var(--dourado);
+    padding-top: 20px;
+}
+
+.questao {
+    background: #f5f8fc;
+    padding: 15px;
+    margin: 18px 0;
+    border-radius: 7px;
+}
+
+.questao label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+#resultado {
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+#proximaMateria {
+    display: none;
+    background: #176b38;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    background: var(--azul-escuro);
+    color: white;
+    padding: 22px 10px;
+    margin-top: 40px;
+    border-top: 4px solid var(--dourado);
+}
+
+@media(max-width:600px) {
+    .container {
+        margin: 12px;
+        padding: 17px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
     <h1>AVANCE</h1>
-    <p>Módulo 6: Antropologia Bíblica</p>
-</div>
+    <p>Faculdade Teológica – Ultrapassando Limites!</p>
+    <h2 style="color:white;border:none;">MÓDULO 6</h2>
+    <p>Matéria 6 – Antropologia Bíblica</p>
+    <p>O Estudo do Ser Humano</p>
+</header>
 
 <div class="container">
-    <div id="secao-leitura" class="secao ativa">
-        <h2>Matéria 6 – Antropologia Bíblica: O Estudo do Ser Humano</h2>
-        <p>A Antropologia Bíblica investiga a natureza humana não a partir de especulações filosóficas ou biológicas isoladas, mas sob o prisma da revelação divina. Ela busca responder às questões fundamentais sobre quem somos, de onde viemos e para onde nossa natureza nos conduz, estabelecendo a base para a compreensão do pecado, da salvação e da ética cristã.</p>
 
-        <h3>1. A Criação Exclusiva e a Imago Dei</h3>
-        <p>O ser humano não é o produto de um acaso evolutivo, mas o resultado de um ato criativo direto e deliberado de Deus. Conforme Gênesis 1:26–27, o homem foi criado à imagem e semelhança do Criador (Imago Dei), o que o distingue radicalmente de toda a criação animal. Essa imagem reside na capacidade racional, na consciência moral, no livre arbítrio e na aptidão para o relacionamento espiritual. Ser portador da imagem de Deus significa que o homem possui a vocação de representar o governo divino na terra, agindo como um mordomo da criação sob a autoridade do Altíssimo.</p>
+    <h2>APRESENTAÇÃO DA MATÉRIA</h2>
 
-        <h3>2. A Composição e Unidade do Ser Humano</h3>
-        <p>A antropologia cristã rejeita o dualismo platônico que vê o corpo como uma prisão para a alma. A Bíblia apresenta o homem como uma unidade integral, onde as dimensões materiais (corpo) e imateriais (alma e espírito) coexistem em profunda interdependência. Seja através de uma visão dicotômica ou tricotômica, a verdade central é que o ser humano é um todo unificado. O espírito nos conecta com a dimensão divina, a alma abrange nossa psique e vontade, e o corpo é o templo necessário para a nossa atuação na realidade física.</p>
+    <p>
+    A Antropologia Bíblica é o campo da Teologia que investiga a natureza,
+    a origem, a constituição e o propósito do ser humano à luz das Escrituras.
+    Diferentemente das abordagens que se limitam às especulações filosóficas
+    ou às explicações biológicas, ela considera a revelação divina como
+    fundamento para compreender quem somos, de onde viemos e para onde
+    nossa existência se dirige.
+    </p>
 
-        <h3>3. A Queda e a Depravação Total</h3>
-        <p>O evento da Queda no Éden trouxe consequências catastróficas para a natureza humana. O pecado não foi um erro superficial, mas uma rebelião ontológica que afetou todas as faculdades do ser humano: mente, vontade e emoções. Teologicamente, chamamos isso de depravação total, o que não significa que o homem é tão mau quanto poderia ser, mas que nenhuma área de sua vida permaneceu imune ao pecado. A imagem de Deus no homem não foi destruída, mas tornou-se severamente corrompida, como um espelho quebrado que ainda reflete, porém de forma distorcida e turva.</p>
+    <p>
+    Seu estudo é indispensável para a compreensão de temas fundamentais
+    da fé cristã, como a criação, a imagem de Deus, a constituição humana,
+    o pecado, a responsabilidade moral, a dignidade da vida e a necessidade
+    da redenção.
+    </p>
 
-        <h3>4. Livre-arbítrio e a Responsabilidade Diante do Criador</h3>
-        <p>Embora a vontade humana tenha sido escravizada pelo pecado, o homem permanece um agente moral responsável. A soberania de Deus não anula a responsabilidade humana; ao contrário, a fundamenta. O ser humano é livre para agir conforme sua própria natureza, e por isso é culpável por suas escolhas e rebeldias. As Escrituras sustentam a tensão entre o conselho determinado de Deus e a escolha real do homem, enfatizando que cada indivíduo dará contas de si mesmo perante o justo tribunal divino.</p>
-
-        <h3>5. A Dignidade Intrínseca e a Ética da Vida</h3>
-        <p>A dignidade do ser humano não depende de sua utilidade social, capacidade produtiva ou intelecto, mas de sua origem divina. Todo indivíduo, desde a concepção até a morte natural, possui um valor sagrado e inalienável. Esta verdade é a base para a justiça social cristã e para o respeito ao próximo. Onde a antropologia bíblica é negligenciada, a vida humana torna-se descartável; onde ela é afirmada, cada pessoa é vista como alguém por quem o valor da criação foi investido e por quem a redenção foi planejada.</p>
-
-        <h3>6. O Propósito Teleológico: Glorificar e Desfrutar</h3>
-        <p>O ser humano não existe para a autossatisfação ou para o acúmulo de poder temporal. O fim último do homem é glorificar a Deus e desfrutar de Sua comunhão para sempre. Fomos criados com um "vazio" que só pode ser preenchido pelo Infinito. Viver fora desse propósito resulta em frustração e desvio moral. O propósito humano se cumpre plenamente quando vivemos de maneira santa, submetendo nossos talentos e existência à vontade do Pai, encontrando na obediência a nossa maior liberdade e alegria.</p>
-
-        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
+    <div class="referencia">
+        <strong>Objetivo geral:</strong> compreender a natureza humana,
+        sua origem divina, sua condição após a Queda e seu propósito
+        diante do Criador, estabelecendo fundamentos bíblicos para
+        a vida cristã e a ética.
     </div>
 
-    <div id="secao-prova" class="secao">
-        <h2>Avaliação de Conhecimento</h2>
-        <form id="quizForm">
-            <div class="pergunta"><b>1. Antropologia Bíblica estuda:</b>
-                <label class="opcao"><input type="radio" name="p1" value="1"> O homem à luz das Escrituras</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Apenas aspectos biológicos</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Psicologia moderna</label>
+    <div class="controles">
+        <button onclick="iniciarLeitura()">▶ Ouvir matéria</button>
+        <button onclick="pausarLeitura()">⏸ Pausar</button>
+        <button onclick="pararLeitura()">⏹ Parar</button>
+    </div>
+
+    <div class="progresso-area">
+        <strong>Progresso de leitura</strong>
+        <div class="progresso-fundo">
+            <div id="barraProgresso"></div>
+        </div>
+        <div id="statusProgresso">0% concluído</div>
+    </div>
+
+    <h2>1. A CRIAÇÃO EXCLUSIVA E A IMAGO DEI</h2>
+
+    <div class="secao">
+        <p>
+        A origem do ser humano, conforme a revelação bíblica, está
+        diretamente relacionada à ação criadora de Deus. Gênesis 1:26-27
+        apresenta o homem e a mulher como criaturas feitas à imagem e
+        semelhança do Criador. Essa afirmação estabelece a identidade
+        singular da humanidade dentro da ordem criada.
+        </p>
+
+        <p>
+        A expressão latina <em>Imago Dei</em>, traduzida como imagem de Deus,
+        é utilizada na Teologia para designar essa condição especial do ser
+        humano. Não significa que Deus possua uma forma física semelhante
+        à humana, mas que o homem foi criado para refletir aspectos de Sua
+        natureza moral, racional e relacional, dentro dos limites próprios
+        de uma criatura.
+        </p>
+
+        <p>
+        A imagem divina está relacionada à capacidade de raciocinar,
+        discernir moralmente, estabelecer relacionamentos, exercer vontade
+        e assumir responsabilidades diante de Deus. O ser humano também
+        recebeu uma vocação administrativa sobre a criação, sendo chamado
+        a exercer domínio responsável sobre a terra.
+        </p>
+
+        <p>
+        Gênesis 2:7 acrescenta uma dimensão importante: o homem foi formado
+        do pó da terra e recebeu de Deus o fôlego de vida. Portanto, sua
+        existência não é autônoma. Ele depende do Criador tanto em sua
+        origem quanto em sua continuidade.
+        </p>
+
+        <div class="termo">
+            <strong>Termo teológico – Imago Dei:</strong>
+            expressão latina que significa “Imagem de Deus”.
+            Designa a condição singular do ser humano como criatura
+            portadora da imagem divina.
+        </div>
+
+        <div class="termo">
+            <strong>Termo hebraico – צֶלֶם (Tselem):</strong>
+            significa “imagem” ou “representação”. É utilizado em
+            Gênesis 1:26 para descrever a imagem de Deus no ser humano.
+        </div>
+
+        <div class="termo">
+            <strong>Termo hebraico – דְּמוּת (Demut):</strong>
+            significa “semelhança” ou “similaridade”. Em Gênesis 1:26,
+            aparece associado à expressão imagem e semelhança.
+        </div>
+
+        <div class="referencia">
+            <strong>Referências bíblicas:</strong>
+            Gênesis 1:26-28; Gênesis 2:7; Salmos 8:4-8;
+            Tiago 3:9; Colossenses 3:10.
+        </div>
+    </div>
+
+    <h2>2. A COMPOSIÇÃO E A UNIDADE DO SER HUMANO</h2>
+
+    <div class="secao">
+        <p>
+        A Bíblia apresenta o ser humano como uma unidade integral,
+        constituída por uma dimensão material e uma dimensão imaterial.
+        O corpo está relacionado à existência física e à interação com
+        o mundo material, enquanto alma e espírito aparecem nas Escrituras
+        associados às dimensões interiores da existência humana.
+        </p>
+
+        <p>
+        Na história da Teologia, duas interpretações principais procuram
+        explicar essa constituição: a dicotomia e a tricotomia.
+        A dicotomia compreende o ser humano a partir de duas dimensões
+        fundamentais: corpo e alma/espírito. A tricotomia distingue
+        corpo, alma e espírito como dimensões identificáveis da
+        constituição humana.
+        </p>
+
+        <p>
+        A perspectiva tricotômica encontra uma referência importante
+        em 1 Tessalonicenses 5:23, onde Paulo menciona espírito, alma
+        e corpo. Hebreus 4:12 também apresenta uma distinção entre
+        alma e espírito. Entretanto, essas passagens devem ser estudadas
+        dentro de seus contextos, sem ignorar a unidade do ser humano.
+        </p>
+
+        <h3>2.1. O corpo</h3>
+
+        <p>
+        O corpo é a dimensão material da existência humana. Por meio dele,
+        o indivíduo atua no mundo físico, desenvolve atividades, estabelece
+        relacionamentos e manifesta comportamentos. A Bíblia não ensina
+        que o corpo seja uma prisão da alma, mas reconhece sua importância
+        no plano divino.
+        </p>
+
+        <p>
+        Em 1 Coríntios 6:19-20, o corpo é apresentado como templo do
+        Espírito Santo, devendo ser utilizado para a glória de Deus.
+        </p>
+
+        <h3>2.2. A alma</h3>
+
+        <p>
+        A alma está relacionada à vida individual, à consciência,
+        aos afetos, aos desejos e à vontade. Nas Escrituras, o termo
+        alma pode designar a própria pessoa ou sua vida.
+        Não deve ser interpretado de maneira simplista, pois seu
+        significado varia conforme o contexto bíblico.
+        </p>
+
+        <h3>2.3. O espírito</h3>
+
+        <p>
+        O espírito é apresentado nas Escrituras em conexão com a
+        dimensão interior e espiritual do ser humano. Está relacionado
+        à disposição interior, à consciência diante de Deus e à
+        possibilidade de comunhão com o Criador.
+        </p>
+
+        <div class="termo">
+            <strong>Termos hebraicos:</strong><br>
+            נֶפֶשׁ (<em>Nefesh</em>) – alma, vida ou ser vivente.<br>
+            רוּחַ (<em>Ruach</em>) – espírito, vento ou sopro.<br>
+            בָּשָׂר (<em>Bashar</em>) – carne, corpo ou condição humana.
+        </div>
+
+        <div class="termo">
+            <strong>Termos gregos:</strong><br>
+            σῶμα (<em>Sōma</em>) – corpo.<br>
+            ψυχή (<em>Psychē</em>) – alma ou vida.<br>
+            πνεῦμα (<em>Pneuma</em>) – espírito ou sopro.
+        </div>
+
+        <div class="referencia">
+            <strong>Referências bíblicas:</strong>
+            Gênesis 2:7; Mateus 10:28; 1 Coríntios 6:19-20;
+            1 Tessalonicenses 5:23; Hebreus 4:12.
+        </div>
+    </div>
+
+    <h2>3. A QUEDA E A DEPRAVAÇÃO TOTAL</h2>
+
+    <div class="secao">
+        <p>
+        A Queda representa a entrada do pecado na experiência humana
+        por meio da desobediência de Adão e Eva. Gênesis 3 descreve
+        a ruptura da relação de obediência e confiança entre a humanidade
+        e Deus. O pecado introduziu consequências espirituais, morais
+        e relacionais que alcançaram toda a existência humana.
+        </p>
+
+        <p>
+        Romanos 5:12 apresenta a relação entre o pecado de um homem
+        e a entrada do pecado e da morte no mundo. A partir desse
+        acontecimento, a humanidade passou a experimentar uma condição
+        marcada pela separação espiritual, pela inclinação ao pecado
+        e pela mortalidade.
+        </p>
+
+        <p>
+        A expressão teológica <em>depravação total</em> descreve a
+        extensão da corrupção causada pelo pecado. Não significa que
+        todos os seres humanos sejam tão maus quanto poderiam ser,
+        nem que tenham perdido completamente a capacidade de praticar
+        atos de bondade civil. Significa que nenhuma dimensão da
+        existência humana permaneceu imune à influência do pecado.
+        </p>
+
+        <p>
+        A mente pode ser afetada por pensamentos distorcidos;
+        a vontade pode inclinar-se à desobediência; as emoções podem
+        ser desordenadas; e os relacionamentos podem ser prejudicados
+        pelo egoísmo, pela violência e pela injustiça.
+        </p>
+
+        <p>
+        Entretanto, a imagem de Deus não foi eliminada. Gênesis 9:6
+        e Tiago 3:9 demonstram que, mesmo depois da Queda, o ser humano
+        continua sendo reconhecido como portador da imagem divina.
+        A imagem foi profundamente afetada pelo pecado, mas não
+        deixou de existir.
+        </p>
+
+        <div class="termo">
+            <strong>Termo grego – ἁμαρτία (Hamartia):</strong>
+            significa “pecado”, “erro” ou “desvio”. No uso teológico
+            do Novo Testamento, descreve a realidade do pecado e sua
+            oposição à vontade de Deus.
+        </div>
+
+        <div class="termo">
+            <strong>Termo teológico – Depravação total:</strong>
+            doutrina que afirma que o pecado afetou todas as dimensões
+            da natureza humana, comprometendo sua relação com Deus
+            e sua capacidade moral.
+        </div>
+
+        <div class="referencia">
+            <strong>Referências bíblicas:</strong>
+            Gênesis 3:1-24; Gênesis 9:6; Salmos 51:5;
+            Romanos 3:9-23; Romanos 5:12-19; Efésios 2:1-3;
+            Tiago 3:9.
+        </div>
+    </div>
+
+    <h2>4. LIVRE-ARBÍTRIO E RESPONSABILIDADE DIANTE DO CRIADOR</h2>
+
+    <div class="secao">
+        <p>
+        A responsabilidade moral humana é um princípio presente
+        em toda a revelação bíblica. O ser humano não é apresentado
+        como um objeto sem vontade ou como alguém isento de
+        responsabilidade por suas atitudes. Deus estabelece
+        mandamentos, apresenta orientações e chama as pessoas
+        à obediência.
+        </p>
+
+        <p>
+        A liberdade humana, entretanto, precisa ser compreendida
+        dentro da condição da humanidade após a Queda. O pecado
+        comprometeu a vontade, afetando a maneira como o ser humano
+        pensa, deseja e escolhe. Por isso, a liberdade não deve ser
+        confundida com independência absoluta em relação a Deus.
+        </p>
+
+        <p>
+        A soberania divina e a responsabilidade humana são temas
+        que aparecem simultaneamente nas Escrituras. Deus permanece
+        soberano sobre a história, enquanto o ser humano continua
+        responsável por suas escolhas e por suas atitudes.
+        </p>
+
+        <p>
+        Na compreensão pentecostal clássica de orientação arminiana,
+        destaca-se a importância da graça preveniente: a ação da graça
+        divina que antecede a resposta humana e torna possível que
+        o indivíduo responda ao chamado de Deus. Assim, a salvação
+        não é resultado do mérito humano, mas da graça divina,
+        recebida mediante a fé.
+        </p>
+
+        <p>
+        O ser humano será chamado a prestar contas de sua vida.
+        Romanos 14:12 afirma que cada um dará contas de si mesmo
+        a Deus. Essa responsabilidade alcança pensamentos, palavras,
+        decisões e comportamentos.
+        </p>
+
+        <div class="termo">
+            <strong>Termo grego – ἐλευθερία (Eleutheria):</strong>
+            significa “liberdade”. No contexto bíblico, a liberdade
+            deve ser compreendida em relação à verdade, à responsabilidade
+            e à ação libertadora de Deus.
+        </div>
+
+        <div class="referencia">
+            <strong>Referências bíblicas:</strong>
+            Deuteronômio 30:19; Josué 24:15; João 7:17;
+            Atos 17:30; Romanos 14:12; Gálatas 5:13;
+            Filipenses 2:12-13.
+        </div>
+    </div>
+
+    <h2>5. A DIGNIDADE INTRÍNSECA E A ÉTICA DA VIDA</h2>
+
+    <div class="secao">
+        <p>
+        A dignidade humana possui fundamento na origem divina do homem.
+        O valor de uma pessoa não depende de sua condição econômica,
+        capacidade intelectual, produtividade, aparência física,
+        posição social ou reconhecimento público.
+        </p>
+
+        <p>
+        Cada ser humano possui dignidade porque foi criado à imagem
+        de Deus. Essa verdade estabelece um princípio de respeito
+        que deve orientar as relações familiares, sociais e comunitárias.
+        Nenhuma pessoa pode ser tratada como objeto descartável ou
+        instrumento de exploração.
+        </p>
+
+        <p>
+        A ética cristã da vida considera a existência humana como
+        um bem que deve ser protegido e respeitado. Salmos 139:13-16
+        apresenta a ação de Deus na formação da vida no ventre materno.
+        Jeremias 1:5 também registra o conhecimento divino do profeta
+        antes de seu nascimento.
+        </p>
+
+        <p>
+        A dignidade humana também fundamenta a rejeição da violência,
+        da exploração, do preconceito, da opressão e de toda forma
+        de desrespeito à vida. O próximo deve ser tratado com justiça,
+        misericórdia e responsabilidade.
+        </p>
+
+        <p>
+        A redenção em Cristo reforça a importância da pessoa humana.
+        O valor da vida não está condicionado à capacidade de alguém
+        produzir ou oferecer benefícios à sociedade. O amor de Deus
+        alcança o ser humano em sua condição de criatura necessitada
+        de reconciliação.
+        </p>
+
+        <div class="termo">
+            <strong>Termo hebraico – כָּבוֹד (Kavod):</strong>
+            significa “glória”, “honra” ou “dignidade”, conforme
+            o contexto. O conceito contribui para a compreensão
+            bíblica do respeito devido à pessoa humana.
+        </div>
+
+        <div class="referencia">
+            <strong>Referências bíblicas:</strong>
+            Gênesis 1:26-27; Gênesis 9:6; Salmos 139:13-16;
+            Provérbios 14:31; Jeremias 1:5; Mateus 22:39;
+            Tiago 2:1-9.
+        </div>
+    </div>
+
+    <h2>6. O PROPÓSITO TELEOLÓGICO: GLORIFICAR E DESFRUTAR</h2>
+
+    <div class="secao">
+        <p>
+        A existência humana possui um propósito que ultrapassa
+        a satisfação de necessidades imediatas, o acúmulo de bens
+        materiais e a busca por poder ou reconhecimento.
+        A Bíblia apresenta Deus como a finalidade última da
+        existência humana.
+        </p>
+
+        <p>
+        O ser humano foi criado para viver em comunhão com seu
+        Criador, refletir Sua glória e desenvolver sua existência
+        de acordo com Sua vontade. Essa finalidade é chamada,
+        na linguagem teológica, de propósito teleológico.
+        </p>
+
+        <p>
+        A palavra teleologia está relacionada ao estudo dos fins,
+        objetivos ou propósitos. Aplicada à Antropologia Bíblica,
+        ela investiga a finalidade para a qual o ser humano foi criado.
+        </p>
+
+        <p>
+        A afirmação de que o homem deve glorificar a Deus e desfrutar
+        de Sua comunhão expressa uma compreensão clássica da finalidade
+        da vida cristã. A verdadeira realização humana não se encontra
+        na independência do Criador, mas na relação correta com Ele.
+        </p>
+
+        <p>
+        Essa finalidade também orienta a utilização dos talentos,
+        dos recursos, do conhecimento e das capacidades individuais.
+        O trabalho, a família, os relacionamentos e o serviço cristão
+        tornam-se dimensões nas quais o ser humano pode manifestar
+        sua responsabilidade diante de Deus.
+        </p>
+
+        <p>
+        Em Cristo, o propósito da criação encontra uma dimensão
+        redentora: o ser humano é chamado à reconciliação com Deus,
+        à santificação e à esperança da vida eterna.
+        </p>
+
+        <div class="termo">
+            <strong>Termo grego – τέλος (Telos):</strong>
+            significa “fim”, “objetivo” ou “finalidade”.
+            É a raiz conceitual da palavra teleologia.
+        </div>
+
+        <div class="referencia">
+            <strong>Referências bíblicas:</strong>
+            Isaías 43:7; Eclesiastes 12:13; Mateus 5:16;
+            Romanos 11:36; 1 Coríntios 10:31;
+            Colossenses 3:17; Apocalipse 4:11.
+        </div>
+    </div>
+
+    <h2>7. A CONDIÇÃO HUMANA E A NECESSIDADE DA REDENÇÃO</h2>
+
+    <div class="secao">
+        <p>
+        A Antropologia Bíblica não termina na descrição da criação
+        ou da condição pecaminosa da humanidade. Ela também conduz
+        à compreensão da necessidade da redenção. O ser humano,
+        embora criado com dignidade e propósito, encontra-se
+        comprometido pelo pecado e necessita da intervenção divina.
+        </p>
+
+        <p>
+        Romanos 3:23 declara que todos pecaram e carecem da glória
+        de Deus. Essa condição demonstra que nenhum indivíduo pode
+        reivindicar salvação com base em sua própria justiça.
+        A reconciliação com Deus é apresentada como resultado
+        da graça manifestada em Jesus Cristo.
+        </p>
+
+        <p>
+        A redenção não representa a rejeição da natureza humana,
+        mas a restauração do relacionamento com Deus. O Evangelho
+        anuncia perdão, transformação e uma nova vida mediante
+        a obra de Cristo.
+        </p>
+
+        <p>
+        A salvação também aponta para a esperança futura da
+        ressurreição. O corpo humano não é descartado no plano
+        divino: a esperança cristã inclui a ressurreição dos mortos
+        e a transformação da existência na consumação da redenção.
+        </p>
+
+        <div class="termo">
+            <strong>Termo grego – ἀπολύτρωσις (Apolýtrōsis):</strong>
+            significa “redenção” ou “libertação mediante resgate”.
+            É utilizado no Novo Testamento para descrever a obra
+            redentora realizada por Cristo.
+        </div>
+
+        <div class="referencia">
+            <strong>Referências bíblicas:</strong>
+            João 3:16-17; Romanos 3:23-24; Romanos 5:8-11;
+            Efésios 1:7; Tito 3:4-7; 1 Coríntios 15:42-54.
+        </div>
+    </div>
+
+    <h2>8. A ANTROPOLOGIA BÍBLICA E A VIDA CRISTÃ</h2>
+
+    <div class="secao">
+        <p>
+        O conhecimento bíblico sobre a natureza humana deve produzir
+        consequências práticas. Não basta compreender intelectualmente
+        a origem, a constituição e o propósito do ser humano. É necessário
+        reconhecer como essas verdades orientam a conduta individual
+        e coletiva.
+        </p>
+
+        <p>
+        Se o ser humano foi criado à imagem de Deus, deve tratar
+        o próximo com respeito. Se foi afetado pelo pecado, precisa
+        reconhecer sua necessidade de transformação. Se possui
+        responsabilidade moral, deve assumir as consequências
+        de suas decisões. Se foi criado para glorificar a Deus,
+        deve orientar sua existência segundo os princípios das Escrituras.
+        </p>
+
+        <p>
+        A Antropologia Bíblica, portanto, estabelece fundamentos
+        para a ética cristã, para a convivência social, para a
+        responsabilidade familiar e para o serviço ao Reino de Deus.
+        </p>
+
+        <div class="referencia">
+            <strong>Referências bíblicas:</strong>
+            Mateus 7:12; Romanos 12:1-2; Efésios 4:22-24;
+            Colossenses 3:12-17; 1 Pedro 1:15-16.
+        </div>
+    </div>
+
+    <h2>9. SÍNTESE DOUTRINÁRIA</h2>
+
+    <div class="secao">
+        <p>
+        A Antropologia Bíblica permite estabelecer as seguintes
+        afirmações fundamentais:
+        </p>
+
+        <ul>
+            <li>O ser humano tem sua origem na ação criadora de Deus.</li>
+            <li>Foi criado à imagem e semelhança do Criador.</li>
+            <li>Possui uma constituição integral, material e imaterial.</li>
+            <li>A Queda afetou todas as dimensões da natureza humana.</li>
+            <li>Continua responsável por suas escolhas diante de Deus.</li>
+            <li>Possui dignidade independentemente de sua condição social.</li>
+            <li>Necessita da redenção realizada por Jesus Cristo.</li>
+            <li>Seu propósito último é glorificar a Deus e viver em Sua comunhão.</li>
+        </ul>
+    </div>
+
+    <h2>10. CONCLUSÃO</h2>
+
+    <div class="secao">
+        <p>
+        Estudar o ser humano à luz das Escrituras é compreender
+        sua origem, sua dignidade, suas limitações e sua finalidade.
+        A Antropologia Bíblica demonstra que a humanidade não pode
+        ser compreendida corretamente quando separada de seu Criador.
+        </p>
+
+        <p>
+        O homem foi criado por Deus, afetado pelo pecado e chamado
+        à redenção. Sua existência possui valor, responsabilidade
+        e propósito. A verdadeira compreensão da natureza humana
+        conduz ao reconhecimento da soberania divina e à necessidade
+        de uma vida orientada pela Palavra de Deus.
+        </p>
+
+        <p>
+        Portanto, a Antropologia Bíblica não é apenas um estudo
+        sobre o homem. É um estudo sobre o homem diante de Deus:
+        sua origem no Criador, sua condição diante do pecado
+        e seu destino à luz da redenção.
+        </p>
+    </div>
+
+    <h2>BIBLIOGRAFIA RECOMENDADA</h2>
+
+    <ul class="bibliografia">
+        <li>
+            BÍBLIA SAGRADA. Antigo e Novo Testamento.
+            Almeida Revista e Atualizada.
+        </li>
+        <li>
+            GRUDEM, Wayne. <em>Teologia Sistemática</em>.
+            São Paulo: Vida Nova.
+        </li>
+        <li>
+            ERICKSON, Millard J. <em>Introdução à Teologia Sistemática</em>.
+            São Paulo: Vida Nova.
+        </li>
+        <li>
+            GRENZ, Stanley J. <em>Teologia para a Comunidade de Deus</em>.
+        </li>
+        <li>
+            HORTON, Stanley M. (org.). <em>Teologia Sistemática:
+            Uma Perspectiva Pentecostal</em>. Rio de Janeiro: CPAD.
+        </li>
+        <li>
+            PEARLMAN, Myer. <em>Conhecendo as Doutrinas da Bíblia</em>.
+            São Paulo: Vida.
+        </li>
+        <li>
+            VINE, W. E.; UNGER, Merril F.; WHITE JR., William.
+            <em>Dicionário Vine</em>. Rio de Janeiro: CPAD.
+        </li>
+    </ul>
+
+    <div class="referencia">
+        <strong>Orientação para avaliação:</strong>
+        revise os conceitos de Imago Dei, constituição humana,
+        Queda, depravação total, responsabilidade moral,
+        dignidade humana e propósito teleológico antes de
+        iniciar a avaliação.
+    </div>
+
+    <div id="avaliacao">
+        <h2>AVALIAÇÃO – MATÉRIA 6</h2>
+
+        <p>
+        Responda às 10 questões. Cada questão vale 1 ponto.
+        A nota mínima para aprovação é 7,0.
+        </p>
+
+        <form id="formAvaliacao">
+
+            <div class="questao">
+                <strong>1. O que significa a expressão Imago Dei?</strong>
+                <label><input type="radio" name="q1" value="a"> A) Imagem dos anjos.</label>
+                <label><input type="radio" name="q1" value="b"> B) Imagem de Deus.</label>
+                <label><input type="radio" name="q1" value="c"> C) Natureza animal.</label>
+                <label><input type="radio" name="q1" value="d"> D) Corpo espiritual.</label>
             </div>
 
-            <div class="pergunta"><b>2. Verdadeiro ou Falso: O homem foi criado à imagem de Deus.</b>
-                <label class="opcao"><input type="radio" name="p2" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Falso</label>
+            <div class="questao">
+                <strong>2. Qual passagem apresenta a criação do homem à imagem e semelhança de Deus?</strong>
+                <label><input type="radio" name="q2" value="a"> A) Êxodo 20:1.</label>
+                <label><input type="radio" name="q2" value="b"> B) Salmos 23:1.</label>
+                <label><input type="radio" name="q2" value="c"> C) Gênesis 1:26-27.</label>
+                <label><input type="radio" name="q2" value="d"> D) Apocalipse 21:1.</label>
             </div>
 
-            <div class="pergunta"><b>3. A imagem de Deus no homem foi:</b>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Totalmente perdida</label>
-                <label class="opcao"><input type="radio" name="p3" value="1"> Corrompida pelo pecado</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Substituída</label>
+            <div class="questao">
+                <strong>3. Quais são as três dimensões distinguidas pela interpretação tricotômica?</strong>
+                <label><input type="radio" name="q3" value="a"> A) Corpo, alma e espírito.</label>
+                <label><input type="radio" name="q3" value="b"> B) Mente, coração e força.</label>
+                <label><input type="radio" name="q3" value="c"> C) Carne, sangue e ossos.</label>
+                <label><input type="radio" name="q3" value="d"> D) Razão, memória e linguagem.</label>
             </div>
 
-            <div class="pergunta"><b>4. A composição do ser humano é:</b>
-                <label class="opcao"><input type="radio" name="p4" value="1"> Uma unidade integral</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Partes independentes</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Apenas material</label>
+            <div class="questao">
+                <strong>4. O que significa depravação total?</strong>
+                <label><input type="radio" name="q4" value="a"> A) Que todos praticam o máximo de mal possível.</label>
+                <label><input type="radio" name="q4" value="b"> B) Que o ser humano deixou de possuir dignidade.</label>
+                <label><input type="radio" name="q4" value="c"> C) Que o pecado afetou todas as dimensões da natureza humana.</label>
+                <label><input type="radio" name="q4" value="d"> D) Que o corpo é essencialmente mau.</label>
             </div>
 
-            <div class="pergunta"><b>5. Verdadeiro ou Falso: O pecado afetou todas as áreas do homem.</b>
-                <label class="opcao"><input type="radio" name="p5" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Falso</label>
+            <div class="questao">
+                <strong>5. A imagem de Deus no ser humano, após a Queda:</strong>
+                <label><input type="radio" name="q5" value="a"> A) Foi completamente eliminada.</label>
+                <label><input type="radio" name="q5" value="b"> B) Permaneceu, mas foi profundamente afetada pelo pecado.</label>
+                <label><input type="radio" name="q5" value="c"> C) Transformou o homem em um ser divino.</label>
+                <label><input type="radio" name="q5" value="d"> D) Deixou de ter qualquer significado.</label>
             </div>
 
-            <div class="pergunta"><b>6. O homem é responsável:</b>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Apenas diante da sociedade</label>
-                <label class="opcao"><input type="radio" name="p6" value="1"> Diante de Deus</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Apenas de si mesmo</label>
+            <div class="questao">
+                <strong>6. Segundo a compreensão pentecostal clássica de orientação arminiana, a graça preveniente:</strong>
+                <label><input type="radio" name="q6" value="a"> A) Torna desnecessária a fé.</label>
+                <label><input type="radio" name="q6" value="b"> B) É o mérito humano que conquista a salvação.</label>
+                <label><input type="radio" name="q6" value="c"> C) É uma ação da graça divina que antecede e possibilita a resposta humana.</label>
+                <label><input type="radio" name="q6" value="d"> D) Elimina a responsabilidade moral.</label>
             </div>
 
-            <div class="pergunta"><b>7. A dignidade humana decorre:</b>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Do mérito pessoal</label>
-                <label class="opcao"><input type="radio" name="p7" value="1"> Da criação divina</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Da posição social</label>
+            <div class="questao">
+                <strong>7. Qual é o fundamento bíblico da dignidade humana?</strong>
+                <label><input type="radio" name="q7" value="a"> A) A capacidade econômica.</label>
+                <label><input type="radio" name="q7" value="b"> B) A posição social.</label>
+                <label><input type="radio" name="q7" value="c"> C) A inteligência individual.</label>
+                <label><input type="radio" name="q7" value="d"> D) A criação à imagem de Deus.</label>
             </div>
 
-            <div class="pergunta"><b>8. Verdadeiro ou Falso: Todo ser humano possui valor diante de Deus.</b>
-                <label class="opcao"><input type="radio" name="p8" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Falso</label>
+            <div class="questao">
+                <strong>8. O que significa o termo grego Telos?</strong>
+                <label><input type="radio" name="q8" value="a"> A) Fim, objetivo ou finalidade.</label>
+                <label><input type="radio" name="q8" value="b"> B) Pecado original.</label>
+                <label><input type="radio" name="q8" value="c"> C) Corpo físico.</label>
+                <label><input type="radio" name="q8" value="d"> D) Tribunal judicial.</label>
             </div>
 
-            <div class="pergunta"><b>9. O propósito final do homem é:</b>
-                <label class="opcao"><input type="radio" name="p9" value="1"> Glorificar a Deus</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Autossatisfação</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Poder político</label>
+            <div class="questao">
+                <strong>9. Qual é a finalidade última da existência humana segundo a perspectiva bíblica apresentada?</strong>
+                <label><input type="radio" name="q9" value="a"> A) Acumular riquezas.</label>
+                <label><input type="radio" name="q9" value="b"> B) Conquistar reconhecimento público.</label>
+                <label><input type="radio" name="q9" value="c"> C) Glorificar a Deus e desfrutar de Sua comunhão.</label>
+                <label><input type="radio" name="q9" value="d"> D) Viver sem responsabilidades.</label>
             </div>
 
-            <div class="pergunta"><b>10. A Antropologia Bíblica aponta para:</b>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Autonomia humana</label>
-                <label class="opcao"><input type="radio" name="p10" value="1"> Dependência de Deus</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Relativismo moral</label>
+            <div class="questao">
+                <strong>10. Qual é a relação entre Antropologia Bíblica e redenção?</strong>
+                <label><input type="radio" name="q10" value="a"> A) A redenção é desnecessária ao ser humano.</label>
+                <label><input type="radio" name="q10" value="b"> B) A redenção restaura o relacionamento do ser humano com Deus por meio de Cristo.</label>
+                <label><input type="radio" name="q10" value="c"> C) A redenção depende exclusivamente das obras humanas.</label>
+                <label><input type="radio" name="q10" value="d"> D) A redenção elimina a importância da criação.</label>
             </div>
+
+            <button type="button" onclick="corrigirAvaliacao()">
+                ENVIAR AVALIAÇÃO
+            </button>
+
         </form>
-        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
+
+        <div id="resultado"></div>
+
+        <button id="proximaMateria" onclick="irProximaMateria()">
+            IR PARA A PRÓXIMA MATÉRIA
+        </button>
     </div>
 
-    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
 </div>
 
-<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+<footer>
+    © AVANCE – Gilberto Moreira
+    <br>
+    Ultrapassando Limites!
+</footer>
+
+<!-- RECURSO DE ACESSIBILIDADE EM LIBRAS -->
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
 
 <script>
-function verificarProgresso() {
-    if (localStorage.getItem('modulo6_concluido') === 'true') {
-        const res = document.getElementById('resultado');
-        document.getElementById('secao-leitura').style.display = 'none';
-        document.getElementById('secao-prova').style.display = 'none';
-        res.style.display = 'block';
-        res.innerHTML = `
-            <b style="color:green; font-size:1.2rem;">Módulo concluído com sucesso!</b><br>
-            <button class="btn" onclick="window.location.href='materia7.html'">IR PARA O MÓDULO 7</button>
-        `;
+const secoes = document.querySelectorAll(".secao");
+let indiceLeitura = 0;
+let falaAtual = null;
+
+function atualizarProgresso() {
+    const total = secoes.length;
+    const lidas = document.querySelectorAll(".secao.lida").length;
+    const percentual = Math.round((lidas / total) * 100);
+
+    document.getElementById("barraProgresso").style.width =
+        percentual + "%";
+
+    document.getElementById("statusProgresso").textContent =
+        percentual + "% concluído";
+}
+
+function destacarSecao(indice) {
+    secoes.forEach(secao => secao.classList.remove("lida"));
+
+    if (secoes[indice]) {
+        secoes[indice].classList.add("lida");
+        secoes[indice].scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+
+    atualizarProgresso();
+}
+
+function iniciarLeitura() {
+    if (!("speechSynthesis" in window)) {
+        alert("Seu navegador não oferece suporte à leitura em áudio.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    if (indiceLeitura >= secoes.length) {
+        indiceLeitura = 0;
+    }
+
+    lerProximaSecao();
+}
+
+function lerProximaSecao() {
+    if (indiceLeitura >= secoes.length) {
+        atualizarProgresso();
+        alert("Leitura da matéria concluída!");
+        return;
+    }
+
+    destacarSecao(indiceLeitura);
+
+    const texto = secoes[indiceLeitura].innerText;
+    falaAtual = new SpeechSynthesisUtterance(texto);
+    falaAtual.lang = "pt-BR";
+    falaAtual.rate = 0.95;
+
+    falaAtual.onend = function() {
+        indiceLeitura++;
+        lerProximaSecao();
+    };
+
+    speechSynthesis.speak(falaAtual);
+}
+
+function pausarLeitura() {
+    if (speechSynthesis.speaking) {
+        speechSynthesis.pause();
     }
 }
 
-function irParaProva() {
-    document.getElementById('secao-leitura').style.display = 'none';
-    document.getElementById('secao-prova').style.display = 'block';
-    window.scrollTo(0,0);
+function pararLeitura() {
+    speechSynthesis.cancel();
+    indiceLeitura = 0;
 }
 
-function corrigir() {
-    const form = document.getElementById('quizForm');
-    let nota = 0;
-    for(let i=1; i<=10; i++) {
-        const p = form['p'+i];
-        if(p && p.value === "1") nota++;
+window.addEventListener("scroll", function() {
+    const altura = document.documentElement.scrollHeight -
+                   document.documentElement.clientHeight;
+
+    if (altura > 0) {
+        const percentual = Math.round(
+            (window.scrollY / altura) * 100
+        );
+
+        document.getElementById("barraProgresso").style.width =
+            percentual + "%";
     }
-    
-    const res = document.getElementById('resultado');
-    res.style.display = 'block';
-    
-    if(nota >= 7) {
-        localStorage.setItem('modulo6_concluido', 'true');
-        res.innerHTML = `<b style="color:green">APROVADO! Nota: ${nota}/10.</b>`;
-        setTimeout(() => { window.location.href = 'materia7.html'; }, 3000);
+});
+
+function corrigirAvaliacao() {
+    const respostas = {
+        q1: "b",
+        q2: "c",
+        q3: "a",
+        q4: "c",
+        q5: "b",
+        q6: "c",
+        q7: "d",
+        q8: "a",
+        q9: "c",
+        q10: "b"
+    };
+
+    let pontos = 0;
+    let respondidas = 0;
+
+    for (let questao in respostas) {
+        const selecionada = document.querySelector(
+            'input[name="' + questao + '"]:checked'
+        );
+
+        if (selecionada) {
+            respondidas++;
+
+            if (selecionada.value === respostas[questao]) {
+                pontos++;
+            }
+        }
+    }
+
+    if (respondidas < 10) {
+        alert("Responda todas as 10 questões antes de enviar.");
+        return;
+    }
+
+    const nota = pontos;
+    const resultado = document.getElementById("resultado");
+
+    if (nota >= 7) {
+        resultado.style.background = "#e1f5e7";
+        resultado.style.color = "#176b38";
+
+        resultado.innerHTML =
+            "APROVADO!<br>Você acertou " + pontos +
+            " de 10 questões.<br>Nota: " + nota.toFixed(1);
+
+        localStorage.setItem("modulo6_concluido", "sim");
+
+        document.getElementById("proximaMateria").style.display =
+            "inline-block";
+
     } else {
-        res.innerHTML = `<b style="color:red">REPROVADO. Nota: ${nota}/10.<br>Refaça a leitura e tente novamente.</b>`;
-        setTimeout(() => { location.reload(); }, 3000);
+        resultado.style.background = "#fdeaea";
+        resultado.style.color = "#a32020";
+
+        resultado.innerHTML =
+            "NÃO APROVADO.<br>Você acertou " + pontos +
+            " de 10 questões.<br>Nota: " + nota.toFixed(1) +
+            "<br>Revise o conteúdo e tente novamente.";
+
+        localStorage.removeItem("modulo6_concluido");
+        document.getElementById("proximaMateria").style.display =
+            "none";
     }
 }
+
+function irProximaMateria() {
+    if (localStorage.getItem("modulo6_concluido") === "sim") {
+        window.location.href = "materia7.html";
+    } else {
+        alert("É necessário obter nota mínima 7 para avançar.");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("avaliacao").style.display = "block";
+});
 </script>
 
 </body>
