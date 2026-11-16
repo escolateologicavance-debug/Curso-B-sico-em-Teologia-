@@ -4,14 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Módulo 3 - Missiologia | AVANCE</title>
+<title>Módulo 4 - Pneumatologia | AVANCE</title>
 
 <style>
 :root {
     --azul-m:#001f3f;
     --azul-c:#0074D9;
 }
-* { box-sizing:border-box; }
 
 body {
     font-family:'Segoe UI',sans-serif;
@@ -23,6 +22,7 @@ body {
     flex-direction:column;
     min-height:100vh;
 }
+
 .header {
     background:var(--azul-m);
     color:white;
@@ -30,11 +30,8 @@ body {
     text-align:center;
     border-bottom:2px solid var(--azul-c);
 }
-.header h1 { margin:0; }
-.header p { text-align:center; }
 
 .container {
-    width:calc(100% - 24px);
     max-width:850px;
     margin:20px auto;
     background:white;
@@ -42,7 +39,9 @@ body {
     border-radius:8px;
     box-shadow:0 4px 15px rgba(0,0,0,.4);
     flex-grow:1;
+    width:calc(100% - 80px);
 }
+
 .secao { display:none; }
 .ativa { display:block; }
 
@@ -53,18 +52,21 @@ h2 {
     text-transform:uppercase;
     font-size:1.5rem;
 }
+
 h3 {
     color:var(--azul-c);
     margin-top:35px;
-    font-size:1.22rem;
+    font-size:1.25rem;
     border-left:4px solid var(--azul-c);
     padding-left:10px;
 }
+
 p {
     text-align:justify;
     margin-bottom:15px;
     font-size:1.02rem;
 }
+
 blockquote {
     background:#f4f7fa;
     border-left:5px solid var(--azul-c);
@@ -74,30 +76,29 @@ blockquote {
     color:#1a202c;
     font-size:.98rem;
 }
+
 blockquote cite {
     display:block;
     margin-top:10px;
     font-style:normal;
     font-weight:bold;
     color:var(--azul-m);
-    font-size:.88rem;
+    font-size:.9rem;
+    text-transform:uppercase;
 }
-.lexico {
-    background:#eef5fb;
-    padding:16px;
-    border-radius:8px;
-    margin:15px 0;
-    border-left:4px solid #0074D9;
-}
-.lexico strong { color:#001f3f; }
+
 .referencia {
-    font-size:.91rem;
-    color:#555;
-    background:#f7f7f7;
-    padding:14px;
-    border-radius:8px;
-    margin:12px 0;
+    background:#eef5fb;
+    border-left:4px solid #0074D9;
+    padding:15px 18px;
+    margin:18px 0;
+    border-radius:5px;
 }
+
+.referencia strong {
+    color:var(--azul-m);
+}
+
 .pergunta {
     background:#f9f9f9;
     padding:20px;
@@ -105,6 +106,7 @@ blockquote cite {
     margin-bottom:20px;
     border-left:5px solid var(--azul-c);
 }
+
 .opcao {
     display:block;
     margin:10px 0;
@@ -113,6 +115,7 @@ blockquote cite {
     border-radius:8px;
     background:#eee;
 }
+
 .opcao:hover { background:#ddd; }
 
 .btn {
@@ -121,7 +124,7 @@ blockquote cite {
     max-width:320px;
     background:var(--azul-c);
     color:white;
-    padding:17px;
+    padding:18px;
     border-radius:40px;
     font-weight:bold;
     margin:30px auto;
@@ -130,17 +133,19 @@ blockquote cite {
     cursor:pointer;
     font-size:1.05rem;
 }
+
 .footer-copy {
     text-align:center;
     padding:20px;
     color:rgba(255,255,255,.7);
 }
+
 #playerAula {
     position:fixed;
-    bottom:12px;
-    left:12px;
+    bottom:15px;
+    left:15px;
     background:#001f3f;
-    padding:10px;
+    padding:12px;
     border-radius:10px;
     box-shadow:0 0 10px rgba(0,0,0,.4);
     z-index:999;
@@ -149,43 +154,57 @@ blockquote cite {
     align-items:center;
     gap:7px;
 }
+
 #playerAula button {
     background:#ffcc00;
     border:none;
-    padding:8px 10px;
+    padding:9px 11px;
     border-radius:6px;
     cursor:pointer;
     font-weight:bold;
 }
+
 #barra {
     width:75px;
     height:6px;
     background:#444;
     border-radius:4px;
 }
+
 #progresso {
     width:0%;
     height:6px;
     background:#00ffcc;
     border-radius:4px;
 }
+
 .lendo {
     background:#fff2a8 !important;
     color:#111;
-    border-radius:4px;
 }
-.audio-info {
-    font-size:11px;
-    text-align:center;
-    color:white;
+
+.acessibilidade {
+    background:#eef5fb;
+    padding:15px;
+    border-radius:8px;
+    margin:20px 0;
 }
-[ vw ] { z-index:10000 !important; }
 
 @media(max-width:600px) {
-    .container { padding:20px; }
-    #playerAula { gap:5px; }
+    .container {
+        padding:20px;
+        width:calc(100% - 40px);
+    }
+    #playerAula {
+        left:5px;
+        bottom:5px;
+        padding:7px;
+        gap:4px;
+    }
+    #playerAula button {
+        padding:8px;
+    }
     #barra { width:45px; }
-    #playerAula button { padding:8px; }
 }
 </style>
 </head>
@@ -194,481 +213,369 @@ blockquote cite {
 
 <div class="header">
     <h1>AVANCE</h1>
-    <p>Módulo 3: Missiologia – Tratado Acadêmico</p>
+    <p>Módulo 4: Pneumatologia – Tratado Teológico</p>
 </div>
 
 <div class="container" id="artigo">
 
 <div id="secao-leitura" class="secao ativa">
 
-<h2>Matéria 3 – Fundamentos da Missiologia Pentecostal</h2>
+<h2>Matéria 4 – Pneumatologia</h2>
 
-<p>A Missiologia constitui o campo de investigação teológica dedicado ao estudo sistemático da missão de Deus, de seus fundamentos escriturísticos, de sua manifestação histórica e da responsabilidade da Igreja na proclamação do Evangelho entre todos os povos. Não se restringe à organização de viagens missionárias, à implantação de instituições religiosas ou à manutenção de departamentos eclesiásticos. Trata-se de uma disciplina que examina a finalidade redentora de Deus na história humana e a participação da comunidade cristã nesse propósito.</p>
+<p>A Pneumatologia constitui o ramo da Teologia Sistemática dedicado à investigação da identidade, natureza, atributos e operações do Espírito Santo. Seu objeto de estudo não se restringe à manifestação de fenômenos extraordinários ou às experiências subjetivas do ambiente eclesiástico, mas abrange a compreensão da Terceira Pessoa da Santíssima Trindade em sua existência eterna, em sua atuação na criação, na revelação, na redenção e na edificação da Igreja.</p>
 
-<p>Na perspectiva pentecostal clássica, a missão encontra sua fundamentação na revelação bíblica, na obra redentora de Jesus Cristo e na capacitação sobrenatural do Espírito Santo. A proclamação do Evangelho, a formação de discípulos, a implantação de comunidades cristãs e o testemunho entre diferentes povos constituem dimensões inseparáveis dessa responsabilidade.</p>
+<p>Na ortodoxia cristã e na tradição pentecostal clássica, o Espírito Santo não é uma força impessoal, uma energia cósmica ou uma emanação subordinada da divindade. Ele é uma Pessoa divina, possuindo plena igualdade de natureza, essência e dignidade com o Pai e o Filho. Sua atuação manifesta a presença operante de Deus na história da redenção, na regeneração dos pecadores, na santificação dos crentes e na capacitação sobrenatural da Igreja para testemunhar de Cristo.</p>
 
-<h3>1. A Missio Dei: A origem divina da missão</h3>
+<h3>1. A Pessoa do Espírito Santo: Personalidade e Identidade Ontológica</h3>
 
-<p>A expressão latina <i>Missio Dei</i> significa missão de Deus. Seu princípio fundamental consiste em reconhecer que a missão não nasceu da iniciativa institucional da Igreja, mas do próprio propósito divino de revelar sua glória e executar seu plano redentor na história.</p>
+<p>A primeira exigência de uma Pneumatologia biblicamente fundamentada consiste em reconhecer que o Espírito Santo possui personalidade própria. As Escrituras atribuem a Ele intelecto, sentimentos e vontade, características que não podem ser adequadamente atribuídas a uma força impessoal.</p>
 
-<p>Em Gênesis 3:9, após a desobediência humana, Deus toma a iniciativa de procurar o homem. Posteriormente, em Gênesis 12:1-3, o chamado de Abraão estabelece uma dimensão universal da promessa: por meio de sua descendência, todas as famílias da terra seriam alcançadas pela bênção divina.</p>
+<p>Lexicalmente, o vocábulo grego <i>Pneuma</i> (πνεῦμα) apresenta os sentidos de vento, sopro, espírito e realidade espiritual, conforme o contexto. Em João 14:16, Jesus anuncia o envio de outro Consolador, utilizando a expressão <i>Allon Parakleton</i> (ἄλλον παράκλητον). O termo <i>Parakletos</i> (παράκλητος) designa aquele que é chamado para estar ao lado de alguém, assumindo funções de auxiliador, intercessor, advogado ou consolador.</p>
 
-<p>O texto de Gênesis 12:3 apresenta uma perspectiva que ultrapassa os limites étnicos de Israel. A eleição de Abraão não representa um propósito de exclusividade absoluta, mas uma escolha vinculada ao alcance das demais famílias da humanidade.</p>
+<p>A expressão <i>Allon</i> indica outro da mesma categoria, sendo utilizada no contexto para apresentar a continuidade da assistência divina que Cristo proporcionava aos discípulos. O Espírito Santo não é apresentado como uma influência abstrata, mas como aquele que continuaria a presença e a assistência divina junto aos seguidores de Jesus.</p>
 
-<p>O desenvolvimento desse princípio alcança sua expressão máxima em Jesus Cristo, cuja obra redentora constitui o fundamento da reconciliação entre Deus e a humanidade. A Igreja participa dessa missão como comunidade enviada, testemunha e proclamadora da mensagem do Reino.</p>
+<p>Em João 14:26, Ele ensina e faz recordar as palavras de Cristo. Em Atos 13:2, fala e estabelece orientações missionárias. Em 1 Coríntios 12:11, distribui os dons conforme sua própria vontade. Em Efésios 4:30, é possível entristecê-lo. Essas operações demonstram personalidade, intencionalidade e relacionamento.</p>
 
-<div class="lexico">
-<strong>Referência lexicográfica – Hebraico:</strong>
-<br><br>
-<strong>שָׁלַח – Shalach</strong>
-<br>
-Transliteração: Shalach.
-<br>
-Significado: enviar, despachar, comissionar.
-<br>
-Referência: Gênesis 45:5; Êxodo 3:10.
-<br><br>
-O campo semântico desse verbo ajuda a compreender a linguagem bíblica do envio. A missão envolve iniciativa, designação e deslocamento para cumprir uma finalidade.
-</div>
+<p>O teólogo pentecostal <strong>Myer Pearlman</strong>, em sua obra <i>Conhecendo as Doutrinas da Bíblia</i>, desenvolve a compreensão da personalidade e da divindade do Espírito Santo, apresentando as evidências bíblicas de sua atuação pessoal.</p>
 
 <blockquote>
-A missão deve ser compreendida a partir do propósito de Deus, e não simplesmente das necessidades administrativas ou institucionais de uma organização religiosa.
-<cite>— Síntese teológica do conceito de Missio Dei</cite>
-</blockquote>
-
-<h3>2. A fundamentação missionária no Antigo Testamento</h3>
-
-<p>O Antigo Testamento apresenta fundamentos missionários que se desenvolvem progressivamente na história da revelação. Embora Israel tenha recebido uma aliança específica, a revelação divina nunca esteve destituída de uma dimensão universal.</p>
-
-<p>Em Gênesis 12:1-3, a promessa abraâmica estabelece a bênção das famílias da terra. Em Êxodo 19:5-6, Israel é apresentado como reino sacerdotal e nação santa. Em Salmos 67:1-7, o salmista relaciona a bênção divina ao conhecimento dos caminhos de Deus entre todas as nações.</p>
-
-<p>Isaías 49:6 amplia a dimensão do chamado do Servo do Senhor, apresentando a restauração de Israel e a manifestação da salvação até os confins da terra. Jonas, por sua vez, demonstra que a compaixão divina alcança também povos estrangeiros, como Nínive.</p>
-
-<div class="lexico">
-<strong>Referência lexicográfica – Hebraico:</strong>
-<br><br>
-<strong>גּוֹיִם – Goyim</strong>
-<br>
-Singular: גּוֹי – Goy.
-<br>
-Significado: nações, povos, grupos étnicos.
-<br>
-Referências: Gênesis 12:2-3; Salmos 67:2-4.
-<br><br>
-<strong>בָּרַךְ – Barak</strong>
-<br>
-Significado: abençoar, conceder bênção.
-<br>
-Referência: Gênesis 12:2-3.
-<br><br>
-A relação entre bênção e nações demonstra que a promessa feita a Abraão possui uma finalidade que ultrapassa sua própria família e descendência imediata.
-</div>
-
-<h3>3. A Grande Comissão: O mandato missionário de Cristo</h3>
-
-<p>Mateus 28:18-20 apresenta o fundamento da responsabilidade missionária da Igreja. Antes de ordenar a expansão do discipulado, Jesus declara sua autoridade universal: toda autoridade lhe foi dada no céu e na terra.</p>
-
-<p>A ordem de Cristo compreende quatro dimensões fundamentais: fazer discípulos de todas as nações, batizar os convertidos em nome do Pai, do Filho e do Espírito Santo, ensinar a observância de seus mandamentos e reconhecer sua presença permanente com aqueles que cumprem essa missão.</p>
-
-<p>O verbo grego central da passagem é <i>mathēteúsate</i>, traduzido como fazer discípulos. A construção gramatical da passagem estabelece a formação de discípulos como a ordem principal, enquanto os particípios relacionados apresentam as ações de ir, batizar e ensinar.</p>
-
-<div class="lexico">
-<strong>Referência lexicográfica – Grego:</strong>
-<br><br>
-<strong>μαθητεύσατε – Mathēteúsate</strong>
-<br>
-Raiz: μαθητεύω – Mathēteúō.
-<br>
-Significado: fazer discípulos, formar discípulos.
-<br>
-Referência: Mateus 28:19.
-<br><br>
-<strong>πορεύομαι – Poreúomai</strong>
-<br>
-Significado: ir, partir, deslocar-se.
-<br>
-Referência: Mateus 28:19.
-<br><br>
-<strong>βαπτίζω – Baptízō</strong>
-<br>
-Significado: batizar, imergir.
-<br>
-Referência: Mateus 28:19.
-<br><br>
-<strong>ἔθνη – Éthnē</strong>
-<br>
-Singular: ἔθνος – Éthnos.
-<br>
-Significado: nações, povos, grupos étnicos.
-<br>
-Referência: Mateus 28:19.
-</div>
-
-<p>O alcance da Grande Comissão não permite que a Igreja reduza sua responsabilidade missionária a atividades ocasionais. A ordem de Cristo possui abrangência geográfica, étnica e geracional, exigindo continuidade na proclamação e na formação de discípulos.</p>
-
-<blockquote>
-A Grande Comissão não termina quando alguém aceita a mensagem do Evangelho. Seu propósito inclui a formação de discípulos comprometidos com os ensinamentos de Cristo.
-<cite>— Síntese exegética de Mateus 28:18-20</cite>
-</blockquote>
-
-<h3>4. A Missiologia Pentecostal e a capacitação do Espírito Santo</h3>
-
-<p>A contribuição pentecostal à Missiologia encontra uma de suas expressões mais importantes em Atos 1:8. Jesus estabelece uma relação direta entre o recebimento do poder do Espírito Santo e o exercício do testemunho cristão.</p>
-
-<p>O Pentecostes não deve ser compreendido apenas como uma experiência individual de edificação espiritual. Em Atos dos Apóstolos, a manifestação do Espírito está profundamente relacionada à expansão do testemunho de Cristo, à proclamação pública e ao avanço do Evangelho entre diferentes povos.</p>
-
-<p>A progressão apresentada em Atos 1:8 — Jerusalém, Judeia, Samaria e confins da terra — estabelece uma estrutura geográfica e missionária. O testemunho começa no ambiente imediato, alcança territórios culturalmente distintos e avança até os limites do mundo conhecido.</p>
-
-<div class="lexico">
-<strong>Referência lexicográfica – Grego:</strong>
-<br><br>
-<strong>δύναμις – Dýnamis</strong>
-<br>
-Significado: poder, capacidade, força.
-<br>
-Referência: Atos 1:8.
-<br><br>
-<strong>πνεῦμα – Pneûma</strong>
-<br>
-Significado: espírito, sopro, vento.
-<br>
-Referência: Atos 1:8.
-<br><br>
-<strong>μάρτυς – Mártys</strong>
-<br>
-Significado: testemunha.
-<br>
-Referência: Atos 1:8.
-<br><br>
-<strong>εὐαγγελίζω – Euangelízō</strong>
-<br>
-Significado: anunciar boas-novas, evangelizar.
-<br>
-Referências: Lucas 4:18; Atos 8:4.
-</div>
-
-<p>O pensamento missionário pentecostal reconhece que a capacitação espiritual não substitui o planejamento, a preparação bíblica ou a responsabilidade humana. Antes, a ação do Espírito Santo deve orientar e capacitar a Igreja para cumprir sua vocação testemunhal.</p>
-
-<p>O teólogo pentecostal <strong>Roger Stronstad</strong>, em sua investigação sobre a teologia carismática de Lucas, destaca a importância de compreender o Espírito Santo no desenvolvimento do testemunho e da vocação do povo de Deus.</p>
-
-<div class="referencia">
-<strong>Referência bibliográfica:</strong>
-<br>
-STRONSTAD, Roger. <i>The Prophethood of All Believers: A Study in Luke's Charismatic Theology.</i> Sheffield Academic Press, 1999.
-</div>
-
-<h3>5. A Igreja como comunidade enviada</h3>
-
-<p>A Igreja não pode ser compreendida exclusivamente como uma instituição que realiza atividades internas. Sua identidade bíblica inclui a responsabilidade de testemunhar publicamente a obra de Cristo.</p>
-
-<p>Em João 20:21, Jesus declara: assim como o Pai o enviou, também Ele envia seus discípulos. Essa declaração estabelece uma relação entre a missão de Cristo e o envio de seus seguidores.</p>
-
-<p>Em Atos 13:1-4, encontramos uma demonstração prática desse princípio. Durante um período de adoração, jejum e serviço, o Espírito Santo direciona a separação de Barnabé e Saulo para uma obra específica. A comunidade de Antioquia participa desse processo mediante oração, imposição de mãos e envio.</p>
-
-<p>Esse episódio revela que a atividade missionária deve envolver discernimento espiritual, preparo, reconhecimento ministerial e participação comunitária.</p>
-
-<p>O missionário e missiólogo pentecostal <strong>Melvin L. Hodges</strong> contribuiu significativamente para a compreensão da formação de igrejas nacionais. Sua proposta valorizava comunidades cristãs capazes de desenvolver liderança local, responsabilidade administrativa e autonomia para a expansão do Evangelho.</p>
-
-<blockquote>
-A formação de comunidades cristãs maduras exige que o trabalho missionário não produza dependência permanente do missionário estrangeiro, mas desenvolva liderança e responsabilidade na própria comunidade.
-<cite>— Síntese da contribuição missiológica de Melvin L. Hodges</cite>
+A personalidade do Espírito Santo deve ser compreendida a partir de suas ações pessoais nas Escrituras: Ele fala, ensina, dirige, intercede e distribui dons segundo sua vontade.
+<cite>— Síntese doutrinária a partir de Myer Pearlman, Conhecendo as Doutrinas da Bíblia</cite>
 </blockquote>
 
 <div class="referencia">
-<strong>Obras de referência:</strong>
-<br>
-HODGES, Melvin L. <i>The Indigenous Church.</i> Gospel Publishing House, 1953.
-<br><br>
-HODGES, Melvin L. <i>A Theology of the Church and Its Mission: A Pentecostal Perspective.</i> Gospel Publishing House, 1977.
+<strong>Referências lexicográficas:</strong>
+<br>• Strong: G4151 – Pneuma (πνεῦμα).
+<br>• Strong: G3875 – Parakletos (παράκλητος).
+<br>• Vine: Dicionário Expositivo de Palavras do Antigo e do Novo Testamento.
+<br>• BDAG: A Greek-English Lexicon of the New Testament and Other Early Christian Literature.
+<br><strong>Referências bíblicas:</strong> João 14:16-17,26; Atos 13:2; Romanos 8:26-27; 1 Coríntios 12:11; Efésios 4:30.
 </div>
 
-<h3>6. Evangelização, discipulado e implantação de igrejas</h3>
+<h3>2. A Divindade do Espírito Santo: Unidade e Igualdade Trinitária</h3>
 
-<p>A expansão missionária não se limita à realização de eventos evangelísticos. A proclamação inicial deve ser acompanhada de instrução bíblica, integração comunitária e formação de discípulos.</p>
+<p>A divindade do Espírito Santo não constitui uma conclusão secundária da teologia cristã, mas uma verdade essencial para a compreensão da natureza de Deus. As Escrituras apresentam o Espírito como plenamente divino, possuidor dos atributos incomunicáveis da divindade e participante das operações próprias do Deus eterno.</p>
 
-<p>Atos 2:41-47 apresenta um modelo de desenvolvimento da comunidade cristã primitiva: recebimento da Palavra, batismo, perseverança na doutrina apostólica, comunhão, oração e testemunho público.</p>
+<p>Em Atos 5:3-4, Pedro identifica a mentira contra o Espírito Santo como mentira contra Deus. Essa associação textual possui relevância fundamental para a doutrina da divindade do Espírito. Em Mateus 28:19, Jesus estabelece a fórmula batismal em nome do Pai, do Filho e do Espírito Santo, colocando as três Pessoas na mesma declaração de autoridade e identidade divina.</p>
 
-<p>Em Atos 14:21-23, Paulo e Barnabé anunciam o Evangelho, fazem discípulos, fortalecem as comunidades e estabelecem presbíteros. O texto demonstra que a implantação de igrejas exige continuidade e organização.</p>
+<p>O Espírito é eterno, conforme Hebreus 9:14; onisciente, conforme 1 Coríntios 2:10-11; e onipresente, conforme Salmos 139:7-10. Em Gênesis 1:2, sua presença é registrada no contexto da criação, enquanto Jó 33:4 associa o Espírito de Deus à origem da vida humana.</p>
 
-<p>O processo missionário pode ser analisado por meio de cinco etapas complementares:</p>
+<p>É necessário distinguir personalidade de natureza. O Espírito Santo é uma Pessoa distinta do Pai e do Filho, mas não possui uma divindade inferior. A doutrina trinitária histórica confessa um único Deus em essência, subsistindo eternamente em três Pessoas distintas.</p>
 
-<p><strong>1. Evangelização:</strong> proclamação da mensagem de salvação em Jesus Cristo.</p>
-
-<p><strong>2. Conversão e integração:</strong> acolhimento dos que recebem a mensagem e sua integração à comunidade cristã.</p>
-
-<p><strong>3. Discipulado:</strong> formação doutrinária, moral e espiritual fundamentada nas Escrituras.</p>
-
-<p><strong>4. Organização comunitária:</strong> desenvolvimento de liderança, serviço e estrutura eclesiástica.</p>
-
-<p><strong>5. Multiplicação:</strong> preparação de novos discípulos e comunidades capazes de participar da expansão missionária.</p>
-
-<p>O teólogo pentecostal <strong>Stanley M. Horton</strong> oferece importante contribuição para o estudo da ação do Espírito Santo e da expansão da Igreja no livro de Atos.</p>
-
-<div class="referencia">
-<strong>Obra de referência:</strong>
-<br>
-HORTON, Stanley M. <i>Acts: A Logion Press Commentary.</i> Gospel Publishing House, 2001.
-</div>
-
-<h3>7. Missões transculturais e o alcance das nações</h3>
-
-<p>A Missiologia também investiga os desafios relacionados à proclamação do Evangelho entre povos que possuem diferentes idiomas, costumes, estruturas sociais e referências culturais.</p>
-
-<p>Uma missão transcultural exige conhecimento do contexto no qual a mensagem será anunciada. O missionário precisa compreender as particularidades linguísticas e sociais da comunidade, sem comprometer o conteúdo essencial da revelação bíblica.</p>
-
-<p>Em Atos 10, a experiência de Pedro na casa de Cornélio demonstra a ampliação do testemunho cristão entre os gentios. Em Atos 17:22-31, Paulo apresenta a mensagem do Deus verdadeiro em um ambiente cultural e religioso diferente do judaísmo.</p>
-
-<div class="lexico">
-<strong>Referência lexicográfica – Grego:</strong>
-<br><br>
-<strong>διάλεκτος – Diálektos</strong>
-<br>
-Significado: idioma, língua, modo de falar.
-<br>
-Referência: Atos 2:6.
-<br><br>
-<strong>λαός – Laós</strong>
-<br>
-Significado: povo, comunidade, população.
-<br>
-Referências: Atos 3:23; Atos 10:2.
-<br><br>
-<strong>κόσμος – Kósmos</strong>
-<br>
-Significado: mundo, ordem, humanidade, conforme o contexto.
-<br>
-Referência: João 3:16.
-</div>
-
-<p>A contextualização missionária deve distinguir a forma cultural da mensagem de seu conteúdo doutrinário. A linguagem pode ser adaptada à compreensão do público, mas a identidade de Cristo, a realidade do pecado, a necessidade de arrependimento e a mensagem da salvação não podem ser substituídas por conveniências culturais.</p>
-
-<p>O missiólogo pentecostal <strong>Allan Anderson</strong> contribui para esse debate ao estudar o desenvolvimento global do pentecostalismo e sua presença em diferentes contextos culturais.</p>
-
-<div class="referencia">
-<strong>Obra de referência:</strong>
-<br>
-ANDERSON, Allan. <i>To the Ends of the Earth: Pentecostalism and the Transformation of World Christianity.</i> Oxford University Press, 2012.
-</div>
-
-<h3>8. A responsabilidade social na missão cristã</h3>
-
-<p>A missão cristã possui implicações que alcançam a realidade concreta da existência humana. O anúncio do Evangelho deve ser acompanhado de uma conduta coerente com os princípios de justiça, misericórdia, serviço e amor ao próximo.</p>
-
-<p>Lucas 4:18-19 apresenta a proclamação de Cristo relacionada à libertação dos cativos, à recuperação da vista dos cegos e à manifestação das boas-novas aos pobres.</p>
-
-<p>Tiago 2:14-17 demonstra a incompatibilidade entre uma declaração de fé desprovida de responsabilidade prática e o ensino cristão sobre as obras decorrentes da fé.</p>
-
-<p>Entretanto, é necessário preservar a distinção entre a missão evangelizadora da Igreja e os instrumentos sociais utilizados para manifestar o amor cristão. A assistência material não substitui a proclamação da salvação, assim como a proclamação não deve servir de justificativa para negligenciar o sofrimento humano.</p>
-
-<p>O missiólogo pentecostal <strong>Douglas Petersen</strong> desenvolve uma importante reflexão sobre a responsabilidade social do pentecostalismo, especialmente no contexto latino-americano.</p>
-
-<div class="referencia">
-<strong>Obra de referência:</strong>
-<br>
-PETERSEN, Douglas. <i>Not by Might Nor by Power: A Pentecostal Theology of Social Concern in Latin America.</i> Regnum Books, 1996.
-</div>
-
-<h3>9. O papel do cristão na expansão missionária</h3>
-
-<p>A responsabilidade missionária não está restrita aos ministros ordenados, pastores ou missionários transculturais. A Igreja é constituída por diferentes membros, e cada um possui responsabilidades na edificação e no testemunho cristão.</p>
-
-<p>O envolvimento missionário pode ocorrer mediante três formas fundamentais:</p>
-
-<p><strong>Intercessão:</strong> oração pelos missionários, comunidades alcançadas, povos não evangelizados e abertura de oportunidades para a proclamação do Evangelho.</p>
-
-<p><strong>Contribuição:</strong> participação responsável no sustento de missionários, projetos de evangelização, formação ministerial e implantação de comunidades cristãs.</p>
-
-<p><strong>Proclamação:</strong> testemunho pessoal e coletivo, evangelização no cotidiano e participação na formação de discípulos.</p>
-
-<p>Em Filipenses 4:15-18, Paulo reconhece a participação da igreja de Filipos em seu trabalho missionário. O texto demonstra que a contribuição material também pode constituir uma participação efetiva na expansão do Evangelho.</p>
-
-<p>O pastor e ensinador pentecostal <strong>Donald Gee</strong> é uma referência histórica importante para a compreensão da espiritualidade, dos dons e da responsabilidade ministerial no movimento pentecostal.</p>
-
-<div class="referencia">
-<strong>Obra de referência:</strong>
-<br>
-GEE, Donald. <i>Concerning Spiritual Gifts.</i> Gospel Publishing House.
-</div>
-
-<h3>10. A teleologia missionária: A glória de Deus entre os povos</h3>
-
-<p>A finalidade última da missão cristã não consiste na promoção de personalidades religiosas, no crescimento de instituições isoladas ou na conquista de prestígio denominacional. Seu propósito está relacionado à manifestação da glória de Deus e à proclamação da salvação em Jesus Cristo.</p>
-
-<p>Apocalipse 7:9 apresenta uma multidão proveniente de todas as nações, tribos, povos e línguas diante do trono e do Cordeiro. Essa visão escatológica demonstra a abrangência universal do propósito redentor de Deus.</p>
-
-<p>O texto não apresenta a uniformização cultural das nações, mas uma comunidade de adoradores que reconhece a soberania divina e a redenção realizada pelo Cordeiro.</p>
-
-<p>A Missiologia, portanto, deve conduzir à compreensão de que a Igreja possui uma responsabilidade histórica, espiritual e coletiva: anunciar Cristo, formar discípulos, estabelecer comunidades bíblicas e testemunhar a soberania de Deus até os confins da terra.</p>
+<p>O teólogo pentecostal <strong>Stanley M. Horton</strong>, em <i>Teologia Sistemática: Uma Perspectiva Pentecostal</i>, reúne fundamentos bíblicos e doutrinários para compreender a divindade e a atuação do Espírito Santo dentro da unidade trinitária.</p>
 
 <blockquote>
-A Igreja não existe para si mesma. Sua vocação inclui testemunhar Cristo diante do mundo, formar discípulos e participar da proclamação do Evangelho entre todas as nações.
-<cite>— Síntese teológica da responsabilidade missionária</cite>
+A compreensão da identidade divina do Espírito Santo é indispensável para interpretar corretamente suas operações na criação, na redenção e na vida da Igreja.
+<cite>— Síntese doutrinária a partir de Stanley M. Horton, Teologia Sistemática: Uma Perspectiva Pentecostal</cite>
 </blockquote>
 
-<h3>11. Referências lexicográficas e instrumentos de pesquisa</h3>
-
-<p>O estudo acadêmico da Missiologia exige atenção ao significado dos termos empregados nas Escrituras originais. A consulta a léxicos e dicionários especializados permite examinar raízes, campos semânticos, construções gramaticais e variações contextuais.</p>
-
-<p>As seguintes obras constituem instrumentos de pesquisa recomendados:</p>
-
 <div class="referencia">
-<strong>1. Hebraico bíblico</strong>
-<br>
-BROWN, Francis; DRIVER, S. R.; BRIGGS, Charles A. <i>A Hebrew and English Lexicon of the Old Testament.</i> Oxford University Press.
-<br><br>
-<strong>2. Hebraico e aramaico</strong>
-<br>
-KOEHLER, Ludwig; BAUMGARTNER, Walter; STAMM, Johann Jakob. <i>The Hebrew and Aramaic Lexicon of the Old Testament (HALOT).</i>
-<br><br>
-<strong>3. Grego do Novo Testamento</strong>
-<br>
-DANKER, Frederick William (ed.). <i>A Greek-English Lexicon of the New Testament and Other Early Christian Literature (BDAG).</i> 3rd edition. University of Chicago Press, 2000.
-<br><br>
-<strong>4. Semântica do grego bíblico</strong>
-<br>
-LOUW, Johannes P.; NIDA, Eugene A. <i>Greek-English Lexicon of the New Testament Based on Semantic Domains.</i> United Bible Societies.
-<br><br>
-<strong>5. Concordância bíblica</strong>
-<br>
-STRONG, James. <i>Strong's Exhaustive Concordance of the Bible.</i>
+<strong>Referências lexicográficas:</strong>
+<br>• Strong: G4151 – Pneuma.
+<br>• Vine: verbetes relativos a Espírito, Deus e Santo.
+<br>• Louw-Nida: Greek-English Lexicon of the New Testament Based on Semantic Domains.
+<br><strong>Referências bíblicas:</strong> Gênesis 1:2; Salmos 139:7-10; Atos 5:3-4; Mateus 28:19; 1 Coríntios 2:10-11; Hebreus 9:14.
 </div>
 
-<p>Os termos apresentados ao longo desta matéria devem ser examinados considerando seu contexto gramatical, histórico e literário. Uma definição de dicionário, isoladamente, não determina todo o sentido de uma passagem bíblica.</p>
+<h3>3. A Obra do Espírito Santo no Antigo Testamento: Atuação e Capacitação</h3>
 
-<h3>12. Bibliografia pentecostal e missiológica complementar</h3>
+<p>A atuação do Espírito Santo não começa no Pentecostes. Desde os primeiros registros das Escrituras, sua presença é identificada na criação, na preservação da vida, na capacitação de indivíduos e na comunicação da revelação divina.</p>
 
-<p>Para aprofundamento acadêmico, recomenda-se a leitura das seguintes obras e autores:</p>
+<p>No Antigo Testamento, o vocábulo hebraico utilizado é <i>Ruach</i> (רוּחַ), que pode significar vento, sopro ou espírito. A expressão <i>Ruach Elohim</i> (רוּחַ אֱלֹהִים), Espírito de Deus, aparece em Gênesis 1:2, apresentando sua participação no cenário da criação.</p>
+
+<p>O Espírito capacitou Bezalel com sabedoria, inteligência e habilidade para realizar trabalhos relacionados à construção do Tabernáculo (Êxodo 31:1-5). Veio sobre os juízes para habilitá-los em responsabilidades específicas, como ocorreu com Gideão (Juízes 6:34). Também capacitou reis e profetas para o cumprimento de determinadas atribuições no desenvolvimento da história de Israel.</p>
+
+<p>Em Números 11:25-29, a distribuição do Espírito sobre os anciãos demonstra a capacitação divina para o exercício de responsabilidades coletivas. Em 2 Samuel 23:2, Davi reconhece a inspiração do Espírito em sua comunicação profética.</p>
+
+<p>Entretanto, não se deve concluir que o Espírito estivesse ausente da vida espiritual dos servos de Deus no Antigo Testamento. A diferença fundamental está na forma histórica e pactual de manifestação de sua obra, que alcançaria uma nova dimensão com a inauguração da Nova Aliança.</p>
+
+<p>O teólogo pentecostal <strong>Eurico Bergstén</strong>, em <i>Teologia Sistemática</i>, apresenta a atuação do Espírito Santo na história bíblica, contribuindo para a compreensão da continuidade da obra divina entre as duas alianças.</p>
 
 <div class="referencia">
-<strong>MELVIN L. HODGES</strong>
-<br>
-<i>The Indigenous Church.</i>
-<br>
-<i>A Theology of the Church and Its Mission: A Pentecostal Perspective.</i>
-<br><br>
-
-<strong>STANLEY M. HORTON</strong>
-<br>
-<i>Acts: A Logion Press Commentary.</i>
-<br>
-<i>What the Bible Says About the Holy Spirit.</i>
-<br><br>
-
-<strong>ROGER STRONSTAD</strong>
-<br>
-<i>The Prophethood of All Believers: A Study in Luke's Charismatic Theology.</i>
-<br><br>
-
-<strong>ALLAN ANDERSON</strong>
-<br>
-<i>To the Ends of the Earth: Pentecostalism and the Transformation of World Christianity.</i>
-<br><br>
-
-<strong>GARY B. McGEE</strong>
-<br>
-<i>This Gospel Shall Be Preached: A History and Theology of Assemblies of God Foreign Missions.</i>
-<br><br>
-
-<strong>DOUGLAS PETERSEN</strong>
-<br>
-<i>Not by Might Nor by Power: A Pentecostal Theology of Social Concern in Latin America.</i>
-<br><br>
-
-<strong>MURRAY A. DEMPSTER, BYRON D. KLAUS E DOUGLAS PETERSEN</strong>
-<br>
-<i>Called and Empowered: Global Mission in Pentecostal Perspective.</i>
-<br><br>
-
-<strong>DONALD GEE</strong>
-<br>
-<i>Concerning Spiritual Gifts.</i>
+<strong>Referências lexicográficas:</strong>
+<br>• Strong: H7307 – Ruach (רוּחַ).
+<br>• Brown-Driver-Briggs: Hebrew and English Lexicon.
+<br>• Gesenius: Hebrew-Chaldee Lexicon.
+<br><strong>Referências bíblicas:</strong> Gênesis 1:2; Êxodo 31:1-5; Números 11:25-29; Juízes 6:34; 1 Samuel 16:13; 2 Samuel 23:2; Ezequiel 36:26-27.
 </div>
 
-<p>Essas referências permitem ampliar a investigação sobre a relação entre pneumatologia, evangelização, expansão pentecostal, formação de igrejas e responsabilidade social.</p>
+<h3>4. A Obra do Espírito Santo no Novo Testamento: Regeneração, Habitação e Santificação</h3>
 
-<p><strong>Conclusão acadêmica:</strong> A Missiologia não deve ser reduzida a uma disciplina administrativa da Igreja. Ela constitui um campo de estudo teológico que investiga os fundamentos, os agentes, os métodos, os territórios e os resultados da missão cristã. Sua compreensão exige fidelidade às Escrituras, rigor exegético, conhecimento histórico, discernimento espiritual e responsabilidade na formação de discípulos.</p>
+<p>Com a manifestação de Jesus Cristo e a inauguração da Nova Aliança, a obra do Espírito Santo assume uma dimensão histórica e redentiva especialmente significativa. O Espírito atua diretamente na aplicação da obra de Cristo ao ser humano, promovendo a regeneração, a habitação no crente, a santificação e a capacitação para o testemunho cristão.</p>
+
+<p>Em João 3:5-8, Jesus ensina a necessidade do novo nascimento, relacionando-o diretamente à ação do Espírito. O termo grego <i>Palingenesia</i> (παλιγγενεσία), empregado em Tito 3:5, significa regeneração ou renovação, indicando a transformação espiritual operada por Deus.</p>
+
+<p>Em João 16:8, Cristo afirma que o Espírito convencerá o mundo do pecado, da justiça e do juízo. Essa operação não representa uma simples conscientização intelectual, mas a ação divina que confronta o homem com a realidade de sua condição diante de Deus.</p>
+
+<p>Em Romanos 8:9-11, Paulo apresenta a habitação do Espírito como característica fundamental daqueles que pertencem a Cristo. Em Efésios 1:13-14, o Espírito é identificado como selo e garantia da herança prometida aos redimidos.</p>
+
+<p>Outro conceito fundamental é a santificação. O verbo grego <i>Hagiazo</i> (ἁγιάζω) significa santificar, separar ou consagrar. A ação santificadora do Espírito conduz o cristão à conformidade progressiva com a vontade de Deus, transformando sua conduta e seu caráter.</p>
+
+<p>O teólogo pentecostal <strong>Donald Gee</strong>, conhecido por sua contribuição à formação doutrinária do movimento pentecostal, enfatizou a necessidade de uma espiritualidade fundamentada nas Escrituras e acompanhada de maturidade cristã.</p>
+
+<blockquote>
+A atuação do Espírito Santo não pode ser reduzida às manifestações extraordinárias. Sua obra também se evidencia na transformação do caráter, na santidade e na conformidade do cristão com Cristo.
+<cite>— Síntese doutrinária da tradição pentecostal clássica</cite>
+</blockquote>
+
+<div class="referencia">
+<strong>Referências lexicográficas:</strong>
+<br>• Strong: G3824 – Palingenesia.
+<br>• Strong: G37 – Hagiazo.
+<br>• Strong: G40 – Hagios.
+<br>• Vine: Dicionário Expositivo de Palavras do Antigo e do Novo Testamento.
+<br><strong>Referências bíblicas:</strong> João 3:5-8; João 16:8-11; Romanos 8:9-16; 1 Coríntios 6:11; Efésios 1:13-14; Tito 3:5.
+</div>
+
+<h3>5. O Batismo no Espírito Santo: Distinção, Capacitação e Evidência Inicial</h3>
+
+<p>Na tradição pentecostal clássica, o batismo no Espírito Santo é compreendido como uma experiência distinta da regeneração, concedida por Deus ao cristão para capacitá-lo sobrenaturalmente ao testemunho de Jesus Cristo e ao exercício da missão evangelizadora.</p>
+
+<p>É importante estabelecer uma distinção doutrinária entre o novo nascimento e o batismo no Espírito Santo. A regeneração corresponde à ação divina pela qual o pecador recebe nova vida espiritual. O batismo no Espírito Santo, conforme a interpretação pentecostal clássica, representa uma capacitação específica para o serviço cristão, podendo ocorrer posteriormente à conversão.</p>
+
+<p>Em Atos 1:8, Jesus declara que os discípulos receberiam poder ao descer sobre eles o Espírito Santo, tornando-se testemunhas em Jerusalém, Judeia, Samaria e até os confins da terra. O vocábulo grego <i>Dynamis</i> (δύναμις) significa poder, capacidade ou força, indicando a capacitação sobrenatural prometida por Cristo.</p>
+
+<p>Em Atos 2, o cumprimento dessa promessa ocorre no Dia de Pentecostes. Os discípulos são cheios do Espírito Santo e começam a falar em outras línguas, conforme a concessão do Espírito. Em Atos 10:44-46 e Atos 19:1-6, outras manifestações relacionadas ao recebimento do Espírito são registradas.</p>
+
+<p>Na doutrina pentecostal clássica das Assembleias de Deus, o falar em outras línguas, conforme o Espírito concede, constitui a evidência física inicial do batismo no Espírito Santo. Essa experiência não deve ser confundida com a totalidade da vida espiritual do cristão, nem com o fruto do Espírito.</p>
+
+<p>O pastor e teólogo pentecostal <strong>Antônio Gilberto</strong>, em seus escritos e exposições doutrinárias, contribuiu significativamente para a sistematização e o ensino da doutrina pentecostal no Brasil, especialmente no contexto das Assembleias de Deus.</p>
+
+<p>O teólogo pentecostal <strong>Roger Stronstad</strong>, em <i>The Charismatic Theology of St. Luke</i>, desenvolve uma interpretação da teologia carismática de Lucas, destacando a relação entre o Espírito Santo e a capacitação profética e missionária da Igreja.</p>
+
+<blockquote>
+O propósito da capacitação pentecostal não é a exaltação individual, mas a habilitação do cristão para testemunhar de Cristo e participar da missão divina.
+<cite>— Síntese teológica a partir de Atos 1:8 e da tradição pentecostal clássica</cite>
+</blockquote>
+
+<div class="referencia">
+<strong>Referências lexicográficas:</strong>
+<br>• Strong: G1411 – Dynamis (δύναμις).
+<br>• Strong: G907 – Baptizo (βαπτίζω).
+<br>• Strong: G1100 – Glossa (γλῶσσα).
+<br>• Vine: verbetes Batizar, Poder e Línguas.
+<br><strong>Referências bíblicas:</strong> Lucas 24:49; Atos 1:4-8; Atos 2:1-4; Atos 8:14-17; Atos 10:44-46; Atos 19:1-6.
+</div>
+
+<h3>6. O Fruto do Espírito: Evidência do Caráter Transformado</h3>
+
+<p>Uma Pneumatologia equilibrada exige compreender que a manifestação do poder espiritual deve coexistir com a transformação moral e espiritual do indivíduo. O fruto do Espírito, descrito em Gálatas 5:22-23, representa o desenvolvimento das virtudes que caracterizam uma vida submetida à direção divina.</p>
+
+<p>O termo grego <i>Karpos</i> (καρπός) significa fruto ou resultado produzido. Paulo utiliza essa expressão para apresentar o conjunto de qualidades que emergem da vida orientada pelo Espírito Santo.</p>
+
+<p>São mencionadas nove virtudes: amor, alegria, paz, longanimidade, benignidade, bondade, fidelidade, mansidão e domínio próprio. Essas características não representam meros atributos de temperamento humano, mas evidências da formação do caráter cristão sob a ação do Espírito.</p>
+
+<p>O termo <i>Egkrateia</i> (ἐγκράτεια), traduzido como domínio próprio, expressa a capacidade de exercer controle sobre os próprios impulsos e comportamentos. Já <i>Makrothymia</i> (μακροθυμία) comunica a ideia de paciência e longanimidade.</p>
+
+<p>É fundamental distinguir o fruto dos dons espirituais. Os dons estão relacionados à capacitação para o serviço e a edificação da Igreja; o fruto está relacionado à formação do caráter cristão. Uma pessoa não deve utilizar manifestações carismáticas como justificativa para negligenciar a santidade e a maturidade espiritual.</p>
+
+<p>O teólogo pentecostal <strong>Stanley M. Horton</strong> contribui para essa compreensão ao relacionar a obra do Espírito à santificação e à formação da vida cristã, sem separar a experiência pentecostal da responsabilidade moral.</p>
+
+<div class="referencia">
+<strong>Referências lexicográficas:</strong>
+<br>• Strong: G2590 – Karpos.
+<br>• Strong: G1466 – Egkrateia.
+<br>• Strong: G3115 – Makrothymia.
+<br>• Strong: G26 – Agape.
+<br><strong>Referências bíblicas:</strong> Gálatas 5:16-25; Efésios 5:9; Colossenses 3:12-15; 2 Pedro 1:5-8.
+</div>
+
+<h3>7. Os Dons Espirituais: Carismas, Edificação e Serviço</h3>
+
+<p>Os dons espirituais constituem capacitações concedidas soberanamente pelo Espírito Santo para a edificação do Corpo de Cristo e o cumprimento de sua missão. Não são propriedades particulares de seus portadores, nem instrumentos de prestígio religioso ou superioridade ministerial.</p>
+
+<p>O vocábulo grego <i>Charisma</i> (χάρισμα), derivado de <i>Charis</i> (χάρις), significa dom ou dádiva concedida pela graça. Em 1 Coríntios 12, Paulo demonstra que a diversidade de manifestações procede do mesmo Espírito e deve contribuir para o bem comum.</p>
+
+<p>Tradicionalmente, os dons mencionados em 1 Coríntios 12:8-10 são organizados em três grupos didáticos:</p>
+
+<p><strong>Dons de revelação:</strong> palavra da sabedoria, palavra do conhecimento e discernimento de espíritos.</p>
+
+<p><strong>Dons de poder:</strong> fé, dons de curar e operação de milagres.</p>
+
+<p><strong>Dons de expressão:</strong> profecia, variedade de línguas e interpretação de línguas.</p>
+
+<p>Essa classificação é uma organização teológica utilizada para facilitar o estudo, não uma divisão expressamente estabelecida pelo apóstolo Paulo.</p>
+
+<p>Além dessas manifestações, Romanos 12:6-8 apresenta outros dons relacionados ao serviço cristão, enquanto Efésios 4:11-13 aborda os ministérios concedidos para o aperfeiçoamento dos santos e a edificação do Corpo de Cristo.</p>
+
+<p>O exercício dos dons deve obedecer à orientação bíblica. Em 1 Coríntios 13, Paulo estabelece o amor como princípio indispensável para a utilização dos carismas. Em 1 Coríntios 14, apresenta diretrizes para que as manifestações ocorram com edificação, compreensão e ordem.</p>
+
+<p>O teólogo pentecostal <strong>Donald Gee</strong>, em <i>Concerning Spiritual Gifts</i>, apresenta reflexões sobre os dons espirituais e sua aplicação na vida da Igreja. Sua contribuição é importante para compreender a necessidade de equilíbrio entre a liberdade do Espírito e a orientação das Escrituras.</p>
+
+<blockquote>
+Os dons espirituais não foram concedidos para alimentar a vaidade ministerial, mas para servir à Igreja e promover a edificação coletiva.
+<cite>— Síntese doutrinária a partir de 1 Coríntios 12–14</cite>
+</blockquote>
+
+<div class="referencia">
+<strong>Referências lexicográficas:</strong>
+<br>• Strong: G5486 – Charisma.
+<br>• Strong: G5485 – Charis.
+<br>• Strong: G1248 – Diakonia.
+<br>• Vine: Dicionário Expositivo de Palavras do Antigo e do Novo Testamento.
+<br><strong>Referências bíblicas:</strong> Romanos 12:4-8; 1 Coríntios 12:1-31; 1 Coríntios 13; 1 Coríntios 14:1-40; Efésios 4:11-13.
+</div>
+
+<h3>8. O Espírito Santo e a Missão da Igreja: Poder para Testemunhar</h3>
+
+<p>A relação entre Pneumatologia e Missiologia é inseparável no desenvolvimento da missão cristã. O Espírito Santo não capacita a Igreja para uma espiritualidade isolada, mas para testemunhar publicamente a respeito de Jesus Cristo, proclamar o Evangelho e alcançar pessoas e povos com a mensagem da redenção.</p>
+
+<p>Atos 1:8 estabelece a relação direta entre o recebimento do poder espiritual e a responsabilidade missionária. A promessa de Cristo não se limita a uma experiência individual, mas possui uma finalidade testemunhal, geográfica e universal.</p>
+
+<p>Em Atos 13:2-4, o Espírito Santo participa diretamente do direcionamento da obra missionária, separando Barnabé e Saulo para o serviço. Em Atos 16:6-10, sua direção interfere no itinerário dos missionários, demonstrando que a expansão do Evangelho deve permanecer submetida à orientação divina.</p>
+
+<p>O termo grego <i>Martys</i> (μάρτυς) significa testemunha. No contexto de Atos, o testemunho cristão envolve proclamação, compromisso, fidelidade e disposição para permanecer fiel a Cristo mesmo diante da oposição.</p>
+
+<p>O movimento pentecostal histórico reconhece que a experiência do batismo no Espírito Santo possui uma dimensão missionária essencial. O poder prometido por Jesus deve resultar em testemunho, evangelização, plantação de igrejas e expansão do Evangelho entre as nações.</p>
+
+<p>O teólogo pentecostal <strong>Roger Stronstad</strong>, em seus estudos sobre Lucas e Atos, destaca a relação entre a capacitação do Espírito, a vocação profética e o testemunho missionário da comunidade cristã.</p>
+
+<div class="referencia">
+<strong>Referências lexicográficas:</strong>
+<br>• Strong: G3144 – Martys.
+<br>• Strong: G1411 – Dynamis.
+<br>• Strong: G2782 – Kerygma (proclamação).
+<br><strong>Referências bíblicas:</strong> Atos 1:8; Atos 4:31; Atos 13:2-4; Atos 16:6-10; Romanos 15:18-19.
+</div>
+
+<h3>9. A Atualidade dos Dons e a Continuidade da Ação do Espírito</h3>
+
+<p>Uma das questões importantes da Pneumatologia contemporânea diz respeito à continuidade das manifestações espirituais descritas no Novo Testamento. A tradição pentecostal clássica sustenta que os dons espirituais permanecem disponíveis à Igreja, não existindo fundamento bíblico suficiente para limitar sua operação exclusivamente ao período apostólico.</p>
+
+<p>Em 1 Coríntios 13:8-12, Paulo apresenta a transitoriedade das manifestações parciais em relação à consumação futura. Na interpretação pentecostal clássica, esse texto não estabelece que os dons cessariam automaticamente com o encerramento do cânon bíblico, mas aponta para a realidade escatológica da plenitude que ainda será manifestada.</p>
+
+<p>Essa convicção, entretanto, não autoriza a ausência de discernimento. Toda manifestação deve ser examinada à luz das Escrituras, da centralidade de Cristo e dos princípios de edificação, santidade e ordem.</p>
+
+<p>O teólogo pentecostal <strong>Gordon D. Fee</strong>, em <i>God's Empowering Presence</i>, apresenta uma investigação aprofundada da teologia paulina sobre o Espírito Santo. Embora sua abordagem acadêmica não deva ser confundida integralmente com todas as posições da tradição pentecostal clássica, sua obra é uma referência relevante para o estudo da Pneumatologia do Novo Testamento.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas:</strong>
+<br>1 Coríntios 12:7-11; 1 Coríntios 13:8-12; 1 Coríntios 14:26-33; 1 Tessalonicenses 5:19-22; 1 João 4:1.
+</div>
+
+<h3>10. A Teleologia Pneumatológica: A Glorificação de Cristo e a Edificação da Igreja</h3>
+
+<p>O propósito final da atuação do Espírito Santo não consiste na promoção de experiências religiosas desconectadas da revelação bíblica. Sua obra aponta para a glorificação de Jesus Cristo, a formação de um povo santo e a manifestação do Reino de Deus na história.</p>
+
+<p>Em João 16:14, Jesus declara que o Espírito o glorificará. Essa afirmação estabelece um princípio fundamental de discernimento: a verdadeira atuação do Espírito Santo não compete com a autoridade e a glória de Cristo, mas as manifesta.</p>
+
+<p>Em 2 Coríntios 3:18, Paulo descreve o processo de transformação progressiva da comunidade cristã na imagem do Senhor, mediante a atuação do Espírito. Em Efésios 4:13, a maturidade coletiva da Igreja é apresentada como finalidade do aperfeiçoamento dos santos.</p>
+
+<p>Assim, a Pneumatologia bíblica reúne três dimensões inseparáveis: a identidade divina do Espírito, sua atuação redentora e santificadora e sua capacitação sobrenatural para o serviço cristão.</p>
+
+<p>A Igreja que compreende adequadamente a pessoa e a obra do Espírito Santo não transforma os dons em instrumentos de exaltação pessoal, não separa poder de santidade e não substitui a centralidade das Escrituras por manifestações sem discernimento. Ela reconhece que o Espírito Santo conduz o povo de Deus à maturidade, ao testemunho e à glorificação de Jesus Cristo.</p>
+
+<div class="referencia">
+<strong>Referências bíblicas conclusivas:</strong>
+<br>João 16:13-14; Romanos 8:14-17; 2 Coríntios 3:18; Efésios 4:11-16; 1 Pedro 4:10-11.
+</div>
+
+<h3>REFERÊNCIAS BIBLIOGRÁFICAS E TEOLÓGICAS</h3>
+
+<p><strong>Autores e obras pentecostais:</strong></p>
+
+<ul>
+<li>HORTON, Stanley M. (Ed.). <i>Teologia Sistemática: Uma Perspectiva Pentecostal.</i> CPAD.</li>
+<li>PEARLMAN, Myer. <i>Conhecendo as Doutrinas da Bíblia.</i> Vida.</li>
+<li>BERGSTÉN, Eurico. <i>Teologia Sistemática.</i> CPAD.</li>
+<li>GEE, Donald. <i>Concerning Spiritual Gifts.</i> Gospel Publishing House.</li>
+<li>STRONSTAD, Roger. <i>The Charismatic Theology of St. Luke.</i> Hendrickson Publishers.</li>
+<li>FEE, Gordon D. <i>God's Empowering Presence: The Holy Spirit in the Letters of Paul.</i> Hendrickson Publishers.</li>
+<li>GILBERTO, Antônio. <i>Teologia Sistemática Pentecostal.</i> Consultar a edição e os capítulos pertinentes da obra coletiva.</li>
+</ul>
+
+<p><strong>Instrumentos lexicográficos:</strong></p>
+
+<ul>
+<li>STRONG, James. <i>Strong's Exhaustive Concordance of the Bible.</i></li>
+<li>VINE, W. E. <i>Dicionário Expositivo de Palavras do Antigo e do Novo Testamento.</i></li>
+<li>BAUER, Walter; DANKER, Frederick W. <i>BDAG – A Greek-English Lexicon of the New Testament and Other Early Christian Literature.</i></li>
+<li>LOUW, Johannes P.; NIDA, Eugene A. <i>Greek-English Lexicon of the New Testament Based on Semantic Domains.</i></li>
+<li>BROWN, Francis; DRIVER, S. R.; BRIGGS, Charles A. <i>Hebrew and English Lexicon.</i></li>
+</ul>
+
+<p><strong>Nota acadêmica:</strong> As referências lexicográficas devem ser utilizadas considerando o contexto gramatical, histórico e semântico de cada ocorrência. A raiz de uma palavra, isoladamente, não determina todo o seu significado. As citações de autores apresentadas nesta matéria são sínteses doutrinárias, não transcrições literais de suas obras.</p>
 
 <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO CATEDRÁTICA</button>
 
 </div>
 
-<!-- AVALIAÇÃO -->
-
 <div id="secao-prova" class="secao">
 
 <h2>Avaliação de Conhecimento</h2>
 
-<p>Responda às dez questões com base no conteúdo acadêmico estudado. A aprovação exige, no mínimo, sete acertos.</p>
+<p>Responda às dez questões. A aprovação exige nota mínima de 7,0.</p>
 
 <form id="quizForm">
 
 <div class="pergunta">
-<b>1. O conceito de Missio Dei estabelece que a origem da missão cristã está:</b>
-<label class="opcao"><input type="radio" name="p1" value="0"> A) Na organização administrativa da Igreja.</label>
-<label class="opcao"><input type="radio" name="p1" value="1"> B) No próprio propósito e iniciativa de Deus.</label>
-<label class="opcao"><input type="radio" name="p1" value="0"> C) Na iniciativa exclusiva dos missionários.</label>
+<b>1. Qual é o significado lexical do termo grego Pneuma (πνεῦμα)?</b>
+<label class="opcao"><input type="radio" name="p1" value="1"> A) Vento, sopro ou espírito, conforme o contexto.</label>
+<label class="opcao"><input type="radio" name="p1" value="0"> B) Apenas poder político.</label>
+<label class="opcao"><input type="radio" name="p1" value="0"> C) Sacrifício e expiação.</label>
 </div>
 
 <div class="pergunta">
-<b>2. Qual é o significado do verbo hebraico Shalach (שָׁלַח)?</b>
-<label class="opcao"><input type="radio" name="p2" value="0"> A) Abençoar e adorar.</label>
-<label class="opcao"><input type="radio" name="p2" value="1"> B) Enviar, despachar ou comissionar.</label>
-<label class="opcao"><input type="radio" name="p2" value="0"> C) Ensinar e disciplinar.</label>
+<b>2. Qual passagem bíblica apresenta a identificação da mentira contra o Espírito Santo como mentira contra Deus?</b>
+<label class="opcao"><input type="radio" name="p2" value="0"> A) João 3:16.</label>
+<label class="opcao"><input type="radio" name="p2" value="1"> B) Atos 5:3-4.</label>
+<label class="opcao"><input type="radio" name="p2" value="0"> C) Gênesis 12:1.</label>
 </div>
 
 <div class="pergunta">
-<b>3. Em Mateus 28:19, qual é o sentido de Mathēteúsate (μαθητεύσατε)?</b>
-<label class="opcao"><input type="radio" name="p3" value="0"> A) Construir templos.</label>
-<label class="opcao"><input type="radio" name="p3" value="1"> B) Fazer discípulos.</label>
-<label class="opcao"><input type="radio" name="p3" value="0"> C) Realizar somente cerimônias religiosas.</label>
+<b>3. Qual vocábulo hebraico é empregado para Espírito ou sopro no Antigo Testamento?</b>
+<label class="opcao"><input type="radio" name="p3" value="0"> A) Shalom.</label>
+<label class="opcao"><input type="radio" name="p3" value="1"> B) Ruach (רוּחַ).</label>
+<label class="opcao"><input type="radio" name="p3" value="0"> C) Torah.</label>
 </div>
 
 <div class="pergunta">
-<b>4. Segundo Atos 1:8, qual é a relação entre o Espírito Santo e a missão?</b>
-<label class="opcao"><input type="radio" name="p4" value="1"> A) O Espírito capacita os discípulos para serem testemunhas de Cristo.</label>
-<label class="opcao"><input type="radio" name="p4" value="0"> B) O Espírito substitui a proclamação do Evangelho.</label>
-<label class="opcao"><input type="radio" name="p4" value="0"> C) O Espírito restringe o testemunho à comunidade local.</label>
+<b>4. Qual é a principal distinção entre regeneração e batismo no Espírito Santo na doutrina pentecostal clássica?</b>
+<label class="opcao"><input type="radio" name="p4" value="0"> A) São expressões que não possuem nenhuma relação com a ação divina.</label>
+<label class="opcao"><input type="radio" name="p4" value="1"> B) A regeneração concede nova vida espiritual; o batismo no Espírito capacita para o testemunho e o serviço cristão.</label>
+<label class="opcao"><input type="radio" name="p4" value="0"> C) O batismo no Espírito substitui a necessidade da conversão.</label>
 </div>
 
 <div class="pergunta">
-<b>5. Qual foi uma contribuição importante de Melvin L. Hodges à Missiologia Pentecostal?</b>
-<label class="opcao"><input type="radio" name="p5" value="0"> A) Defender a dependência permanente das igrejas em relação aos missionários estrangeiros.</label>
-<label class="opcao"><input type="radio" name="p5" value="1"> B) Valorizar a formação de igrejas nacionais, com liderança e responsabilidade próprias.</label>
-<label class="opcao"><input type="radio" name="p5" value="0"> C) Substituir o discipulado pela assistência financeira.</label>
+<b>5. Segundo a doutrina pentecostal clássica das Assembleias de Deus, qual é a evidência física inicial do batismo no Espírito Santo?</b>
+<label class="opcao"><input type="radio" name="p5" value="1"> A) O falar em outras línguas, conforme a concessão do Espírito.</label>
+<label class="opcao"><input type="radio" name="p5" value="0"> B) A aquisição de conhecimento acadêmico.</label>
+<label class="opcao"><input type="radio" name="p5" value="0"> C) A ausência de dificuldades pessoais.</label>
 </div>
 
 <div class="pergunta">
-<b>6. A missão transcultural exige:</b>
-<label class="opcao"><input type="radio" name="p6" value="0"> A) A eliminação de todas as diferenças culturais.</label>
-<label class="opcao"><input type="radio" name="p6" value="1"> B) Conhecimento cultural e linguístico, preservando a mensagem bíblica.</label>
-<label class="opcao"><input type="radio" name="p6" value="0"> C) A substituição das Escrituras por costumes locais.</label>
+<b>6. O que significa o vocábulo grego Karpos (καρπός) em Gálatas 5:22?</b>
+<label class="opcao"><input type="radio" name="p6" value="0"> A) Poder ministerial.</label>
+<label class="opcao"><input type="radio" name="p6" value="1"> B) Fruto ou resultado produzido.</label>
+<label class="opcao"><input type="radio" name="p6" value="0"> C) Cerimônia religiosa.</label>
 </div>
 
 <div class="pergunta">
-<b>7. Verdadeiro ou Falso: A evangelização e a responsabilidade social podem coexistir na missão cristã, sem que uma substitua a outra.</b>
-<label class="opcao"><input type="radio" name="p7" value="1"> VERDADEIRO</label>
-<label class="opcao"><input type="radio" name="p7" value="0"> FALSO</label>
+<b>7. Qual é a finalidade principal dos dons espirituais?</b>
+<label class="opcao"><input type="radio" name="p7" value="0"> A) Promover superioridade entre os cristãos.</label>
+<label class="opcao"><input type="radio" name="p7" value="1"> B) Edificar a Igreja e servir ao próximo.</label>
+<label class="opcao"><input type="radio" name="p7" value="0"> C) Garantir prestígio pessoal aos portadores.</label>
 </div>
 
 <div class="pergunta">
-<b>8. Qual passagem bíblica apresenta a progressão missionária Jerusalém, Judeia, Samaria e confins da terra?</b>
-<label class="opcao"><input type="radio" name="p8" value="0"> A) Mateus 5:1-12.</label>
-<label class="opcao"><input type="radio" name="p8" value="1"> B) Atos 1:8.</label>
-<label class="opcao"><input type="radio" name="p8" value="0"> C) Romanos 12:1-2.</label>
+<b>8. Em Atos 1:8, qual é a finalidade diretamente relacionada ao recebimento do poder do Espírito Santo?</b>
+<label class="opcao"><input type="radio" name="p8" value="0"> A) A obtenção de riqueza material.</label>
+<label class="opcao"><input type="radio" name="p8" value="1"> B) A capacitação para testemunhar de Jesus Cristo.</label>
+<label class="opcao"><input type="radio" name="p8" value="0"> C) A substituição da pregação bíblica.</label>
 </div>
 
 <div class="pergunta">
-<b>9. Qual é a principal finalidade do discipulado no processo missionário?</b>
-<label class="opcao"><input type="radio" name="p9" value="0"> A) Produzir somente conhecimento intelectual.</label>
-<label class="opcao"><input type="radio" name="p9" value="1"> B) Formar pessoas comprometidas com Cristo e seus ensinamentos.</label>
-<label class="opcao"><input type="radio" name="p9" value="0"> C) Criar dependência permanente de um líder religioso.</label>
+<b>9. Qual princípio deve orientar o exercício dos dons espirituais segundo 1 Coríntios 12–14?</b>
+<label class="opcao"><input type="radio" name="p9" value="0"> A) Competição entre os ministros.</label>
+<label class="opcao"><input type="radio" name="p9" value="0"> B) Manifestação sem qualquer discernimento.</label>
+<label class="opcao"><input type="radio" name="p9" value="1"> C) Amor, edificação e ordem.</label>
 </div>
 
 <div class="pergunta">
-<b>10. Apocalipse 7:9 apresenta qual perspectiva para a consumação do propósito missionário de Deus?</b>
-<label class="opcao"><input type="radio" name="p10" value="0"> A) A salvação restrita a uma única nacionalidade.</label>
-<label class="opcao"><input type="radio" name="p10" value="0"> B) A extinção das diferenças entre os povos.</label>
-<label class="opcao"><input type="radio" name="p10" value="1"> C) Uma multidão de todas as nações, povos, tribos e línguas diante do Cordeiro.</label>
+<b>10. Segundo João 16:14, qual é a direção central da obra do Espírito Santo?</b>
+<label class="opcao"><input type="radio" name="p10" value="1"> A) Glorificar Jesus Cristo.</label>
+<label class="opcao"><input type="radio" name="p10" value="0"> B) Exaltar a personalidade humana.</label>
+<label class="opcao"><input type="radio" name="p10" value="0"> C) Estabelecer uma autoridade independente das Escrituras.</label>
 </div>
 
 </form>
@@ -685,17 +592,14 @@ STRONG, James. <i>Strong's Exhaustive Concordance of the Bible.</i>
 © 2026 AVANCE – Professor Gilberto Moreira
 </div>
 
-<!-- PLAYER DE ÁUDIO -->
-
 <div id="playerAula">
-    <button onclick="iniciar()" title="Iniciar leitura">▶</button>
-    <button onclick="pausar()" title="Pausar ou continuar">⏯</button>
-    <button onclick="parar()" title="Parar leitura">⏹</button>
+    <button onclick="iniciar()">▶</button>
+    <button onclick="pausar()">⏸</button>
+    <button onclick="parar()">⏹</button>
     <div id="barra"><div id="progresso"></div></div>
 </div>
 
-<!-- LIBRAS -->
-
+<!-- ACESSIBILIDADE EM LIBRAS -->
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
@@ -706,31 +610,28 @@ STRONG, James. <i>Strong's Exhaustive Concordance of the Bible.</i>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 
 <script>
-if (window.VLibras) {
+if(window.VLibras) {
     new window.VLibras.Widget('https://vlibras.gov.br/app');
 }
 
-// PROGRESSO
-
+// NAVEGAÇÃO
 function verificarProgresso() {
-    if (localStorage.getItem('modulo3_concluido') === 'true') {
+    if(localStorage.getItem('modulo4_concluido') === 'true') {
         document.getElementById('secao-leitura').style.display='none';
         document.getElementById('secao-prova').style.display='none';
 
-        const res=document.getElementById('resultado');
+        let res=document.getElementById('resultado');
         res.style.display='block';
 
         res.innerHTML=`
             <h2 style="color:green">MÓDULO CONCLUÍDO!</h2>
             <p>Você já foi aprovado nesta matéria.</p>
-            <button class="btn" onclick="window.location.href='materia4.html'">
-            IR PARA O MÓDULO 4
+            <button class="btn" onclick="window.location.href='materia5.html'">
+            IR PARA O MÓDULO 5
             </button>
         `;
     }
 }
-
-// NAVEGAÇÃO
 
 function irParaProva() {
     parar();
@@ -740,40 +641,45 @@ function irParaProva() {
 }
 
 // AVALIAÇÃO
-
 function corrigir() {
     const form=document.getElementById('quizForm');
     let nota=0;
+    let respondidas=0;
 
     for(let i=1;i<=10;i++) {
-        const resposta=form.querySelector('input[name="p'+i+'"]:checked');
+        const p=form.querySelector('input[name="p'+i+'"]:checked');
 
-        if(resposta && resposta.value==="1") {
-            nota++;
+        if(p) {
+            respondidas++;
+            if(p.value==="1") nota++;
         }
     }
 
-    const res=document.getElementById('resultado');
+    if(respondidas<10) {
+        alert('Responda todas as questões antes de finalizar.');
+        return;
+    }
 
+    const res=document.getElementById('resultado');
     document.getElementById('secao-prova').style.display='none';
     res.style.display='block';
 
     if(nota>=7) {
-        localStorage.setItem('modulo3_concluido','true');
+        localStorage.setItem('modulo4_concluido','true');
 
         res.innerHTML=`
             <h2 style="color:green">APROVADO!</h2>
             <h3>Nota: ${nota}/10</h3>
-            <p>Parabéns! Você demonstrou domínio dos fundamentos bíblicos e missiológicos estudados.</p>
-            <button class="btn" onclick="window.location.href='materia4.html'">
-            AVANÇAR PARA O MÓDULO 4
+            <p>Parabéns! Você demonstrou domínio dos fundamentos da Pneumatologia e da doutrina pentecostal.</p>
+            <button class="btn" onclick="window.location.href='materia5.html'">
+            AVANÇAR PARA O MÓDULO 5
             </button>
         `;
     } else {
         res.innerHTML=`
             <h2 style="color:red">NÃO APROVADO</h2>
             <h3>Nota: ${nota}/10</h3>
-            <p>A média exigida é 7. Revise o conteúdo e realize uma nova avaliação.</p>
+            <p>A média exigida é 7,0. Revise o conteúdo e refaça a avaliação.</p>
             <button class="btn" onclick="location.reload()">
             REFAZER AVALIAÇÃO
             </button>
@@ -783,101 +689,69 @@ function corrigir() {
     window.scrollTo(0,0);
 }
 
-// SISTEMA DE ÁUDIO
-
+// LEITURA EM ÁUDIO
 let synth=window.speechSynthesis;
 let frases=[];
 let idFrase=0;
-let emPausa=false;
-let falando=false;
-
-function carregarFrases() {
-    frases=Array.from(
-        document.querySelectorAll(
-            '#secao-leitura h2, #secao-leitura h3, #secao-leitura p, #secao-leitura blockquote, #secao-leitura .lexico, #secao-leitura .referencia'
-        )
-    );
-}
+let pausado=false;
 
 function iniciar() {
-    if(!frases.length) carregarFrases();
+    if(!frases.length) {
+        document.querySelectorAll(
+            '#secao-leitura h2, #secao-leitura h3, #secao-leitura p, #secao-leitura blockquote, #secao-leitura .referencia, #secao-leitura li'
+        ).forEach(el=>frases.push(el));
+    }
 
-    if(!frases.length) return;
-
-    if(emPausa) {
+    if(pausado && synth.paused) {
         synth.resume();
-        emPausa=false;
-        falando=true;
+        pausado=false;
         return;
     }
 
     if(idFrase>=frases.length) idFrase=0;
 
+    synth.cancel();
     falar();
 }
 
 function falar() {
     if(idFrase>=frases.length) {
-        parar();
+        limpar();
+        atualizarBarra();
         return;
     }
 
-    synth.cancel();
+    let texto=frases[idFrase].innerText;
 
-    const elemento=frases[idFrase];
-    const texto=elemento.innerText.trim();
-
-    if(!texto) {
-        idFrase++;
-        falar();
-        return;
-    }
-
-    limpar();
-    elemento.classList.add('lendo');
-
-    const u=new SpeechSynthesisUtterance(texto);
+    let u=new SpeechSynthesisUtterance(texto);
     u.lang='pt-BR';
-    u.rate=0.92;
+    u.rate=0.95;
     u.pitch=1;
 
-    falando=true;
-    emPausa=false;
+    limpar();
+    frases[idFrase].classList.add('lendo');
 
     u.onend=()=>{
-        if(!falando) return;
-
         idFrase++;
         atualizarBarra();
         falar();
-    };
-
-    u.onerror=()=>{
-        falando=false;
     };
 
     synth.speak(u);
 }
 
 function pausar() {
-    if(!falando) return;
-
-    if(synth.paused) {
-        synth.resume();
-        emPausa=false;
-    } else {
+    if(synth.speaking && !synth.paused) {
         synth.pause();
-        emPausa=true;
+        pausado=true;
     }
 }
 
 function parar() {
-    falando=false;
-    emPausa=false;
     synth.cancel();
     idFrase=0;
+    pausado=false;
     limpar();
-
     document.getElementById('progresso').style.width='0%';
 }
 
@@ -891,14 +765,6 @@ function atualizarBarra() {
     let pct=(idFrase/frases.length)*100;
     document.getElementById('progresso').style.width=pct+'%';
 }
-
-// LIMPEZA DO ÁUDIO AO SAIR DA LEITURA
-
-document.addEventListener('visibilitychange',()=>{
-    if(document.hidden && falando) {
-        synth.pause();
-    }
-});
 </script>
 
 </body>
