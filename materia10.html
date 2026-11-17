@@ -445,11 +445,26 @@ Conhecer a Deus de maneira real deve nos levar a amá-Lo acima de todas as coisa
 </form>
 
 <div id="resultado"></div>
-
-<div id="proximaMateria" style="display:none; margin-top:25px;">
+    <div id="proximaMateria" style="display:none; margin-top:25px;">
     <h3>Parabéns! Você concluiu com êxito a Avaliação Final do Curso AVANCE!</h3>
     <p>Seu progresso total foi registrado com sucesso. Você completou toda a grade ministerial.</p>
-    <button onclick="alert('Parabéns, Gilberto Moreira! Formação ministerial concluída com sucesso.')">Emitir Certificado / Concluir</button>
+    <button onclick="mostrarInstrucoesCertificado()">Emitir Certificado / Concluir</button>
+</div>
+
+<!-- Área onde aparecerá a mensagem detalhada com o link do WhatsApp -->
+<div id="painelCertificado" style="display:none; margin-top:20px; background:#fff8df; border:2px solid var(--dourado); padding:20px; border-radius:8px;">
+    <h3 style="color: var(--azul-escuro); margin-top:0;">Parabéns, Gilberto Moreira!</h3>
+    <p>Se o pagamento de seu curso está em dia, envie o comprovante da última mensalidade clicando no botão abaixo do WhatsApp:</p>
+    <p style="text-align: center; margin: 15px 0;">
+        <a href="https://wa.me/5566984666186?text=Olá!%20Terminei%20o%20curso%20AVANCE%20e%20segue%20meu%20comprovante." target="_blank" style="background: #25d366; color: white; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px;">
+            💬 Enviar pelo WhatsApp (66 98466-6186)
+        </a>
+    </p>
+    <p>Mas se ainda falta pagar algum valor, por favor, copie e cole a chave Pix:</p>
+    <p style="background: #eef2f7; padding: 10px; border-radius: 5px; font-family: monospace; font-weight: bold; text-align: center;">
+        gilinbrazil@gmail.com
+    </p>
+    <p>E envie o comprovante com seu <strong>Nome Completo</strong>, número de <strong>CPF</strong> e <strong>cidade</strong> onde você mora. Após isso, te enviaremos seu Certificado!</p>
 </div>
 
 </section>
@@ -618,6 +633,11 @@ function corrigirAvaliacao() {
 document.addEventListener('DOMContentLoaded', function() {
     atualizarProgresso();
 });
+    function mostrarInstrucoesCertificado() {
+    const painel = document.getElementById('painelCertificado');
+    painel.style.display = 'block';
+    painel.scrollIntoView({ behavior: 'smooth' });
+}
 </script>
 
 </body>
