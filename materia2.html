@@ -10,6 +10,7 @@
     --azul-m:#001f3f;
     --azul-c:#0074D9;
 }
+
 * { box-sizing:border-box; }
 
 body {
@@ -62,11 +63,21 @@ h3 {
     padding-left:12px;
 }
 
-h4 { color:var(--azul-m); margin-bottom:5px; }
+h4 {
+    color:var(--azul-m);
+    margin-bottom:5px;
+}
 
-p { text-align:justify; margin-bottom:18px; }
+p {
+    text-align:justify;
+    margin-bottom:18px;
+}
 
-ul, ol { text-align:justify; padding-left:25px; }
+ul,ol {
+    text-align:justify;
+    padding-left:25px;
+}
+
 li { margin-bottom:10px; }
 
 blockquote {
@@ -86,41 +97,31 @@ blockquote {
     border:1px solid #c9dced;
 }
 
-.barra-audio {
-    background:#eef5fc;
-    padding:18px;
-    border-radius:8px;
-    margin-bottom:30px;
+/* ÁUDIO DISCRETO */
+.audio-simples {
+    margin:18px 0 28px;
+}
+
+#btnAudio {
+    background:transparent;
+    color:var(--azul-c);
     border:1px solid var(--azul-c);
-}
-
-.audio-botoes {
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:12px;
-}
-
-.btn-audio {
-    background:var(--azul-c);
-    color:white;
-    border:none;
-    padding:12px 18px;
     border-radius:20px;
+    padding:9px 17px;
+    font-size:14px;
+    font-weight:600;
     cursor:pointer;
-    font-weight:bold;
 }
 
-.btn-audio:disabled {
-    opacity:.5;
-    cursor:not-allowed;
+#btnAudio:active {
+    background:#eef5fc;
 }
 
 #statusAudio {
     display:block;
-    margin-top:10px;
-    font-size:.9rem;
-    color:#16446c;
+    font-size:12px;
+    color:#666;
+    margin-top:6px;
 }
 
 .btn {
@@ -167,8 +168,6 @@ blockquote {
 
 @media(max-width:600px) {
     .container { padding:20px; }
-    .audio-botoes { flex-direction:column; }
-    .btn-audio { width:100%; }
 }
 </style>
 </head>
@@ -185,20 +184,11 @@ blockquote {
 
 <h2>HAMARTIOLOGIA</h2>
 
-<div class="barra-audio">
-    <b>🔊 Ouvir conteúdo completo</b>
-    <p style="text-align:left;margin-bottom:5px;">
-        Utilize os controles para ouvir, pausar, continuar ou encerrar a leitura.
-    </p>
-
-    <div class="audio-botoes">
-        <button class="btn-audio" onclick="lerTexto()">▶ Ouvir / Retomar</button>
-        <button class="btn-audio" onclick="pausarTexto()">⏸ Pausar</button>
-        <button class="btn-audio" onclick="continuarTexto()">▶ Continuar</button>
-        <button class="btn-audio" style="background:#555;" onclick="pararTexto()">■ Parar</button>
-    </div>
-
-    <span id="statusAudio">Preparando sistema de áudio...</span>
+<div class="audio-simples">
+    <button id="btnAudio" type="button" onclick="alternarAudio()">
+        🔊 Ouvir conteúdo
+    </button>
+    <span id="statusAudio"></span>
 </div>
 
 <div id="conteudo-texto">
@@ -623,8 +613,13 @@ Esses termos não são sinônimos absolutos. Cada um contribui para a compreens�
 
 </div>
 
-<button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
+<button class="btn" onclick="irParaProva()">
+IR PARA AVALIAÇÃO
+</button>
+
 </div>
+
+<!-- AVALIAÇÃO -->
 
 <div id="secao-prova" class="secao">
 
@@ -696,14 +691,21 @@ Esses termos não são sinônimos absolutos. Cada um contribui para a compreens�
 
 </form>
 
-<button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
+<button class="btn" onclick="corrigir()">
+FINALIZAR E AVANÇAR
+</button>
+
 </div>
 
 <div id="resultado" style="display:none;text-align:center;padding:20px;"></div>
 
 </div>
 
-<div class="footer-copy">© AVANCE – Gilberto Moreira</div>
+<div class="footer-copy">
+© AVANCE – Gilberto Moreira
+</div>
+
+<!-- VLibras Widget - PRESERVADO -->
 
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
@@ -714,229 +716,366 @@ Esses termos não são sinônimos absolutos. Cada um contribui para a compreens�
 
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
-if (window.VLibras) {
     new window.VLibras.Widget('https://vlibras.gov.br/app');
-}
 </script>
 
 <script>
-// PROGRESSO
+
+// =====================================
+// CONTROLE DE PROGRESSO
+// =====================================
+
 function verificarProgresso() {
+
     if (localStorage.getItem('modulo2_concluido') === 'true') {
+
         document.getElementById('secao-leitura').style.display='none';
         document.getElementById('secao-prova').style.display='none';
 
         const res=document.getElementById('resultado');
+
         res.style.display='block';
+
         res.innerHTML=`
             <b style="color:green;font-size:1.2rem;">
             Você já concluiu este módulo!
             </b>
-            <button class="btn" onclick="window.location.href='materia3.html'">
+
+            <button class="btn"
+            onclick="window.location.href='materia3.html'">
             IR PARA O MÓDULO 3
-            </button>`;
+            </button>
+        `;
     }
 }
 
+// =====================================
 // NAVEGAÇÃO
+// =====================================
+
 function irParaProva() {
-    pararTexto();
+
+    pararAudio();
+
     document.getElementById('secao-leitura').style.display='none';
     document.getElementById('secao-prova').style.display='block';
+
     window.scrollTo(0,0);
 }
 
+// =====================================
 // AVALIAÇÃO
+// =====================================
+
 function corrigir() {
+
     const form=document.getElementById('quizForm');
+
     let nota=0;
     let respondidas=0;
 
     for(let i=1;i<=10;i++) {
-        const resposta=form.querySelector('input[name="p'+i+'"]:checked');
+
+        const resposta=form.querySelector(
+            'input[name="p'+i+'"]:checked'
+        );
+
         if(resposta) {
+
             respondidas++;
-            if(resposta.value==="1") nota++;
+
+            if(resposta.value==="1") {
+                nota++;
+            }
         }
     }
 
     if(respondidas<10) {
+
         alert('Responda todas as 10 questões antes de finalizar.');
+
         return;
     }
 
     const res=document.getElementById('resultado');
+
     res.style.display='block';
 
     document.getElementById('secao-prova').style.display='none';
+
     window.scrollTo(0,0);
 
     if(nota>=7) {
+
         localStorage.setItem('modulo2_concluido','true');
+
         res.innerHTML=`
-        <b style="color:green;font-size:1.3rem;">
-        APROVADO! Nota: ${nota}/10
-        </b>
-        <p>Parabéns! Você concluiu Hamartiologia.</p>
-        <p>Avançando para o próximo módulo...</p>
-        <button class="btn" onclick="window.location.href='materia3.html'">
-        IR PARA O MÓDULO 3
-        </button>`;
+            <b style="color:green;font-size:1.3rem;">
+            APROVADO! Nota: ${nota}/10
+            </b>
+
+            <p>Parabéns! Você concluiu Hamartiologia.</p>
+
+            <p>Avançando para o próximo módulo...</p>
+
+            <button class="btn"
+            onclick="window.location.href='materia3.html'">
+            IR PARA O MÓDULO 3
+            </button>
+        `;
 
         setTimeout(()=>{
             window.location.href='materia3.html';
         },5000);
 
     } else {
+
         res.innerHTML=`
-        <b style="color:red;font-size:1.3rem;">
-        REPROVADO. Nota: ${nota}/10
-        </b>
-        <p>É necessário obter pelo menos 7 acertos.</p>
-        <button class="btn" onclick="location.reload()">
-        VOLTAR E ESTUDAR NOVAMENTE
-        </button>`;
+            <b style="color:red;font-size:1.3rem;">
+            REPROVADO. Nota: ${nota}/10
+            </b>
+
+            <p>É necessário obter pelo menos 7 acertos.</p>
+
+            <button class="btn"
+            onclick="location.reload()">
+            VOLTAR E ESTUDAR NOVAMENTE
+            </button>
+        `;
     }
 }
 
+// =====================================
 // SISTEMA DE ÁUDIO
-let utterance=null;
-let vozSelecionada=null;
-let audioIniciado=false;
+// =====================================
+
+let filaAudio = [];
+let indiceAudio = 0;
+let audioAtivo = false;
+let audioId = 0;
 
 function prepararAudio() {
-    if(!('speechSynthesis' in window)) {
-        document.getElementById('statusAudio').textContent=
-        'Seu navegador não oferece síntese de voz.';
+
+    if (!('speechSynthesis' in window)) {
+
+        document.getElementById('statusAudio').textContent =
+        'Áudio não disponível neste navegador.';
+
+        document.getElementById('btnAudio').disabled = true;
+
         return;
     }
 
-    carregarVoz();
+    speechSynthesis.getVoices();
 
-    // Algumas versões do Chrome carregam as vozes de forma assíncrona.
-    speechSynthesis.onvoiceschanged=carregarVoz;
+    speechSynthesis.onvoiceschanged = function() {
+        speechSynthesis.getVoices();
+    };
 
-    document.getElementById('statusAudio').textContent=
-    'Áudio preparado. Pressione Ouvir para iniciar.';
+    document.getElementById('statusAudio').textContent =
+    '';
 }
 
-function carregarVoz() {
-    const vozes=speechSynthesis.getVoices();
-
-    vozSelecionada=
-        vozes.find(v=>v.lang.toLowerCase()==='pt-br') ||
-        vozes.find(v=>v.lang.toLowerCase().startsWith('pt-br')) ||
-        vozes.find(v=>v.lang.toLowerCase().startsWith('pt')) ||
-        null;
-}
-
-// Ajustes fonéticos para melhorar a pronúncia de termos técnicos.
+// Ajuste de pronúncia dos termos teológicos.
 function prepararPronuncia(texto) {
+
     const substituicoes = [
-        [/\bLexografia\b/gi,'Lecsografia'],
-        [/\bLexicografia\b/gi,'Lecsicografia'],
-        [/\bLexicologia\b/gi,'Lecsicologia'],
-        [/\bHamartiologia\b/gi,'Amartiologia'],
-        [/\bHamartiologia\b/gi,'Amartiologia'],
-        [/\bHamartía\b/gi,'Amartía'],
-        [/\bParabasis\b/gi,'Parábasis'],
-        [/\bPesha\b/gi,'Pêsha'],
-        [/\bAvon\b/gi,'Avón'],
-        [/\bChattá\b/gi,'Rattá'],
-        [/\bMetanoia\b/gi,'Metanóia'],
-        [/\bSoteriologia\b/gi,'Soteriologia'],
-        [/\bEscatologia\b/gi,'Escatologia'],
-        [/\bexegética\b/gi,'ezegética'],
-        [/\bexegese\b/gi,'ezegese'],
-        [/\bEfésios\b/gi,'Efésios'],
-        [/\bEzequiel\b/gi,'Ezequiel']
+
+        [/\bLexografia\b/gi, 'Lecsografia'],
+        [/\bLexicografia\b/gi, 'Lecsicografia'],
+        [/\bLexicologia\b/gi, 'Lecsicologia'],
+        [/\bHamartiologia\b/gi, 'Amartiologia'],
+        [/\bHamartía\b/gi, 'Amartía'],
+        [/\bParabasis\b/gi, 'Parábasis'],
+        [/\bPesha\b/gi, 'Pêsha'],
+        [/\bAvon\b/gi, 'Avón'],
+        [/\bMetanoia\b/gi, 'Metanóia'],
+        [/\bexegética\b/gi, 'ezegética'],
+        [/\bexegese\b/gi, 'ezegese']
+
     ];
 
     substituicoes.forEach(([expressao,pronuncia])=>{
+
         texto=texto.replace(expressao,pronuncia);
+
     });
 
     return texto;
 }
 
-function lerTexto() {
+// Um único botão alterna entre ouvir e parar.
+function alternarAudio() {
+
+    if(audioAtivo) {
+
+        pararAudio();
+
+    } else {
+
+        iniciarAudio();
+
+    }
+}
+
+function iniciarAudio() {
+
     if(!('speechSynthesis' in window)) {
+
         alert('Seu navegador não suporta síntese de voz.');
+
         return;
     }
 
-    pararTexto();
+    pararAudio();
 
-    const elemento=document.getElementById('conteudo-texto');
+    const idAtual=audioId;
 
-    let texto=elemento.innerText || elemento.textContent;
+    let texto=document.getElementById('conteudo-texto').innerText;
+
     texto=prepararPronuncia(texto);
 
-    if(!texto.trim()) return;
+    // Divide o texto em frases e blocos menores.
+    const frases=texto.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [];
 
-    utterance=new SpeechSynthesisUtterance(texto);
+    filaAudio=[];
 
-    utterance.lang='pt-BR';
-    utterance.rate=0.90;
-    utterance.pitch=1;
-    utterance.volume=1;
+    let bloco='';
 
-    if(vozSelecionada) {
-        utterance.voice=vozSelecionada;
+    frases.forEach(frase=>{
+
+        if((bloco+frase).length>180 && bloco.trim()) {
+
+            filaAudio.push(bloco.trim());
+
+            bloco='';
+
+        }
+
+        bloco+=frase+' ';
+
+    });
+
+    if(bloco.trim()) {
+
+        filaAudio.push(bloco.trim());
+
     }
 
-    utterance.onstart=()=>{
-        audioIniciado=true;
-        document.getElementById('statusAudio').textContent=
-        'Lendo o conteúdo em português brasileiro...';
-    };
+    indiceAudio=0;
 
-    utterance.onend=()=>{
-        audioIniciado=false;
+    audioAtivo=true;
+
+    document.getElementById('btnAudio').textContent='■ Parar leitura';
+
+    document.getElementById('statusAudio').textContent='';
+
+    falarTrecho(idAtual);
+}
+
+function falarTrecho(idAtual) {
+
+    if(!audioAtivo || idAtual!==audioId) return;
+
+    if(indiceAudio>=filaAudio.length) {
+
+        pararAudio();
+
         document.getElementById('statusAudio').textContent=
         'Leitura concluída.';
+
+        return;
+    }
+
+    const fala=new SpeechSynthesisUtterance(
+        filaAudio[indiceAudio]
+    );
+
+    fala.lang='pt-BR';
+
+    fala.rate=0.88;
+
+    fala.pitch=1;
+
+    fala.volume=1;
+
+    // Prioriza voz brasileira.
+    const vozes=speechSynthesis.getVoices();
+
+    const voz=vozes.find(v=>
+        v.lang.toLowerCase()==='pt-br'
+    ) || vozes.find(v=>
+        v.lang.toLowerCase().startsWith('pt')
+    );
+
+    if(voz) {
+
+        fala.voice=voz;
+
+    }
+
+    fala.onend=function() {
+
+        if(!audioAtivo || idAtual!==audioId) return;
+
+        indiceAudio++;
+
+        setTimeout(()=>{
+
+            falarTrecho(idAtual);
+
+        },100);
+
     };
 
-    utterance.onerror=(evento)=>{
-        audioIniciado=false;
+    fala.onerror=function(evento) {
+
+        if(!audioAtivo || idAtual!==audioId) return;
+
+        if(evento.error==='canceled' ||
+           evento.error==='interrupted') return;
+
+        console.error('Erro de áudio:',evento.error);
+
+        pararAudio();
+
         document.getElementById('statusAudio').textContent=
-        'Erro na reprodução. Verifique o volume e as vozes do dispositivo.';
-        console.error('Erro de áudio:',evento);
+        'Falha na reprodução. Verifique o mecanismo de voz do aparelho.';
+
     };
 
-    // Garante que o motor não permaneça em estado de pausa.
-    speechSynthesis.cancel();
-    speechSynthesis.resume();
-
-    setTimeout(()=>{
-        speechSynthesis.speak(utterance);
-    },150);
+    speechSynthesis.speak(fala);
 }
 
-function pausarTexto() {
-    if('speechSynthesis' in window && speechSynthesis.speaking) {
-        speechSynthesis.pause();
-        document.getElementById('statusAudio').textContent='Leitura pausada.';
-    }
-}
+function pararAudio() {
 
-function continuarTexto() {
-    if('speechSynthesis' in window && speechSynthesis.paused) {
-        speechSynthesis.resume();
-        document.getElementById('statusAudio').textContent='Continuando a leitura...';
-    } else if(!speechSynthesis.speaking) {
-        lerTexto();
-    }
-}
+    // Invalida qualquer trecho que ainda esteja em execução.
+    audioId++;
 
-function pararTexto() {
+    audioAtivo=false;
+
+    filaAudio=[];
+
+    indiceAudio=0;
+
     if('speechSynthesis' in window) {
+
         speechSynthesis.cancel();
-        audioIniciado=false;
-        document.getElementById('statusAudio').textContent='Leitura encerrada.';
+
+    }
+
+    const botao=document.getElementById('btnAudio');
+
+    if(botao) {
+
+        botao.textContent='🔊 Ouvir conteúdo';
+
     }
 }
+
 </script>
 
 </body>
 </html>
+
+
