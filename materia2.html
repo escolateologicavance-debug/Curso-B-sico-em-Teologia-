@@ -1,256 +1,941 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 2 - Hamartiologia | AVANCE</title>
-    <style>
-        :root { --azul-m:#001f3f; --azul-c:#0074D9; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: var(--azul-m); display: flex; flex-direction: column; min-height: 100vh; }
-        .header { background: var(--azul-m); color: white; padding: 20px; text-align: center; border-bottom: 2px solid var(--azul-c); }
-        .container { max-width: 850px; margin: 20px auto; background: white; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-grow: 1; }
-        .secao { display: none; }
-        .ativa { display: block; }
-        h2 { color: var(--azul-m); border-bottom: 2px solid var(--azul-c); padding-bottom: 8px; }
-        h3 { color: var(--azul-c); margin-top: 30px; }
-        .pergunta { background: #fdfdfd; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--azul-c); }
-        .opcao { display: block; margin: 10px 0; cursor: pointer; padding: 12px; border-radius: 8px; background: #f4f4f4; }
-        .btn { display: block; width: 100%; max-width: 320px; background: var(--azul-c); color: white; padding: 18px; border-radius: 40px; font-weight: bold; margin: 30px auto; border: none; cursor: pointer; font-size: 1.1rem; text-align: center; text-decoration: none; }
-        .footer-copy { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-        p { text-align: justify; }
-        ul { text-align: justify; margin-bottom: 15px; }
-        .barra-audio { background: #eef5fc; padding: 15px; border-radius: 8px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--azul-c); }
-        .btn-audio { background: var(--azul-c); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; }
-        .btn-audio:hover { background: #0056b3; }
-        blockquote { border-left: 4px solid var(--azul-c); margin: 15px 0; padding: 10px 20px; background: #f8f9fa; font-style: italic; text-align: justify; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAMARTIOLOGIA</title>
+
+<style>
+:root {
+    --azul-m:#001f3f;
+    --azul-c:#0074D9;
+}
+* { box-sizing:border-box; }
+
+body {
+    font-family:'Segoe UI',sans-serif;
+    line-height:1.75;
+    color:#333;
+    margin:0;
+    background:var(--azul-m);
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
+
+.header {
+    background:var(--azul-m);
+    color:white;
+    padding:20px;
+    text-align:center;
+    border-bottom:2px solid var(--azul-c);
+}
+
+.header h1 { margin:0; }
+
+.container {
+    width:94%;
+    max-width:900px;
+    margin:20px auto;
+    background:white;
+    padding:35px;
+    border-radius:8px;
+    box-shadow:0 4px 15px rgba(0,0,0,.4);
+    flex-grow:1;
+}
+
+.secao { display:none; }
+.ativa { display:block; }
+
+h2 {
+    color:var(--azul-m);
+    border-bottom:2px solid var(--azul-c);
+    padding-bottom:12px;
+    text-align:center;
+    letter-spacing:1px;
+}
+
+h3 {
+    color:var(--azul-c);
+    margin-top:38px;
+    border-left:4px solid var(--azul-c);
+    padding-left:12px;
+}
+
+h4 { color:var(--azul-m); margin-bottom:5px; }
+
+p { text-align:justify; margin-bottom:18px; }
+
+ul, ol { text-align:justify; padding-left:25px; }
+li { margin-bottom:10px; }
+
+blockquote {
+    border-left:4px solid var(--azul-c);
+    margin:20px 0;
+    padding:15px 20px;
+    background:#f0f5fa;
+    font-style:italic;
+    text-align:justify;
+}
+
+.destaque {
+    background:#eef5fc;
+    padding:18px;
+    border-radius:8px;
+    margin:20px 0;
+    border:1px solid #c9dced;
+}
+
+.barra-audio {
+    background:#eef5fc;
+    padding:18px;
+    border-radius:8px;
+    margin-bottom:30px;
+    border:1px solid var(--azul-c);
+}
+
+.audio-botoes {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:12px;
+}
+
+.btn-audio {
+    background:var(--azul-c);
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-audio:disabled {
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+#statusAudio {
+    display:block;
+    margin-top:10px;
+    font-size:.9rem;
+    color:#16446c;
+}
+
+.btn {
+    display:block;
+    width:100%;
+    max-width:340px;
+    background:var(--azul-c);
+    color:white;
+    padding:17px;
+    border-radius:40px;
+    font-weight:bold;
+    margin:35px auto;
+    border:none;
+    cursor:pointer;
+    font-size:1.05rem;
+    text-align:center;
+}
+
+.pergunta {
+    background:#fdfdfd;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    border-left:5px solid var(--azul-c);
+}
+
+.opcao {
+    display:block;
+    margin:10px 0;
+    cursor:pointer;
+    padding:12px;
+    border-radius:8px;
+    background:#f4f4f4;
+}
+
+.opcao:hover { background:#e5eff9; }
+
+.footer-copy {
+    text-align:center;
+    padding:20px;
+    color:rgba(255,255,255,.7);
+    font-size:.9rem;
+}
+
+@media(max-width:600px) {
+    .container { padding:20px; }
+    .audio-botoes { flex-direction:column; }
+    .btn-audio { width:100%; }
+}
+</style>
 </head>
-<body onload="verificarProgresso()">
+
+<body onload="verificarProgresso(); prepararAudio();">
 
 <div class="header">
     <h1>AVANCE</h1>
-    <p>Módulo 2: Hamartiologia</p>
 </div>
 
 <div class="container">
-    <div id="secao-leitura" class="secao ativa">
-        <h2>Matéria 2 – Hamartiologia Sistemática e Exegética</h2>
-        
-        <!-- Barra de Áudio Funcional -->
-        <div class="barra-audio">
-            <span>🔊 <b>Ouvir Conteúdo Completo:</b></span>
-            <div>
-                <button class="btn-audio" onclick="lerTexto()">Ouvir / Retomar</button>
-                <button class="btn-audio" style="background:#555;" onclick="pararTexto()">Pausar</button>
-            </div>
-        </div>
 
-        <!-- Container isolado apenas com o texto que será lido pelo sintetizador -->
-        <div id="conteudo-texto">
-            <p>A Hamartiologia é o tratado teológico sistemático que examina a doutrina do pecado exclusivamente sob a ótica da inerrante Palavra de Deus. Conforme destaca o teólogo pentecostal Myer Pearlman em sua clássica obra Teologia Bíblica e Sistemática, o entendimento correto do pecado é a base indispensável para a compreensão da soteriologia, pois o remédio da graça só pode ser avaliado por aqueles que conhecem a profundidade da enfermidade espiritual humana.</p>
+<div id="secao-leitura" class="secao ativa">
 
-            <h3>1. A Lexicologia Bíblica do Pecado: Termos Originais</h3>
-            <p>As Escrituras empregam termos técnicos precisos no hebraico e no grego para expor as múltiplas facetas da rebelião humana contra o Criador:</p>
-            <ul>
-                <li>Hamartía (Grego): Significa primordialmente errar o alvo ou distanciar-se da marca traçada pela santidade divina. Referência base: Porque todos pecaram e destituídos estão da glória de Deus, Romanos 3:23.</li>
-                <li>Pesha e Parabasis (Hebraico e Grego): Descreve a transgressão, a quebra intencional e rebelde de um pacto ou mandamento expresso da autoridade soberana de Deus. Referência base: Porque a lei opera a ira, Romanos 4:15.</li>
-                <li>Avon (Hebraico - Iniqüidade): Aponta para a perversão, torção ou distorção moral do caráter interno, descrevendo a culpa acumulada e o desvio da retidão original. Referência base: Contra ti, contra ti somente pequei, Salmo 51, versículos 4 e 5.</li>
-            </ul>
+<h2>HAMARTIOLOGIA</h2>
 
-            <h3>2. A Origem Cósmica e Histórica do Mal Moral</h3>
-            <p>O pecado não teve origem em Deus, cuja essência é absolutamente santa (Habacuque 1:13). A vertente cósmica do mal iniciou-se com a queda de Lúcifer no céu, motivada por soberba e ambição de igualar-se ao Altíssimo (Isaías 14:12-15; Ezequiel 28:12-17). Na terra, a entrada oficial do pecado ocorreu no Éden por meio da desobediência voluntária e federal de Adão, o representante da raça humana (Gênesis 3:6; Romanos 5:12).</p>
+<div class="barra-audio">
+    <b>🔊 Ouvir conteúdo completo</b>
+    <p style="text-align:left;margin-bottom:5px;">
+        Utilize os controles para ouvir, pausar, continuar ou encerrar a leitura.
+    </p>
 
-            <h3>3. A Doutrina da Depravação Total e Extensão da Queda</h3>
-            <p>Teólogos pentecostais clássicos, como Stanley Horton em Teologia Sistemática: Uma Perspectiva Pentecostal, pontuam que a depravação total não significa que o homem seja tão depravado quanto poderia ser na sociedade, mas sim que absolutamente todas as esferas da natureza humana foram afetadas e corrompidas pela queda:</p>
-            <ul>
-                <li>A Mente: Cegueira espiritual e inimizade contra as coisas divinas (1 Coríntios 2:14; Efésios 4:18).</li>
-                <li>O Coração e Emoções: Afetos desviados, egoísmo e propensão constante ao mal (Jeremias 17:9; Romanos 1:21).</li>
-                <li>A Vontade: Escravidão moral; o homem natural é destituído de poder espiritual autônomo para gerar sua própria salvação (João 8:34; Romanos 6:17).</li>
-            </ul>
-
-            <h3>4. A Transmissão Hereditária e o Pecado Original</h3>
-            <p>A teologia reformada e pentecostal corrobora que a culpa jurídica e a mancha corruptora da queda de Adão foram transmitidas organicamente a toda a sua posteridade. O apóstolo Paulo estabelece o princípio da solidariedade racial em Romanos 5:12: Portanto, assim como por um só homem entrou o pecado no mundo, e pelo pecado, a morte, assim também a morte passou a todos os homens, porquanto todos pecaram.</p>
-
-            <h3>5. Pecado Original vs. Transgressões Atuais</h3>
-            <p>É fundamental distinguir na teologia bíblica o estado herdado dos atos práticos:</p>
-            <blockquote>O pecado original é a raiz corrompida plantada na humanidade no Éden; os pecados atuais são os frutos amargos que brotam dessa raiz todos os dias através de pensamentos, palavras, desejos e omissões voluntárias. Comentário Teológico AVANCE.</blockquote>
-            <p>Conforme Tiago 1:14-15 expõe, cada um é tentado quando atraído e engodado pela sua própria concupiscência, gerando o pecado que, consumado, gera a morte.</p>
-
-            <h3>6. A Dimensão Relacional, Social e Cósmica do Pecado</h3>
-            <p>Embora toda transgressão seja vertical, uma ofensa direta à majestade de Deus, ela produz inevitáveis frutos horizontais catastróficos. O pecado corrompe o tecido familiar, fomenta a violência nas cidades, gera exploração social e submete toda a criação material a um estado de frustração e gemido contínuo (Romanos 8:19-22).</p>
-
-            <h3>7. As Consequências Tríplices do Pecado</h3>
-            <p>A penalidade impuesta pela justiça de Deus desdobra-se em três esferas absolutas:</p>
-            <ul>
-                <li>Morte Espiritual: O imediato corte da comunhão vital e relacional com a fonte da vida (Efésios 2:1).</li>
-                <li>Morte Física: A desintegração progressiva e o retorno do pó ao pó, decretados em Gênesis 3:19 e ratificados em Hebreus 9:27.</li>
-                <li>Morte Eterna: A separação irrevogável e consciente de Deus no lago de fogo para aqueles que rejeitam a redenção (Apocalipse 20:14-15).</li>
-            </ul>
-
-            <h3>8. A Insuficiência das Obras, da Lei e da Filosofia Humana</h3>
-            <p>Nenhuma estrutura religiosa, preceito moral, ética humanista ou esforço de autoajuda comportamental pode remediar a condição hamartiológica do homem. A Lei Mosaica foi dada por Deus não para salvar, mas para funcionar como um espelho cirúrgico que expõe a infecção do pecado (Romanos 3:20; Gálatas 3:24), silenciando toda boca humana perante o tribunal divino (Romanos 3:19).</p>
-
-            <h3>9. A Provisão Divina: A Expiação Vicária e Substitutiva em Cristo</h3>
-            <p>A única resposta aceitável para o problema do pecado veio da iniciativa soberana da graça de Deus através da obra expiatória de Cristo. Na cruz do Calvário, Jesus Cristo operou a substituição penal: Ele levou sobre si os nossos pecados em Seu próprio corpo, satisfazendo plenamente as exigências da ira e da justiça santa de Deus (Isaías 53:5-6; 2 Coríntios 5:21; 1 Pedro 2:24).</p>
-
-            <h3>10. A Regeneração pelo Espírito Santo e a Quebra do Domínio</h3>
-            <p>A aplicação da obra de Cristo efetua-se mediante a regeneração, o novo nascimento operado soberanamente pelo Espírito Santo (Tito 3:5). Para o teólogo pentecostal, o batismo e a habitação do Espírito no crente quebram o domínio absoluto e a tirania do pecado, concedendo poder espiritual para viver em santidade e vitória sobre a carne (Romanos 6:14; 8:1-2).</p>
-
-            <h3>11. A Escatologia da Redenção: A Erradicação Definitiva do Mal</h3>
-            <p>A Hamartiologia encerra-se com a bendita esperança da consumação escatológica. Na glorificação final dos santos e na manifestação dos novos céus e nova terra, a presença, a tentação, o poder e até mesmo a memória do pecado serão inteiramente banidos da realidade criada, reinando a justiça absoluta para todo o sempre (Apocalipse 21:1-4; 2 Pedro 3:13).</p>
-        </div>
-
-        <button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
+    <div class="audio-botoes">
+        <button class="btn-audio" onclick="lerTexto()">▶ Ouvir / Retomar</button>
+        <button class="btn-audio" onclick="pausarTexto()">⏸ Pausar</button>
+        <button class="btn-audio" onclick="continuarTexto()">▶ Continuar</button>
+        <button class="btn-audio" style="background:#555;" onclick="pararTexto()">■ Parar</button>
     </div>
 
-    <div id="secao-prova" class="secao">
-        <h2>Avaliação de Conhecimento</h2>
-        <form id="quizForm">
+    <span id="statusAudio">Preparando sistema de áudio...</span>
+</div>
 
-            <div class="pergunta"><b>1. O termo grego “hamartía” (ἁμαρτία), conforme empregado nas Escrituras, designa primordialmente:</b>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Um erro administrativo ou fiscal</label>
-                <label class="opcao"><input type="radio" name="p1" value="1"> Errar o alvo estabelecido pela santidade de Deus</label>
-                <label class="opcao"><input type="radio" name="p1" value="0"> Uma falha biológica puramente evolutiva</label>
-            </div>
+<div id="conteudo-texto">
 
-            <div class="pergunta"><b>2. O termo hebraico <i>Avon</i> (עָוֹן) refere-se especificamente a qual aspecto do pecado?</b>
-                <label class="opcao"><input type="radio" name="p2" value="0"> À punição física aplicada pelos homens</label>
-                <label class="opcao"><input type="radio" name="p2" value="1"> À perversão, torção moral do caráter e culpa acumulada</label>
-                <label class="opcao"><input type="radio" name="p2" value="0"> Ao sacrifício de animais no altar</label>
-            </div>
+<p>A Hamartiologia é o ramo da Teologia Sistemática dedicado ao estudo da doutrina do pecado. Seu campo de investigação abrange a natureza, a origem, a manifestação, a universalidade, as consequências e a solução divina para o problema do pecado. O termo deriva do grego hamartía, relacionado à ideia de pecado, e logos, que significa estudo, discurso ou tratado.</p>
 
-            <div class="pergunta"><b>3. Segundo a doutrina bíblica e a teologia pentecostal clássica, qual foi a origem cósmica do pecado?</b>
-                <label class="opcao"><input type="radio" name="p3" value="1"> A rebelião e soberba de Lúcifer no céu antes da criação humana</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> Um decreto arbitrário de destruição emitido por Deus</label>
-                <label class="opcao"><input type="radio" name="p3" value="0"> A invenção humana de mitos antigos</label>
-            </div>
+<p>Estudar Hamartiologia não significa apenas identificar comportamentos moralmente inadequados. Significa compreender uma realidade espiritual, moral e relacional que afetou profundamente a humanidade e comprometeu sua relação com o Criador. O pecado deve ser analisado em sua dimensão interior, exterior, individual, coletiva e histórica.</p>
 
-            <div class="pergunta"><b>4. O que a doutrina teológica da "depravação total" afirma sobre o ser humano caído?</b>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Que o homem pratica todo mal possível em todos os momentos</label>
-                <label class="opcao"><input type="radio" name="p4" value="1"> Que todas as esferas da constituição humana (mente, emoções e vontade) foram afetadas pelo pecado</label>
-                <label class="opcao"><input type="radio" name="p4" value="0"> Que a vontade humana permaneceu intacta e livre do pecado</label>
-            </div>
+<p>Essa doutrina possui uma relação indispensável com outras áreas da Teologia Sistemática. A Antropologia Teológica investiga a constituição e a condição humana; a Hamartiologia examina a corrupção e a transgressão; a Soteriologia apresenta a provisão divina para a redenção; e a Escatologia considera a consumação final da vitória de Deus sobre o mal.</p>
 
-            <div class="pergunta"><b>5. Em Romanos 5:12, o apóstolo Paulo fundamenta a transmissão do pecado afirmando que:</b>
-                <label class="opcao"><input type="radio" name="p5" value="1"> Por um só homem o pecado entrou no mundo, e a morte passou a todos os homens</label>
-                <label class="opcao"><input type="radio" name="p5" value="0"> Cada ser humano nasce espiritualmente puro e corrompe-se por livre escolha aos 20 anos</label>
-                <label class="opcao"><input type="radio" name="p5" value="0"> O pecado é transmitido apenas por fatores culturais e ambientais</label>
-            </div>
+<p>Consequentemente, uma compreensão superficial do pecado produz uma compreensão igualmente superficial da graça, da cruz, do arrependimento, da santificação e da necessidade da redenção.</p>
 
-            <div class="pergunta"><b>6. Qual a distinção correta entre pecado original e pecados atuais?</b>
-                <label class="opcao"><input type="radio" name="p6" value="0"> O pecado original é o erro dos patriarcas; o atual é o erro moderno</label>
-                <label class="opcao"><input type="radio" name="p6" value="1"> O pecado original é a condição herdada de Adão, enquanto os atuais são as transgressões práticas cometidas pelo indivíduo</label>
-                <label class="opcao"><input type="radio" name="p6" value="0"> Não há distinção bíblica entre ambos os conceitos</label>
-            </div>
+<h3>1. A LEXICOGRAFIA E A LEXICOLOGIA BÍBLICA DO PECADO</h3>
 
-            <div class="pergunta"><b>7. Qual era o propósito principal da Lei Mosaica em relação ao pecado, segundo o apóstolo Paulo?</b>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Conceder capacidade regeneradora para a salvação por méritos</label>
-                <label class="opcao"><input type="radio" name="p7" value="1"> Atuar como espelho para expor a transgressão e silenciar a autoconfiança humana</label>
-                <label class="opcao"><input type="radio" name="p7" value="0"> Substituir a necessidade da graça divina</label>
-            </div>
+<p>A investigação dos termos originais é fundamental para compreender a amplitude do conceito bíblico de pecado. As Escrituras não utilizam uma única palavra para descrever todas as formas de transgressão. O hebraico e o grego apresentam vocábulos que revelam diferentes aspectos da relação entre o ser humano e a vontade de Deus.</p>
 
-            <div class="pergunta"><b>8. A provisão divina definitiva para a remissão da culpa do pecado consiste teologicamente em:</b>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Reformas educacionais e progresso moral da sociedade</label>
-                <label class="opcao"><input type="radio" name="p8" value="0"> Esforços de meditação interior e evolução espiritual</label>
-                <label class="opcao"><input type="radio" name="p8" value="1"> A expiação vicária e substitutiva de Jesus Cristo na cruz do Calvário</label>
-            </div>
+<p>A Lexicografia investiga o significado e o registro dos vocábulos, enquanto a Lexicologia examina o vocabulário e suas relações de significado. Na interpretação bíblica, esse trabalho permite identificar nuances que podem desaparecer quando diferentes palavras são traduzidas simplesmente como pecado, iniquidade ou transgressão.</p>
 
-            <div class="pergunta"><b>9. Verdadeiro ou Falso: A morte sacrificial de Cristo satisfez plenamente as exigências da justiça de Deus contra o pecado.</b>
-                <label class="opcao"><input type="radio" name="p9" value="1"> Verdadeiro</label>
-                <label class="opcao"><input type="radio" name="p9" value="0"> Falso</label>
-            </div>
+<h4>1.1. Hamartía (ἁμαρτία) — Pecado</h4>
 
-            <div class="pergunta"><b>10. O que a escatologia bíblica assegura quanto ao destino final do pecado na consumação dos séculos?</b>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Que o pecado coexistirá eternamente em harmonia com a justiça</label>
-                <label class="opcao"><input type="radio" name="p10" value="1"> Que a presença, o poder e a memória do pecado serão inteiramente erradicados nos novos céus e nova terra</label>
-                <label class="opcao"><input type="radio" name="p10" value="0"> Que o pecado será gradativamente transformado em virtude</label>
-            </div>
+<p>O substantivo grego hamartía é utilizado no Novo Testamento para designar o pecado. Está relacionado à ideia de errar o alvo, mas seu significado bíblico não deve ser reduzido a um simples equívoco involuntário. O termo também expressa uma condição de pecado, uma realidade de transgressão e uma oposição à vontade de Deus.</p>
 
-        </form>
-        <button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
-    </div>
+<p>Em Romanos 3:23, Paulo declara que todos pecaram e estão destituídos da glória de Deus. O texto estabelece a universalidade do problema: nenhum segmento da humanidade pode reivindicar justiça própria diante do Criador.</p>
 
-    <div id="resultado" style="display:none; text-align:center; padding:20px;"></div>
+<p>Aplicação: a pessoa não deve avaliar sua condição moral apenas comparando seu comportamento com o de outras pessoas. O padrão bíblico não é a imperfeição do próximo, mas a santidade de Deus.</p>
+
+<h4>1.2. Chattá (חָטָא) — Errar, pecar</h4>
+
+<p>No hebraico, o verbo chattá está relacionado à ideia de errar ou pecar. Sua utilização nas Escrituras demonstra que o pecado pode ser identificado como uma ação que se afasta da retidão estabelecida por Deus.</p>
+
+<p>Em Juízes 20:16, a linguagem de errar o alvo aparece em um contexto de habilidade com a funda. Essa utilização ajuda a compreender a imagem linguística associada ao verbo, embora seu significado teológico dependa do contexto em que é empregado.</p>
+
+<p>Aplicação: a vida moral exige direção. Não basta possuir boas intenções; é necessário examinar se pensamentos, decisões e comportamentos estão de acordo com os princípios revelados nas Escrituras.</p>
+
+<h4>1.3. Pesha (פֶּשַׁע) — Transgressão e rebelião</h4>
+
+<p>O termo hebraico pesha expressa transgressão, revolta ou violação de uma autoridade estabelecida. É empregado para descrever a ruptura consciente de uma relação de fidelidade e submissão.</p>
+
+<p>Em Isaías 1:2, a linguagem da rebelião é utilizada para denunciar a infidelidade de Israel. O problema não era simplesmente desconhecer os mandamentos, mas afastar-se deliberadamente daquele que havia estabelecido a aliança.</p>
+
+<p>Aplicação: existe diferença entre desconhecer uma orientação e conhecer a vontade de Deus, mas escolher deliberadamente contrariá-la. A responsabilidade moral envolve a disposição interior diante da verdade conhecida.</p>
+
+<h4>1.4. Avon (עָוֹן) — Iniquidade</h4>
+
+<p>Avon é um termo hebraico que pode expressar iniquidade, perversidade e culpa. Em determinados contextos, também abrange as consequências da própria iniquidade.</p>
+
+<p>No Salmo 51, Davi reconhece sua transgressão e a profundidade de sua condição pecaminosa. Sua confissão não apresenta o pecado como um problema meramente exterior, mas como uma realidade que exige reconhecimento e transformação diante de Deus.</p>
+
+<p>Aplicação: corrigir somente as manifestações externas de uma conduta inadequada não significa necessariamente corrigir suas motivações. A transformação bíblica alcança também as disposições interiores.</p>
+
+<h4>1.5. Parabasis (παράβασις) — Transgressão</h4>
+
+<p>Parabasis é um substantivo grego relacionado à transgressão ou ultrapassagem de um limite estabelecido. No contexto bíblico, descreve a violação de uma determinação ou mandamento.</p>
+
+<p>Romanos 4:15 relaciona a lei à identificação da transgressão. A existência de uma determinação torna possível identificar objetivamente sua violação.</p>
+
+<p>Aplicação: os princípios divinos não devem ser tratados como referências opcionais. A consciência da responsabilidade diante da Palavra exige coerência entre aquilo que se conhece e aquilo que se pratica.</p>
+
+<div class="destaque">
+<b>Síntese lexicológica:</b>
+<ul>
+<li>Hamartía: pecado e afastamento do padrão divino.</li>
+<li>Chattá: errar ou pecar.</li>
+<li>Pesha: transgressão e rebelião.</li>
+<li>Avon: iniquidade, perversidade e culpa.</li>
+<li>Parabasis: violação de um limite ou mandamento.</li>
+</ul>
+Esses termos não são sinônimos absolutos. Cada um contribui para a compreensão de uma dimensão do problema.
+</div>
+
+<h3>2. A NATUREZA TEOLÓGICA DO PECADO</h3>
+
+<p>O pecado não deve ser definido exclusivamente como um conjunto de hábitos socialmente reprováveis. Na perspectiva bíblica, ele representa uma oposição à vontade, à autoridade e à santidade do Criador.</p>
+
+<p>Primeira João 3:4 relaciona o pecado à transgressão da lei. Entretanto, a abrangência bíblica do conceito também inclui atitudes interiores, intenções, desejos desordenados, omissões e disposições contrárias à justiça divina.</p>
+
+<p>Mateus 5:21-28 demonstra que Jesus não limitou a avaliação moral ao ato exterior. Ao tratar do homicídio e do adultério, Ele também examinou a ira injustificada e a cobiça no interior humano.</p>
+
+<p>Portanto, o pecado apresenta pelo menos cinco dimensões importantes:</p>
+
+<ul>
+<li><b>Dimensão espiritual:</b> ruptura da comunhão e da fidelidade ao Criador.</li>
+<li><b>Dimensão moral:</b> oposição ao padrão de justiça e santidade estabelecido por Deus.</li>
+<li><b>Dimensão interior:</b> pensamentos, desejos, intenções e motivações desordenadas.</li>
+<li><b>Dimensão comportamental:</b> ações e palavras contrárias à vontade divina.</li>
+<li><b>Dimensão relacional:</b> prejuízos causados ao próximo, à família e à sociedade.</li>
+</ul>
+
+<p>Essa compreensão impede que a Hamartiologia seja reduzida a uma simples lista de proibições. Ela investiga a estrutura moral e espiritual da transgressão e suas consequências.</p>
+
+<h3>3. A ORIGEM DO PECADO E A QUESTÃO DO MAL MORAL</h3>
+
+<p>A Bíblia afirma categoricamente a santidade de Deus. Tiago 1:13 ensina que Deus não pode ser tentado pelo mal e a ninguém tenta. Habacuque 1:13 apresenta a pureza divina em contraste com a perversidade.</p>
+
+<p>Deus não deve ser apresentado como autor moral do pecado. A existência da possibilidade de transgressão não significa que a transgressão seja uma expressão de sua natureza santa.</p>
+
+<p>É necessário distinguir a origem do mal moral em sua dimensão espiritual da entrada histórica do pecado na experiência humana.</p>
+
+<h4>3.1. A rebelião espiritual</h4>
+
+<p>Isaías 14:12-15 e Ezequiel 28:12-17 são textos frequentemente relacionados, na interpretação cristã tradicional, à queda de Satanás. Entretanto, seus contextos literários imediatos apresentam oráculos contra governantes humanos, respectivamente da Babilônia e de Tiro.</p>
+
+<p>A leitura que identifica nesses textos uma dimensão espiritual mais ampla é uma interpretação teológica tradicional, não uma declaração explícita e isolada de toda a doutrina sobre a origem de Satanás.</p>
+
+<p>O Novo Testamento apresenta Satanás como adversário de Deus e agente de oposição à verdade, conforme João 8:44 e Apocalipse 12:7-9.</p>
+
+<h4>3.2. A entrada do pecado na humanidade</h4>
+
+<p>Gênesis 3 descreve a transgressão de Adão e Eva. O episódio apresenta elementos fundamentais para a compreensão do pecado humano:</p>
+
+<ol>
+<li>A apresentação de uma proposta contrária à determinação divina.</li>
+<li>O questionamento da veracidade da Palavra de Deus.</li>
+<li>A alteração da percepção humana sobre o mandamento.</li>
+<li>O desejo de alcançar uma condição independente da autoridade divina.</li>
+<li>A decisão voluntária de desobedecer.</li>
+<li>A manifestação da vergonha, do medo e da tentativa de transferir responsabilidades.</li>
+</ol>
+
+<p>O pecado não aparece apenas como uma infração externa. A narrativa demonstra uma mudança na relação de confiança, obediência e dependência entre a criatura e o Criador.</p>
+
+<p>Romanos 5:12 relaciona a entrada do pecado no mundo à transgressão de um só homem, estabelecendo a ligação entre Adão, a humanidade e a realidade da morte.</p>
+
+<h3>4. A QUEDA E A DEPRAVAÇÃO DA NATUREZA HUMANA</h3>
+
+<p>A doutrina da depravação descreve a extensão dos efeitos do pecado sobre a natureza humana. A queda não eliminou a humanidade, a racionalidade, a capacidade de estabelecer relações ou a possibilidade de realizar atos de bondade civil. Entretanto, afetou profundamente a condição moral e espiritual do ser humano.</p>
+
+<p>A expressão depravação total, utilizada em determinados sistemas teológicos, não significa que cada pessoa pratique todo o mal possível, nem que todos os indivíduos possuam o mesmo grau de perversidade. Significa que nenhuma dimensão fundamental da natureza humana permaneceu completamente imune aos efeitos da queda.</p>
+
+<h4>4.1. A mente</h4>
+
+<p>Romanos 1:21 descreve o comprometimento do pensamento humano quando a criatura deixa de glorificar e reconhecer adequadamente o Criador. Efésios 4:18 relaciona a ignorância espiritual ao entendimento obscurecido e ao afastamento da vida de Deus.</p>
+
+<p>O comprometimento da mente manifesta-se na racionalização do erro, na inversão de valores e na utilização do conhecimento para justificar atitudes contrárias à verdade.</p>
+
+<p>Aplicação: o estudante das Escrituras deve desenvolver discernimento, examinando ideias, argumentos e interpretações à luz do conjunto da revelação bíblica.</p>
+
+<h4>4.2. O coração e as emoções</h4>
+
+<p>Jeremias 17:9 apresenta o coração humano como enganoso. Mateus 15:19 relaciona os maus pensamentos, homicídios, adultérios e outros pecados à interioridade humana.</p>
+
+<p>Isso demonstra que a conduta exterior frequentemente possui raízes em desejos, ressentimentos, orgulho, inveja e motivações desordenadas.</p>
+
+<p>Aplicação: a santidade não pode ser medida exclusivamente pela aparência religiosa. É necessário examinar as motivações que orientam as decisões.</p>
+
+<h4>4.3. A vontade</h4>
+
+<p>João 8:34 apresenta o pecado como uma realidade de escravidão. Romanos 6:16-18 desenvolve a relação entre submissão, obediência e domínio moral.</p>
+
+<p>A vontade humana continua operante, mas encontra-se comprometida pela condição pecaminosa. O ser humano realiza escolhas reais e responde moralmente por elas, porém não consegue produzir, por seus próprios méritos, a redenção espiritual.</p>
+
+<p>Aplicação: reconhecer a responsabilidade pessoal não significa acreditar que a salvação pode ser conquistada exclusivamente pela força de vontade. A transformação espiritual depende da graça de Deus.</p>
+
+<h4>4.4. O corpo e os comportamentos</h4>
+
+<p>Romanos 6:12-13 apresenta a necessidade de não oferecer os membros do corpo ao pecado, mas à justiça. O corpo não é apresentado como intrinsecamente mau; o problema está em sua utilização a serviço de desejos e práticas contrários à vontade divina.</p>
+
+<p>Aplicação: a santidade deve alcançar a utilização da fala, dos olhos, das mãos, da sexualidade, dos recursos materiais e de todas as capacidades humanas.</p>
+
+<h3>5. O PECADO ORIGINAL E A TRANSMISSÃO DA CONDIÇÃO PECAMINOSA</h3>
+
+<p>A expressão pecado original é utilizada pela teologia cristã para descrever a condição de pecado associada à queda de Adão e sua relação com toda a humanidade.</p>
+
+<p>Romanos 5:12-19 é o principal desenvolvimento paulino dessa relação. Paulo estabelece um contraste entre Adão e Cristo: por meio da desobediência de um homem, muitos foram constituídos pecadores; por meio da obediência de Cristo, muitos recebem a provisão da justiça.</p>
+
+<p>O texto apresenta a solidariedade da humanidade em Adão e a centralidade da obra redentora de Cristo.</p>
+
+<h4>5.1. A culpa e a corrupção</h4>
+
+<p>A teologia cristã tradicional costuma distinguir dois aspectos relacionados ao pecado original:</p>
+
+<ul>
+<li><b>Culpa:</b> a condição de responsabilidade diante de Deus associada à queda e à solidariedade humana em Adão.</li>
+<li><b>Corrupção:</b> a inclinação moral desordenada e a condição espiritual comprometida que caracterizam a humanidade caída.</li>
+</ul>
+
+<p>Existem diferentes explicações teológicas sobre a maneira exata como a culpa de Adão é atribuída aos seus descendentes. As tradições cristãs não apresentam uma única formulação sobre todos os detalhes dessa transmissão.</p>
+
+<p>Entretanto, a universalidade do pecado e a necessidade da graça são elementos fundamentais da argumentação de Romanos 3 e 5.</p>
+
+<h4>5.2. A universalidade da condição pecaminosa</h4>
+
+<p>Salmo 51:5 e Efésios 2:1-3 são textos frequentemente utilizados na exposição da condição humana desde sua existência natural. O primeiro apresenta a consciência de Davi sobre sua condição pecaminosa; o segundo descreve a situação espiritual da humanidade afastada de Deus.</p>
+
+<p>Aplicação: ninguém deve fundamentar sua esperança espiritual na ideia de que nasceu moralmente superior ou que possui condições naturais de alcançar a justiça divina independentemente da graça.</p>
+
+<h3>6. PECADO ORIGINAL E PECADOS ATUAIS</h3>
+
+<p>Embora relacionados, os conceitos não devem ser confundidos.</p>
+
+<p>O pecado original descreve a condição pecaminosa relacionada à queda de Adão. Os pecados atuais são as transgressões concretas praticadas pelos indivíduos ao longo de sua existência.</p>
+
+<div class="destaque">
+<b>Comentário Teológico AVANCE</b>
+<blockquote>O pecado original representa a raiz da condição pecaminosa da humanidade; os pecados atuais são suas manifestações concretas, expressas em pensamentos, palavras, decisões, comportamentos e omissões.</blockquote>
+</div>
+
+<p>Tiago 1:14-15 apresenta uma sequência importante: o desejo desordenado atrai e seduz, o pecado é concebido e sua consumação produz a morte.</p>
+
+<p>Essa passagem permite compreender o desenvolvimento de determinadas transgressões: aquilo que é alimentado interiormente pode transformar-se em decisão e, posteriormente, em comportamento.</p>
+
+<h4>6.1. Pecados por ação</h4>
+
+<p>São transgressões realizadas mediante atos concretos, como mentira, violência, adultério, roubo, corrupção e exploração do próximo.</p>
+
+<h4>6.2. Pecados por omissão</h4>
+
+<p>São responsabilidades negligenciadas quando existe conhecimento do dever e possibilidade de agir corretamente. Tiago 4:17 afirma que aquele que sabe fazer o bem e não o faz comete pecado.</p>
+
+<h4>6.3. Pecados conscientes e não conscientes</h4>
+
+<p>As Escrituras reconhecem que existem transgressões praticadas com diferentes graus de conhecimento e consciência. Levítico 4 apresenta disposições relativas a pecados cometidos por ignorância. Lucas 12:47-48 também demonstra que o conhecimento da vontade do senhor está relacionado à responsabilidade.</p>
+
+<p>Isso não significa que a ignorância transforme automaticamente o erro em justiça. Significa que o conhecimento, a intenção e a responsabilidade precisam ser considerados na análise moral.</p>
+
+<p>Aplicação: uma avaliação séria da própria conduta deve investigar não apenas o que foi feito, mas também o que foi negligenciado, conhecido, desejado e deliberadamente escolhido.</p>
+
+<h3>7. AS FORMAS E MANIFESTAÇÕES DO PECADO</h3>
+
+<p>A Bíblia apresenta diferentes manifestações da transgressão humana. Algumas são evidentes e públicas; outras permanecem ocultas na interioridade. Algumas atingem diretamente o próximo; outras revelam a infidelidade diante de Deus.</p>
+
+<h4>7.1. Orgulho e soberba</h4>
+<p>Provérbios 16:18 relaciona a soberba à destruição. O orgulho desordenado conduz o indivíduo a supervalorizar a si mesmo, desprezar correções e rejeitar limites legítimos.</p>
+
+<h4>7.2. Idolatria</h4>
+<p>Êxodo 20:3-5 estabelece a exclusividade da adoração ao Senhor. Idolatria não se restringe à fabricação de imagens: também envolve atribuir a qualquer criatura, poder ou realidade criada a posição que pertence somente a Deus.</p>
+
+<h4>7.3. Imoralidade</h4>
+<p>Gálatas 5:19-21 apresenta práticas relacionadas à desordem moral e à utilização inadequada dos desejos. A sexualidade, dentro da perspectiva bíblica, deve ser compreendida sob os princípios de santidade, fidelidade e responsabilidade.</p>
+
+<h4>7.4. Avareza e exploração</h4>
+<p>Colossenses 3:5 associa a avareza à idolatria. A busca desordenada por riqueza pode conduzir à exploração, à injustiça e à instrumentalização de outras pessoas.</p>
+
+<h4>7.5. Mentira e falsidade</h4>
+<p>Provérbios 12:22 e Efésios 4:25 apresentam a verdade como princípio indispensável da vida moral. A mentira destrói a confiança e compromete as relações humanas.</p>
+
+<h4>7.6. Inveja, ódio e falta de perdão</h4>
+<p>Gálatas 5:19-21 e Efésios 4:31-32 demonstram que a interioridade humana também precisa ser submetida aos princípios da justiça, do perdão e do amor ao próximo.</p>
+
+<h3>8. A DIMENSÃO SOCIAL E COLETIVA DO PECADO</h3>
+
+<p>O pecado não produz consequências exclusivamente individuais. As Escrituras demonstram que decisões pessoais podem comprometer famílias, comunidades, instituições e sociedades inteiras.</p>
+
+<p>Gênesis 4 apresenta a violência de Caim contra Abel. O pecado que se manifesta inicialmente na interioridade transforma-se em homicídio e ruptura da fraternidade humana.</p>
+
+<p>Em Isaías 1:16-17, a denúncia profética alcança a injustiça social, a opressão e a negligência em relação aos vulneráveis. O profeta exige que o povo aprenda a fazer o bem, busque o juízo e defenda os oprimidos.</p>
+
+<p>Amós 5:11-24 também denuncia estruturas de exploração e a incompatibilidade entre religiosidade exterior e injustiça prática.</p>
+
+<p>Romanos 8:19-22 apresenta a criação submetida à corrupção e ao sofrimento, aguardando a manifestação da redenção.</p>
+
+<p>Assim, a Hamartiologia precisa considerar:</p>
+
+<ul>
+<li>A responsabilidade individual pelas próprias escolhas.</li>
+<li>A influência do comportamento pessoal sobre outras pessoas.</li>
+<li>A reprodução coletiva de práticas injustas.</li>
+<li>A corrupção de estruturas e instituições.</li>
+<li>Os efeitos da transgressão sobre a criação.</li>
+</ul>
+
+<p>Aplicação: não é suficiente denunciar o pecado apenas na vida particular. A coerência cristã exige também rejeitar práticas de exploração, corrupção, opressão, desonestidade e abuso de autoridade nas relações sociais.</p>
+
+<h3>9. A LEI DIVINA E A IDENTIFICAÇÃO DO PECADO</h3>
+
+<p>A Lei possui uma função fundamental na compreensão bíblica do pecado. Romanos 3:20 afirma que pela lei vem o conhecimento do pecado. Isso significa que a Lei revela a exigência da justiça divina e torna evidente a transgressão humana.</p>
+
+<p>A Lei não foi apresentada como mecanismo de justificação por mérito humano. Sua função revela a santidade do padrão divino e demonstra a insuficiência do homem diante desse padrão.</p>
+
+<p>Gálatas 3:24 utiliza a imagem do aio, ou tutor, para descrever a função da Lei em conduzir a Cristo. A Lei evidencia a necessidade da redenção, mas não substitui a obra redentora.</p>
+
+<p>Romanos 7:7 esclarece que a Lei permite identificar o pecado, inclusive em suas manifestações interiores, como a cobiça.</p>
+
+<p>Aplicação: conhecer os mandamentos não é suficiente. O conhecimento precisa produzir reconhecimento da responsabilidade, arrependimento e submissão à vontade de Deus.</p>
+
+<h3>10. AS CONSEQUÊNCIAS DO PECADO</h3>
+
+<p>O pecado possui consequências espirituais, morais, relacionais, físicas e escatológicas. A Bíblia apresenta essas consequências de maneira integrada.</p>
+
+<h4>10.1. Morte espiritual</h4>
+<p>Efésios 2:1 descreve os seres humanos como mortos em delitos e pecados. Trata-se da condição de afastamento espiritual de Deus, não da inexistência da vida biológica.</p>
+
+<h4>10.2. Morte física</h4>
+<p>Gênesis 3:19 relaciona a condição humana ao retorno ao pó. Romanos 5:12 apresenta a morte como consequência da entrada do pecado no mundo.</p>
+
+<h4>10.3. Morte eterna</h4>
+<p>Apocalipse 20:14-15 apresenta o juízo final e a chamada segunda morte. A linguagem escatológica descreve a gravidade definitiva da rejeição da vida oferecida por Deus.</p>
+
+<h4>10.4. Ruptura relacional</h4>
+<p>O pecado compromete a comunhão com Deus e produz conflitos entre pessoas. Gênesis 3 e 4 demonstram vergonha, acusações, medo, violência e afastamento.</p>
+
+<h4>10.5. Escravidão moral</h4>
+<p>João 8:34 e Romanos 6:16 demonstram que o pecado pode exercer domínio sobre a existência humana, condicionando escolhas e comportamentos.</p>
+
+<h3>11. O ARREPENDIMENTO E A CONFISSÃO</h3>
+
+<p>O reconhecimento do pecado é indispensável para a compreensão da resposta bíblica à transgressão. A Escritura não apresenta o arrependimento como simples remorso emocional, mas como uma mudança de atitude diante de Deus.</p>
+
+<p>O termo grego metanoia é utilizado no Novo Testamento para expressar arrependimento, mudança de entendimento e orientação. Seu sentido teológico envolve uma mudança de direção que se manifesta na vida prática.</p>
+
+<p>Atos 3:19 relaciona arrependimento e conversão ao apagamento dos pecados. Primeira João 1:9 apresenta a confissão como expressão de reconhecimento diante de Deus.</p>
+
+<p>O exemplo de Davi, no Salmo 51, demonstra que o arrependimento verdadeiro não se limita ao receio das consequências. Ele envolve reconhecimento da transgressão, submissão à justiça divina e busca de renovação interior.</p>
+
+<p>Aplicação: arrependimento não significa apenas declarar que algo foi errado. Significa abandonar a justificativa da transgressão e assumir uma postura de mudança, reparação quando possível e fidelidade à verdade.</p>
+
+<h3>12. A INSUFICIÊNCIA DAS OBRAS HUMANAS E DA RELIGIOSIDADE EXTERIOR</h3>
+
+<p>Romanos 3:23-28 estabelece que a justificação não é conquistada mediante obras da Lei, mas recebida pela graça, mediante a redenção em Cristo.</p>
+
+<p>Efésios 2:8-10 apresenta uma relação fundamental: a salvação é pela graça, mediante a fé, e não resultado de obras que permitam ao homem vangloriar-se. Entretanto, os salvos são chamados a andar nas boas obras preparadas por Deus.</p>
+
+<p>Portanto, existe uma distinção entre as obras como tentativa de conquistar a salvação e as obras como resultado de uma vida transformada pela graça.</p>
+
+<p>A religiosidade exterior também pode tornar-se instrumento de dissimulação quando não corresponde à realidade interior. Mateus 23:25-28 denuncia a aparência de justiça que encobre corrupção interior.</p>
+
+<p>Aplicação: frequência religiosa, posição eclesiástica, conhecimento teológico, títulos e reconhecimento público não substituem a integridade moral e a submissão à Palavra.</p>
+
+<h3>13. A PROVISÃO DIVINA: A EXPIAÇÃO EM JESUS CRISTO</h3>
+
+<p>A Hamartiologia encontra sua resposta fundamental na obra redentora de Jesus Cristo. O problema do pecado não poderia ser resolvido mediante simples aperfeiçoamento humano, pois a humanidade necessitava de reconciliação com Deus.</p>
+
+<p>Isaías 53 apresenta a figura do Servo sofredor, que leva sobre si as transgressões de muitos. O texto constitui uma das principais referências proféticas utilizadas pela teologia cristã na compreensão da morte redentora de Cristo.</p>
+
+<p>Segunda Coríntios 5:21 declara que aquele que não conheceu pecado foi feito pecado por nós, para que nele fôssemos feitos justiça de Deus.</p>
+
+<p>Primeira Pedro 2:24 afirma que Cristo levou nossos pecados em seu corpo sobre o madeiro.</p>
+
+<h4>13.1. Expiação substitutiva</h4>
+
+<p>A expiação substitutiva apresenta Cristo como aquele que assume a posição do pecador na obra redentora. Sua morte não foi um acidente histórico nem apenas um exemplo de sofrimento humano. Na compreensão apostólica, ela possui significado salvador.</p>
+
+<h4>13.2. Propiciação</h4>
+
+<p>Romanos 3:25 e Primeira João 2:2 relacionam a obra de Cristo à propiciação. O conceito aponta para a provisão divina que trata o problema da culpa e da justiça, permitindo compreender a reconciliação entre Deus e a humanidade.</p>
+
+<h4>13.3. Redenção</h4>
+
+<p>Efésios 1:7 relaciona a redenção ao sangue de Cristo e ao perdão das transgressões. A linguagem de redenção apresenta a libertação mediante o preço da obra realizada por Jesus.</p>
+
+<h4>13.4. Reconciliação</h4>
+
+<p>Romanos 5:10-11 e Segunda Coríntios 5:18-19 demonstram que a obra de Cristo restabelece a relação entre Deus e o ser humano. A reconciliação não nasce da iniciativa meritória do pecador, mas da iniciativa graciosa de Deus.</p>
+
+<p>Aplicação: a cruz deve ser compreendida como fundamento da esperança cristã. O reconhecimento da gravidade do pecado conduz à valorização da graça e à gratidão pela obra de Cristo.</p>
+
+<h3>14. A REGENERAÇÃO E A SANTIFICAÇÃO: A RUPTURA COM O DOMÍNIO DO PECADO</h3>
+
+<p>A redenção não se limita ao perdão da culpa. A obra de Deus também transforma a condição espiritual do indivíduo e estabelece uma nova orientação de vida.</p>
+
+<p>João 3:3-8 apresenta o novo nascimento como obra do Espírito. Tito 3:5 relaciona a regeneração e a renovação à ação do Espírito Santo.</p>
+
+<p>Romanos 6:6-14 desenvolve a doutrina da união com Cristo em sua morte e ressurreição. O crente não deve continuar oferecendo seus membros ao pecado como instrumento de injustiça, mas apresentar-se a Deus como instrumento de justiça.</p>
+
+<h4>14.1. Regeneração</h4>
+<p>É a transformação espiritual operada por Deus, mediante a qual o indivíduo recebe nova vida. Não é uma simples mudança de comportamento exterior, mas uma nova condição espiritual.</p>
+
+<h4>14.2. Santificação</h4>
+<p>É a separação para Deus e o desenvolvimento de uma vida orientada pela santidade. Segunda Coríntios 7:1 e Primeira Tessalonicenses 4:3 apresentam a santificação como parte indispensável da vida cristã.</p>
+
+<h4>14.3. Responsabilidade na vida cristã</h4>
+<p>Romanos 8:13 relaciona a ação do Espírito à mortificação das obras do corpo. Filipenses 2:12-13 apresenta simultaneamente a responsabilidade humana e a atuação divina na produção da vontade e da realização segundo o propósito de Deus.</p>
+
+<p>Aplicação: a vitória sobre o pecado não deve ser entendida como autorização para a negligência espiritual. O cristão é chamado a desenvolver vigilância, disciplina, obediência, oração e dependência contínua do Espírito Santo.</p>
+
+<h3>15. A DIMENSÃO PENTECOSTAL DA VITÓRIA SOBRE O PECADO</h3>
+
+<p>Na perspectiva pentecostal clássica, a atuação do Espírito Santo é indispensável à vida de santidade e ao testemunho cristão.</p>
+
+<p>Atos 1:8 relaciona o recebimento do poder do Espírito ao testemunho de Cristo. Gálatas 5:16-25 apresenta o contraste entre as obras da carne e o fruto do Espírito.</p>
+
+<p>É importante distinguir o batismo no Espírito Santo da regeneração e da santificação. Embora relacionados à atuação do mesmo Espírito, esses conceitos possuem funções teológicas distintas nas formulações pentecostais clássicas.</p>
+
+<p>O poder espiritual não deve ser avaliado exclusivamente por manifestações extraordinárias. O caráter, a obediência, o amor, a fidelidade e o domínio próprio também são evidências fundamentais de uma vida submetida ao Espírito.</p>
+
+<p>Aplicação: uma experiência espiritual genuína deve conduzir à coerência entre confissão de fé e comportamento. O poder recebido para testemunhar não pode ser utilizado como justificativa para orgulho, abuso de autoridade ou desobediência.</p>
+
+<h3>16. A CONSUMAÇÃO ESCATOLÓGICA: A ERRADICAÇÃO DEFINITIVA DO PECADO</h3>
+
+<p>A doutrina do pecado não termina com a descrição da queda. A revelação bíblica apresenta também a esperança de sua derrota definitiva.</p>
+
+<p>Romanos 8:18-23 descreve a expectativa da criação pela libertação da corrupção. Segunda Pedro 3:13 apresenta a promessa de novos céus e nova terra, nos quais habita a justiça.</p>
+
+<p>Apocalipse 21:1-4 apresenta a nova criação, na qual Deus habitará com seu povo, enxugará toda lágrima e não haverá mais morte, pranto, clamor ou dor.</p>
+
+<p>A glorificação representa a consumação da redenção. A presença do pecado, sua influência e suas consequências não terão lugar na realidade final estabelecida por Deus.</p>
+
+<p>Essa esperança demonstra que a história da humanidade não termina na queda. O propósito redentor de Deus culmina na restauração de todas as coisas conforme sua promessa.</p>
+
+<h3>17. SÍNTESE GERAL DA HAMARTIOLOGIA</h3>
+
+<p>O estudo sistemático da Hamartiologia permite organizar a doutrina do pecado em uma sequência lógica:</p>
+
+<ol>
+<li><b>Definição:</b> o pecado é uma realidade de transgressão e oposição à vontade de Deus.</li>
+<li><b>Origem:</b> a rebelião moral e a entrada histórica do pecado na humanidade.</li>
+<li><b>Natureza:</b> uma condição espiritual, moral, interior e relacional.</li>
+<li><b>Universalidade:</b> todos os seres humanos estão sujeitos à realidade do pecado.</li>
+<li><b>Transmissão:</b> a condição pecaminosa está relacionada à queda de Adão.</li>
+<li><b>Manifestação:</b> o pecado aparece em pensamentos, desejos, ações e omissões.</li>
+<li><b>Consequências:</b> morte, afastamento, corrupção e ruptura das relações.</li>
+<li><b>Responsabilidade:</b> o ser humano responde por suas escolhas e transgressões.</li>
+<li><b>Redenção:</b> Jesus Cristo é a provisão divina para o problema do pecado.</li>
+<li><b>Transformação:</b> o Espírito Santo atua na regeneração e na santificação.</li>
+<li><b>Consumação:</b> Deus estabelecerá definitivamente sua justiça na nova criação.</li>
+</ol>
+
+<h3>18. CONCLUSÃO TEOLÓGICA</h3>
+
+<p>A Hamartiologia demonstra que o pecado não é uma questão periférica da Teologia Cristã. Ele está diretamente relacionado à compreensão da humanidade, da justiça divina, da necessidade de redenção e do propósito eterno de Deus.</p>
+
+<p>O pecado compromete a relação entre o Criador e a criatura, corrompe a interioridade humana, produz injustiça nas relações e introduz consequências que alcançam a própria criação.</p>
+
+<p>Entretanto, a revelação bíblica não apresenta a queda como a palavra final sobre a humanidade. A graça de Deus, manifestada em Jesus Cristo, constitui o fundamento da reconciliação, do perdão e da transformação.</p>
+
+<p>Por isso, o estudante de Teologia deve compreender que o conhecimento da doutrina do pecado não possui finalidade meramente acadêmica. Ele deve produzir discernimento bíblico, responsabilidade moral, rejeição da transgressão, valorização da obra de Cristo e compromisso com uma vida de santidade.</p>
+
+<div class="destaque">
+<b>Referências bíblicas fundamentais para aprofundamento:</b>
+<p>Gênesis 2–4; Salmo 51; Isaías 1 e 53; Jeremias 17:9; Mateus 5 e 15; João 3 e 8; Romanos 1–8; 1 Coríntios 15; Gálatas 3 e 5; Efésios 2 e 4; Colossenses 3; Tiago 1; 1 João 1–3; Apocalipse 20–22.</p>
+</div>
+
+</div>
+
+<button class="btn" onclick="irParaProva()">IR PARA AVALIAÇÃO</button>
+</div>
+
+<div id="secao-prova" class="secao">
+
+<h2>AVALIAÇÃO DE CONHECIMENTO</h2>
+
+<p>Responda às questões com base no conteúdo estudado. É necessário obter no mínimo 7 acertos para aprovação.</p>
+
+<form id="quizForm">
+
+<div class="pergunta"><b>1. Qual é o objeto principal de estudo da Hamartiologia?</b>
+<label class="opcao"><input type="radio" name="p1" value="0"> A constituição física do ser humano.</label>
+<label class="opcao"><input type="radio" name="p1" value="1"> A natureza, origem, manifestação e consequências do pecado.</label>
+<label class="opcao"><input type="radio" name="p1" value="0"> A organização administrativa das igrejas.</label>
+</div>
+
+<div class="pergunta"><b>2. Qual é a principal diferença entre Lexicografia e Lexicologia?</b>
+<label class="opcao"><input type="radio" name="p2" value="0"> São termos que significam exclusivamente tradução bíblica.</label>
+<label class="opcao"><input type="radio" name="p2" value="1"> A Lexicografia investiga o registro e significado dos vocábulos, enquanto a Lexicologia estuda o vocabulário e suas relações.</label>
+<label class="opcao"><input type="radio" name="p2" value="0"> Ambas estudam exclusivamente a gramática hebraica.</label>
+</div>
+
+<div class="pergunta"><b>3. O termo hebraico Pesha está relacionado a qual conceito?</b>
+<label class="opcao"><input type="radio" name="p3" value="0"> Reconciliação.</label>
+<label class="opcao"><input type="radio" name="p3" value="1"> Transgressão, rebelião e ruptura de fidelidade.</label>
+<label class="opcao"><input type="radio" name="p3" value="0"> Regeneração espiritual.</label>
+</div>
+
+<div class="pergunta"><b>4. O que significa a doutrina da depravação total?</b>
+<label class="opcao"><input type="radio" name="p4" value="0"> Que todos os seres humanos praticam todo mal possível.</label>
+<label class="opcao"><input type="radio" name="p4" value="1"> Que todas as dimensões da natureza humana foram afetadas pela queda.</label>
+<label class="opcao"><input type="radio" name="p4" value="0"> Que o ser humano perdeu toda capacidade racional.</label>
+</div>
+
+<div class="pergunta"><b>5. Qual passagem apresenta o contraste entre Adão e Cristo na relação com o pecado e a justiça?</b>
+<label class="opcao"><input type="radio" name="p5" value="1"> Romanos 5:12-19.</label>
+<label class="opcao"><input type="radio" name="p5" value="0"> Salmo 23.</label>
+<label class="opcao"><input type="radio" name="p5" value="0"> Êxodo 20:1-5.</label>
+</div>
+
+<div class="pergunta"><b>6. Qual é a distinção entre pecado original e pecados atuais?</b>
+<label class="opcao"><input type="radio" name="p6" value="0"> O original é exclusivamente coletivo e os atuais são exclusivamente históricos.</label>
+<label class="opcao"><input type="radio" name="p6" value="1"> O original descreve a condição relacionada à queda de Adão; os atuais são as transgressões concretas do indivíduo.</label>
+<label class="opcao"><input type="radio" name="p6" value="0"> Não existe nenhuma distinção teológica entre eles.</label>
+</div>
+
+<div class="pergunta"><b>7. Segundo Romanos 3:20, qual é uma função fundamental da Lei?</b>
+<label class="opcao"><input type="radio" name="p7" value="0"> Conceder salvação mediante o mérito humano.</label>
+<label class="opcao"><input type="radio" name="p7" value="1"> Proporcionar o conhecimento do pecado.</label>
+<label class="opcao"><input type="radio" name="p7" value="0"> Eliminar a necessidade da graça.</label>
+</div>
+
+<div class="pergunta"><b>8. Qual é o fundamento da redenção segundo a doutrina cristã?</b>
+<label class="opcao"><input type="radio" name="p8" value="0"> O aperfeiçoamento intelectual humano.</label>
+<label class="opcao"><input type="radio" name="p8" value="0"> O cumprimento de tradições religiosas como mérito salvador.</label>
+<label class="opcao"><input type="radio" name="p8" value="1"> A obra expiatória de Jesus Cristo.</label>
+</div>
+
+<div class="pergunta"><b>9. Qual é a relação entre regeneração e santificação?</b>
+<label class="opcao"><input type="radio" name="p9" value="1"> A regeneração corresponde à nova vida espiritual, enquanto a santificação envolve a vida separada para Deus e seu desenvolvimento em santidade.</label>
+<label class="opcao"><input type="radio" name="p9" value="0"> Ambas significam exclusivamente receber conhecimento acadêmico.</label>
+<label class="opcao"><input type="radio" name="p9" value="0"> São processos que dispensam a atuação do Espírito Santo.</label>
+</div>
+
+<div class="pergunta"><b>10. Qual é a esperança escatológica apresentada em Apocalipse 21:1-4?</b>
+<label class="opcao"><input type="radio" name="p10" value="0"> A permanência eterna do pecado e da morte.</label>
+<label class="opcao"><input type="radio" name="p10" value="1"> A nova criação, na qual não haverá mais morte, pranto, clamor ou dor.</label>
+<label class="opcao"><input type="radio" name="p10" value="0"> A restauração da antiga condição de sofrimento.</label>
+</div>
+
+</form>
+
+<button class="btn" onclick="corrigir()">FINALIZAR E AVANÇAR</button>
+</div>
+
+<div id="resultado" style="display:none;text-align:center;padding:20px;"></div>
+
 </div>
 
 <div class="footer-copy">© AVANCE – Gilberto Moreira</div>
 
-<!-- VLibras Widget -->
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
         <div class="vw-plugin-top-wrapper"></div>
     </div>
 </div>
+
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
+if (window.VLibras) {
     new window.VLibras.Widget('https://vlibras.gov.br/app');
+}
 </script>
 
 <script>
-    function verificarProgresso() {
-        if (localStorage.getItem('modulo2_concluido') === 'true') {
-            const res = document.getElementById('resultado');
-            document.getElementById('secao-leitura').style.display = 'none';
-            document.getElementById('secao-prova').style.display = 'none';
-            res.style.display = 'block';
-            res.innerHTML = `
-                <b style="color:green; font-size:1.2rem;">Você já concluiu este módulo!</b><br>
-                <button class="btn" onclick="window.location.href='materia3.html'">IR PARA O MÓDULO 3</button>
-            `;
+// PROGRESSO
+function verificarProgresso() {
+    if (localStorage.getItem('modulo2_concluido') === 'true') {
+        document.getElementById('secao-leitura').style.display='none';
+        document.getElementById('secao-prova').style.display='none';
+
+        const res=document.getElementById('resultado');
+        res.style.display='block';
+        res.innerHTML=`
+            <b style="color:green;font-size:1.2rem;">
+            Você já concluiu este módulo!
+            </b>
+            <button class="btn" onclick="window.location.href='materia3.html'">
+            IR PARA O MÓDULO 3
+            </button>`;
+    }
+}
+
+// NAVEGAÇÃO
+function irParaProva() {
+    pararTexto();
+    document.getElementById('secao-leitura').style.display='none';
+    document.getElementById('secao-prova').style.display='block';
+    window.scrollTo(0,0);
+}
+
+// AVALIAÇÃO
+function corrigir() {
+    const form=document.getElementById('quizForm');
+    let nota=0;
+    let respondidas=0;
+
+    for(let i=1;i<=10;i++) {
+        const resposta=form.querySelector('input[name="p'+i+'"]:checked');
+        if(resposta) {
+            respondidas++;
+            if(resposta.value==="1") nota++;
         }
     }
 
-    function irParaProva() {
-        document.getElementById('secao-leitura').style.display = 'none';
-        document.getElementById('secao-prova').style.display = 'block';
-        window.scrollTo(0,0);
-        pararTexto();
+    if(respondidas<10) {
+        alert('Responda todas as 10 questões antes de finalizar.');
+        return;
     }
 
-    function corrigir() {
-        const form = document.getElementById('quizForm');
-        let nota = 0;
-        for(let i=1; i<=10; i++) {
-            const radioGroup = form['p'+i];
-            if(radioGroup) {
-                if (radioGroup.value === "1") nota++;
-            }
-        }
+    const res=document.getElementById('resultado');
+    res.style.display='block';
 
-        const res = document.getElementById('resultado');
-        res.style.display = 'block';
-        
-        if(nota >= 7) {
-            localStorage.setItem('modulo2_concluido', 'true');
-            res.innerHTML = `<b style="color:green">APROVADO! Nota: ${nota}/10.<br>Redirecionando...</b>`;
-            setTimeout(() => { window.location.href = 'materia3.html'; }, 3000);
-        } else {
-            res.innerHTML = `<b style="color:red">REPROVADO. Nota: ${nota}/10.<br>Estude mais um pouco e tente novamente.</b>`;
-            setTimeout(() => { location.reload(); }, 3000);
-        }
+    document.getElementById('secao-prova').style.display='none';
+    window.scrollTo(0,0);
+
+    if(nota>=7) {
+        localStorage.setItem('modulo2_concluido','true');
+        res.innerHTML=`
+        <b style="color:green;font-size:1.3rem;">
+        APROVADO! Nota: ${nota}/10
+        </b>
+        <p>Parabéns! Você concluiu Hamartiologia.</p>
+        <p>Avançando para o próximo módulo...</p>
+        <button class="btn" onclick="window.location.href='materia3.html'">
+        IR PARA O MÓDULO 3
+        </button>`;
+
+        setTimeout(()=>{
+            window.location.href='materia3.html';
+        },5000);
+
+    } else {
+        res.innerHTML=`
+        <b style="color:red;font-size:1.3rem;">
+        REPROVADO. Nota: ${nota}/10
+        </b>
+        <p>É necessário obter pelo menos 7 acertos.</p>
+        <button class="btn" onclick="location.reload()">
+        VOLTAR E ESTUDAR NOVAMENTE
+        </button>`;
+    }
+}
+
+// SISTEMA DE ÁUDIO
+let utterance=null;
+let vozSelecionada=null;
+let audioIniciado=false;
+
+function prepararAudio() {
+    if(!('speechSynthesis' in window)) {
+        document.getElementById('statusAudio').textContent=
+        'Seu navegador não oferece síntese de voz.';
+        return;
     }
 
-    // Sistema de Áudio Corrigido (Lendo apenas o ID conteudo-texto)
-    let utterance = null;
-    function lerTexto() {
-        if ('speechSynthesis' in window) {
-            speechSynthesis.cancel();
-            const texto = document.getElementById('conteudo-texto').innerText;
-            utterance = new SpeechSynthesisUtterance(texto);
-            utterance.lang = 'pt-BR';
-            utterance.rate = 1.0;
-            speechSynthesis.speak(utterance);
-        } else {
-            alert('Seu navegador não suporta o recurso de síntese de áudio.');
-        }
+    carregarVoz();
+
+    // Algumas versões do Chrome carregam as vozes de forma assíncrona.
+    speechSynthesis.onvoiceschanged=carregarVoz;
+
+    document.getElementById('statusAudio').textContent=
+    'Áudio preparado. Pressione Ouvir para iniciar.';
+}
+
+function carregarVoz() {
+    const vozes=speechSynthesis.getVoices();
+
+    vozSelecionada=
+        vozes.find(v=>v.lang.toLowerCase()==='pt-br') ||
+        vozes.find(v=>v.lang.toLowerCase().startsWith('pt-br')) ||
+        vozes.find(v=>v.lang.toLowerCase().startsWith('pt')) ||
+        null;
+}
+
+// Ajustes fonéticos para melhorar a pronúncia de termos técnicos.
+function prepararPronuncia(texto) {
+    const substituicoes = [
+        [/\bLexografia\b/gi,'Lecsografia'],
+        [/\bLexicografia\b/gi,'Lecsicografia'],
+        [/\bLexicologia\b/gi,'Lecsicologia'],
+        [/\bHamartiologia\b/gi,'Amartiologia'],
+        [/\bHamartiologia\b/gi,'Amartiologia'],
+        [/\bHamartía\b/gi,'Amartía'],
+        [/\bParabasis\b/gi,'Parábasis'],
+        [/\bPesha\b/gi,'Pêsha'],
+        [/\bAvon\b/gi,'Avón'],
+        [/\bChattá\b/gi,'Rattá'],
+        [/\bMetanoia\b/gi,'Metanóia'],
+        [/\bSoteriologia\b/gi,'Soteriologia'],
+        [/\bEscatologia\b/gi,'Escatologia'],
+        [/\bexegética\b/gi,'ezegética'],
+        [/\bexegese\b/gi,'ezegese'],
+        [/\bEfésios\b/gi,'Efésios'],
+        [/\bEzequiel\b/gi,'Ezequiel']
+    ];
+
+    substituicoes.forEach(([expressao,pronuncia])=>{
+        texto=texto.replace(expressao,pronuncia);
+    });
+
+    return texto;
+}
+
+function lerTexto() {
+    if(!('speechSynthesis' in window)) {
+        alert('Seu navegador não suporta síntese de voz.');
+        return;
     }
 
-    function pararTexto() {
-        if ('speechSynthesis' in window) {
-            speechSynthesis.cancel();
-        }
+    pararTexto();
+
+    const elemento=document.getElementById('conteudo-texto');
+
+    let texto=elemento.innerText || elemento.textContent;
+    texto=prepararPronuncia(texto);
+
+    if(!texto.trim()) return;
+
+    utterance=new SpeechSynthesisUtterance(texto);
+
+    utterance.lang='pt-BR';
+    utterance.rate=0.90;
+    utterance.pitch=1;
+    utterance.volume=1;
+
+    if(vozSelecionada) {
+        utterance.voice=vozSelecionada;
     }
+
+    utterance.onstart=()=>{
+        audioIniciado=true;
+        document.getElementById('statusAudio').textContent=
+        'Lendo o conteúdo em português brasileiro...';
+    };
+
+    utterance.onend=()=>{
+        audioIniciado=false;
+        document.getElementById('statusAudio').textContent=
+        'Leitura concluída.';
+    };
+
+    utterance.onerror=(evento)=>{
+        audioIniciado=false;
+        document.getElementById('statusAudio').textContent=
+        'Erro na reprodução. Verifique o volume e as vozes do dispositivo.';
+        console.error('Erro de áudio:',evento);
+    };
+
+    // Garante que o motor não permaneça em estado de pausa.
+    speechSynthesis.cancel();
+    speechSynthesis.resume();
+
+    setTimeout(()=>{
+        speechSynthesis.speak(utterance);
+    },150);
+}
+
+function pausarTexto() {
+    if('speechSynthesis' in window && speechSynthesis.speaking) {
+        speechSynthesis.pause();
+        document.getElementById('statusAudio').textContent='Leitura pausada.';
+    }
+}
+
+function continuarTexto() {
+    if('speechSynthesis' in window && speechSynthesis.paused) {
+        speechSynthesis.resume();
+        document.getElementById('statusAudio').textContent='Continuando a leitura...';
+    } else if(!speechSynthesis.speaking) {
+        lerTexto();
+    }
+}
+
+function pararTexto() {
+    if('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+        audioIniciado=false;
+        document.getElementById('statusAudio').textContent='Leitura encerrada.';
+    }
+}
 </script>
 
 </body>
